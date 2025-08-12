@@ -1,0 +1,45 @@
+// .navbar {
+//     height: 100px;
+
+//     .wrapper {
+//         max-width: 1366px;
+//         margin: auto;
+//         padding: 30px 100px 0 100px;
+//         display: flex;
+//         justify-content: space-between;
+//         align-items: center;
+
+//         @media (max-width: 768px) {
+//             padding: 30px 20px 0 20px;
+//         }
+//     }
+
+
+
+//     .social {
+//         display: flex;
+//         align-items: center;
+//         width: fit-content;
+//         gap: 20px;
+//     }
+// }
+
+.wrapper {
+
+    .social {
+        @media(min-width: 0px) and (max-width: 435px) {
+            display: none;
+        }
+    }
+
+    .download-icon {
+        @media(min-width: 436px) {
+            display: none;
+        }
+    }
+
+    span {
+        font-weight: bold;
+        width: fit-content;
+    }
+}
