@@ -10,7 +10,7 @@ export default function Navbar() {
     <div className='navbar box-border'>
       <div className="wrapper flex justify-between items-center pt-[18px] md:pt-[30px] px-8 md:px-[100px]">
         <motion.span
-          className='cursor-default ml-11'
+          className='cursor-default ml-11 '
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}

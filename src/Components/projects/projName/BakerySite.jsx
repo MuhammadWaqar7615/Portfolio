@@ -23,7 +23,7 @@ export default function BakerySite() {
 
                 </span>
                 <div className="flex gap-3 justify-center">
-                    <a href="https://muhammadwaqar7615.github.io/Bakery-Website/login" className='px-4 leading-10 text-white rounded-lg bg-blue-500 cursor-pointer hover:bg-blue-600 transition-all duration-150'>Live Demo</a>
+                    <a href="https://bakery-website-five-indol.vercel.app/" className='px-4 leading-10 text-white rounded-lg bg-blue-500 cursor-pointer hover:bg-blue-600 transition-all duration-150'>Live Demo</a>
                     <a href="https://github.com/MuhammadWaqar7615/Bakery-Website" className='px-10 leading-10 text-black rounded-lg bg-gray-300 cursor-pointer hover:bg-gray-400 transition-all duration-150'>GitHub</a>
                 </div>
             </div>
