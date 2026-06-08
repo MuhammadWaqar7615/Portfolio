@@ -64,9 +64,9 @@ export default function Hero() {
                         <motion.a href="#Contact" variants={textVariants} className='leading-10 mx-3 px-3 rounded-lg cursor-pointer text-black bg-gray-300 z-20 hover:bg-white transition-all'>Contact me</motion.a>
                     </motion.div>
                     <motion.img variants={textVariants} animate="scrollButton" src="/scroll.png" alt="" />
-                    <motion.div className="slideTextContainer cursor-default" variants={sliderVariants} initial="initial" animate="animate">
+                    {/* <motion.div className="slideTextContainer cursor-default" variants={sliderVariants} initial="initial" animate="animate">
                         Junior Web Developer
-                    </motion.div>
+                    </motion.div> */}
                 </motion.div>
             </div>
 
