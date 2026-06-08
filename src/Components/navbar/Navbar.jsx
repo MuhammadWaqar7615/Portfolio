@@ -22,8 +22,8 @@ export default function Navbar() {
     <div className="fixed left-1/2 top-6 z-50 w-[90%] max-w-5xl -translate-x-1/2">
       <nav className="rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg">
         <div className="flex h-14 items-center justify-between px-6 md:px-8">
-          <Link to="/" className="interactive text-xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-            MW.
+          <Link to="/" className="interacative text-xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+            M.Waqar
           </Link>
 
           <div className="hidden md:flex items-center gap-6">
@@ -73,25 +73,23 @@ export default function Navbar() {
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.454c.979 0 1.771-.773 1.771-1.729V1.729C24 .774 23.227 0 22.225 0z" />
               </svg>
             </motion.a>
-            <a
-              href="/resume.pdf"
-              download
+            <Link
+              to="/resume"
               className="interactive rounded-full bg-gradient-to-r from-purple-600 to-blue-600 px-4 py-2 text-sm font-medium text-white shadow-md hover:shadow-lg transition-all"
             >
               Resume
-            </a>
+            </Link>
           </div>
 
           <div className="block md:hidden">
-            <a
-              href="/resume.pdf"
-              download
+            <Link
+              to="/resume"
               className="interactive rounded-full bg-gradient-to-r from-purple-600 to-blue-600 p-2 text-white"
             >
               <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
               </svg>
-            </a>
+            </Link>
           </div>
         </div>
       </nav>
