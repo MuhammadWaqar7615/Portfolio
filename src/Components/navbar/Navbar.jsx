@@ -1,49 +1,100 @@
-import './navbar.scss'
-import { BsGithub, BsLinkedin } from 'react-icons/bs';
-import { motion } from "framer-motion"
-import { RiInstagramFill } from "react-icons/ri";
-import { Link } from 'react-router-dom';
-import { FaFileDownload } from 'react-icons/fa';
+import { Link, useNavigate } from "react-router-dom";
+import { motion } from "motion/react";
 
 export default function Navbar() {
+  const navigate = useNavigate();
+
+  const scrollToSection = (sectionId) => {
+    // If we're not on home page, go home first then scroll
+    if (window.location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) element.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <div className='navbar box-border'>
-      <div className="wrapper flex justify-between items-center pt-[18px] md:pt-[30px] px-8 md:px-[100px]">
-        <motion.span
-          className='cursor-default ml-11 '
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          Muhammad Waqar
-        </motion.span>
+    <div className="fixed left-1/2 top-6 z-50 w-[90%] max-w-5xl -translate-x-1/2">
+      <nav className="rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg">
+        <div className="flex h-14 items-center justify-between px-6 md:px-8">
+          <Link to="/" className="interactive text-xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+            MW.
+          </Link>
 
-        <div className='download-icon'>
-          <a href="/resume" className="my-5 flex">
-            <FaFileDownload className='text-[#D3D3D3] text-xl cursor-pointer hover:text-white transition-all duration-150' />
-            Download
-          </a>
+          <div className="hidden md:flex items-center gap-6">
+            <Link to="/" className="nav-link text-sm font-medium text-gray-200 transition-colors hover:text-white">
+              Home
+            </Link>
+            <button
+              onClick={() => scrollToSection("Projects")}
+              className="nav-link text-sm font-medium text-gray-200 transition-colors hover:text-white"
+            >
+              Projects
+            </button>
+            <button
+              onClick={() => scrollToSection("Skills")}
+              className="nav-link text-sm font-medium text-gray-200 transition-colors hover:text-white"
+            >
+              Skills
+            </button>
+            <button
+              onClick={() => scrollToSection("Contact")}
+              className="nav-link text-sm font-medium text-gray-200 transition-colors hover:text-white"
+            >
+              Contact
+            </button>
+          </div>
+
+          <div className="hidden md:flex items-center gap-4">
+            <motion.a
+              href="https://github.com/MuhammadWaqar7615/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon text-gray-300 hover:text-white transition-colors"
+              whileHover={{ scale: 1.1 }}
+            >
+              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.26.82-.58 0-.287-.01-1.05-.015-2.06-3.338.726-4.042-1.61-4.042-1.61-.546-1.39-1.335-1.76-1.335-1.76-1.09-.746.082-.73.082-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.468-2.38 1.235-3.22-.123-.3-.535-1.52.117-3.16 0 0 1.008-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.29-1.552 3.297-1.23 3.297-1.23.653 1.64.24 2.86.118 3.16.768.84 1.233 1.91 1.233 3.22 0 4.61-2.804 5.62-5.476 5.92.43.37.824 1.102.824 2.22 0 1.602-.015 2.894-.015 3.287 0 .322.216.698.83.578C20.565 21.795 24 17.3 24 12c0-6.63-5.37-12-12-12z" />
+              </svg>
+            </motion.a>
+            <motion.a
+              href="https://www.linkedin.com/in/muhammadwaqar7615/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon text-gray-300 hover:text-white transition-colors"
+              whileHover={{ scale: 1.1 }}
+            >
+              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.454c.979 0 1.771-.773 1.771-1.729V1.729C24 .774 23.227 0 22.225 0z" />
+              </svg>
+            </motion.a>
+            <a
+              href="/resume.pdf"
+              download
+              className="interactive rounded-full bg-gradient-to-r from-purple-600 to-blue-600 px-4 py-2 text-sm font-medium text-white shadow-md hover:shadow-lg transition-all"
+            >
+              Resume
+            </a>
+          </div>
+
+          <div className="block md:hidden">
+            <a
+              href="/resume.pdf"
+              download
+              className="interactive rounded-full bg-gradient-to-r from-purple-600 to-blue-600 p-2 text-white"
+            >
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+            </a>
+          </div>
         </div>
-
-        {/* Desktop social links (hidden on mobile) */}
-        <motion.div
-          className="social flex gap-4 items-center"
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Link to="/resume" className='border border-white leading-10 px-5 rounded-lg hover:bg-white hover:text-black transition-all duration-150'>Download CV</Link>
-          <a href="https://www.instagram.com/itx_awaara1/">
-            <RiInstagramFill className='text-[#D3D3D3] text-xl cursor-pointer hover:text-white transition-all duration-150' />
-          </a>
-          <a href="https://www.linkedin.com/in/muhammad-waqar-profile1265">
-            <BsLinkedin className='text-[#D3D3D3] text-xl cursor-pointer hover:text-white transition-all duration-150' />
-          </a>
-          <a href="https://github.com/MuhammadWaqar7615">
-            <BsGithub className='text-[#D3D3D3] text-xl cursor-pointer hover:text-white transition-all duration-150' />
-          </a>
-        </motion.div>
-      </div>
+      </nav>
     </div>
   );
 }
