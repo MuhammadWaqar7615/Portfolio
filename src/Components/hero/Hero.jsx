@@ -58,14 +58,14 @@ export default function Hero() {
                             <motion.div className="mt-10 flex flex-wrap justify-center gap-4 lg:justify-start">
                                 <button
                                     onClick={() => scrollToSection("FeaturedProj")}
-                                    className="group interactive relative overflow-hidden rounded-full border border-purple-500/60 bg-transparent px-7 py-3 text-sm font-medium text-white transition-all duration-300 hover:border-purple-400 hover:shadow-lg hover:shadow-purple-500/30"
+                                    className="group interactive cursor-pointer relative overflow-hidden rounded-full border border-purple-500/60 bg-transparent px-7 py-3 text-sm font-medium text-white transition-all duration-300 hover:border-purple-400 hover:shadow-lg hover:shadow-purple-500/30"
                                 >
                                     <span className="relative z-10">View Projects</span>
                                     <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-purple-600 to-blue-600 transition-transform duration-300 group-hover:translate-x-0" />
                                 </button>
                                 <button
                                     onClick={() => scrollToSection("Contact")}
-                                    className="interactive rounded-full bg-white/10 px-7 py-3 text-sm font-medium text-white backdrop-blur-sm transition-all hover:bg-white/20 hover:shadow-lg"
+                                    className="interactive cursor-pointer rounded-full bg-white/10 px-7 py-3 text-sm font-medium text-white backdrop-blur-sm transition-all hover:bg-white/20 hover:shadow-lg"
                                 >
                                     Contact Me
                                 </button>
