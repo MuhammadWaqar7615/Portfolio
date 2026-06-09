@@ -1,32 +1,67 @@
-import bakerySite from "../../../assets/bakeryCard.png"
-import html from "../../../assets/htmlIcon.png"
-import tailwind from "../../../assets/tailwindcssLogo.png"
-import react from "../../../assets/reactIcon.png"
+import bakerySite from "../../../assets/bakeryCard.png";
+import html from "../../../assets/htmlIcon.png";
+import tailwind from "../../../assets/tailwindcssLogo.png";
+import react from "../../../assets/reactIcon.png";
 
 export default function BakerySite() {
-    return (
-        // <div className="w-72 h-8/12 rounded-lg mx-3 bg-white text-black">
-        <div className="w-full max-w-[280px] box-border h-[500px] rounded-2xl mx-auto bg-white text-black shadow-md overflow-hidden">
-            <div className="w-full h-[40%] overflow-hidden rounded-t-lg bg-transparent"><img src={bakerySite} alt="" className='w-[100%] h-[100%] block relative ' /></div>
-            <div className="mx-3">
-                <h1 className='font-bold text-2xl py-3'>Bakery Website</h1>
-                <p className='text-sm'>Built a responsive bakery website with user login and customization features. Multiple users can sign in and personalize their bakery style and preferences.</p>
-                <span className='flex justify-center items-center gap-1 py-3'>
-                    {/* <span><ImHtmlFive className='text-blue-700 text-2xl' /></span>
-                    <span><FaCss3Alt className='text-blue-700 text-2xl' /></span>
-                    <span><DiJsBadge className='text-black bg-yellow-400 text-2xl rounded-sm' /></span> */}
-
-                    <span><img src={html} alt="" className="w-5" /></span>
-                    <span><img src={tailwind} alt="" className="w-9" /></span>
-                    <span><img src={react} alt="" className="w-5 pb-[3px]" /></span>
-                    <span>- React</span>
-
-                </span>
-                <div className="flex gap-3 justify-center">
-                    <a href="https://bakery-website-five-indol.vercel.app/" className='px-4 leading-10 text-white rounded-lg bg-blue-500 cursor-pointer hover:bg-blue-600 transition-all duration-150'>Live Demo</a>
-                    <a href="https://github.com/MuhammadWaqar7615/Bakery-Website" className='px-10 leading-10 text-black rounded-lg bg-gray-300 cursor-pointer hover:bg-gray-400 transition-all duration-150'>GitHub</a>
-                </div>
-            </div>
+  return (
+    <div className="w-full max-w-[340px] mx-auto group transition-all duration-300 hover:-translate-y-1">
+      <div className="relative rounded-2xl bg-[#111122] border border-white/10 overflow-hidden shadow-lg transition-all duration-300 hover:border-purple-500/50 hover:shadow-purple-500/20 hover:shadow-xl flex flex-col">
+        {/* Image with fixed 16:9 aspect ratio */}
+        <div className="relative w-full pt-[56.25%] bg-gray-800 overflow-hidden">
+          <img
+            src={bakerySite}
+            alt="Bakery Website"
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
         </div>
-    )
+
+        {/* Content */}
+        <div className="p-4 flex flex-col flex-1">
+          <h3 className="text-base font-bold text-white mb-1 truncate">
+            Bakery Website
+          </h3>
+          <p className="text-gray-300 text-xs mb-3 line-clamp-2">
+            Built a responsive bakery website with user login and customization features. Multiple users can sign in and personalize their bakery style and preferences.
+          </p>
+
+          {/* Tech stack with icons + text */}
+          <div className="flex flex-wrap items-center gap-2 mb-4">
+            <div className="flex items-center gap-1">
+              <img src={html} alt="HTML5" className="w-5 h-5" />
+              <span className="text-gray-300 text-xs">HTML5</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <img src={tailwind} alt="Tailwind CSS" className="w-5 h-5" />
+              <span className="text-gray-300 text-xs">Tailwind</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <img src={react} alt="React" className="w-5 h-5" />
+              <span className="text-gray-300 text-xs">React</span>
+            </div>
+          </div>
+
+          {/* Action buttons */}
+          <div className="flex gap-2 mt-auto">
+            <a
+              href="https://github.com/MuhammadWaqar7615/Bakery-Website"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 text-center py-1.5 rounded-lg bg-gray-800/60 hover:bg-gray-700 text-gray-200 text-xs font-medium transition"
+            >
+              Code
+            </a>
+            <a
+              href="https://bakery-website-five-indol.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 text-center py-1.5 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white text-xs font-medium transition"
+            >
+              Live
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
