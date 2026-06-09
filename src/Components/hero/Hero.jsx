@@ -30,7 +30,7 @@ export default function Hero() {
                             variants={textVariants}
                             initial="initial"
                             animate="animate"
-                            className="z-10 w-full text-center lg:w-1/2 lg:text-left mt-10"
+                            className="z-10 w-full text-center lg:w-1/2 lg:text-left mt-20"
                         >
                             {/* Mobile Profile Image */}
                             <div className="mb-6 inline-block h-24 w-24 overflow-hidden rounded-full border-2 border-purple-500/40 bg-gradient-to-br from-purple-600/30 to-blue-600/30 shadow-xl backdrop-blur-sm sm:hidden">
