@@ -5,7 +5,7 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 
 import GmailClone from './projName/GmailClone';
 import TransactionSite from './projName/TransactionSite';
@@ -15,7 +15,7 @@ import InstagramClone from './projName/InstagramClone';
 
 const variants = {
     initial: {
-        y: 500,
+        y: 50,
         opacity: 0,
     },
     animate: {
@@ -28,7 +28,7 @@ const variants = {
     },
 };
 
-export default function Projects() {
+export default function PracticeProjects() {
   const swiperRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -48,9 +48,25 @@ export default function Projects() {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 py-12">
-      <motion.div className="relative w-full max-w-6xl mx-auto" variants={variants} initial="initial" whileInView="animate" viewport={{ once: true }}>
+    <section className="min-h-screen flex flex-col items-center justify-center px-4 py-12">
+      {/* Heading and Description */}
+      <motion.div
+        variants={variants}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+        className="text-center mb-12"
+      >
+        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
+          Practice <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Projects</span>
+        </h2>
+        <p className="text-gray-400 text-sm md:text-base mt-4 max-w-2xl mx-auto">
+          Exploring diverse domains through detailed application clones and experimental UI/UX challenges.
+        </p>
+      </motion.div>
 
+      {/* Swiper Container */}
+      <div className="relative w-full h-80 max-w-6xl mx-auto">
         <button
           className={`swiper-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 text-gray-700 hover:text-black transition ${
             activeIndex === 0 ? 'opacity-30 pointer-events-none' : ''
@@ -80,16 +96,15 @@ export default function Projects() {
             slideShadows: true,
           }}
           pagination={{
-            el: '.swiper-pagination',
             clickable: true,
             dynamicBullets: true,
           }}
           navigation={{
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
           }}
           modules={[EffectCoverflow, Pagination, Navigation]}
-          className="pt-10"
+          className="pt-12 pb-32 practice-swiper"
           breakpoints={{
             320: {
               slidesPerView: 1,
@@ -117,14 +132,13 @@ export default function Projects() {
           {slides.map((Component, index) => (
             <SwiperSlide
               key={index}
-              className="flex justify-center items-center"
+              className="flex justify-center items-center h-auto"
             >
-              <div className="w-[300px] mx-auto sm:mx-0">{Component}</div>
+              <div className="w-full max-w-[320px] mx-auto">{Component}</div>
             </SwiperSlide>
           ))}
-
         </Swiper>
-      </motion.div>
+      </div>
     </section>
   );
 }
