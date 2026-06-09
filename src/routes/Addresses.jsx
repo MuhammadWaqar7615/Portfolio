@@ -1,10 +1,10 @@
 // import "./Routes.scss"
-import About from "../Components/about/About"
+import FeaturedProj from "../Components/featProjects/FeatProjects"
 import Contact from "../Components/contact/Contact"
 import Cursor from "../Components/cursor/Cursor"
 import Hero from "../Components/hero/Hero"
 import Navbar from "../Components/navbar/Navbar"
-import Projects from "../Components/projects/Projects"
+import PracticeProjects from "../Components/projects/Projects"
 import Sidebar from "../Components/sidebar/Sidebar"
 const Addresses = () => {
   return (
@@ -16,8 +16,8 @@ const Addresses = () => {
       </section>
       <Sidebar />
       
-      <section id="About"><About /></section>
-      <section id="Projects"><Projects /></section>
+      <section id="FeaturedProj"><FeaturedProj /></section>
+      <section id="PracticeProjects"><PracticeProjects /></section>
       <section id="Contact"><Contact/></section>
     </div>
   )
