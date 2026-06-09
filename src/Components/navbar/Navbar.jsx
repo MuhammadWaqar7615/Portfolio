@@ -1,12 +1,34 @@
-import { Link, useNavigate } from "react-router-dom";
-import { motion } from "motion/react";
+import { useState, useEffect } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export default function Navbar() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    if (isHome) {
+      window.addEventListener("scroll", handleScroll);
+      handleScroll();
+    } else {
+      setIsScrolled(true);
+    }
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isHome]);
 
   const scrollToSection = (sectionId) => {
-    // If we're not on home page, go home first then scroll
-    if (window.location.pathname !== "/") {
+    if (!isHome) {
       navigate("/");
       setTimeout(() => {
         const element = document.getElementById(sectionId);
@@ -19,32 +41,36 @@ export default function Navbar() {
   };
 
   return (
-    <div className="fixed left-1/2 top-6 z-50 w-[90%] max-w-5xl -translate-x-1/2">
+    <div
+      className={`fixed left-1/2 z-50 w-[90%] max-w-5xl -translate-x-1/2 transition-all duration-300 ${
+        isScrolled ? "top-2" : "top-6"
+      }`}
+    >
       <nav className="rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg">
         <div className="flex h-14 items-center justify-between px-6 md:px-8">
-          <Link to="/" className="interacative text-xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+          <button
+            onClick={() => scrollToSection("Homepage")}
+            className="interactive text-xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent"
+          >
             M.Waqar
-          </Link>
+          </button>
 
           <div className="hidden md:flex items-center gap-6">
-            <Link to="/" className="nav-link text-sm font-medium text-gray-200 transition-colors hover:text-white">
-              Home
-            </Link>
             <button
-              onClick={() => scrollToSection("Projects")}
-              className="nav-link text-sm font-medium text-gray-200 transition-colors hover:text-white"
+              onClick={() => scrollToSection("Homepage")}
+              className="nav-link text-sm cursor-pointer font-medium text-gray-200 transition-colors hover:text-white"
+            >
+              Home
+            </button>
+            <button
+              onClick={() => scrollToSection("FeaturedProj")}
+              className="nav-link text-sm cursor-pointer font-medium text-gray-200 transition-colors hover:text-white"
             >
               Projects
             </button>
             <button
-              onClick={() => scrollToSection("Skills")}
-              className="nav-link text-sm font-medium text-gray-200 transition-colors hover:text-white"
-            >
-              Skills
-            </button>
-            <button
               onClick={() => scrollToSection("Contact")}
-              className="nav-link text-sm font-medium text-gray-200 transition-colors hover:text-white"
+              className="nav-link text-sm cursor-pointer font-medium text-gray-200 transition-colors hover:text-white"
             >
               Contact
             </button>
@@ -75,7 +101,7 @@ export default function Navbar() {
             </motion.a>
             <Link
               to="/resume"
-              className="interactive rounded-full bg-gradient-to-r from-purple-600 to-blue-600 px-4 py-2 text-sm font-medium text-white shadow-md hover:shadow-lg transition-all"
+              className="interactive rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 px-4 py-2 text-sm font-medium text-white shadow-md hover:shadow-lg transition-all"
             >
               Resume
             </Link>
