@@ -47,7 +47,7 @@ export default function Navbar() {
       }`}
     >
       <nav className="rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg">
-        <div className="flex h-14 items-center justify-between px-6 md:px-8">
+        <div className="flex h-14 items-center justify-between px-4">
           <button
             onClick={() => scrollToSection("Homepage")}
             className="interactive text-xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent"
@@ -67,6 +67,12 @@ export default function Navbar() {
               className="nav-link text-sm cursor-pointer font-medium text-gray-200 transition-colors hover:text-white"
             >
               Projects
+            </button>
+            <button
+              onClick={() => scrollToSection("Skills")}
+              className="nav-link text-sm cursor-pointer font-medium text-gray-200 transition-colors hover:text-white"
+            >
+              Skills
             </button>
             <button
               onClick={() => scrollToSection("Contact")}
