@@ -1,6 +1,1 @@
 @import "tailwindcss";
-@media (min-width: 769px) {
-  * {
-    cursor: none !important;
-  }
-}
