@@ -136,7 +136,7 @@ export default function Hero() {
                         </motion.div>
 
                         {/* Right Column: Hero Image with subtle static glow */}
-                        <div className="relative flex justify-center lg:w-1/2 lg:self-end w-full max-w-sm sm:max-w-md md:max-w-lg">
+                        <div className="hidden md:block relative flex justify-center lg:w-1/2 lg:self-end w-full max-w-sm sm:max-w-md md:max-w-lg">
                             {/* Static soft glow */}
                             <div className="absolute inset-0 rounded-full bg-purple-500/30 blur-2xl md:blur-3xl" />
                             <div className="w-full -mt-4 lg:-mt-6 relative">
