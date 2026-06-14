@@ -69,7 +69,7 @@ const SkillCard = memo(({ skill }) => (
     whileHover={{ scale: 1.1, y: -8 }}
     className={`
       group relative
-      w-20 h-20 md:w-24 md:h-24
+      w-16 h-16 md:w-24 md:h-24
       flex items-center justify-center
       rounded-2xl
       bg-white/5 backdrop-blur-sm
@@ -88,7 +88,7 @@ const SkillCard = memo(({ skill }) => (
     <img
       src={skill.svgUrl}
       alt={skill.name}
-      className="w-10 h-10 md:w-12 md:h-12 object-contain relative z-10 transition-all duration-300 group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]"
+      className="w-8 h-8 md:w-12 md:h-12 object-contain relative z-10 transition-all duration-300 group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]"
       loading="lazy"
     />
 
@@ -136,7 +136,6 @@ export default function Skills() {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-purple-600/10 rounded-full blur-[100px]" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px]" />
-        {/* Angular geometric lines */}
         <svg className="absolute top-40 right-20 w-64 h-64 opacity-20" viewBox="0 0 200 200">
           <path d="M0,100 L200,100 M100,0 L100,200 M20,20 L180,180 M180,20 L20,180" stroke="url(#gradient)" strokeWidth="0.5" fill="none" />
           <defs>
@@ -172,7 +171,7 @@ export default function Skills() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="flex flex-wrap justify-center items-center gap-4 md:gap-6"
+          className="flex flex-wrap justify-center items-center gap-3 md:gap-6"
         >
           {allSkills.map((skill) => (
             <SkillCard key={skill.name} skill={skill} />
