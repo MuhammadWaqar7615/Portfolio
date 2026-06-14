@@ -49,14 +49,32 @@ const Contact = () => {
   return (
     <motion.div
       ref={ref}
-      className="contact"
+      id="Contact"
+      className="contact relative h-screen w-full overflow-hidden bg-gradient-to-br from-[#0a0a1a] via-[#0f0f2a] to-[#1a1a3a]"
       variants={variants}
       initial="initial"
       whileInView="animate"
     >
-      {/* NEW WRAPPER TO APPLY SCALE */}
-      <div className="contact-inner">
-        <motion.div className="textContainer" variants={variants}>
+      {/* Background Design Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-purple-600/10 rounded-full blur-[100px]" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px]" />
+
+        {/* Grid pattern */}
+        <div className="absolute inset-0 opacity-[0.03]">
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="contact-grid" width="60" height="60" patternUnits="userSpaceOnUse">
+                <path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" strokeWidth="0.5" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#contact-grid)" />
+          </svg>
+        </div>
+      </div>
+
+      <div className="contact-inner relative z-10">
+        <motion.div className="textContainer text-white" variants={variants}>
           <motion.h1>Let's work together</motion.h1>
           <motion.div className="item" variants={variants}>
             <h2>Mail</h2>

@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
+import logo from '../../assets/name_logo.png'
 
 export default function Navbar({ onMenuClick }) {
   const navigate = useNavigate();
@@ -59,7 +60,9 @@ export default function Navbar({ onMenuClick }) {
               onClick={() => scrollToSection("Homepage")}
               className="interactive text-xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent"
             >
-              M.Waqar
+              <span className="flex items-center justify-center mt-2">
+                <img src={logo} alt="" height={150} width={150} />
+              </span>
             </button>
 
             <Link
