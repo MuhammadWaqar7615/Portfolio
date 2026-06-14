@@ -48,96 +48,116 @@ export default function PracticeProjects() {
   };
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-4 py-12">
-      {/* Heading and Description */}
-      <motion.div
-        variants={variants}
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true }}
-        className="text-center mb-12"
-      >
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
-          Practice <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Projects</span>
-        </h2>
-        <p className="text-gray-400 text-sm md:text-base mt-4 max-w-2xl mx-auto">
-          Exploring diverse domains through detailed application clones and experimental UI/UX challenges.
-        </p>
-      </motion.div>
+    <section className="relative h-screen w-full overflow-hidden bg-gradient-to-br from-[#0a0a1a] via-[#0f0f2a] to-[#1a1a3a] flex flex-col items-center justify-start px-4 pt-24 md:pt-32 pb-10">
+      {/* Background Design Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-purple-600/10 rounded-full blur-[100px]" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px]" />
+        
+        {/* Grid pattern */}
+        <div className="absolute inset-0 opacity-[0.03]">
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="projects-grid" width="60" height="60" patternUnits="userSpaceOnUse">
+                <path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" strokeWidth="0.5" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#projects-grid)" />
+          </svg>
+        </div>
+      </div>
 
-      {/* Swiper Container */}
-      <div className="relative w-full h-80 max-w-6xl mx-auto">
-        <button
-          className={`swiper-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 text-gray-700 hover:text-black transition ${
-            activeIndex === 0 ? 'opacity-30 pointer-events-none' : ''
-          }`}
+      <div className="relative z-10 w-full h-full max-w-7xl mx-auto flex flex-col items-center">
+        {/* Heading and Description */}
+        <motion.div
+          variants={variants}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          className="text-center mb-2 md:mb-4"
         >
-          {/* <ion-icon name="arrow-back-outline" size="large" /> */}
-        </button>
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white">
+            Practice <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Projects</span>
+          </h2>
+          <p className="text-gray-400 text-sm md:text-base mt-4 max-w-2xl mx-auto">
+            Exploring diverse domains through detailed application clones and experimental UI/UX challenges.
+          </p>
+        </motion.div>
 
-        <button className="swiper-button-next absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 text-gray-700 hover:text-black transition">
-          {/* <ion-icon name="arrow-forward-outline" size="large" /> */}
-        </button>
+        {/* Swiper Container */}
+        <div className="relative w-full flex-1 max-h-[700px] flex items-center">
+          <button
+            className={`swiper-button-prev absolute -left-4 md:left-0 top-1/2 -translate-y-1/2 z-20 p-2 text-white/50 hover:text-white transition-colors ${
+              activeIndex === 0 ? 'opacity-30 pointer-events-none' : ''
+            }`}
+          >
+            {/* <ion-icon name="arrow-back-outline" size="large" /> */}
+          </button>
 
-        <Swiper
-          ref={swiperRef}
-          effect="coverflow"
-          grabCursor={true}
-          centeredSlides={true}
-          loop={false}
-          initialSlide={2}
-          slidesPerView={4}
-          onSlideChange={handleSlideChange}
-          coverflowEffect={{
-            rotate: 0,
-            stretch: 0,
-            depth: 100,
-            modifier: 2.5,
-            slideShadows: true,
-          }}
-          pagination={{
-            clickable: true,
-            dynamicBullets: true,
-          }}
-          navigation={{
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-          }}
-          modules={[EffectCoverflow, Pagination, Navigation]}
-          className="pt-12 pb-32 practice-swiper"
-          breakpoints={{
-            320: {
-              slidesPerView: 1,
-              coverflowEffect: {
-                depth: 50,
-                modifier: 1.5,
+          <button className="swiper-button-next absolute -right-4 md:right-0 top-1/2 -translate-y-1/2 z-20 p-2 text-white/50 hover:text-white transition-colors">
+            {/* <ion-icon name="arrow-forward-outline" size="large" /> */}
+          </button>
+
+          <Swiper
+            ref={swiperRef}
+            effect="coverflow"
+            grabCursor={false}
+            centeredSlides={true}
+            loop={false}
+            initialSlide={2}
+            slidesPerView={4}
+            onSlideChange={handleSlideChange}
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 0,
+              depth: 150,
+              modifier: 2.5,
+              slideShadows: true,
+            }}
+            pagination={{
+              clickable: true,
+              dynamicBullets: true,
+            }}
+            navigation={{
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            }}
+            modules={[EffectCoverflow, Pagination, Navigation]}
+            className="w-full pt-0 pb-24 practice-swiper"
+            breakpoints={{
+              320: {
+                slidesPerView: 1,
+                coverflowEffect: {
+                  depth: 50,
+                  modifier: 1.5,
+                },
               },
-            },
-            640: {
-              slidesPerView: 4,
-              coverflowEffect: {
-                depth: 80,
-                modifier: 2,
-              },
-            },
-            1024: {
-              slidesPerView: 4,
-              coverflowEffect: {
+              640: {
+              slidesPerView: 2.5,
+                coverflowEffect: {
                 depth: 100,
-                modifier: 2.5,
+                  modifier: 2,
+                },
               },
-            },
-          }}
-        >
-          {slides.map((Component, index) => (
-            <SwiperSlide
-              key={index}
-              className="flex justify-center items-center h-auto"
-            >
-              <div className="w-full max-w-[320px] mx-auto">{Component}</div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+              1024: {
+                slidesPerView: 4,
+                coverflowEffect: {
+                  depth: 100,
+                  modifier: 2.5,
+                },
+              },
+            }}
+          >
+            {slides.map((Component, index) => (
+              <SwiperSlide
+                key={index}
+                className="flex justify-center items-center h-auto"
+              >
+                <div className="w-full max-w-[350px] mx-auto py-4">{Component}</div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
     </section>
   );
