@@ -79,9 +79,6 @@ export default function PracticeProjects() {
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white">
             Practice <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Projects</span>
           </h2>
-          <p className="text-gray-400 text-sm md:text-base mt-4 max-w-2xl mx-auto">
-            Exploring diverse domains through detailed application clones and experimental UI/UX challenges.
-          </p>
         </motion.div>
 
         {/* Swiper Container */}
@@ -112,7 +109,7 @@ export default function PracticeProjects() {
               stretch: 0,
               depth: 150,
               modifier: 2.5,
-              slideShadows: true,
+              slideShadows: false,
             }}
             pagination={{
               clickable: true,
@@ -123,13 +120,14 @@ export default function PracticeProjects() {
               prevEl: ".swiper-button-prev",
             }}
             modules={[EffectCoverflow, Pagination, Navigation]}
-            className="w-full pt-0 pb-24 practice-swiper"
+            className="w-full pt-0 pb-32 practice-swiper"
             breakpoints={{
               320: {
                 slidesPerView: 1,
                 coverflowEffect: {
                   depth: 50,
                   modifier: 1.5,
+                  slideShadows: false,
                 },
               },
               640: {
@@ -137,6 +135,7 @@ export default function PracticeProjects() {
                 coverflowEffect: {
                 depth: 100,
                   modifier: 2,
+                  slideShadows: false,
                 },
               },
               1024: {
@@ -144,6 +143,7 @@ export default function PracticeProjects() {
                 coverflowEffect: {
                   depth: 100,
                   modifier: 2.5,
+                  slideShadows: false,
                 },
               },
             }}
@@ -153,7 +153,7 @@ export default function PracticeProjects() {
                 key={index}
                 className="flex justify-center items-center h-auto"
               >
-                <div className="w-full max-w-[350px] mx-auto py-4">{Component}</div>
+                <div className="w-full max-w-[350px] mx-auto pt-4 pb-12">{Component}</div>
               </SwiperSlide>
             ))}
           </Swiper>
