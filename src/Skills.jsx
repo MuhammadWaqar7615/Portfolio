@@ -130,7 +130,7 @@ export default function Skills() {
     <section
       id="Skills"
       ref={sectionRef}
-      className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-[#0a0a1a] via-[#0f0f2a] to-[#1a1a3a] py-20 pt-24 md:pt-32"
+      className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-[#0a0a1a] via-[#0f0f2a] to-[#1a1a3a] py-20 pt-24 md:pt-32 flex flex-col justify-start"
     >
       {/* Geometric background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

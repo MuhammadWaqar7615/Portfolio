@@ -24,7 +24,7 @@ export default function Hero() {
     };
 
     return (
-        <div id="Homepage" className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-[#0a0a1a] via-[#0f0f2a] to-[#1a1a3a]">
+        <section id="Homepage" className="relative h-screen w-full overflow-hidden bg-gradient-to-br from-[#0a0a1a] via-[#0f0f2a] to-[#1a1a3a] flex flex-col">
             {/* Background Design Elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 {/* Radial gradient */}
@@ -84,16 +84,16 @@ export default function Hero() {
                 </svg>
             </div>
 
-            <div className="relative pt-20 md:pt-24 pb-12 md:pb-20">
-                <div className="flex flex-col items-center justify-center px-4 sm:px-6 md:px-12 lg:px-24">
-                    <div className="mx-auto flex w-full max-w-7xl flex-col-reverse items-center justify-between gap-8 lg:flex-row lg:items-start lg:gap-12">
+            <div className="relative z-10 w-full h-full flex flex-col">
+                <div className="flex-grow flex flex-col px-4 sm:px-6 md:px-12 lg:px-24 pt-20">
+                    <div className="mx-auto flex w-full h-full max-w-7xl flex-col-reverse items-center lg:items-stretch justify-between gap-8 lg:flex-row lg:gap-12">
 
                         {/* Left Column: Text + Buttons + Scroll Icon */}
                         <motion.div
                             variants={textVariants}
                             initial="initial"
                             animate="animate"
-                            className="z-10 w-full text-center lg:w-1/2 lg:text-left mt-12 md:mt-20"
+                            className="z-10 w-full text-center lg:w-1/2 lg:text-left flex flex-col justify-center h-full pb-12 lg:pb-0"
                         >
                             {/* Mobile Profile Image */}
                             <div className="mb-6 inline-block h-20 w-20 sm:h-24 sm:w-24 overflow-hidden rounded-full border-2 border-purple-500/40 bg-gradient-to-br from-purple-600/30 to-blue-600/30 shadow-xl backdrop-blur-sm sm:hidden">
@@ -136,10 +136,10 @@ export default function Hero() {
                         </motion.div>
 
                         {/* Right Column: Hero Image with subtle static glow */}
-                        <div className="hidden md:block relative flex justify-center lg:w-1/2 lg:self-end w-full max-w-sm sm:max-w-md md:max-w-lg">
+                        <div className="hidden md:flex relative justify-center lg:w-1/2 self-end h-full w-full max-w-sm sm:max-w-md md:max-w-lg items-end">
                             {/* Static soft glow */}
                             <div className="absolute inset-0 rounded-full bg-purple-500/30 blur-2xl md:blur-3xl" />
-                            <div className="w-full -mt-4 lg:-mt-6 relative">
+                            <div className="w-full relative flex items-end">
                                 <img
                                     src={myImg}
                                     alt="Hero illustration"
@@ -150,32 +150,22 @@ export default function Hero() {
                             </div>
                         </div>
                     </div>
-
-                    {/* Scroll Indicator */}
-                    <motion.div
-                        className="mt-12 md:mt-16 cursor-pointer"
-                        onClick={() => scrollToSection("About")}
-                        animate={textVariants.scrollButton}
-                    >
-                        <div className="flex flex-col items-center gap-2 text-gray-400 hover:text-purple-400 transition-colors">
-                            <span className="text-xs sm:text-sm">Scroll Down</span>
-                            <svg
-                                className="w-5 h-5 sm:w-6 sm:h-6"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                                />
-                            </svg>
-                        </div>
-                    </motion.div>
                 </div>
+
+                {/* Scroll Indicator - Absolute positioned to stay fixed at bottom */}
+                <motion.div
+                    className="absolute bottom-6 left-1/2 -translate-x-1/2 cursor-pointer z-20 hidden lg:block"
+                    onClick={() => scrollToSection("FeaturedProj")}
+                    animate={textVariants.scrollButton}
+                >
+                    <div className="flex flex-col items-center gap-2 text-gray-400/60 hover:text-purple-400 transition-colors">
+                        <span className="text-[10px] tracking-[0.2em] uppercase">Scroll</span>
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                        </svg>
+                    </div>
+                </motion.div>
             </div>
-        </div>
+        </section>
     );
 }

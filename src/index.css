@@ -1,1 +1,25 @@
 @import "tailwindcss";
+
+html {
+  /* This creates the snapping behavior on the entire page */
+  scroll-snap-type: y mandatory;
+  /* Removing fixed height allows window.scrollY and scroll restoration to work properly */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Every section with an ID will now act as a 'page' */
+section[id] {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}

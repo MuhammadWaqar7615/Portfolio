@@ -5,7 +5,6 @@ import Navbar from "./Components/navbar/Navbar";
 import Addresses from "./routes/Addresses";
 import Resume from "./Components/resume/Resume";
 import Sidebar from "./Components/navbar/Sidebar";
-// import Sidebar from "./Components/sidebar/Sidebar";
 
 function Layout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
