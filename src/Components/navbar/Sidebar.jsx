@@ -10,6 +10,7 @@ const Sidebar = ({ isOpen, onClose }) => {
     { name: "Home", id: "Homepage" },
     { name: "Projects", id: "FeaturedProj" },
     { name: "Skills", id: "Skills" },
+    { name: "Experience", id: "Experience" },
     { name: "Contact", id: "Contact" },
   ];
 

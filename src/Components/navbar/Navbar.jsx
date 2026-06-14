@@ -58,10 +58,15 @@ export default function Navbar({ onMenuClick }) {
           <div className="flex items-center gap-2">
             <button
               onClick={() => scrollToSection("Homepage")}
-              className="interactive text-xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent"
+              className="interactive flex items-center gap-2 group"
             >
-              <span className="flex items-center justify-center mt-2">
-                <img src={logo} alt="" height={150} width={150} />
+              <img
+                src={logo}
+                alt="M.Waqar Logo"
+                className="h-9 w-9 rounded-full object-contain object-center border-2 border-purple-400/50 transition-transform duration-300 group-hover:scale-110 shadow-sm bg-gray-800/20"
+              />
+              <span className="text-xl font-bold text-white transition-transform duration-300 group-hover:scale-105">
+                M. Waqar
               </span>
             </button>
 
@@ -94,6 +99,12 @@ export default function Navbar({ onMenuClick }) {
               className="nav-link text-sm cursor-pointer font-medium text-gray-200 transition-colors hover:text-white"
             >
               Skills
+            </button>
+            <button
+              onClick={() => scrollToSection("Experience")}
+              className="nav-link text-sm cursor-pointer font-medium text-gray-200 transition-colors hover:text-white"
+            >
+              Experience
             </button>
             <button
               onClick={() => scrollToSection("Contact")}

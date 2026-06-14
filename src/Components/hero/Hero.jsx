@@ -96,7 +96,7 @@ export default function Hero() {
                             className="z-10 w-full text-center lg:w-1/2 lg:text-left flex flex-col justify-center h-full pb-12 lg:pb-0"
                         >
                             {/* Mobile Profile Image */}
-                            <div className="mb-6 inline-block h-20 w-20 sm:h-24 sm:w-24 overflow-hidden rounded-full border-2 border-purple-500/40 bg-gradient-to-br from-purple-600/30 to-blue-600/30 shadow-xl backdrop-blur-sm sm:hidden">
+                            <div className="mx-auto mb-6 h-20 w-20 overflow-hidden rounded-full border-2 border-purple-500/40 bg-gradient-to-br from-purple-600/30 to-blue-600/30 shadow-xl backdrop-blur-sm sm:hidden">
                                 <img src={profileImg} alt="Muhammad Waqar" className="h-full w-full object-cover" loading="eager" />
                             </div>
 
