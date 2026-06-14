@@ -2,9 +2,10 @@
 import { useState } from "react";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Navbar from "./Components/navbar/Navbar";
-import Sidebar from "./Components/sidebar/Sidebar";
 import Addresses from "./routes/Addresses";
 import Resume from "./Components/resume/Resume";
+import Sidebar from "./Components/navbar/Sidebar";
+// import Sidebar from "./Components/sidebar/Sidebar";
 
 function Layout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -16,8 +17,8 @@ function Layout() {
 
   return (
     <>
-      <Navbar onSidebarToggle={toggleSidebar} />   {/* ← PROP NAME MUST MATCH */}
-      <Sidebar isOpen={sidebarOpen} />
+      <Navbar onMenuClick={toggleSidebar} />
+      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       <main>
         <Outlet />
       </main>
