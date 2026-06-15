@@ -4,9 +4,9 @@ import Contact from "../Components/contact/Contact"
 import Cursor from "../Components/cursor/Cursor"
 import Hero from "../Components/hero/Hero"
 import PracticeProjects from "../Components/projects/Projects"
-import Skills from "../Skills"
-import Experience from "../Experience"
-import AiSkills from "../AiSkills"
+import Skills from "../Components/skills/Skills"
+import Experience from "../Components/Experience/Experience"
+import AiSkills from "../Components/skills/AiSkills"
 const Addresses = () => {
   return (
     <div>
