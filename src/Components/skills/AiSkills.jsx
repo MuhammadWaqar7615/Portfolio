@@ -40,7 +40,7 @@ const specializations = [
       { name: "Blackbox AI", svgUrl: "https://www.google.com/s2/favicons?domain=blackbox.ai&sz=128", glow: "blue" },
       { name: "Codex AI", svgUrl: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/openai.svg", glow: "green" },
       { name: "Lovable", svgUrl: "https://www.google.com/s2/favicons?domain=lovable.dev&sz=128", glow: "purple" },
-      { name: "Gemini Agent", svgUrl: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/googlegemini.svg", glow: "blue" },
+      { name: "Gemini Agent", svgUrl: "https://cdn.simpleicons.org/googlegemini/white", glow: "blue" },
     ]
   },
   {
@@ -48,9 +48,9 @@ const specializations = [
     description: "Building autonomous systems capable of executing multi-step workflows, tool use, and self-correction to achieve goals.",
     tools: [
       { name: "Lovable", svgUrl: "https://www.google.com/s2/favicons?domain=lovable.dev&sz=128", glow: "purple" },
-      { name: "GitHub Copilot", svgUrl: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/githubcopilot.svg", glow: "neutral" },
+      { name: "GitHub Copilot", svgUrl: "https://cdn.simpleicons.org/githubcopilot/white", glow: "neutral" },
       { name: "OpenAI Codex", svgUrl: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/openai.svg", glow: "green" },
-      { name: "Gemini", svgUrl: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/googlegemini.svg", glow: "blue" },
+      { name: "Gemini", svgUrl: "https://cdn.simpleicons.org/googlegemini/white", glow: "blue" },
     ]
   }
 ];
