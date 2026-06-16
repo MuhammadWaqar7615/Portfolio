@@ -10,7 +10,9 @@ const Sidebar = ({ isOpen, onClose }) => {
     { name: "Home", id: "Homepage" },
     { name: "Projects", id: "FeaturedProj" },
     { name: "Skills", id: "Skills" },
+    { name: "Education", id: "Education" },
     { name: "Experience", id: "Experience" },
+    { name: "Goals", id: "Goals" },
     { name: "Contact", id: "Contact" },
   ];
 
@@ -43,7 +45,7 @@ const Sidebar = ({ isOpen, onClose }) => {
       setTimeout(() => {
         const element = document.getElementById(id);
         if (element) element.scrollIntoView({ behavior: "smooth" });
-      }, 150);
+      }, 250);
     } else {
       const element = document.getElementById(id);
       if (element) element.scrollIntoView({ behavior: "smooth" });
