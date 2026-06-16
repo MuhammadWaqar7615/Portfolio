@@ -29,7 +29,7 @@ export default function Navbar({ onMenuClick }) {
       setTimeout(() => {
         const element = document.getElementById(sectionId);
         if (element) element.scrollIntoView({ behavior: "smooth" });
-      }, 100);
+      }, 200);
     } else {
       const element = document.getElementById(sectionId);
       if (element) element.scrollIntoView({ behavior: "smooth" });
@@ -101,10 +101,22 @@ export default function Navbar({ onMenuClick }) {
               Skills
             </button>
             <button
+              onClick={() => scrollToSection("Education")}
+              className="nav-link text-sm cursor-pointer font-medium text-gray-200 transition-colors hover:text-white"
+            >
+              Education
+            </button>
+            <button
               onClick={() => scrollToSection("Experience")}
               className="nav-link text-sm cursor-pointer font-medium text-gray-200 transition-colors hover:text-white"
             >
               Experience
+            </button>
+            <button
+              onClick={() => scrollToSection("Goals")}
+              className="nav-link text-sm cursor-pointer font-medium text-gray-200 transition-colors hover:text-white"
+            >
+              Goals
             </button>
             <button
               onClick={() => scrollToSection("Contact")}
