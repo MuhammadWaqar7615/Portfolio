@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import myImg from "../../assets/craiyon_011253_image.png";
 import profileImg from "../../assets/craiyon_011253_image.png";
 
 const textVariants = {
@@ -24,12 +23,12 @@ export default function Hero() {
     };
 
     return (
-        <section id="Homepage" className="relative h-screen w-full overflow-hidden bg-gradient-to-br from-[#0a0a1a] via-[#0f0f2a] to-[#1a1a3a] flex flex-col">
+        <section id="Homepage" aria-label="Hero introduction section" className="relative h-screen w-full overflow-hidden bg-gradient-to-br from-[#0a0a1a] via-[#0f0f2a] to-[#1a1a3a] flex flex-col">
             {/* Background Design Elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 {/* Radial gradient */}
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-purple-900/20 via-transparent to-transparent" />
-                
+
                 {/* Floating orbs with blur */}
                 {floatingOrbs.map((orb, idx) => (
                     <motion.div
@@ -97,7 +96,7 @@ export default function Hero() {
                         >
                             {/* Mobile Profile Image */}
                             <div className="mx-auto mb-6 h-20 w-20 overflow-hidden rounded-full border-2 border-purple-500/40 bg-gradient-to-br from-purple-600/30 to-blue-600/30 shadow-xl backdrop-blur-sm sm:hidden">
-                                <img src={profileImg} alt="Muhammad Waqar" className="h-full w-full object-cover" loading="eager" />
+                                <img src={profileImg} alt="Muhammad Waqar - React and Next.js Developer" className="h-full w-full object-cover" loading="eager" />
                             </div>
 
                             <motion.h2 className="hidden text-lg font-semibold tracking-[0.2em] leading-none text-purple-300 sm:block md:text-xl lg:text-2xl">
@@ -127,6 +126,7 @@ export default function Hero() {
                                     <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-purple-600 to-blue-600 transition-transform duration-300 group-hover:translate-x-0" />
                                 </button>
                                 <button
+                                    aria-label="Scroll down to view my featured projects"
                                     onClick={() => scrollToSection("Contact")}
                                     className="interactive cursor-pointer rounded-full bg-white/10 px-6 sm:px-7 py-3 text-xs sm:text-sm font-medium text-white backdrop-blur-sm transition-all hover:bg-white/20 hover:shadow-lg"
                                 >
@@ -141,7 +141,7 @@ export default function Hero() {
                             <div className="absolute inset-0 rounded-full bg-purple-500/30 blur-2xl md:blur-3xl" />
                             <div className="w-full relative flex items-end">
                                 <img
-                                    src={myImg}
+                                    src={profileImg}
                                     alt="Hero illustration"
                                     className="w-full h-auto object-contain drop-shadow-2xl"
                                     loading="eager"
