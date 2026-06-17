@@ -38,8 +38,9 @@ export default function Navbar({ onMenuClick }) {
 
   return (
     <div
-      className={`fixed left-1/2 z-50 w-[90%] max-w-5xl -translate-x-1/2 transition-all duration-300 ${isScrolled ? "top-2" : "top-6"
-        }`}
+      className={`fixed left-1/2 z-50 w-[90%] max-w-5xl -translate-x-1/2 transition-all duration-300 ${
+        isScrolled ? "top-2" : "top-6"
+      }`}
     >
       <nav className="rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg">
         <div className="flex h-14 items-center justify-between px-4">
@@ -72,7 +73,7 @@ export default function Navbar({ onMenuClick }) {
 
             <Link
               to="/resume"
-              className="md:hidden interactive rounded-full bg-gradient-to-r from-purple-600 to-blue-600 p-2 text-white"
+              className="md:hidden interactive rounded-full bg-gradient-to-r from-purple-600 to-blue-600 p-2 text-white transition-all duration-300 hover:shadow-[0_0_25px_rgba(139,92,246,0.7)] hover:scale-110"
             >
               <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -81,46 +82,46 @@ export default function Navbar({ onMenuClick }) {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-2">
             <button
               onClick={() => scrollToSection("Homepage")}
-              className="nav-link text-sm cursor-pointer font-medium text-gray-200 transition-colors hover:text-white"
+              className="nav-link text-sm cursor-pointer font-medium px-4 py-1.5 rounded-xl text-gray-200 transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-600 hover:text-white hover:shadow-[0_0_25px_rgba(139,92,246,0.7)] hover:border-transparent"
             >
               Home
             </button>
             <button
               onClick={() => scrollToSection("FeaturedProj")}
-              className="nav-link text-sm cursor-pointer font-medium text-gray-200 transition-colors hover:text-white"
+              className="nav-link text-sm cursor-pointer font-medium px-4 py-1.5 rounded-xl text-gray-200 transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-600 hover:text-white hover:shadow-[0_0_25px_rgba(139,92,246,0.7)] hover:border-transparent"
             >
               Projects
             </button>
             <button
               onClick={() => scrollToSection("Skills")}
-              className="nav-link text-sm cursor-pointer font-medium text-gray-200 transition-colors hover:text-white"
+              className="nav-link text-sm cursor-pointer font-medium px-4 py-1.5 rounded-xl text-gray-200 transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-600 hover:text-white hover:shadow-[0_0_25px_rgba(139,92,246,0.7)] hover:border-transparent"
             >
               Skills
             </button>
             <button
               onClick={() => scrollToSection("Education")}
-              className="nav-link text-sm cursor-pointer font-medium text-gray-200 transition-colors hover:text-white"
+              className="nav-link text-sm cursor-pointer font-medium px-4 py-1.5 rounded-xl text-gray-200 transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-600 hover:text-white hover:shadow-[0_0_25px_rgba(139,92,246,0.7)] hover:border-transparent"
             >
               Education
             </button>
             <button
               onClick={() => scrollToSection("Experience")}
-              className="nav-link text-sm cursor-pointer font-medium text-gray-200 transition-colors hover:text-white"
+              className="nav-link text-sm cursor-pointer font-medium px-4 py-1.5 rounded-xl  text-gray-200 transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-600 hover:text-white hover:shadow-[0_0_25px_rgba(139,92,246,0.7)] hover:border-transparent"
             >
               Experience
             </button>
             <button
               onClick={() => scrollToSection("Goals")}
-              className="nav-link text-sm cursor-pointer font-medium text-gray-200 transition-colors hover:text-white"
+              className="nav-link text-sm cursor-pointer font-medium px-4 py-1.5 rounded-xl text-gray-200 transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-600 hover:text-white hover:shadow-[0_0_25px_rgba(139,92,246,0.7)] hover:border-transparent"
             >
               Goals
             </button>
             <button
               onClick={() => scrollToSection("Contact")}
-              className="nav-link text-sm cursor-pointer font-medium text-gray-200 transition-colors hover:text-white"
+              className="nav-link text-sm cursor-pointer font-medium px-4 py-1.5 rounded-xl text-gray-200 transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-600 hover:text-white hover:shadow-[0_0_25px_rgba(139,92,246,0.7)] hover:border-transparent"
             >
               Contact
             </button>
@@ -152,7 +153,7 @@ export default function Navbar({ onMenuClick }) {
             </motion.a>
             <Link
               to="/resume"
-              className="interactive rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 px-4 py-2 text-sm font-medium text-white shadow-md hover:shadow-lg transition-all"
+              className="interactive rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 px-4 py-2 text-sm font-medium text-white shadow-md transition-all duration-300 hover:shadow-[0_0_25px_rgba(139,92,246,0.7)] hover:scale-105"
             >
               Resume
             </Link>
