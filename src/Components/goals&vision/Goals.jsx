@@ -88,7 +88,8 @@ const Goals = () => {
         </div>
       </div>
 
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 pb-8 md:pb-12 will-change-transform">
+      {/* Main content container – flex column, grows to fill space */}
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 pb-8 md:pb-12 will-change-transform flex flex-col flex-grow">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -140,17 +141,18 @@ const Goals = () => {
           </motion.div>
         </div>
 
+        {/* Core Philosophy – now pushed to the bottom with mt-auto */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5, duration: 0.6 }}
-          className="mt-12 md:mt-20 p-6 md:p-12 rounded-3xl bg-white/[0.02] border border-white/5 backdrop-blur-sm text-center"
+          className="mt-auto pt-6 p-2 md:p-4 rounded-3xl bg-white/[0.02] border border-white/5 backdrop-blur-sm text-center"
         >
-           <p className="text-purple-400 text-[10px] font-bold uppercase tracking-[0.3em] mb-4">Core Philosophy</p>
-           <h3 className="text-lg md:text-3xl font-light text-white italic leading-tight">
-             "To bridge the gap between human intuition and machine intelligence through seamless, high-performance web experiences."
-           </h3>
+          <p className="text-purple-400 text-[10px] font-bold uppercase tracking-[0.3em] mb-4">Core Philosophy</p>
+          <h3 className="text-sm md:text-base font-light text-white italic leading-tight">
+            "To bridge the gap between human intuition and machine intelligence through seamless, high-performance web experiences."
+          </h3>
         </motion.div>
       </div>
 
