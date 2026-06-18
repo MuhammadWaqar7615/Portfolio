@@ -96,7 +96,7 @@ export default function Hero() {
                         >
                             {/* Mobile Profile Image */}
                             <div className="mx-auto mb-6 h-20 w-20 overflow-hidden rounded-full border-2 border-purple-500/40 bg-gradient-to-br from-purple-600/30 to-blue-600/30 shadow-xl backdrop-blur-sm sm:hidden">
-                                <img src={profileImg} alt="Muhammad Waqar - React and Next.js Developer" className="h-full w-full object-cover" loading="eager" />
+                                <img src={profileImg} alt="Muhammad Waqar - AI Frontend Developer" className="h-full w-full object-cover" loading="eager" />
                             </div>
 
                             <motion.h2 className="hidden text-lg font-semibold tracking-[0.2em] leading-none text-purple-300 sm:block md:text-xl lg:text-2xl">
@@ -105,7 +105,7 @@ export default function Hero() {
 
                             <motion.h1 className="mt-3 text-3xl sm:text-4xl font-bold leading-tight md:text-5xl lg:text-6xl xl:text-7xl">
                                 <span className="bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent">
-                                    Junior Web
+                                    AI Frontend
                                 </span>
                                 <br />
                                 <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
@@ -114,7 +114,7 @@ export default function Hero() {
                             </motion.h1>
 
                             <motion.p className="mx-auto mt-4 md:mt-6 max-w-sm sm:max-w-md text-sm sm:text-base md:text-lg text-gray-300 lg:mx-0">
-                                I'm a passionate Computer Science student and front-end developer who loves creating beautiful, responsive web experiences. Currently focused on React.js and the modern JavaScript ecosystem.
+                                I'm a passionate Computer Science student and AI-driven frontend developer who leverages intelligent tooling to build beautiful, responsive web experiences. Currently focused on React.js and the AI-integrated ecosystem.
                             </motion.p>
 
                             <motion.div className="mt-8 md:mt-10 flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 lg:justify-start">
@@ -142,7 +142,7 @@ export default function Hero() {
                             <div className="w-full relative flex items-end">
                                 <img
                                     src={profileImg}
-                                    alt="Hero illustration"
+                                    alt="Muhammad Waqar - AI Frontend Developer Profile"
                                     className="w-full h-auto object-contain drop-shadow-2xl"
                                     loading="eager"
                                     fetchPriority="high"

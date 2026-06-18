@@ -18,12 +18,12 @@ const experiences = [
     type: "Full-time Job",
   },
   {
-    title: "Web Developer Intern",
+    title: "AI-Assisted Web Developer Intern",
     company: "Bloggers Brackets",
     location: "Remote",
     duration: "July 2023 - Dec 2023",
     description:
-      "Assisted in building responsive web pages and reusable UI components. Gained hands-on experience with React lifecycle methods, state management, and modern CSS frameworks while ensuring cross-browser compatibility across multiple projects.",
+      "Assisted in building responsive web pages and reusable UI components using AI-assisted coding practices. Gained hands-on experience with React lifecycle methods, state management, and modern CSS frameworks while ensuring cross-browser compatibility.",
     type: "Internship",
   },
 ];
