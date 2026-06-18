@@ -105,7 +105,8 @@ export default function Hero() {
 
                             <motion.h1 className="mt-3 text-3xl sm:text-4xl font-bold leading-tight md:text-5xl lg:text-6xl xl:text-7xl">
                                 <span className="bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent">
-                                    Junior Web
+                                    Frontend Web
+                                    AI Frontend
                                 </span>
                                 <br />
                                 <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
@@ -115,6 +116,7 @@ export default function Hero() {
 
                             <motion.p className="mx-auto mt-4 md:mt-6 max-w-sm sm:max-w-md text-sm sm:text-base md:text-lg text-gray-300 lg:mx-0">
                                 I'm a passionate Computer Science student and front-end developer who loves creating beautiful, responsive web experiences. Currently focused on React.js and the modern JavaScript ecosystem.
+                                I'm a passionate Computer Science student and AI-driven frontend developer who leverages intelligent tooling to build beautiful, responsive web experiences. Currently focused on React.js and the AI-integrated ecosystem.
                             </motion.p>
 
                             <motion.div className="mt-8 md:mt-10 flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 lg:justify-start">
