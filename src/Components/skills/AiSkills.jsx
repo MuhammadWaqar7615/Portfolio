@@ -163,7 +163,7 @@ export default function AiSkills() {
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px]" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-6xl my-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="page-shell relative z-10 mx-auto my-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* Left Column: Heading and Info */}
         <div className="text-center lg:text-left">
           <motion.div
