@@ -38,7 +38,7 @@ export default function Navbar({ onMenuClick }) {
 
   return (
     <div
-      className={`fixed left-1/2 z-50 w-[90%] max-w-5xl -translate-x-1/2 transition-all duration-300 ${
+      className={`fixed left-1/2 z-50 w-[calc(100%-var(--page-gutter)*2)] max-w-[var(--page-max-width)] -translate-x-1/2 transition-all duration-300 ${
         isScrolled ? "top-2" : "top-6"
       }`}
     >
