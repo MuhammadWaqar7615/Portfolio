@@ -89,7 +89,7 @@ const Goals = () => {
       </div>
 
       {/* Main content container – flex column, grows to fill space */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 pb-8 md:pb-12 will-change-transform flex flex-col flex-grow">
+      <div className="page-shell relative z-10 w-full pb-8 md:pb-12 will-change-transform flex flex-col flex-grow">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -131,7 +131,7 @@ const Goals = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            className="hidden md:grid md:grid-cols-3 gap-5 md:gap-6 w-full max-w-5xl mx-auto"
+            className="hidden md:grid md:grid-cols-3 gap-5 md:gap-6 w-full"
           >
             {goalsData.map((item) => (
               <motion.div key={item.id} variants={cardVariants}>
