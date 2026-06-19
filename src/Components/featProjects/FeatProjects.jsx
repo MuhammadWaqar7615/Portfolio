@@ -142,7 +142,7 @@ export default function FeaturedProj() {
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,_var(--tw-gradient-stops))] from-purple-500/10 via-transparent to-transparent" />
 
-      <div className="relative mx-auto w-full max-w-7xl px-6 md:px-12">
+      <div className="page-shell relative mx-auto w-full">
         <motion.div
           ref={ref}
           variants={containerVariants}
@@ -187,7 +187,7 @@ export default function FeaturedProj() {
           {/* Desktop: Grid with staggered animations */}
           <motion.div
             variants={containerVariants}
-            className="hidden md:grid md:grid-cols-2 gap-4 max-w-3xl mx-auto"
+          className="hidden md:grid md:grid-cols-2 gap-4 w-full"
           >
             {projects.map((project, idx) => (
               <motion.div
