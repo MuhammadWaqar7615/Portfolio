@@ -72,7 +72,7 @@ const Contact = () => {
           </svg>
         </div>
       </div>
-      <div className="contact-inner relative z-10 mt-40">
+      <div className="contact-inner page-shell relative z-10 mt-40">
         <motion.div className="textContainer text-white" variants={variants}>
           <motion.h1>Let's work together</motion.h1>
           <motion.div className="item" variants={variants}>

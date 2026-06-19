@@ -22,22 +22,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 50px;
-    padding: 50px 100px;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    padding: 0;
     width: 100%;
 
     @include tablet {
-      padding: 40px 60px;
+      gap: 2rem;
     }
 
     @include mobile {
       flex-direction: column;
       gap: 30px;
-      padding: 20px;
-
-      /* Zoom out to fit mobile vertically */
-      transform: scale(0.85);
-      transform-origin: top center;
+      transform: none;
     }
   }
 
