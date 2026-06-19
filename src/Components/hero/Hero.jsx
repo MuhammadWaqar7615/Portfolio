@@ -84,8 +84,8 @@ export default function Hero() {
             </div>
 
             <div className="relative z-10 w-full h-full flex flex-col">
-                <div className="flex-grow flex flex-col px-4 sm:px-6 md:px-12 lg:px-24 pt-20">
-                    <div className="mx-auto flex w-full h-full max-w-7xl flex-col-reverse items-center lg:items-stretch justify-between gap-8 lg:flex-row lg:gap-12">
+                <div className="flex-grow flex flex-col pt-20">
+                    <div className="page-shell mx-auto flex w-full h-full flex-col-reverse items-center lg:items-stretch justify-between gap-8 lg:flex-row lg:gap-12">
 
                         {/* Left Column: Text + Buttons + Scroll Icon */}
                         <motion.div
@@ -105,16 +105,16 @@ export default function Hero() {
 
                             <motion.h1 className="mt-3 text-3xl sm:text-4xl font-bold leading-tight md:text-5xl lg:text-6xl xl:text-7xl">
                                 <span className="bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent">
-                                    Junior Web
+                                    Frontend &
                                 </span>
                                 <br />
                                 <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                                    Developer
+                                    AI Engineer
                                 </span>
                             </motion.h1>
 
                             <motion.p className="mx-auto mt-4 md:mt-6 max-w-sm sm:max-w-md text-sm sm:text-base md:text-lg text-gray-300 lg:mx-0">
-                                I'm a passionate Computer Science student and front-end developer who loves creating beautiful, responsive web experiences. Currently focused on React.js and the modern JavaScript ecosystem.
+                                I'm a passionate Computer Science student, specializing in crafting engaging frontend experiences and leveraging AI for innovative solutions. Proficient in modern JavaScript frameworks like React.js and adept at utilizing CLI agents such as Claude and Copilot for AI-driven development.
                             </motion.p>
 
                             <motion.div className="mt-8 md:mt-10 flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 lg:justify-start">
