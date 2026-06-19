@@ -99,9 +99,9 @@ export default function Hero() {
                                 <img src={profileImg} alt="Muhammad Waqar - React and Next.js Developer" className="h-full w-full object-cover" loading="eager" />
                             </div>
 
-                            <motion.h2 className="hidden text-lg font-semibold tracking-[0.2em] leading-none text-purple-300 sm:block md:text-xl lg:text-2xl">
+                            <motion.h1 className="hidden text-lg font-semibold tracking-[0.2em] leading-none text-purple-300 sm:block md:text-xl lg:text-2xl">
                                 MUHAMMAD WAQAR
-                            </motion.h2>
+                            </motion.h1>
 
                             <motion.h1 className="mt-3 text-3xl sm:text-4xl font-bold leading-tight md:text-5xl lg:text-6xl xl:text-7xl">
                                 <span className="bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent">
