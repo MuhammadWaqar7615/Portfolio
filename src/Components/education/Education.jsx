@@ -118,7 +118,7 @@ const Education = () => {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 pb-8 md:pb-12 will-change-transform">
+      <div className="page-shell relative z-10 w-full pb-8 md:pb-12 will-change-transform">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -171,7 +171,7 @@ const Education = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            className="hidden md:grid md:grid-cols-3 gap-5 md:gap-6 w-full max-w-5xl mx-auto"
+            className="hidden md:grid md:grid-cols-3 gap-5 md:gap-6 w-full"
           >
             {educationData.map((item, index) => (
               <motion.div key={item.id} variants={cardVariants}>
