@@ -96,7 +96,7 @@ export default function Hero() {
                         >
                             {/* Mobile Profile Image */}
                             <div className="mx-auto mb-6 h-20 w-20 overflow-hidden rounded-full border-2 border-purple-500/40 bg-gradient-to-br from-purple-600/30 to-blue-600/30 shadow-xl backdrop-blur-sm sm:hidden">
-                                <img src={profileImg} alt="Muhammad Waqar - React and Next.js Developer" className="h-full w-full object-cover" loading="eager" />
+                                <img src={profileImg} alt="Muhammad Waqar - AI Frontend Developer" className="h-full w-full object-cover" loading="eager" />
                             </div>
 
                             <motion.h1 className="hidden text-lg font-semibold tracking-[0.2em] leading-none text-purple-300 sm:block md:text-xl lg:text-2xl">
@@ -142,7 +142,7 @@ export default function Hero() {
                             <div className="w-full relative flex items-end">
                                 <img
                                     src={profileImg}
-                                    alt="Hero illustration"
+                                    alt="Muhammad Waqar - AI Frontend Developer Profile"
                                     className="w-full h-auto object-contain drop-shadow-2xl"
                                     loading="eager"
                                     fetchPriority="high"

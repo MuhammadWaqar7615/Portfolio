@@ -18,12 +18,12 @@ const experiences = [
     type: "Full-time Job",
   },
   {
-    title: "Web Developer Intern",
+    title: "AI-Assisted Web Developer Intern",
     company: "Bloggers Brackets",
     location: "Remote",
     duration: "July 2023 - Dec 2023",
     description:
-      "Assisted in building responsive web pages and reusable UI components. Gained hands-on experience with React lifecycle methods, state management, and modern CSS frameworks while ensuring cross-browser compatibility across multiple projects.",
+      "Assisted in building responsive web pages and reusable UI components using AI-assisted coding practices. Gained hands-on experience with React lifecycle methods, state management, and modern CSS frameworks while ensuring cross-browser compatibility.",
     type: "Internship",
   },
 ];
@@ -68,7 +68,7 @@ export default function Experience() {
       </div>
 
       {/* Main content */}
-      <div className="page-shell relative z-10 w-full pb-8 md:pb-12 will-change-transform">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 pb-8 md:pb-12 will-change-transform">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -121,7 +121,7 @@ export default function Experience() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            className="hidden md:grid md:grid-cols-2 gap-5 md:gap-6 w-full"
+            className="hidden md:grid md:grid-cols-2 gap-5 md:gap-6 w-full max-w-5xl mx-auto"
           >
             {experiences.map((exp, index) => (
               <motion.div key={index} variants={cardVariants}>
