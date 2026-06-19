@@ -147,7 +147,7 @@ export default function Skills() {
         </svg>
       </div>
 
-      <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-12">
+      <div className="page-shell relative z-10 mx-auto w-full">
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
