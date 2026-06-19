@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+:root {
+  --page-max-width: 64rem;
+  --page-gutter: clamp(1rem, 3vw, 1.5rem);
+}
+
 html {
   /* This creates the snapping behavior on the entire page */
   scroll-snap-type: y mandatory;
@@ -22,4 +27,10 @@ section[id] {
   position: relative;
   display: flex;
   flex-direction: column;
+}
+
+.page-shell {
+  width: min(100%, var(--page-max-width));
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
 }
