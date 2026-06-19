@@ -48,7 +48,7 @@ export default function PracticeProjects() {
   };
 
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-gradient-to-br from-[#0a0a1a] via-[#0f0f2a] to-[#1a1a3a] flex flex-col items-center justify-start px-4 pt-24 md:pt-32 pb-10">
+    <section className="relative h-screen w-full overflow-hidden bg-gradient-to-br from-[#0a0a1a] via-[#0f0f2a] to-[#1a1a3a] flex flex-col items-center justify-start pt-24 md:pt-32 pb-10">
       {/* Background Design Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-purple-600/10 rounded-full blur-[100px]" />
@@ -67,7 +67,7 @@ export default function PracticeProjects() {
         </div>
       </div>
 
-      <div className="relative z-10 w-full h-full max-w-7xl mx-auto flex flex-col items-center">
+      <div className="page-shell relative z-10 w-full h-full flex flex-col items-center">
         {/* Heading and Description */}
         <motion.div
           variants={variants}
