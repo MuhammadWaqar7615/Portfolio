@@ -90,6 +90,12 @@ export default function Navbar({ onMenuClick }) {
               Home
             </button>
             <button
+              onClick={() => scrollToSection("About")}
+              className="nav-link text-sm cursor-pointer font-medium px-4 py-1.5 rounded-xl text-gray-200 transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-600 hover:text-white hover:shadow-[0_0_25px_rgba(139,92,246,0.7)] hover:border-transparent"
+            >
+              About
+            </button>
+            <button
               onClick={() => scrollToSection("FeaturedProj")}
               className="nav-link text-sm cursor-pointer font-medium px-4 py-1.5 rounded-xl text-gray-200 transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-600 hover:text-white hover:shadow-[0_0_25px_rgba(139,92,246,0.7)] hover:border-transparent"
             >
