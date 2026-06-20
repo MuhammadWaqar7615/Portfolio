@@ -9,13 +9,14 @@ import Experience from "../Components/Experience/Experience"
 import AiSkills from "../Components/skills/AiSkills"
 import Education from "../Components/education/Education"
 import Goals from "../Components/goals&vision/Goals"
+import About from "../Components/about/About"
 // import Goals from "../Components/goals/Goals"
 const Addresses = () => {
   return (
     <div>
       <Cursor />
       <section id="Homepage"><Hero /></section>
-
+      <section id="About"><About /></section>
       <section id="FeaturedProj"><FeaturedProj /></section>
       <section id="PracticeProjects"><PracticeProjects /></section>
       <section id="Skills"><Skills /></section>
