@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import profileImg from "../../assets/craiyon_011253_image.png";
 
 const textVariants = {
     initial: { opacity: 0, y: 20 },
@@ -85,20 +84,15 @@ export default function Hero() {
 
             <div className="relative z-10 w-full h-full flex flex-col">
                 <div className="flex-grow flex flex-col pt-20">
-                    <div className="page-shell mx-auto flex w-full h-full flex-col-reverse items-center lg:items-stretch justify-between gap-8 lg:flex-row lg:gap-12">
+                    <div className="page-shell mx-auto flex w-full h-full flex-col items-center justify-center gap-8 lg:flex-row lg:gap-12">
 
-                        {/* Left Column: Text + Buttons + Scroll Icon */}
+                        {/* Left Column: Text + Buttons */}
                         <motion.div
                             variants={textVariants}
                             initial="initial"
                             animate="animate"
-                            className="z-10 w-full text-center lg:w-1/2 lg:text-left flex flex-col justify-center h-full pb-12 lg:pb-0"
+                            className="z-10 w-full text-center lg:w-1/2 lg:text-left flex flex-col justify-center"
                         >
-                            {/* Mobile Profile Image */}
-                            <div className="mx-auto mb-6 h-20 w-20 overflow-hidden rounded-full border-2 border-purple-500/40 bg-gradient-to-br from-purple-600/30 to-blue-600/30 shadow-xl backdrop-blur-sm sm:hidden">
-                                <img src={profileImg} alt="Muhammad Waqar - AI Frontend Developer" className="h-full w-full object-cover" loading="eager" />
-                            </div>
-
                             <motion.h1 className="hidden text-lg font-semibold tracking-[0.2em] leading-none text-purple-300 sm:block md:text-xl lg:text-2xl">
                                 MUHAMMAD WAQAR
                             </motion.h1>
@@ -113,8 +107,8 @@ export default function Hero() {
                                 </span>
                             </motion.h1>
 
-                            <motion.p className="mx-auto mt-4 md:mt-6 max-w-sm sm:max-w-md text-sm sm:text-base md:text-lg text-gray-300 lg:mx-0">
-                                I'm a passionate Computer Science student, specializing in crafting engaging frontend experiences and leveraging AI for innovative solutions. Proficient in modern JavaScript frameworks like React.js and adept at utilizing CLI agents such as Claude and Copilot for AI-driven development.
+                            <motion.p className="mx-auto mt-4 md:mt-6 max-w-sm sm:max-w-md md:max-w-2xl text-sm sm:text-base md:text-lg text-gray-300">
+                                I'm a frontend developer who builds responsive, user‑focused interfaces with React and modern JavaScript. Alongside that, I have a strong interest in AI and machine learning, which I explore as a separate area of expertise.
                             </motion.p>
 
                             <motion.div className="mt-8 md:mt-10 flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 lg:justify-start">
@@ -135,24 +129,109 @@ export default function Hero() {
                             </motion.div>
                         </motion.div>
 
-                        {/* Right Column: Hero Image with subtle static glow */}
-                        <div className="hidden md:flex relative justify-center lg:w-1/2 self-end h-full w-full max-w-sm sm:max-w-md md:max-w-lg items-end">
-                            {/* Static soft glow */}
-                            <div className="absolute inset-0 rounded-full bg-purple-500/30 blur-2xl md:blur-3xl" />
-                            <div className="w-full relative flex items-end">
-                                <img
-                                    src={profileImg}
-                                    alt="Muhammad Waqar - AI Frontend Developer Profile"
-                                    className="w-full h-auto object-contain drop-shadow-2xl"
-                                    loading="eager"
-                                    fetchPriority="high"
-                                />
+                        {/* Right Column: Code Style Card - Centered */}
+                        <motion.div 
+                            initial={{ opacity: 0, x: 50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8, delay: 0.3 }}
+                            className="hidden md:flex relative justify-center items-center lg:w-1/2 w-full"
+                        >
+                            {/* Code Card Container */}
+                            <div className="relative w-full max-w-md">
+                                {/* Glow effect */}
+                                <div className="absolute -inset-1 bg-gradient-to-r from-purple-600/40 to-blue-600/40 rounded-2xl blur-xl opacity-60" />
+                                
+                                {/* Main Code Card */}
+                                <div className="relative rounded-xl overflow-hidden bg-gradient-to-br from-slate-900/95 via-slate-800/95 to-slate-900/95 backdrop-blur-xl border border-white/10 shadow-2xl">
+                                    {/* Terminal Header */}
+                                    <div className="flex items-center justify-between px-4 py-3 bg-white/5 border-b border-white/10">
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                                            <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                                            <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                                        </div>
+                                        <div className="text-xs text-gray-400 font-mono">~/waqar</div>
+                                        <div className="text-xs text-gray-500 font-mono">v1.0</div>
+                                    </div>
+
+                                    {/* Code Content */}
+                                    <div className="p-5 font-mono text-sm leading-relaxed">
+                                        <div className="space-y-1">
+                                            <div>
+                                                <span className="text-purple-400">const</span>
+                                                <span className="text-blue-300"> developer</span>
+                                                <span className="text-gray-300"> = {'{'}</span>
+                                            </div>
+                                            
+                                            <div className="pl-4">
+                                                <span className="text-purple-300">name</span>
+                                                <span className="text-gray-300">: </span>
+                                                <span className="text-green-400">'Muhammad Waqar'</span>
+                                                <span className="text-gray-300">,</span>
+                                            </div>
+                                            
+                                            <div className="pl-4">
+                                                <span className="text-purple-300">role</span>
+                                                <span className="text-gray-300">: </span>
+                                                <span className="text-green-400">'Frontend & AI Engineer'</span>
+                                                <span className="text-gray-300">,</span>
+                                            </div>
+                                            
+                                            <div className="pl-4">
+                                                <span className="text-purple-300">focus</span>
+                                                <span className="text-gray-300">: [</span>
+                                                <span className="text-green-400">'JavaScript'</span>
+                                                <span className="text-gray-300">, </span>
+                                                <span className="text-green-400">'React'</span>
+                                                <span className="text-gray-300">,</span>
+                                                <span className="text-green-400">'AI/ML'</span>
+                                                <span className="text-gray-300">],</span>
+                                            </div>
+                                            
+                                            <div className="pl-4">
+                                                <span className="text-purple-300">stack</span>
+                                                <span className="text-gray-300">: </span>
+                                                <span className="text-green-400">'React'</span>
+                                                <span className="text-gray-300">,</span>
+                                            </div>
+                                            
+                                            <div className="pl-4">
+                                                <span className="text-purple-300">location</span>
+                                                <span className="text-gray-300">: </span>
+                                                <span className="text-green-400">'Remote · On-Site'</span>
+                                                <span className="text-gray-300">,</span>
+                                            </div>
+                                            
+                                            <div className="pl-4">
+                                                <span className="text-purple-300">status</span>
+                                                <span className="text-gray-300">: </span>
+                                                <span className="text-yellow-400">'available'</span>
+                                                <span className="text-green-400 animate-pulse">●</span>
+                                            </div>
+                                            
+                                            <div>
+                                                <span className="text-gray-300">{'}'};</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Footer Badge */}
+                                    <div className="px-4 py-3 bg-white/5 border-t border-white/10 flex items-center gap-3">
+                                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center">
+                                            <span className="text-xs font-bold text-white">MW</span>
+                                        </div>
+                                        <div>
+                                            <div className="text-xs font-medium text-gray-200">Muhammad Waqar</div>
+                                            <div className="text-[10px] text-gray-400">Frontend & AI Engineer</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
 
-                {/* Scroll Indicator - Absolute positioned to stay fixed at bottom */}
+                {/* Scroll Indicator */}
                 <motion.div
                     className="absolute bottom-6 left-1/2 -translate-x-1/2 cursor-pointer z-20 hidden lg:block"
                     onClick={() => scrollToSection("FeaturedProj")}
