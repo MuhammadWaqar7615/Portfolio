@@ -8,6 +8,7 @@ const Sidebar = ({ isOpen, onClose }) => {
 
   const menuItems = [
     { name: "Home", id: "Homepage" },
+    { name: "About", id: "About" },
     { name: "Projects", id: "FeaturedProj" },
     { name: "Skills", id: "Skills" },
     { name: "Education", id: "Education" },
