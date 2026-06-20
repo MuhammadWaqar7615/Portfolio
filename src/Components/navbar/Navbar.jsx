@@ -43,37 +43,37 @@ export default function Navbar({ onMenuClick }) {
       }`}
     >
       <nav className="rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg">
-        <div className="flex h-14 items-center justify-between px-4">
-          {/* Mobile Menu Toggle */}
+        <div className="flex h-14 items-center justify-start px-4">
+          
+          {/* ===== LEFT: Hamburger + Logo ===== */}
           <button
-            onClick={onMenuClick}
-            className="md:hidden interactive p-2 text-gray-300 hover:text-white transition-colors"
-            aria-label="Open Menu"
+              onClick={onMenuClick}
+              className="interactive p-2 text-gray-300 hover:text-white transition-colors"
+              aria-label="Open Menu"
+            >
+              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          <button
+            onClick={() => scrollToSection("Homepage")}
+            className="interactive flex items-center gap-2 group"
           >
-            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+            <img
+              src={logo}
+              alt="M.Waqar Logo"
+              className="h-9 w-9 rounded-full object-contain object-center border-2 border-purple-400/50 transition-transform duration-300 group-hover:scale-110 shadow-sm bg-gray-800/20"
+            />
+            <span className="text-xl hidden md:block font-bold text-white transition-transform duration-300 group-hover:scale-105">
+              M. Waqar
+            </span>
           </button>
 
-          {/* Logo & Mobile Resume Icon */}
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => scrollToSection("Homepage")}
-              className="interactive flex items-center gap-2 group"
-            >
-              <img
-                src={logo}
-                alt="M.Waqar Logo"
-                className="h-9 w-9 rounded-full object-contain object-center border-2 border-purple-400/50 transition-transform duration-300 group-hover:scale-110 shadow-sm bg-gray-800/20"
-              />
-              <span className="text-xl font-bold text-white transition-transform duration-300 group-hover:scale-105">
-                M. Waqar
-              </span>
-            </button>
-
+          {/* ===== RIGHT: Mobile CV Button (pushed to far right) ===== */}
+          <div className="flex items-center gap-2 md:hidden ml-auto">
             <Link
               to="/resume"
-              className="md:hidden interactive rounded-full bg-gradient-to-r from-purple-600 to-blue-600 p-2 text-white transition-all duration-300 hover:shadow-[0_0_25px_rgba(139,92,246,0.7)] hover:scale-110"
+              className="interactive rounded-full bg-gradient-to-r from-purple-600 to-blue-600 p-2 text-white transition-all duration-300 hover:shadow-[0_0_25px_rgba(139,92,246,0.7)] hover:scale-110"
             >
               <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
