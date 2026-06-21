@@ -151,7 +151,7 @@ export default function About() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="text-xs sm:text-sm md:text-base text-gray-300/90 leading-relaxed max-w-7xl mb-8 md:mb-12"
+                        className="text-xs sm:text-sm md:text-base text-gray-300/90 leading-relaxed max-w-7xl mb-0"
                     >
                         Frontend-focused Software Engineer with hands-on production experience building responsive React.js applications — from component architecture and state management to REST API integration and animated, accessible UI. Currently working at{" "}
                         <span className="text-purple-300 font-medium">Bloggers Bracket</span>, I own UI features end-to-end across e-commerce, marketplace, and booking-platform codebases. I'm pursuing my{" "}
@@ -160,7 +160,7 @@ export default function About() {
                     </motion.p>
 
                     {/* Mobile: Auto-play Infinite Carousel */}
-                    <div className="block md:hidden mt-8">
+                    <div className="block md:hidden">
                         <Swiper
                             modules={[Autoplay, Pagination]}
                             spaceBetween={16}
