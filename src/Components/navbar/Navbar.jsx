@@ -64,9 +64,6 @@ export default function Navbar({ onMenuClick }) {
               alt="M.Waqar Logo"
               className="h-9 w-9 rounded-full object-contain object-center border-2 border-purple-400/50 transition-transform duration-300 group-hover:scale-110 shadow-sm bg-gray-800/20"
             />
-            <span className="text-xl hidden md:block font-bold text-white transition-transform duration-300 group-hover:scale-105">
-              M. Waqar
-            </span>
           </button>
 
           {/* ===== RIGHT: Mobile CV Button (pushed to far right) ===== */}
