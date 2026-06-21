@@ -48,7 +48,7 @@ export default function Navbar({ onMenuClick }) {
           {/* ===== LEFT: Hamburger + Logo ===== */}
           <button
               onClick={onMenuClick}
-              className="interactive p-2 text-gray-300 hover:text-white transition-colors"
+              className="interactive p-2 md:hidden text-gray-300 hover:text-white transition-colors"
               aria-label="Open Menu"
             >
               <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
