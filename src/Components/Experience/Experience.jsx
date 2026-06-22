@@ -11,7 +11,7 @@ const experiences = [
   {
     title: "AI Frontend Developer",
     company: "Bloggers Brackets",
-    location: "Remote",
+    location: "On-Site",
     duration: "Jan 2024 - Present",
     description:
       "Leading front-end initiatives and implementing complex user interfaces. Collaborating with cross-functional teams to deliver high-quality web solutions using React, Tailwind CSS, and Framer Motion. Focused on creating scalable, responsive components for diverse client needs.",
@@ -20,7 +20,7 @@ const experiences = [
   {
     title: "Web Developer Intern",
     company: "Bloggers Brackets",
-    location: "Remote",
+    location: "On-Site",
     duration: "July 2023 - Dec 2023",
     description:
       "Assisted in building responsive web pages and reusable UI components. Gained hands-on experience with React lifecycle methods, state management, and modern CSS frameworks while ensuring cross-browser compatibility across multiple projects.",
