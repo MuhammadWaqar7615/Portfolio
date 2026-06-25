@@ -20,7 +20,7 @@ const Addresses = () => {
       <section id="FeaturedProj"><FeaturedProj /></section>
       <section id="PracticeProjects"><PracticeProjects /></section>
       <section id="Skills"><Skills /></section>
-      <section id="AiSkills"><AiSkills /></section>
+      {/* <section id="AiSkills"><AiSkills /></section> */}
       <section id="Education"><Education /></section>
       <section id="Experience"><Experience /></section>
       <section id="Goals"><Goals /></section>
