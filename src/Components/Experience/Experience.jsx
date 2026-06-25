@@ -78,7 +78,7 @@ export default function Experience() {
           className="text-center mb-10"
         >
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white">
-            AI-Driven{" "}
+            {/* AI-Driven{" "} */}
             <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
               Experience
             </span>
