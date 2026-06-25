@@ -91,24 +91,24 @@ export default function Hero() {
                             variants={textVariants}
                             initial="initial"
                             animate="animate"
-                            className="z-10 w-full text-center lg:w-1/2 lg:text-left flex flex-col justify-center"
+                            className="z-10 w-full text-center lg:w-5/6 lg:text-left flex flex-col justify-center"
                         >
                             <motion.h1 className="hidden text-lg font-semibold tracking-[0.2em] leading-none text-purple-300 sm:block md:text-xl lg:text-2xl">
                                 MUHAMMAD WAQAR
                             </motion.h1>
 
-                            <motion.h1 className="mt-3 text-3xl sm:text-4xl font-bold leading-tight md:text-5xl lg:text-6xl xl:text-7xl">
+                            <motion.h1 className="mt-3 text-2xl sm:text-3xl font-bold leading-tight md:text-4xl lg:text-5xl xl:text-6xl">
                                 <span className="bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent">
-                                    Frontend &
+                                    Frontend Engineer
                                 </span>
                                 <br />
-                                <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                                {/* <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
                                     AI Engineer
-                                </span>
+                                </span> */}
                             </motion.h1>
 
                             <motion.p className="mx-auto mt-4 md:mt-6 max-w-sm sm:max-w-md md:max-w-2xl text-sm sm:text-base md:text-lg text-gray-300">
-                                I'm a frontend developer who builds responsive, user‑focused interfaces with React and modern JavaScript. Alongside that, I have a strong interest in AI and machine learning, which I explore as a separate area of expertise.
+                                I'm a frontend developer passionate about building responsive, user‑focused interfaces with React and modern JavaScript. I enjoy turning complex problems into clean, maintainable code and strive to create seamless digital experiences.
                             </motion.p>
 
                             <motion.div className="mt-8 md:mt-10 flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 lg:justify-start">
@@ -187,7 +187,7 @@ export default function Hero() {
                                                 <span className="text-green-400">'AI/ML'</span>
                                                 <span className="text-gray-300">],</span>
                                             </div>
-                                            
+                                                    
                                             <div className="pl-4">
                                                 <span className="text-purple-300">stack</span>
                                                 <span className="text-gray-300">: </span>
