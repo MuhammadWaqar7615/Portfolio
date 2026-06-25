@@ -44,9 +44,9 @@ const cards = [
     },
     {
         label: "PASSION",
-        title: "AI & Machine Learning — always learning",
+        title: "Backend & Machine Learning",
         description:
-            "Beyond frontend, I'm passionate about AI and ML. I use ChatGPT, Claude, and GitHub Copilot daily to bridge UIs with intelligent systems.",
+            "Currently focused on backend engineering — APIs, distributed systems, and data infrastructure. Next, I'm moving into ML systems and agentic frameworks like LangGraph.",
         icon: (
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -154,9 +154,8 @@ export default function About() {
                         className="text-xs sm:text-sm md:text-base text-gray-300/90 leading-relaxed max-w-7xl mb-0"
                     >
                         Frontend-focused Software Engineer with hands-on production experience building responsive React.js applications — from component architecture and state management to REST API integration and animated, accessible UI. Currently working at{" "}
-                        <span className="text-purple-300 font-medium">Bloggers Bracket</span>, I own UI features end-to-end across e-commerce, marketplace, and booking-platform codebases. I'm pursuing my{" "}
-                        <span className="text-blue-300 font-medium">BS in Computer Science</span> at Islamia University Bahawalpur, and beyond engineering, I bring a deep passion for{" "}
-                        <span className="text-cyan-300 font-medium">AI and Machine Learning</span> — constantly learning, experimenting, and exploring how intelligent systems can elevate user experiences.
+<span className="text-purple-300 font-medium">Bloggers Bracket</span>, I own UI features end-to-end across e-commerce, marketplace, and booking-platform codebases. I hold a{" "}
+<span className="text-blue-300 font-medium">BS in Computer Science</span> from Islamia University Bahawalpur. Beyond frontend, I'm now learning backend infrastructure and AI/ML including agentic systems like LangGraph as my next frontier.
                     </motion.p>
 
                     {/* Mobile: Auto-play Infinite Carousel */}
