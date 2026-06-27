@@ -9,7 +9,7 @@ import "swiper/css/pagination";
 
 const experiences = [
   {
-    title: "AI Frontend Developer",
+    title: "Frontend Developer",
     company: "Bloggers Brackets",
     location: "On-Site",
     duration: "Jan 2024 - Present",
