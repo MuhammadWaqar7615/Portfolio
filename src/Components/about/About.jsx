@@ -60,7 +60,7 @@ const cards = [
 
 // Reusable card component
 const Card = ({ card }) => (
-    <div className="group relative h-full rounded-2xl bg-gradient-to-br from-slate-900/80 via-slate-800/60 to-slate-900/80 backdrop-blur-xl border border-white/[0.08] p-5 md:p-6 lg:p-8 flex flex-col hover:border-white/[0.15] transition-all duration-300 overflow-hidden">
+    <div className="group relative h-full rounded-2xl bg-gradient-to-br from-slate-900/80 via-slate-800/60 to-slate-900/80 backdrop-blur-xl border border-white/[0.08] p-5 flex flex-col hover:border-white/[0.15] transition-all duration-300 overflow-hidden">
         {/* Card glow */}
         <div className={`absolute -inset-[1px] bg-gradient-to-br ${card.glow} rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
@@ -125,7 +125,7 @@ export default function About() {
                         initial={{ opacity: 0, x: -20 }}
                         animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                         transition={{ duration: 0.5 }}
-                        className="flex items-center gap-3 mb-6 md:mb-8"
+                        className="flex items-center gap-3"
                     >
                         <div className="w-8 h-[1px] bg-purple-400/60" />
                         <span className="text-[11px] sm:text-xs tracking-[0.3em] uppercase text-purple-300/80 font-medium">
@@ -138,7 +138,7 @@ export default function About() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                         transition={{ duration: 0.6, delay: 0.1 }}
-                        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight"
+                        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight"
                     >
                         <span className="text-white">Frontend First.</span>{" "}
                         <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
