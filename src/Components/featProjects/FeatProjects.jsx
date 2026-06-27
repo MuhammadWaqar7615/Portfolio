@@ -151,7 +151,7 @@ export default function FeaturedProj() {
           className="space-y-6"
         >
           <motion.div variants={childVariants} className="text-center">
-            <h1 className="text-2xl font-bold tracking-tight text-white md:text-3xl">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-white">
               Featured{" "}
               <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
                 Projects
