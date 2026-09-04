@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+:root {
+  --font-serif-display: "Playfair Display", Georgia, serif;
+  --font-sans-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --bg-primary: #090a0f;
+  --bg-secondary: #11131a;
+  --bg-card: rgba(255, 255, 255, 0.03);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(255, 255, 255, 0.18);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent-ink: #38bdf8;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Editorial typography utilities */
+.font-display {
+  font-family: var(--font-serif-display);
+  letter-spacing: -0.03em;
+}
+
+/* Asymmetric editorial container layout */
+.editorial-container {
+  width: 100%;
+  max-width: 84rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1.25rem, 4vw, 3rem);
+  padding-right: clamp(1.25rem, 4vw, 3rem);
+}
+
+/* Subtle hairline borders common in print/editorial design */
+.hairline-b {
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.hairline-t {
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* Subtle grain overlay for print texture */
+.editorial-noise {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Focus and selection */
+::selection {
+  background: #38bdf8;
+  color: #090a0f;
+}
+
+:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 3px;
+}
