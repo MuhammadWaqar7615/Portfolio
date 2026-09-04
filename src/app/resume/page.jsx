@@ -1,6 +1,25 @@
 export const metadata = {
-  title: "Resume — Muhammad Waqar",
-  description: "Curriculum Vitae and professional background of Muhammad Waqar.",
+  title: "Resume & Professional Credentials — Muhammad Waqar",
+  description:
+    "Curriculum Vitae and verified technical background of Muhammad Waqar, Frontend & Full-Stack Engineer.",
+  alternates: {
+    canonical: "https://muhammad-waqar.me/resume",
+  },
+  openGraph: {
+    title: "Resume & Credentials — Muhammad Waqar",
+    description:
+      "Curriculum Vitae and verified technical background of Muhammad Waqar, Frontend & Full-Stack Engineer.",
+    url: "https://muhammad-waqar.me/resume",
+    type: "profile",
+    images: [
+      {
+        url: "https://muhammad-waqar.me/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Muhammad Waqar Resume & Credentials",
+      },
+    ],
+  },
 };
 
 export default function ResumePage() {
