@@ -17,6 +17,7 @@ export const revalidate = 3600;
 export default async function HomePage() {
   const portfolioData = await getPortfolioData();
   const projects = portfolioData?.projects || [];
+  const experiences = portfolioData?.experiences || [];
 
 
   const jsonLdProjects = {
@@ -84,7 +85,7 @@ export default async function HomePage() {
         <About />
 
         {/* Section 4: Experience */}
-        <Experience />
+        <Experience experiences={experiences} />
 
         {/* Section 5: Education */}
         <Education />

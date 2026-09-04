@@ -1,31 +1,24 @@
-export default function Experience() {
-  const experiences = [
+export default function Experience({ experiences = [] }) {
+  const defaultExperiences = [
     {
-      period: "2024 — PRESENT",
+      _id: "exp-1",
+      duration: "2024 — Present",
       role: "Frontend Developer",
       company: "Bloggers Brackets",
-      type: "Full-Time · On-Site",
-      summary:
-        "Spearheading frontend development initiatives across multiple client portals. Architecting modular UI component systems using React, Tailwind CSS, and Framer Motion with rigorous cross-browser compatibility.",
-      metrics: [
-        "Delivered 6+ production web applications with 99.8% crash-free sessions",
-        "Streamlined common UI components reducing new page delivery time by 30%",
-        "Collaborated with product teams to eliminate layout shifts across responsive viewports",
-      ],
+      description:
+        "Spearheading frontend development initiatives across multiple client portals. Architecting modular UI component systems using React, Tailwind CSS, and Framer Motion with rigorous cross-browser compatibility. Delivered 6+ production web applications with 99.8% crash-free sessions.",
     },
     {
-      period: "2023",
+      _id: "exp-2",
+      duration: "2023",
       role: "Web Developer Intern",
       company: "Bloggers Brackets",
-      type: "Internship · On-Site",
-      summary:
-        "Engineered responsive interface modules, translated Figma wireframes into production React components, and handled client-side state management workflows.",
-      metrics: [
-        "Refactored legacy UI components into clean reusable functional React components",
-        "Assisted in reducing initial script asset footprints through code splitting",
-      ],
+      description:
+        "Engineered responsive interface modules, translated Figma wireframes into production React components, and handled client-side state management workflows. Assisted in reducing initial script asset footprints through code splitting.",
     },
   ];
+
+  const listToDisplay = experiences.length > 0 ? experiences : defaultExperiences;
 
   return (
     <section
@@ -49,18 +42,18 @@ export default function Experience() {
         </div>
 
         <div className="space-y-12">
-          {experiences.map((exp) => (
+          {listToDisplay.map((exp) => (
             <div
-              key={exp.period}
+              key={exp._id || exp.role}
               className="border border-white/[0.08] bg-[#0C0E14] p-6 sm:p-10 transition-all duration-300 hover:border-white/20"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                 <div className="lg:col-span-3">
                   <span className="text-xs font-mono uppercase tracking-widest text-sky-400">
-                    {exp.period}
+                    {exp.duration}
                   </span>
                   <p className="text-xs font-mono text-gray-400 mt-1">
-                    {exp.type}
+                    On-Site Delivery
                   </p>
                 </div>
 
@@ -75,17 +68,8 @@ export default function Experience() {
                   </div>
 
                   <p className="text-sm text-gray-300 leading-relaxed font-light">
-                    {exp.summary}
+                    {exp.description}
                   </p>
-
-                  <ul className="space-y-2 pt-2 text-xs font-mono text-gray-400">
-                    {exp.metrics.map((metric, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className="text-sky-400">→</span>
-                        <span>{metric}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
               </div>
             </div>
@@ -95,3 +79,4 @@ export default function Experience() {
     </section>
   );
 }
+
