@@ -1,12 +1,27 @@
-# React + Vite
+# Professional Full-Stack Developer Portfolio & CMS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-performance, SEO-optimized portfolio and custom MERN admin dashboard built with **Next.js (App Router)**, **MongoDB / Mongoose**, **Tailwind CSS**, and **EmailJS**.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo & Staging
+- **Production Domain**: [https://muhammad-waqar.me](https://muhammad-waqar.me)
+- **GitHub Repository**: [https://github.com/MuhammadWaqar7615/Portfolio](https://github.com/MuhammadWaqar7615/Portfolio)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Tech Stack & Architecture
+- **Framework**: Next.js 15+ (App Router, Server Components & Route Handlers)
+- **Database**: MongoDB Atlas via Mongoose ORM
+- **Authentication**: JWT-based stateless auth for Admin Panel (`/admin`)
+- **Styling**: Editorial Print Design System (Space Grotesk + Inter, hairline borders, asymmetric grid)
+- **Image Storage**: Cloudinary / S3 integration (`/api/upload`)
+- **Revalidation**: On-demand ISR (`/api/revalidate`)
+- **Contact Integration**: Direct serverless EmailJS integration
 
-## Expanding the ESLint configuration
+## 📌 Features
+- **Editorial UI/UX**: Custom minimalist print design, dark mode aesthetics, zero layout shifts.
+- **Demobility Status Enforcer**: Dynamic project categorization (`live` vs `in-progress` / `archived`).
+- **Full CMS Admin**: `/admin/dashboard` with management for Projects, Experience, Education, Skills, and Site Metadata.
+- **Dynamic SEO**: Per-page meta tags, dynamic OpenGraph / Twitter preview images, JSON-LD structured data (`Person` & `SoftwareSourceCode`).
+- **Interactive Resume**: Single-page portfolio + printable `/resume` view.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+*Maintained by [Muhammad Waqar](https://github.com/MuhammadWaqar7615)*
+
