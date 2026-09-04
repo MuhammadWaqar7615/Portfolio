@@ -1,5 +1,10 @@
-export default function PracticeProjects() {
-  const practiceItems = [
+export default function PracticeProjects({ projects = [] }) {
+  // Filter out featured projects (status === 'live' with liveLink)
+  const labProjects = projects.filter(
+    (p) => p.status !== "live" || !p.liveLink || p.liveLink.trim() === ""
+  );
+
+  const defaultPracticeItems = [
     {
       title: "WorkNexus",
       type: "Enterprise Resource Management",
@@ -46,6 +51,23 @@ export default function PracticeProjects() {
     },
   ];
 
+  const itemsToDisplay =
+    labProjects.length > 0
+      ? labProjects.map((p) => ({
+          title: p.title,
+          type: p.shortDescription || "Practice Project",
+          status: p.status === "in-progress" ? "Awaiting Deployment" : "Archived Practice",
+          statusColor:
+            p.status === "in-progress"
+              ? "text-amber-400 border-amber-400/20 bg-amber-400/5"
+              : "text-gray-400 border-gray-400/20 bg-gray-400/5",
+          description: p.problem || p.roleDecisions || p.shortDescription,
+          techTags: p.techTags || [],
+          codeLink: p.codeLink,
+          liveLink: p.liveLink,
+        }))
+      : defaultPracticeItems;
+
   return (
     <section
       id="practice-lab"
@@ -68,7 +90,7 @@ export default function PracticeProjects() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {practiceItems.map((item) => (
+          {itemsToDisplay.map((item) => (
             <div
               key={item.title}
               className="border border-white/[0.06] bg-[#090A0F] p-6 flex flex-col justify-between hover:border-white/15 transition-colors"
@@ -92,16 +114,18 @@ export default function PracticeProjects() {
                   {item.description}
                 </p>
 
-                <div className="flex flex-wrap gap-1.5 mb-6">
-                  {item.techTags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-[10px] font-mono text-gray-400 bg-white/[0.03] border border-white/5 px-2 py-0.5"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                {item.techTags && item.techTags.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5 mb-6">
+                    {item.techTags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-[10px] font-mono text-gray-400 bg-white/[0.03] border border-white/5 px-2 py-0.5"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
 
               <div className="flex items-center gap-4 pt-4 border-t border-white/[0.06] text-xs font-mono">
@@ -135,3 +159,4 @@ export default function PracticeProjects() {
     </section>
   );
 }
+

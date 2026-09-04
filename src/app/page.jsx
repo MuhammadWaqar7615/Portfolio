@@ -9,11 +9,16 @@ import PracticeProjects from "../components/PracticeProjects";
 import Goals from "../components/Goals";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
+import { getPortfolioData } from "../../lib/dbData";
 
 // Incremental Static Regeneration (ISR) interval in seconds
 export const revalidate = 3600;
 
-export default function HomePage() {
+export default async function HomePage() {
+  const portfolioData = await getPortfolioData();
+  const projects = portfolioData?.projects || [];
+
+
   const jsonLdProjects = {
     "@context": "https://schema.org",
     "@graph": [
@@ -73,7 +78,7 @@ export default function HomePage() {
         <Hero />
 
         {/* Section 2: Featured Projects (Immediately follows Hero) */}
-        <FeaturedProjects />
+        <FeaturedProjects projects={projects} />
 
         {/* Section 3: About & Engineering Principles */}
         <About />
@@ -88,7 +93,7 @@ export default function HomePage() {
         <Skills />
 
         {/* Section 7: Practice & Lab (De-emphasized clones/tutorials) */}
-        <PracticeProjects />
+        <PracticeProjects projects={projects} />
 
         {/* Section 8: Strategic Vision & Goals (Compressed) */}
         <Goals />
@@ -100,3 +105,4 @@ export default function HomePage() {
     </div>
   );
 }
+
