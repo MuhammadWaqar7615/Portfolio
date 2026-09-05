@@ -1,17 +1,28 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-accent: var(--color-accent);
+  --color-background: var(--color-background);
+  --color-text: var(--color-text);
+  --color-cardBg: var(--color-cardBg);
+  
+  --spacing-container: var(--spacing-container);
+  --spacing-section: var(--spacing-section);
+  --spacing-card: var(--spacing-card);
+  
+  --radius-card: var(--radius-card);
+
+  --font-serif-display: var(--font-heading);
+  --font-sans-body: var(--font-body);
+}
+
 :root {
-  --font-serif-display: "Playfair Display", Georgia, serif;
-  --font-sans-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-  --bg-primary: #090a0f;
-  --bg-secondary: #11131a;
-  --bg-card: rgba(255, 255, 255, 0.03);
   --border-subtle: rgba(255, 255, 255, 0.08);
   --border-active: rgba(255, 255, 255, 0.18);
-  --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
-  --accent-ink: #38bdf8;
 }
 
 html {
@@ -22,12 +33,18 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  font-family: var(--font-sans-body);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Global Animation Toggle */
+.disable-animations *,
+.disable-animations *::before,
+.disable-animations *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
 }
 
 /* Editorial typography utilities */
@@ -63,11 +80,11 @@ body {
 
 /* Focus and selection */
 ::selection {
-  background: #38bdf8;
-  color: #090a0f;
+  background: var(--color-accent);
+  color: var(--color-background);
 }
 
 :focus-visible {
-  outline: 2px solid #38bdf8;
+  outline: 2px solid var(--color-accent);
   outline-offset: 3px;
 }
