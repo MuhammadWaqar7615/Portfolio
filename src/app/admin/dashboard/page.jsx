@@ -158,6 +158,12 @@ export default function AdminDashboardPage() {
             >
               Site Settings →
             </Link>
+            <Link
+              href="/admin/theme"
+              className="border border-white/10 bg-[#0C0E14] p-4 text-center hover:border-sky-400 hover:text-sky-400 transition-all"
+            >
+              Manage Theme →
+            </Link>
           </div>
         </div>
       </div>
