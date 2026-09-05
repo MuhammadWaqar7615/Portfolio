@@ -1,7 +1,7 @@
-export default function Education() {
-  const credentials = [
+export default function Education({ education = [] }) {
+  const credentials = education.length > 0 ? education : [
     {
-      period: "2022 — 2026",
+      year: "2022 — 2026",
       degree: "Bachelor of Science in Computer Science",
       institution: "The Islamia University of Bahawalpur",
       campus: "Baghdad Campus",
@@ -9,7 +9,7 @@ export default function Education() {
         "Focus on core computing disciplines: algorithmic complexity, distributed systems architecture, database management systems, and software engineering design patterns.",
     },
     {
-      period: "2021 — 2022",
+      year: "2021 — 2022",
       degree: "Intermediate in Computer Science (ICS)",
       institution: "Iqra Army Public School & College",
       campus: "Quetta Cantt",
@@ -17,7 +17,7 @@ export default function Education() {
         "Higher secondary education emphasizing structured programming foundations, discrete mathematics, and analytical problem-solving.",
     },
     {
-      period: "2019 — 2020",
+      year: "2019 — 2020",
       degree: "Matriculation (Computer Science)",
       institution: "Army Public School and College System",
       campus: "Okara Cantt",
@@ -50,12 +50,12 @@ export default function Education() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {credentials.map((item) => (
             <div
-              key={item.degree}
+              key={item._id || item.degree}
               className="border border-white/[0.08] bg-[#0C0E14] p-6 sm:p-8 flex flex-col justify-between hover:border-white/20 transition-all duration-300"
             >
               <div>
                 <span className="text-xs font-mono uppercase tracking-widest text-sky-400">
-                  {item.period}
+                  {item.year || item.period}
                 </span>
                 <h3 className="text-xl font-bold text-white mt-2">
                   {item.degree}
@@ -63,12 +63,16 @@ export default function Education() {
                 <p className="text-sm font-mono text-gray-400 mt-1">
                   {item.institution}
                 </p>
-                <p className="text-xs font-mono text-gray-400">
-                  {item.campus}
-                </p>
-                <p className="text-sm text-gray-300 leading-relaxed font-light mt-4">
-                  {item.details}
-                </p>
+                {item.campus && (
+                  <p className="text-xs font-mono text-gray-400">
+                    {item.campus}
+                  </p>
+                )}
+                {item.details && (
+                  <p className="text-sm text-gray-300 leading-relaxed font-light mt-4">
+                    {item.details}
+                  </p>
+                )}
               </div>
             </div>
           ))}

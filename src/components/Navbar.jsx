@@ -34,12 +34,6 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Availability Pill */}
-        <div className="hidden lg:flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-mono text-emerald-400">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-          <span>Available for Frontend & Full-Stack roles</span>
-        </div>
-
         {/* Desktop Nav Links */}
         <div className="hidden md:flex items-center gap-7 text-xs font-mono uppercase tracking-wider text-gray-400">
           {navLinks.map((link) => (
@@ -57,6 +51,13 @@ export default function Navbar() {
           >
             Resume ↗
           </Link>
+          <Link
+            href="/admin/dashboard"
+            target="_blank"
+            className="rounded border border-white/20 px-3 py-1.5 text-white hover:bg-white hover:text-black transition-all duration-200"
+          >
+            Admin ↗
+          </Link>
         </div>
 
         {/* Mobile menu button */}
@@ -66,6 +67,13 @@ export default function Navbar() {
             className="rounded border border-white/20 px-2.5 py-1 text-xs font-mono text-white"
           >
             CV
+          </Link>
+          <Link
+            href="/admin/dashboard"
+            target="_blank"
+            className="rounded border border-white/20 px-2.5 py-1 text-xs font-mono text-white"
+          >
+            Admin
           </Link>
           <button
             type="button"

@@ -17,7 +17,8 @@ export async function PUT(request, { params }) {
     }
 
     const body = await request.json();
-    const updated = await Skill.findByIdAndUpdate(params.id, body, {
+    const resolvedParams = await params;
+    const updated = await Skill.findByIdAndUpdate(resolvedParams.id, body, {
       new: true,
       runValidators: true,
     });
@@ -45,7 +46,8 @@ export async function DELETE(request, { params }) {
       return NextResponse.json({ message: "Database unavailable" }, { status: 503 });
     }
 
-    const deleted = await Skill.findByIdAndDelete(params.id);
+    const resolvedParams = await params;
+    const deleted = await Skill.findByIdAndDelete(resolvedParams.id);
     if (!deleted) {
       return NextResponse.json({ message: "Skill not found" }, { status: 404 });
     }

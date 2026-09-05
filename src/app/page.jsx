@@ -18,6 +18,8 @@ export default async function HomePage() {
   const portfolioData = await getPortfolioData();
   const projects = portfolioData?.projects || [];
   const experiences = portfolioData?.experiences || [];
+  const educationData = portfolioData?.education || [];
+  const skillsData = portfolioData?.skills || [];
 
 
   const jsonLdProjects = {
@@ -88,10 +90,10 @@ export default async function HomePage() {
         <Experience experiences={experiences} />
 
         {/* Section 5: Education */}
-        <Education />
+        <Education education={educationData} />
 
         {/* Section 6: Technical Skills */}
-        <Skills />
+        <Skills skills={skillsData} />
 
         {/* Section 7: Practice & Lab (De-emphasized clones/tutorials) */}
         <PracticeProjects projects={projects} />

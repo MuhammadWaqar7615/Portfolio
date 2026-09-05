@@ -11,7 +11,8 @@ export async function GET(request, { params }) {
       return NextResponse.json({ message: "Database unavailable" }, { status: 503 });
     }
 
-    const project = await Project.findById(params.id).lean();
+    const resolvedParams = await params;
+    const project = await Project.findById(resolvedParams.id).lean();
     if (!project) {
       return NextResponse.json({ message: "Project not found" }, { status: 404 });
     }
@@ -40,7 +41,8 @@ export async function PUT(request, { params }) {
       return NextResponse.json({ message: "Invalid status value" }, { status: 400 });
     }
 
-    const updatedProject = await Project.findByIdAndUpdate(params.id, body, {
+    const resolvedParams = await params;
+    const updatedProject = await Project.findByIdAndUpdate(resolvedParams.id, body, {
       new: true,
       runValidators: true,
     });
@@ -70,7 +72,8 @@ export async function DELETE(request, { params }) {
       return NextResponse.json({ message: "Database unavailable" }, { status: 503 });
     }
 
-    const deleted = await Project.findByIdAndDelete(params.id);
+    const resolvedParams = await params;
+    const deleted = await Project.findByIdAndDelete(resolvedParams.id);
     if (!deleted) {
       return NextResponse.json({ message: "Project not found" }, { status: 404 });
     }

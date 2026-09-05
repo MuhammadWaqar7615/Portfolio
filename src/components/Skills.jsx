@@ -1,5 +1,6 @@
-export default function Skills() {
-  const skillCategories = [
+export default function Skills({ skills = [] }) {
+  // If no dynamic skills provided, use the fallback
+  const fallbackCategories = [
     {
       category: "Frontend Engineering",
       description: "Component architecture, reactive state, and accessible UI",
@@ -52,6 +53,24 @@ export default function Skills() {
     },
   ];
 
+  let displayCategories = fallbackCategories;
+
+  if (skills.length > 0) {
+    // Group dynamic skills by category
+    const grouped = skills.reduce((acc, skill) => {
+      if (!acc[skill.category]) {
+        acc[skill.category] = {
+          category: skill.category,
+          description: "Core competencies and tools",
+          skills: [],
+        };
+      }
+      acc[skill.category].skills.push(skill.name);
+      return acc;
+    }, {});
+    displayCategories = Object.values(grouped);
+  }
+
   return (
     <section
       id="skills"
@@ -74,7 +93,7 @@ export default function Skills() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {skillCategories.map((group) => (
+          {displayCategories.map((group) => (
             <div
               key={group.category}
               className="border border-white/[0.08] bg-[#0C0E14] p-6 sm:p-8 hover:border-white/20 transition-all duration-300"
