@@ -1,19 +1,7 @@
-import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import connectToDatabase from "../../lib/mongodb";
 import SiteMetadata from "../../models/SiteMetadata";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-space",
-  display: "swap",
-});
+import { getThemeSettings } from "../../lib/dbData";
 
 export async function generateMetadata() {
   let siteData = null;
@@ -95,7 +83,7 @@ export async function generateMetadata() {
   };
 }
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
   const jsonLdPerson = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -134,15 +122,47 @@ export default function RootLayout({ children }) {
     },
   };
 
+  const theme = await getThemeSettings();
+  const headingFont = theme?.fonts?.heading || "Space Grotesk";
+  const bodyFont = theme?.fonts?.body || "Inter";
+  const fontUrl = `https://fonts.googleapis.com/css2?family=${headingFont.replace(/ /g, "+")}:wght@400;500;600;700&family=${bodyFont.replace(/ /g, "+")}:wght@400;500;600;700&display=swap`;
+
+  const animationsEnabled = theme?.animations?.enabled !== false;
+
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} dark`}>
+    <html lang="en" className={`dark ${!animationsEnabled ? "disable-animations" : ""}`}>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href={fontUrl} rel="stylesheet" />
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            :root {
+              --font-heading: '${headingFont}', sans-serif;
+              --font-body: '${bodyFont}', sans-serif;
+              --color-primary: ${theme?.colors?.primary || "#090A0F"};
+              --color-secondary: ${theme?.colors?.secondary || "#FFFFFF"};
+              --color-accent: ${theme?.colors?.accent || "#38BDF8"};
+              --color-background: ${theme?.colors?.background || "#090A0F"};
+              --color-text: ${theme?.colors?.text || "#F8FAFC"};
+              --color-cardBg: ${theme?.colors?.cardBg || "#0C0E14"};
+              --spacing-container: ${theme?.spacing?.containerPadding || "2rem"};
+              --spacing-section: ${theme?.spacing?.sectionGap || "4rem"};
+              --spacing-card: ${theme?.spacing?.cardPadding || "1.5rem"};
+              --radius-card: ${theme?.borderRadius || "0.5rem"};
+              --animations-enabled: ${theme?.animations?.enabled !== false ? "1" : "0"};
+              --animations-duration: ${theme?.animations?.duration || "0.6s"};
+              --animations-delay: ${theme?.animations?.delay || "0.1s"};
+            }
+            ${theme?.customCSS || ""}
+          `
+        }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdPerson) }}
         />
       </head>
-      <body className="min-h-screen bg-[#090A0F] text-[#F8FAFC] antialiased selection:bg-sky-500 selection:text-black">
+      <body className="min-h-screen bg-[var(--color-background)] text-[var(--color-text)] antialiased selection:bg-[var(--color-accent)] selection:text-[var(--color-background)]">
         {children}
       </body>
     </html>
