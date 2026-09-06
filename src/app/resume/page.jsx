@@ -1,3 +1,5 @@
+import ThemeSwitch from "../../components/ThemeSwitch";
+
 export const metadata = {
   title: "Resume & Professional Credentials — Muhammad Waqar",
   description:
@@ -24,7 +26,7 @@ export const metadata = {
 
 export default function ResumePage() {
   return (
-    <div className="min-h-screen bg-[#090A0F] text-white flex flex-col">
+    <div className="min-h-screen bg-background text-text flex flex-col">
       <header className="p-4 border-b border-white/10 flex items-center justify-between">
         <a
           href="/"
@@ -32,13 +34,16 @@ export default function ResumePage() {
         >
           ← Back to Portfolio
         </a>
-        <a
-          href="/cv.pdf"
-          download="Muhammad_Waqar_Resume.pdf"
-          className="px-4 py-2 text-xs font-semibold uppercase tracking-wider bg-white/10 hover:bg-white/20 text-white rounded-md transition-colors"
-        >
-          Download PDF
-        </a>
+        <div className="flex items-center gap-3">
+          <ThemeSwitch />
+          <a
+            href="/cv.pdf"
+            download="Muhammad_Waqar_Resume.pdf"
+            className="px-4 py-2 text-xs font-semibold uppercase tracking-wider bg-white/10 hover:bg-white/20 text-white rounded-md transition-colors"
+          >
+            Download PDF
+          </a>
+        </div>
       </header>
       <main className="flex-1 w-full h-[calc(100vh-65px)]">
         <iframe

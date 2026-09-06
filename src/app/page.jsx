@@ -1,26 +1,19 @@
-import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
-import FeaturedProjects from "../components/FeaturedProjects";
-import About from "../components/About";
-import Experience from "../components/Experience";
-import Education from "../components/Education";
-import Skills from "../components/Skills";
-import PracticeProjects from "../components/PracticeProjects";
-import Goals from "../components/Goals";
-import Contact from "../components/Contact";
-import Footer from "../components/Footer";
-import { getPortfolioData } from "../../lib/dbData";
+import HomeSectionsContainer from "../components/HomeSectionsContainer";
+import { getPortfolioData, getSiteTheme } from "../../lib/dbData";
+import { DEFAULT_THEME } from "../../models/SiteTheme";
 
 // Incremental Static Regeneration (ISR) interval in seconds
 export const revalidate = 3600;
 
 export default async function HomePage() {
   const portfolioData = await getPortfolioData();
+  const theme = (await getSiteTheme()) || DEFAULT_THEME;
+
   const projects = portfolioData?.projects || [];
   const experiences = portfolioData?.experiences || [];
   const educationData = portfolioData?.education || [];
   const skillsData = portfolioData?.skills || [];
-
+  const initialSections = theme?.sections || DEFAULT_THEME.sections;
 
   const jsonLdProjects = {
     "@context": "https://schema.org",
@@ -70,42 +63,20 @@ export default async function HomePage() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#090A0F] text-[#F8FAFC]">
+    <div className="flex min-h-screen flex-col bg-background text-text">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdProjects) }}
       />
-      <Navbar />
-      <main id="main-content" className="flex-1 w-full">
-        {/* Section 1: Hero */}
-        <Hero />
-
-        {/* Section 2: Featured Projects (Immediately follows Hero) */}
-        <FeaturedProjects projects={projects} />
-
-        {/* Section 3: About & Engineering Principles */}
-        <About />
-
-        {/* Section 4: Experience */}
-        <Experience experiences={experiences} />
-
-        {/* Section 5: Education */}
-        <Education education={educationData} />
-
-        {/* Section 6: Technical Skills */}
-        <Skills skills={skillsData} />
-
-        {/* Section 7: Practice & Lab (De-emphasized clones/tutorials) */}
-        <PracticeProjects projects={projects} />
-
-        {/* Section 8: Strategic Vision & Goals (Compressed) */}
-        <Goals />
-
-        {/* Section 9: Contact */}
-        <Contact />
-      </main>
-      <Footer />
+      <HomeSectionsContainer
+        initialSections={initialSections}
+        initialContent={theme?.content || DEFAULT_THEME.content}
+        initialPresetId={theme?.presetId || "preset-1"}
+        projects={projects}
+        experiences={experiences}
+        educationData={educationData}
+        skillsData={skillsData}
+      />
     </div>
   );
 }
-
