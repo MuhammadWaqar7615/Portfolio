@@ -57,7 +57,7 @@ export default function Contact() {
           {/* Left Column: Direct Inquiries */}
           <div className="lg:col-span-5 space-y-8">
             <div>
-              <span className="text-xs font-mono uppercase tracking-[0.2em] text-sky-400">
+              <span className="text-xs font-mono uppercase tracking-[0.2em] text-accent">
                 Inquiries & Collaboration
               </span>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mt-2">
@@ -76,7 +76,7 @@ export default function Contact() {
                 </span>
                 <a
                   href="mailto:mwaqar7615@gmail.com"
-                  className="text-white hover:text-sky-400 transition-colors text-sm"
+                  className="text-white hover:text-accent transition-colors text-sm"
                 >
                   mwaqar7615@gmail.com
                 </a>
@@ -88,7 +88,7 @@ export default function Contact() {
                 </span>
                 <a
                   href="tel:+923115119984"
-                  className="text-white hover:text-sky-400 transition-colors text-sm"
+                  className="text-white hover:text-accent transition-colors text-sm"
                 >
                   +92 311 5119984
                 </a>
@@ -107,7 +107,7 @@ export default function Contact() {
 
           {/* Right Column: Contact Form */}
           <div className="lg:col-span-7">
-            <div className="border border-white/[0.08] bg-[#0C0E14] p-6 sm:p-10">
+            <div className="border border-white/[0.08] bg-cardBg p-6 sm:p-10">
               <form
                 ref={formRef}
                 onSubmit={sendEmail}
@@ -119,7 +119,7 @@ export default function Contact() {
                     htmlFor="contact-name"
                     className="block text-xs font-mono uppercase tracking-widest text-gray-300 mb-2"
                   >
-                    Your Name <span className="text-sky-400">*</span>
+                    Your Name <span className="text-accent">*</span>
                   </label>
                   <input
                     id="contact-name"
@@ -127,7 +127,7 @@ export default function Contact() {
                     name="name"
                     required
                     placeholder="e.g. Alex Morgan"
-                    className="w-full bg-[#090A0F] border border-white/10 px-4 py-3 text-sm text-white placeholder-gray-400 focus:border-sky-400 focus:outline-none transition-colors"
+                    className="w-full bg-background border border-white/10 px-4 py-3 text-sm text-white placeholder-gray-400 focus:border-accent focus:outline-none transition-colors"
                   />
                 </div>
 
@@ -136,7 +136,7 @@ export default function Contact() {
                     htmlFor="contact-email"
                     className="block text-xs font-mono uppercase tracking-widest text-gray-300 mb-2"
                   >
-                    Your Email Address <span className="text-sky-400">*</span>
+                    Your Email Address <span className="text-accent">*</span>
                   </label>
                   <input
                     id="contact-email"
@@ -144,7 +144,7 @@ export default function Contact() {
                     name="email"
                     required
                     placeholder="e.g. alex@company.com"
-                    className="w-full bg-[#090A0F] border border-white/10 px-4 py-3 text-sm text-white placeholder-gray-400 focus:border-sky-400 focus:outline-none transition-colors"
+                    className="w-full bg-background border border-white/10 px-4 py-3 text-sm text-white placeholder-gray-400 focus:border-accent focus:outline-none transition-colors"
                   />
                 </div>
 
@@ -153,7 +153,7 @@ export default function Contact() {
                     htmlFor="contact-message"
                     className="block text-xs font-mono uppercase tracking-widest text-gray-300 mb-2"
                   >
-                    Message / Project Details <span className="text-sky-400">*</span>
+                    Message / Project Details <span className="text-accent">*</span>
                   </label>
                   <textarea
                     id="contact-message"
@@ -161,7 +161,7 @@ export default function Contact() {
                     required
                     rows={4}
                     placeholder="Briefly describe your objectives, timeline, or scope..."
-                    className="w-full bg-[#090A0F] border border-white/10 px-4 py-3 text-sm text-white placeholder-gray-400 focus:border-sky-400 focus:outline-none transition-colors resize-y"
+                    className="w-full bg-background border border-white/10 px-4 py-3 text-sm text-white placeholder-gray-400 focus:border-accent focus:outline-none transition-colors resize-y"
                   />
                 </div>
 

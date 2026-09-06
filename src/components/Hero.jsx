@@ -17,7 +17,7 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
           {/* Main Editorial Column (Span 8) */}
           <div className="lg:col-span-8 flex flex-col">
-            <span className="text-xs sm:text-sm font-mono tracking-widest text-sky-400 uppercase mb-3">
+            <span className="text-xs sm:text-sm font-mono tracking-widest text-accent uppercase mb-3">
               Software Engineer & Interface Craftsman
             </span>
 

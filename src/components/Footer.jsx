@@ -41,7 +41,7 @@ export default function Footer() {
           </a>
           <a
             href="#Homepage"
-            className="text-sky-400 hover:text-sky-300 transition-colors ml-4"
+            className="text-accent hover:text-sky-300 transition-colors ml-4"
           >
             ↑ Back to Top
           </a>

@@ -16,7 +16,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-[#090A0F]/85 backdrop-blur-md border-b border-white/[0.08]">
+    <header className="sticky top-0 z-50 w-full bg-background/ backdrop-blur-md border-b border-white/[0.08]">
       <nav
         aria-label="Main Navigation"
         className="editorial-container flex h-16 items-center justify-between"
@@ -109,7 +109,7 @@ export default function Navbar() {
 
       {/* Mobile menu dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-white/10 bg-[#0C0E14] px-6 py-5">
+        <div className="md:hidden border-b border-white/10 bg-cardBg px-6 py-5">
           <div className="flex flex-col gap-4 text-sm font-mono tracking-wider text-gray-300">
             {navLinks.map((link) => (
               <a

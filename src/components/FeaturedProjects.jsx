@@ -59,7 +59,7 @@ export default function FeaturedProjects({ projects = [] }) {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-white/[0.08] pb-6 gap-4">
           <div>
-            <span className="text-xs font-mono uppercase tracking-[0.2em] text-sky-400">
+            <span className="text-xs font-mono uppercase tracking-[0.2em] text-accent">
               Curated Production Work
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mt-2">
@@ -78,12 +78,12 @@ export default function FeaturedProjects({ projects = [] }) {
             return (
               <article
                 key={project._id || project.title}
-                className="group relative border border-white/[0.08] hover:border-white/20 bg-[#0C0E14] p-6 sm:p-10 transition-all duration-300"
+                className="group relative border border-white/[0.08] hover:border-white/20 bg-cardBg p-6 sm:p-10 transition-all duration-300"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                   {/* Number & Category */}
                   <div className="lg:col-span-3 flex flex-col justify-between h-full">
-                    <span className="text-3xl sm:text-4xl font-mono font-bold text-gray-500 group-hover:text-sky-400 transition-colors">
+                    <span className="text-3xl sm:text-4xl font-mono font-bold text-gray-500 group-hover:text-accent transition-colors">
                       {num}
                     </span>
                     <div className="mt-4 lg:mt-12">
@@ -113,7 +113,7 @@ export default function FeaturedProjects({ projects = [] }) {
                       </p>
                       {project.outcome && (
                         <p>
-                          <strong className="text-sky-400 font-medium">Outcome:</strong>{" "}
+                          <strong className="text-accent font-medium">Outcome:</strong>{" "}
                           {project.outcome}
                         </p>
                       )}

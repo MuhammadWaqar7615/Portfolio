@@ -30,7 +30,7 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Section Heading & Bio */}
           <div className="lg:col-span-5 space-y-6">
-            <span className="text-xs font-mono uppercase tracking-[0.2em] text-sky-400">
+            <span className="text-xs font-mono uppercase tracking-[0.2em] text-accent">
               Background & Philosophy
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">
@@ -55,9 +55,9 @@ export default function About() {
             {principles.map((p) => (
               <div
                 key={p.label}
-                className="border border-white/[0.08] bg-[#0C0E14] p-6 sm:p-8"
+                className="border border-white/[0.08] bg-cardBg p-6 sm:p-8"
               >
-                <span className="text-[11px] font-mono tracking-widest text-sky-400">
+                <span className="text-[11px] font-mono tracking-widest text-accent">
                   {p.label}
                 </span>
                 <h3 className="text-xl font-bold text-white mt-1 mb-2">

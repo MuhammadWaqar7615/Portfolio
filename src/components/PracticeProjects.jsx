@@ -93,7 +93,7 @@ export default function PracticeProjects({ projects = [] }) {
           {itemsToDisplay.map((item) => (
             <div
               key={item.title}
-              className="border border-white/[0.06] bg-[#090A0F] p-6 flex flex-col justify-between hover:border-white/15 transition-colors"
+              className="border border-white/[0.06] bg-background p-6 flex flex-col justify-between hover:border-white/15 transition-colors"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-3">
@@ -134,7 +134,7 @@ export default function PracticeProjects({ projects = [] }) {
                     href={item.liveLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sky-400 hover:text-sky-300 transition-colors"
+                    className="text-accent hover:text-sky-300 transition-colors"
                   >
                     Live Preview ↗
                   </a>

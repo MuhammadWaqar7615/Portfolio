@@ -6,10 +6,10 @@ export default function Goals() {
       className="py-16 sm:py-20 border-b border-white/[0.08]"
     >
       <div className="editorial-container">
-        <div className="border border-white/[0.08] bg-[#0C0E14] p-8 sm:p-12">
+        <div className="border border-white/[0.08] bg-cardBg p-8 sm:p-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-4">
-              <span className="text-xs font-mono uppercase tracking-[0.2em] text-sky-400">
+              <span className="text-xs font-mono uppercase tracking-[0.2em] text-accent">
                 Trajectory
               </span>
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white mt-2">

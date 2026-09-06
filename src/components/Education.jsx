@@ -35,7 +35,7 @@ export default function Education({ education = [] }) {
       <div className="editorial-container">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-white/[0.08] pb-6 gap-4">
           <div>
-            <span className="text-xs font-mono uppercase tracking-[0.2em] text-sky-400">
+            <span className="text-xs font-mono uppercase tracking-[0.2em] text-accent">
               Academic Credentials
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mt-2">
@@ -51,10 +51,10 @@ export default function Education({ education = [] }) {
           {credentials.map((item) => (
             <div
               key={item._id || item.degree}
-              className="border border-white/[0.08] bg-[#0C0E14] p-6 sm:p-8 flex flex-col justify-between hover:border-white/20 transition-all duration-300"
+              className="border border-white/[0.08] bg-cardBg p-6 sm:p-8 flex flex-col justify-between hover:border-white/20 transition-all duration-300"
             >
               <div>
-                <span className="text-xs font-mono uppercase tracking-widest text-sky-400">
+                <span className="text-xs font-mono uppercase tracking-widest text-accent">
                   {item.year || item.period}
                 </span>
                 <h3 className="text-xl font-bold text-white mt-2">

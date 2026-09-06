@@ -29,7 +29,7 @@ export default function Experience({ experiences = [] }) {
       <div className="editorial-container">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-white/[0.08] pb-6 gap-4">
           <div>
-            <span className="text-xs font-mono uppercase tracking-[0.2em] text-sky-400">
+            <span className="text-xs font-mono uppercase tracking-[0.2em] text-accent">
               Work History
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mt-2">
@@ -45,11 +45,11 @@ export default function Experience({ experiences = [] }) {
           {listToDisplay.map((exp) => (
             <div
               key={exp._id || exp.role}
-              className="border border-white/[0.08] bg-[#0C0E14] p-6 sm:p-10 transition-all duration-300 hover:border-white/20"
+              className="border border-white/[0.08] bg-cardBg p-6 sm:p-10 transition-all duration-300 hover:border-white/20"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                 <div className="lg:col-span-3">
-                  <span className="text-xs font-mono uppercase tracking-widest text-sky-400">
+                  <span className="text-xs font-mono uppercase tracking-widest text-accent">
                     {exp.duration}
                   </span>
                   <p className="text-xs font-mono text-gray-400 mt-1">
