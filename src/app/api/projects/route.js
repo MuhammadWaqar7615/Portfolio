@@ -20,6 +20,7 @@ export async function GET() {
             roleDecisions: "Engineered modular React component architecture.",
             techTags: ["React", "Tailwind CSS", "Framer Motion"],
             liveLink: "https://crafts-delights.vercel.app",
+            liveLinks: [{ label: "Live Demo", url: "https://crafts-delights.vercel.app" }],
             codeLink: "https://github.com/MuhammadWaqar7615/",
             status: "live",
           },
@@ -31,6 +32,7 @@ export async function GET() {
             roleDecisions: "Developed full-stack reservation workflows with Node.js and MongoDB.",
             techTags: ["React", "Node.js", "Express", "MongoDB"],
             liveLink: "https://retreat-bookings.vercel.app",
+            liveLinks: [{ label: "Live Demo", url: "https://retreat-bookings.vercel.app" }],
             codeLink: "https://github.com/MuhammadWaqar7615/",
             status: "live",
           },
@@ -42,6 +44,7 @@ export async function GET() {
             roleDecisions: "Implemented Supabase backend with optimistic UI updates.",
             techTags: ["React", "Supabase", "Tailwind CSS"],
             liveLink: "https://irfan-alyy.github.io/Ecommerce-Store/",
+            liveLinks: [{ label: "Live Demo", url: "https://irfan-alyy.github.io/Ecommerce-Store/" }],
             codeLink: "https://github.com/MuhammadWaqar7615/",
             status: "live",
           },
@@ -53,6 +56,7 @@ export async function GET() {
             roleDecisions: "Designed full-stack ERM system architecture.",
             techTags: ["React", "Express", "PostgreSQL"],
             liveLink: null,
+            liveLinks: [],
             codeLink: "https://github.com/MuhammadWaqar7615/",
             status: "in-progress",
           },
@@ -81,11 +85,23 @@ export async function POST(request) {
     }
 
     const body = await request.json();
-    const { title, shortDescription, problem, roleDecisions, techTags, codeLink, liveLink, coverImage, status, order } = body;
+    const { title, shortDescription, problem, roleDecisions, techTags, codeLink, liveLink, liveLinks, coverImage, status, order } = body;
 
     if (!title || !shortDescription || !problem || !roleDecisions) {
       return NextResponse.json({ message: "Missing required project fields" }, { status: 400 });
     }
+
+    // Process & sanitize liveLinks
+    const sanitizedLiveLinks = Array.isArray(liveLinks)
+      ? liveLinks
+          .map((l) => ({
+            label: (l?.label || "Live Demo").trim(),
+            url: (l?.url || "").trim(),
+          }))
+          .filter((l) => Boolean(l.url))
+      : (liveLink ? [{ label: "Live Demo", url: liveLink.trim() }] : []);
+
+    const primaryLiveLink = sanitizedLiveLinks.length > 0 ? sanitizedLiveLinks[0].url : (liveLink || null);
 
     // Status Enforcer Rule: Must be one of live, in-progress, archived
     const validStatus = ["live", "in-progress", "archived"].includes(status) ? status : "live";
@@ -97,7 +113,8 @@ export async function POST(request) {
       roleDecisions,
       techTags: Array.isArray(techTags) ? techTags : [techTags].filter(Boolean),
       codeLink: codeLink || null,
-      liveLink: liveLink || null,
+      liveLink: primaryLiveLink,
+      liveLinks: sanitizedLiveLinks,
       coverImage: coverImage || null,
       status: validStatus,
       order: typeof order === "number" ? order : 0,

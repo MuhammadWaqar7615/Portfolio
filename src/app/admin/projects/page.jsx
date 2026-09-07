@@ -20,7 +20,7 @@ export default function AdminProjectsPage() {
     roleDecisions: "",
     techTags: "",
     codeLink: "",
-    liveLink: "",
+    liveLinks: [{ label: "Live Site", url: "" }],
     coverImage: "",
     status: "live", // Default to live
     order: 0,
@@ -56,7 +56,7 @@ export default function AdminProjectsPage() {
       roleDecisions: "",
       techTags: "",
       codeLink: "",
-      liveLink: "",
+      liveLinks: [{ label: "Live Site", url: "" }],
       coverImage: "",
       status: "live",
       order: 0,
@@ -65,7 +65,40 @@ export default function AdminProjectsPage() {
     setStatusMessage("");
   };
 
+  const handleAddLiveLink = () => {
+    setFormData((prev) => {
+      const count = prev.liveLinks.length;
+      const nextLabel = count === 1 ? "Admin Panel" : count === 2 ? "POS Portal" : "Live Demo";
+      return {
+        ...prev,
+        liveLinks: [...prev.liveLinks, { label: nextLabel, url: "" }],
+      };
+    });
+  };
+
+  const handleUpdateLiveLink = (index, field, value) => {
+    setFormData((prev) => {
+      const updated = [...prev.liveLinks];
+      updated[index] = { ...updated[index], [field]: value };
+      return { ...prev, liveLinks: updated };
+    });
+  };
+
+  const handleRemoveLiveLink = (index) => {
+    setFormData((prev) => ({
+      ...prev,
+      liveLinks: prev.liveLinks.filter((_, i) => i !== index),
+    }));
+  };
+
   const handleEdit = (project) => {
+    const initialLinks =
+      Array.isArray(project.liveLinks) && project.liveLinks.length > 0
+        ? project.liveLinks.map((l) => ({ label: l.label || "Live Demo", url: l.url || "" }))
+        : project.liveLink
+        ? [{ label: "Live Site", url: project.liveLink }]
+        : [{ label: "Live Site", url: "" }];
+
     setFormData({
       title: project.title || "",
       shortDescription: project.shortDescription || "",
@@ -73,7 +106,7 @@ export default function AdminProjectsPage() {
       roleDecisions: project.roleDecisions || "",
       techTags: Array.isArray(project.techTags) ? project.techTags.join(", ") : project.techTags || "",
       codeLink: project.codeLink || "",
-      liveLink: project.liveLink || "",
+      liveLinks: initialLinks,
       coverImage: project.coverImage || "",
       status: project.status || "live",
       order: project.order || 0,
@@ -105,7 +138,7 @@ export default function AdminProjectsPage() {
       } else {
         setStatusMessage("Upload failed: " + (json.message || "Unknown error"));
       }
-    } catch (err) {
+    } catch {
       setStatusMessage("Upload error");
     } finally {
       setUploading(false);
@@ -116,9 +149,21 @@ export default function AdminProjectsPage() {
     e.preventDefault();
     const token = localStorage.getItem("admin_token");
 
+    const cleanedLiveLinks = formData.liveLinks
+      .map((l) => ({
+        label: (l.label || "Live Demo").trim(),
+        url: (l.url || "").trim(),
+      }))
+      .filter((l) => Boolean(l.url));
+
     const payload = {
       ...formData,
-      techTags: formData.techTags.split(",").map((t) => t.trim()).filter(Boolean),
+      liveLinks: cleanedLiveLinks,
+      liveLink: cleanedLiveLinks.length > 0 ? cleanedLiveLinks[0].url : "",
+      techTags:
+        typeof formData.techTags === "string"
+          ? formData.techTags.split(",").map((t) => t.trim()).filter(Boolean)
+          : formData.techTags,
     };
 
     const isNew = editingProject?.isNew;
@@ -143,7 +188,7 @@ export default function AdminProjectsPage() {
       } else {
         setStatusMessage("Error: " + (json.message || "Operation failed"));
       }
-    } catch (err) {
+    } catch {
       setStatusMessage("Network error saving project.");
     }
   };
@@ -164,7 +209,7 @@ export default function AdminProjectsPage() {
       } else {
         setStatusMessage("Delete failed");
       }
-    } catch (err) {
+    } catch {
       setStatusMessage("Error deleting project");
     }
   };
@@ -269,27 +314,104 @@ export default function AdminProjectsPage() {
                 />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-gray-400 uppercase mb-1">Live Demo Link</label>
-                  <input
-                    type="url"
-                    value={formData.liveLink}
-                    onChange={(e) => setFormData({ ...formData, liveLink: e.target.value })}
-                    placeholder="https://..."
-                    className="w-full bg-[#090A0F] border border-white/10 p-3 text-white text-sm"
-                  />
+              {/* Multi Live Links Section */}
+              <div className="border border-white/10 bg-[#07080C] p-4 rounded-sm space-y-3">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div>
+                    <label className="block text-gray-200 uppercase font-bold text-xs tracking-wider">
+                      Project Live Deployment Links
+                    </label>
+                    <span className="text-[11px] text-gray-400">
+                      Add multiple links for projects (e.g. Live Site, Admin Panel, POS Portal, Customer App)
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleAddLiveLink}
+                    className="px-3 py-1.5 bg-white/10 hover:bg-white/20 text-white text-xs font-mono uppercase tracking-wider flex items-center gap-1.5 border border-white/20 transition-colors w-fit"
+                  >
+                    <span>+ Add Demo Link</span>
+                  </button>
                 </div>
-                <div>
-                  <label className="block text-gray-400 uppercase mb-1">Source Code Repository Link</label>
-                  <input
-                    type="url"
-                    value={formData.codeLink}
-                    onChange={(e) => setFormData({ ...formData, codeLink: e.target.value })}
-                    placeholder="https://github.com/..."
-                    className="w-full bg-[#090A0F] border border-white/10 p-3 text-white text-sm"
-                  />
+
+                <div className="space-y-3 pt-2">
+                  {formData.liveLinks.map((link, idx) => (
+                    <div
+                      key={idx}
+                      className="p-3 bg-[#090A0F] border border-white/10 flex flex-col sm:flex-row gap-3 items-start sm:items-center"
+                    >
+                      {/* Label with quick presets */}
+                      <div className="w-full sm:w-2/5 space-y-1">
+                        <label className="text-[10px] uppercase text-gray-400 font-mono block">
+                          Link #{idx + 1} Label
+                        </label>
+                        <input
+                          type="text"
+                          value={link.label}
+                          onChange={(e) => handleUpdateLiveLink(idx, "label", e.target.value)}
+                          placeholder="e.g. Live Site, Admin Panel"
+                          className="w-full bg-[#0C0E14] border border-white/10 p-2.5 text-white text-xs"
+                        />
+                        <div className="flex flex-wrap gap-1 pt-1">
+                          {["Live Site", "Admin Panel", "POS Portal", "Client App"].map((presetLabel) => (
+                            <button
+                              key={presetLabel}
+                              type="button"
+                              onClick={() => handleUpdateLiveLink(idx, "label", presetLabel)}
+                              className={`text-[9px] px-1.5 py-0.5 rounded transition-colors ${
+                                link.label === presetLabel
+                                  ? "bg-sky-500/30 text-sky-300 border border-sky-500/50"
+                                  : "bg-white/5 text-gray-400 hover:text-white border border-transparent"
+                              }`}
+                            >
+                              {presetLabel}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* URL input */}
+                      <div className="w-full sm:flex-1 space-y-1">
+                        <label className="text-[10px] uppercase text-gray-400 font-mono block">
+                          URL (https://...)
+                        </label>
+                        <input
+                          type="url"
+                          value={link.url}
+                          onChange={(e) => handleUpdateLiveLink(idx, "url", e.target.value)}
+                          placeholder="https://..."
+                          className="w-full bg-[#0C0E14] border border-white/10 p-2.5 text-white text-xs font-mono"
+                        />
+                      </div>
+
+                      {/* Remove Button */}
+                      {formData.liveLinks.length > 1 && (
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveLiveLink(idx)}
+                          className="mt-2 sm:mt-0 px-2.5 py-2 text-rose-400 hover:text-white hover:bg-rose-500/20 border border-rose-500/20 text-xs transition-colors self-end sm:self-center cursor-pointer"
+                          title="Remove this link"
+                        >
+                          ✕
+                        </button>
+                      )}
+                    </div>
+                  ))}
                 </div>
+              </div>
+
+              {/* Source Code Repository Link */}
+              <div>
+                <label className="block text-gray-400 uppercase mb-1">
+                  Source Code Repository Link (GitHub)
+                </label>
+                <input
+                  type="url"
+                  value={formData.codeLink}
+                  onChange={(e) => setFormData({ ...formData, codeLink: e.target.value })}
+                  placeholder="https://github.com/..."
+                  className="w-full bg-[#090A0F] border border-white/10 p-3 text-white text-sm font-mono"
+                />
               </div>
 
               <div>
@@ -346,28 +468,68 @@ export default function AdminProjectsPage() {
                   <div>
                     <div className="flex items-center gap-3">
                       <span
-                        className={`text-[10px] font-mono uppercase px-2 py-0.5 border ${p.status === "live"
-                          ? "text-emerald-400 border-emerald-400/30 bg-emerald-400/10"
-                          : "text-amber-400 border-amber-400/30 bg-amber-400/10"
-                          }`}
+                        className={`text-[10px] font-mono uppercase px-2 py-0.5 border ${
+                          p.status === "live"
+                            ? "text-emerald-400 border-emerald-400/30 bg-emerald-400/10"
+                            : "text-amber-400 border-amber-400/30 bg-amber-400/10"
+                        }`}
                       >
                         {p.status}
                       </span>
                       <h3 className="text-lg font-bold text-white">{p.title}</h3>
                     </div>
                     <p className="text-xs text-gray-400 mt-1 font-light">{p.shortDescription}</p>
+
+                    {/* Quick view of links */}
+                    <div className="flex flex-wrap items-center gap-2 mt-3">
+                      {p.liveLinks && p.liveLinks.length > 0 ? (
+                        p.liveLinks.map((l, i) => (
+                          <a
+                            key={i}
+                            href={l.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[10px] font-mono px-2 py-0.5 border border-sky-500/30 text-sky-300 bg-sky-500/10 hover:bg-sky-500/20 flex items-center gap-1 transition-colors"
+                          >
+                            <span>{l.label || "Live Demo"}</span>
+                            <span>↗</span>
+                          </a>
+                        ))
+                      ) : p.liveLink ? (
+                        <a
+                          href={p.liveLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[10px] font-mono px-2 py-0.5 border border-sky-500/30 text-sky-300 bg-sky-500/10 hover:bg-sky-500/20 flex items-center gap-1 transition-colors"
+                        >
+                          <span>Live Demo</span>
+                          <span>↗</span>
+                        </a>
+                      ) : null}
+                      {p.codeLink && (
+                        <a
+                          href={p.codeLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[10px] font-mono px-2 py-0.5 border border-white/20 text-gray-300 hover:text-white bg-white/5 flex items-center gap-1 transition-colors"
+                        >
+                          <span>GitHub</span>
+                          <span>↗</span>
+                        </a>
+                      )}
+                    </div>
                   </div>
 
                   <div className="flex items-center gap-3 font-mono text-xs">
                     <button
                       onClick={() => handleEdit(p)}
-                      className="px-3 py-1.5 border border-white/20 text-white hover:bg-white hover:text-black transition-colors"
+                      className="px-3 py-1.5 border border-white/20 text-white hover:bg-white hover:text-black transition-colors cursor-pointer"
                     >
                       Edit
                     </button>
                     <button
                       onClick={() => handleDelete(p._id)}
-                      className="px-3 py-1.5 border border-rose-500/30 text-rose-300 hover:bg-rose-500/10 transition-colors"
+                      className="px-3 py-1.5 border border-rose-500/30 text-rose-300 hover:bg-rose-500/10 transition-colors cursor-pointer"
                     >
                       Delete
                     </button>

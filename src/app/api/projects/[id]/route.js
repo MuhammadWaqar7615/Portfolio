@@ -41,6 +41,22 @@ export async function PUT(request, { params }) {
       return NextResponse.json({ message: "Invalid status value" }, { status: 400 });
     }
 
+    if ("liveLinks" in body) {
+      const sanitizedLiveLinks = Array.isArray(body.liveLinks)
+        ? body.liveLinks
+            .map((l) => ({
+              label: (l?.label || "Live Demo").trim(),
+              url: (l?.url || "").trim(),
+            }))
+            .filter((l) => Boolean(l.url))
+        : (body.liveLink ? [{ label: "Live Demo", url: body.liveLink.trim() }] : []);
+
+      body.liveLinks = sanitizedLiveLinks;
+      body.liveLink = sanitizedLiveLinks.length > 0 ? sanitizedLiveLinks[0].url : (body.liveLink || null);
+    } else if ("liveLink" in body && body.liveLink) {
+      body.liveLinks = [{ label: "Live Demo", url: body.liveLink.trim() }];
+    }
+
     const resolvedParams = await params;
     const updatedProject = await Project.findByIdAndUpdate(resolvedParams.id, body, {
       new: true,

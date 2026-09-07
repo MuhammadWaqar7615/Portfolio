@@ -115,20 +115,31 @@ export default function PracticeProjects({ projects = [], content }) {
                 )}
               </div>
 
-              <div className="flex items-center gap-4 pt-4 border-t border-white/[0.06] text-xs font-mono">
-                {item.liveLink ? (
-                  <a
-                    href={item.liveLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-editable="accent"
-                    className="text-accent hover:opacity-80 transition-opacity"
-                  >
-                    Live Preview ↗
-                  </a>
-                ) : (
-                  <span className="opacity-50">Preview Offline</span>
-                )}
+              <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-white/[0.06] text-xs font-mono">
+                {(() => {
+                  const links = Array.isArray(item.liveLinks) && item.liveLinks.length > 0
+                    ? item.liveLinks.filter((l) => Boolean(l && l.url))
+                    : item.liveLink
+                    ? [{ label: "Live Preview", url: item.liveLink }]
+                    : [];
+
+                  if (links.length === 0) {
+                    return <span className="opacity-50">Preview Offline</span>;
+                  }
+
+                  return links.map((link, lIdx) => (
+                    <a
+                      key={lIdx}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-editable={lIdx === 0 ? "accent" : undefined}
+                      className={lIdx === 0 ? "text-accent hover:opacity-80 transition-opacity" : "opacity-75 hover:opacity-100 transition-opacity"}
+                    >
+                      {link.label || "Live Preview"} ↗
+                    </a>
+                  ));
+                })()}
                 {item.codeLink && (
                   <a
                     href={item.codeLink}

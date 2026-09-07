@@ -35,6 +35,20 @@ const ProjectSchema = new mongoose.Schema(
       default: null,
       trim: true,
     },
+    liveLinks: [
+      {
+        label: {
+          type: String,
+          trim: true,
+          default: "Live Demo",
+        },
+        url: {
+          type: String,
+          trim: true,
+          required: true,
+        },
+      },
+    ],
     coverImage: {
       type: String,
       default: null,
@@ -55,5 +69,9 @@ const ProjectSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+if (mongoose.models.Project && !mongoose.models.Project.schema.paths.liveLinks) {
+  delete mongoose.models.Project;
+}
 
 export default mongoose.models.Project || mongoose.model("Project", ProjectSchema);
