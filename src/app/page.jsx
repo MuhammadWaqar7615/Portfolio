@@ -2,8 +2,9 @@ import HomeSectionsContainer from "../components/HomeSectionsContainer";
 import { getPortfolioData, getSiteTheme } from "../../lib/dbData";
 import { DEFAULT_THEME } from "../../models/SiteTheme";
 
-// Incremental Static Regeneration (ISR) interval in seconds
-export const revalidate = 3600;
+// Dynamic rendering (revalidate = 0)
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export default async function HomePage() {
   const portfolioData = await getPortfolioData();

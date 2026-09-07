@@ -146,17 +146,26 @@ export default function About({ content, presetId }) {
                 </a>
 
                 {/* Experience Tile */}
-                <div className="bg-[#1C1F18] border border-[#2E3228] rounded-[10px] p-3.5 flex items-center gap-3 transition-colors hover:border-[#69745A]">
-                  <div className="w-9 h-9 rounded-lg bg-[#252820] border border-[#383C2F] flex items-center justify-center text-[#E8B58F] flex-shrink-0 shadow-2xs">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
+                <a
+                  href="#experience"
+                  className="group bg-[#1C1F18] border border-[#2E3228] hover:border-[#E8B58F] rounded-[10px] p-3.5 flex items-center justify-between gap-3 transition-all block text-left"
+                  title="View professional experience"
+                >
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="w-9 h-9 rounded-lg bg-[#252820] border border-[#383C2F] group-hover:bg-[#E8B58F] group-hover:text-[#151713] flex items-center justify-center text-[#E8B58F] flex-shrink-0 transition-colors shadow-2xs">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <div className="min-w-0">
+                      <span className="text-[10px] font-semibold text-[#8E8D84] uppercase tracking-wider block">Experience</span>
+                      <span className="text-sm font-semibold text-[#F4F0E8] group-hover:text-[#E8B58F] truncate block transition-colors">
+                        {profileExperience}
+                      </span>
+                    </div>
                   </div>
-                  <div className="min-w-0">
-                    <span className="text-[10px] font-semibold text-[#8E8D84] uppercase tracking-wider block">Experience</span>
-                    <span className="text-sm font-semibold text-[#F4F0E8] block">{profileExperience}</span>
-                  </div>
-                </div>
+                  <span className="text-xs text-[#8E8D84] group-hover:text-[#E8B58F] transition-colors pr-1 font-mono">↓</span>
+                </a>
 
                 {/* Action Buttons */}
                 <div className="pt-2 flex flex-col sm:flex-row gap-3">

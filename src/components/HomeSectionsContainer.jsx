@@ -53,7 +53,7 @@ export default function HomeSectionsContainer({
         onContentChange={setContent}
         onPresetChange={setPresetId}
       />
-      <Navbar content={content} presetId={presetId} />
+      <Navbar content={content} presetId={presetId} sections={sections} />
       <main id="main-content" className="flex-1 w-full">
         {sortedSections.map((sec) => sectionComponentMap[sec.sectionId] || null)}
       </main>

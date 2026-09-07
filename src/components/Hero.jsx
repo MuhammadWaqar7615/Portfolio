@@ -105,7 +105,7 @@ export default function Hero({ content, presetId }) {
             <div className="lg:col-span-6 flex justify-center lg:justify-end">
               <div className="relative rounded-[10px] overflow-hidden border border-[#383A33] shadow-2xl max-w-lg w-full">
                 <img
-                  src="/my-img.png"
+                  src="/my-img.jpeg"
                   alt="Muhammad Waqar at workspace"
                   className="w-full h-auto object-cover"
                 />

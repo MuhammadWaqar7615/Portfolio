@@ -386,7 +386,7 @@ export default function ThemeCustomizer() {
       typography: { ...targetPreset.typography },
       radius: targetPreset.radius,
       spacing: targetPreset.spacing,
-      sections: targetPreset.sections ? [...targetPreset.sections] : theme.sections,
+      sections: targetPreset.sections ? [...targetPreset.sections] : [...DEFAULT_SECTIONS],
       content: JSON.parse(JSON.stringify(targetPreset.content)),
     };
 

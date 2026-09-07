@@ -83,10 +83,10 @@ export async function generateMetadata() {
       : "https://muhammad-waqar.me");
 
   const title =
-    siteData?.title || "Muhammad Waqar — Frontend & Full-Stack Engineer";
+    siteData?.title || "Muhammad Waqar | React & Next.js Frontend Developer";
   const description =
     siteData?.description ||
-    "Portfolio of Muhammad Waqar, a Frontend & Full-Stack Engineer specializing in React, Next.js, TypeScript, and high-performance user interfaces.";
+    "Frontend Developer specializing in React, Next.js, Tailwind CSS, and modern UI libraries. Building fast, responsive, user-focused web experiences.";
   const ogImage =
     siteData?.ogImage || `${baseUrl}/opengraph-image`;
 
@@ -99,18 +99,34 @@ export async function generateMetadata() {
     description,
     keywords: [
       "Muhammad Waqar",
-      "Frontend Engineer",
+      "Frontend Developer",
+      "React Developer",
+      "Next.js Developer",
       "Full-Stack Developer",
-      "React",
-      "Next.js",
+      "Frontend Engineer",
+      "JavaScript",
       "TypeScript",
+      "Tailwind CSS",
       "Node.js",
+      "Express.js",
       "MongoDB",
+      "UI Developer",
+      "Responsive Design",
+      "Web Development",
       "Web Architecture",
+      "React Portfolio",
       "Portfolio",
     ],
     authors: [{ name: "Muhammad Waqar", url: baseUrl }],
     creator: "Muhammad Waqar",
+    icons: {
+      icon: [
+        { url: "/name_logo.png", type: "image/png" },
+        { url: "/favicon.png", type: "image/png" },
+        { url: "/favicon.ico" },
+      ],
+      apple: [{ url: "/name_logo.png", type: "image/png" }],
+    },
     alternates: {
       canonical: baseUrl,
     },
@@ -126,7 +142,13 @@ export async function generateMetadata() {
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: "Muhammad Waqar — Frontend & Full-Stack Engineer",
+          alt: "Muhammad Waqar | React & Next.js Frontend Developer",
+        },
+        {
+          url: `${baseUrl}/preview_image.png`,
+          width: 1200,
+          height: 630,
+          alt: "Muhammad Waqar Frontend Developer Portfolio",
         },
       ],
     },
@@ -134,7 +156,7 @@ export async function generateMetadata() {
       card: "summary_large_image",
       title,
       description,
-      images: [ogImage],
+      images: [ogImage, `${baseUrl}/preview_image.png`],
     },
     robots: {
       index: true,
@@ -147,15 +169,47 @@ export async function generateMetadata() {
         "max-snippet": -1,
       },
     },
+    verification: {
+      google: "pNQklktQuBHgyP0elkyVJWaus8v1GGh-akwDE3JhQd4",
+    },
+    appleWebApp: {
+      capable: true,
+      title: "Muhammad Waqar Portfolio",
+      statusBarStyle: "black-translucent",
+    },
+    formatDetection: {
+      telephone: false,
+    },
   };
 }
 
+export const viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#090A0F" },
+    { media: "(prefers-color-scheme: light)", color: "#F8FAFC" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default async function RootLayout({ children }) {
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "https://muhammad-waqar.me");
+
   const jsonLdPerson = {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Muhammad Waqar",
-    url: "https://muhammad-waqar.me",
+    url: baseUrl,
+    image: `${baseUrl}/preview_image.png`,
+    logo: `${baseUrl}/name_logo.png`,
+    description:
+      "Frontend Developer specializing in React, Next.js, and modern UI development.",
     jobTitle: "Frontend & Full-Stack Engineer",
     worksFor: {
       "@type": "Organization",
