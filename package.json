@@ -7,7 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:sync": "node scripts/sync-local-to-atlas.mjs"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

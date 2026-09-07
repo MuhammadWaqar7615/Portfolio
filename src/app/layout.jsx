@@ -74,16 +74,24 @@ export async function generateMetadata() {
     console.warn("MongoDB SiteMetadata query skipped, using curated defaults:", err.message);
   }
 
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "https://muhammad-waqar.me");
+
   const title =
     siteData?.title || "Muhammad Waqar — Frontend & Full-Stack Engineer";
   const description =
     siteData?.description ||
     "Portfolio of Muhammad Waqar, a Frontend & Full-Stack Engineer specializing in React, Next.js, TypeScript, and high-performance user interfaces.";
   const ogImage =
-    siteData?.ogImage || "https://muhammad-waqar.me/opengraph-image";
+    siteData?.ogImage || `${baseUrl}/opengraph-image`;
 
   return {
-    metadataBase: new URL("https://muhammad-waqar.me"),
+    metadataBase: new URL(baseUrl),
     title: {
       default: title,
       template: "%s | Muhammad Waqar",
@@ -101,15 +109,15 @@ export async function generateMetadata() {
       "Web Architecture",
       "Portfolio",
     ],
-    authors: [{ name: "Muhammad Waqar", url: "https://muhammad-waqar.me" }],
+    authors: [{ name: "Muhammad Waqar", url: baseUrl }],
     creator: "Muhammad Waqar",
     alternates: {
-      canonical: "https://muhammad-waqar.me",
+      canonical: baseUrl,
     },
     openGraph: {
       type: "website",
       locale: "en_US",
-      url: "https://muhammad-waqar.me",
+      url: baseUrl,
       title,
       description,
       siteName: "Muhammad Waqar Portfolio",

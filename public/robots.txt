@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /assets/
-
-Sitemap: https://muhammad-waqar.me/sitemap.xml
