@@ -3,14 +3,14 @@ import ThemeSwitch from "../../components/ThemeSwitch";
 export const metadata = {
   title: "Resume & Professional Credentials — Muhammad Waqar",
   description:
-    "Curriculum Vitae and verified technical background of Muhammad Waqar, Frontend & Full-Stack Engineer.",
+    "Curriculum Vitae and verified technical background of Muhammad Waqar, Full Stack Web Engineer.",
   alternates: {
     canonical: "https://muhammad-waqar.me/resume",
   },
   openGraph: {
     title: "Resume & Credentials — Muhammad Waqar",
     description:
-      "Curriculum Vitae and verified technical background of Muhammad Waqar, Frontend & Full-Stack Engineer.",
+      "Curriculum Vitae and verified technical background of Muhammad Waqar, Full Stack Web Engineer.",
     url: "https://muhammad-waqar.me/resume",
     type: "profile",
     images: [

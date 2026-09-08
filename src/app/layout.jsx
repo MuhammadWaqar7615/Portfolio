@@ -83,10 +83,10 @@ export async function generateMetadata() {
       : "https://muhammad-waqar.me");
 
   const title =
-    siteData?.title || "Muhammad Waqar | React & Next.js Frontend Developer";
+    siteData?.title || "Muhammad Waqar — Full Stack Engineer";
   const description =
     siteData?.description ||
-    "Frontend Developer specializing in React, Next.js, Tailwind CSS, and modern UI libraries. Building fast, responsive, user-focused web experiences.";
+    "Portfolio of Muhammad Waqar, a Full Stack Web Engineer specializing in React, Next.js, JavaScript, and high-performance user interfaces.";
   const ogImage =
     siteData?.ogImage || `${baseUrl}/opengraph-image`;
 
@@ -142,13 +142,13 @@ export async function generateMetadata() {
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: "Muhammad Waqar | React & Next.js Frontend Developer",
+          alt: "Muhammad Waqar — Full Stack Engineer",
         },
         {
           url: `${baseUrl}/preview_image.png`,
           width: 1200,
           height: 630,
-          alt: "Muhammad Waqar Frontend Developer Portfolio",
+          alt: "Muhammad Waqar Full Stack Engineer Portfolio",
         },
       ],
     },
@@ -209,8 +209,8 @@ export default async function RootLayout({ children }) {
     image: `${baseUrl}/preview_image.png`,
     logo: `${baseUrl}/name_logo.png`,
     description:
-      "Frontend Developer specializing in React, Next.js, and modern UI development.",
-    jobTitle: "Frontend & Full-Stack Engineer",
+      "Portfolio of Muhammad Waqar, a Full Stack Web Engineer specializing in React, Next.js, JavaScript, and high-performance user interfaces.",
+    jobTitle: "Full Stack Web Engineer",
     worksFor: {
       "@type": "Organization",
       name: "Bloggers Brackets",

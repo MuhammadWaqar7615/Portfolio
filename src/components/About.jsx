@@ -3,7 +3,7 @@ export default function About({ content, presetId }) {
   const isPreset2 = presetId === "preset-2";
   const tagline = about.tagline !== undefined ? about.tagline : (isPreset2 ? "ABOUT ME ────" : "Background & Philosophy");
   const heading = about.heading !== undefined ? about.heading : (isPreset2 ? "Building quality web experiences with code and creativity." : "Engineering with clarity and intention.");
-  const p1 = about.paragraph1 !== undefined ? about.paragraph1 : (isPreset2 ? "I'm a passionate Full Stack Web Developer who loves turning ideas into real, functional and user-friendly web applications. I enjoy working with modern technologies and constantly learning new skills to stay ahead." : "I am a Frontend & Full-Stack Engineer dedicated to producing fast, accessible, and scalable web software. My focus centers on modern JavaScript, React, Next.js, and cloud-native database architectures.");
+  const p1 = about.paragraph1 !== undefined ? about.paragraph1 : (isPreset2 ? "I'm a passionate Full Stack Web Developer who loves turning ideas into real, functional and user-friendly web applications. I enjoy working with modern technologies and constantly learning new skills to stay ahead." : "I am a Full Stack Engineer dedicated to producing fast, accessible, and scalable web software. My focus centers on modern JavaScript, React, Next.js, and cloud-native database architectures.");
   const p2 = about.paragraph2 !== undefined ? about.paragraph2 : "Rather than treating styling and backend as separate concerns, I engineer applications from database schema to pixel-perfect component rendering, ensuring every layer is maintainable, solo-operable, and crawlable by search engines.";
 
   const profileName = about.profileName || "Muhammad Waqar";

@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "nodejs";
-export const alt = "Muhammad Waqar — Frontend & Full-Stack Engineer";
+export const alt = "Muhammad Waqar — Full Stack Engineer";
 export const size = {
   width: 1200,
   height: 630,
@@ -103,7 +103,7 @@ export default function TwitterImage() {
               fontWeight: 600,
             }}
           >
-            Frontend & Full-Stack Engineer
+            Full Stack Engineer
           </div>
           <div
             style={{

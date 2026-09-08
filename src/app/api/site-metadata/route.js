@@ -10,8 +10,8 @@ export async function GET() {
     if (!conn) {
       return NextResponse.json({
         metadata: {
-          title: "Muhammad Waqar — Frontend & Full-Stack Engineer",
-          description: "Portfolio of Muhammad Waqar, a Frontend & Full-Stack Engineer specializing in React, Next.js, TypeScript, and high-performance user interfaces.",
+          title: "Muhammad Waqar — Full Stack Engineer",
+          description: "Portfolio of Muhammad Waqar, a Full Stack Engineer specializing in React, Next.js, javaScript, and high-performance user interfaces.",
           ogImage: "https://muhammad-waqar.me/opengraph-image",
           canonicalUrl: "https://muhammad-waqar.me",
         },
@@ -21,8 +21,8 @@ export async function GET() {
     let metadata = await SiteMetadata.findOne().lean();
     if (!metadata) {
       metadata = await SiteMetadata.create({
-        title: "Muhammad Waqar — Frontend & Full-Stack Engineer",
-        description: "Portfolio of Muhammad Waqar, a Frontend & Full-Stack Engineer specializing in React, Next.js, TypeScript, and high-performance user interfaces.",
+        title: "Muhammad Waqar — Full Stack Engineer",
+        description: "Portfolio of Muhammad Waqar, a Full Stack Engineer specializing in React, Next.js, TypeScript, and high-performance user interfaces.",
         ogImage: "https://muhammad-waqar.me/opengraph-image",
         canonicalUrl: "https://muhammad-waqar.me",
       });

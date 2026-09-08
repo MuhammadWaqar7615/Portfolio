@@ -2,7 +2,7 @@ export default function Hero({ content, presetId }) {
   const hero = content?.hero || {};
   const isPreset2 = presetId === "preset-2";
   const edition = hero.edition !== undefined ? hero.edition : (isPreset2 ? "HI, I'M" : "PORTFOLIO EDITION // 2026");
-  const specialization = hero.specialization !== undefined ? hero.specialization : "SPECIALIZATION: FRONTEND & FULL-STACK SYSTEMS";
+  const specialization = hero.specialization !== undefined ? hero.specialization : "SPECIALIZATION: FULL-STACK SYSTEMS";
   const location = hero.location !== undefined ? hero.location : (isPreset2 ? "Turning Ideas into Digital Solutions" : "BASED IN PAKISTAN — OPEN GLOBALLY");
   const roleTag = hero.roleTag !== undefined ? hero.roleTag : (isPreset2 ? "FULL STACK WEB DEVELOPER" : "Software Engineer & Interface Craftsman");
   const name = hero.name !== undefined ? hero.name : "Muhammad Waqar";
