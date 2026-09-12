@@ -34,7 +34,7 @@ export default function ThemePreviewListener({ onSectionsChange, onContentChange
         }
         try {
           localStorage.setItem("theme_mode", mode);
-        } catch {}
+        } catch { }
         return;
       }
 
