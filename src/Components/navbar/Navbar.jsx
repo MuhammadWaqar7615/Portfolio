@@ -131,15 +131,17 @@ export default function Navbar({ onMenuClick }) {
           {/* ===== RIGHT: Socials + Resume ===== */}
           <div className="flex items-center gap-2 sm:gap-3 ml-auto">
             {/* Mobile Resume Button */}
-            <Link
-              to="/resume"
+            <a
+              href="/cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="interactive md:hidden rounded-full bg-gradient-to-r from-purple-600 to-blue-600 p-2 text-white transition-all duration-300 hover:shadow-[0_0_20px_rgba(139,92,246,0.7)] hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
               aria-label="View Resume"
             >
               <svg className="h-4 w-4 sm:h-5 sm:w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
               </svg>
-            </Link>
+            </a>
 
             {/* Desktop Socials */}
             <div className="hidden md:flex items-center gap-2">
@@ -169,12 +171,14 @@ export default function Navbar({ onMenuClick }) {
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.454c.979 0 1.771-.773 1.771-1.729V1.729C24 .774 23.227 0 22.225 0z" />
                 </svg>
               </motion.a>
-              <Link
-                to="/resume"
+              <a
+                href="/cv.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="interactive rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 px-4 py-1.5 text-sm font-medium text-white shadow-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(139,92,246,0.7)] hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
               >
                 Resume
-              </Link>
+              </a>
             </div>
           </div>
         </div>
