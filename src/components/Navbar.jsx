@@ -16,7 +16,7 @@ export default function Navbar({ content, presetId, sections = [] }) {
   const manualScrollTimeout = useRef(null);
 
   const isPreset2 = presetId === "preset-2";
-  
+
   const heroName = content?.hero?.name || "Muhammad Waqar";
   const nameParts = heroName.trim().split(" ");
   const defaultInitials = nameParts.length > 1
@@ -211,19 +211,17 @@ export default function Navbar({ content, presetId, sections = [] }) {
         <div
           ref={navContainerRef}
           onMouseLeave={() => setHoveredSection(null)}
-          className={`relative hidden md:flex items-center gap-6 ${
-            isPreset2
+          className={`relative hidden md:flex items-center gap-6 ${isPreset2
               ? "text-xs font-sans tracking-wide text-[#B8B7AF]"
               : "text-xs font-mono uppercase tracking-wider opacity-85"
-          }`}
+            }`}
         >
           {/* Sliding animated underline indicator for Preset 2 */}
           {isPreset2 && (
             <span
               aria-hidden="true"
-              className={`absolute bottom-0 h-[2px] bg-[#D8B894] transition-all duration-300 ease-out pointer-events-none rounded-full shadow-[0_0_8px_rgba(216,184,148,0.5)] ${
-                indicatorStyle.opacity ? "opacity-100" : "opacity-0"
-              }`}
+              className={`absolute bottom-0 h-[2px] bg-[#D8B894] transition-all duration-300 ease-out pointer-events-none rounded-full shadow-[0_0_8px_rgba(216,184,148,0.5)] ${indicatorStyle.opacity ? "opacity-100" : "opacity-0"
+                }`}
               style={{
                 transform: `translateX(${indicatorStyle.left}px)`,
                 width: `${indicatorStyle.width}px`,
@@ -246,16 +244,14 @@ export default function Navbar({ content, presetId, sections = [] }) {
                 data-editable={`content-navbar-${link.key}`}
                 className={
                   isPreset2
-                    ? `py-2 cursor-pointer transition-colors duration-200 select-none ${
-                        isActive || isHovered
-                          ? "text-[#F2EEE5] font-medium"
-                          : "text-[#B8B7AF] hover:text-[#F2EEE5]"
-                      }`
-                    : `py-1 cursor-pointer transition-all ${
-                        isActive
-                          ? "text-accent font-semibold"
-                          : "hover:text-accent hover:opacity-100 opacity-80"
-                      }`
+                    ? `py-2 cursor-pointer transition-colors duration-200 select-none ${isActive || isHovered
+                      ? "text-[#F2EEE5] font-medium"
+                      : "text-[#B8B7AF] hover:text-[#F2EEE5]"
+                    }`
+                    : `py-1 cursor-pointer transition-all ${isActive
+                      ? "text-accent font-semibold"
+                      : "hover:text-accent hover:opacity-100 opacity-80"
+                    }`
                 }
                 title={`Click to edit ${link.label} link`}
               >
@@ -265,21 +261,23 @@ export default function Navbar({ content, presetId, sections = [] }) {
           })}
           {!isPreset2 && <ThemeSwitch />}
           {resumeText ? (
-            <Link
-              href="/resume"
+            <a
+              href="/cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               data-editable="content-navbar-resumeText"
               className={isPreset2
                 ? "inline-flex items-center gap-1.5 rounded-full border border-white/20 px-3.5 py-1.5 text-xs text-[#F2EEE5] hover:border-[#E8B58F] hover:text-[#E8B58F] transition-all cursor-pointer"
                 : "rounded border border-white/20 px-3 py-1.5 text-[var(--color-text)] hover:border-accent hover:text-accent transition-all duration-200 cursor-pointer"
               }
               style={{ borderRadius: "var(--radius-btn, var(--radius-card))" }}
-              title="Click to edit resume button text"
+              title="Open Resume in new tab"
             >
               {isPreset2 && (
-                <svg className="w-3.5 h-3.5 text-[#E8B58F]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                <svg className="w-3.5 h-3.5 text-[#E8B58F]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
               )}
               {resumeText}
-            </Link>
+            </a>
           ) : null}
           <Link
             href="/admin/dashboard"
@@ -298,15 +296,18 @@ export default function Navbar({ content, presetId, sections = [] }) {
         <div className="flex md:hidden items-center gap-2.5">
           {!isPreset2 && <ThemeSwitch className="p-1.5 text-xs" />}
           {resumeText ? (
-            <Link
-              href="/resume"
+            <a
+              href="/cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open Resume in new tab"
               className={isPreset2
                 ? "rounded-full border border-white/20 px-3 py-1 text-xs text-[#F2EEE5] hover:border-[#E8B58F]"
                 : "rounded border border-white/20 px-2.5 py-1 text-xs font-mono text-[var(--color-text)]"
               }
             >
               CV
-            </Link>
+            </a>
           ) : null}
           <Link
             href="/admin/dashboard"
@@ -366,16 +367,14 @@ export default function Navbar({ content, presetId, sections = [] }) {
                   }}
                   className={
                     isPreset2
-                      ? `py-2 transition-all flex items-center justify-between ${
-                          isActive
-                            ? "text-[#E8B58F] font-semibold pl-3 border-l-2 border-[#D8B894] bg-[#252820]/40 rounded-r"
-                            : "text-[#B8B7AF] hover:text-[#F2EEE5] pl-3 border-l-2 border-transparent"
-                        }`
-                      : `py-1 transition-opacity ${
-                          isActive
-                            ? "text-accent font-semibold"
-                            : "hover:opacity-100"
-                        }`
+                      ? `py-2 transition-all flex items-center justify-between ${isActive
+                        ? "text-[#E8B58F] font-semibold pl-3 border-l-2 border-[#D8B894] bg-[#252820]/40 rounded-r"
+                        : "text-[#B8B7AF] hover:text-[#F2EEE5] pl-3 border-l-2 border-transparent"
+                      }`
+                      : `py-1 transition-opacity ${isActive
+                        ? "text-accent font-semibold"
+                        : "hover:opacity-100"
+                      }`
                   }
                 >
                   <span>{link.label}</span>
@@ -385,8 +384,26 @@ export default function Navbar({ content, presetId, sections = [] }) {
                 </a>
               );
             })}
+            {resumeText && (
+              <div className="pt-2 border-t border-white/10">
+                <a
+                  href="/cv.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`flex items-center justify-between py-2 text-xs font-semibold uppercase tracking-wider ${
+                    isPreset2
+                      ? "text-[#E8B58F] hover:text-white"
+                      : "text-accent hover:opacity-80"
+                  }`}
+                >
+                  <span>{resumeText}</span>
+                  <span>↗</span>
+                </a>
+              </div>
+            )}
             {!isPreset2 && (
-              <div className="pt-3 border-t border-white/10 flex items-center justify-between">
+              <div className="pt-2 border-t border-white/10 flex items-center justify-between">
                 <span className="text-xs font-mono uppercase text-gray-400">Mode:</span>
                 <ThemeSwitch />
               </div>
