@@ -44,7 +44,7 @@ export default function ThemeSwitch({ className = "" }) {
     setMode(newMode);
     try {
       localStorage.setItem("theme_mode", newMode);
-    } catch {}
+    } catch { }
 
     const root = document.documentElement;
     if (newMode === "light") {
