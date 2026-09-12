@@ -41,7 +41,7 @@ export default function FeaturedProjects({ projects = [], content, presetId }) {
     if (title.includes("craft") || title.includes("light") || title.includes("delight") || title.includes("ecommerce")) return "/project_craft_lights.jpg";
     if (title.includes("sconto") || title.includes("coupon") || title.includes("condice")) return "/project_codicesconto.jpg";
     if (title.includes("retreat") || title.includes("booking")) return "/project_retreat_bookings.jpg";
-    
+
     const fallbackList = [
       "/project_superstore_erp.jpg",
       "/project_craft_lights.jpg",
@@ -96,29 +96,29 @@ export default function FeaturedProjects({ projects = [], content, presetId }) {
   const displayProjects = isPreset2
     ? (showAll ? allAvailableProjects : allAvailableProjects.slice(0, 3))
     : (projects.length > 0 ? projects : [
-        {
-          _id: "demo-1",
-          title: "Crafts & Delights",
-          shortDescription: "Artisanal E-Commerce & Gift Platform",
-          problem: "Sluggish client catalog rendering and fragmented checkout workflows causing dropoffs.",
-          roleDecisions: "Engineered a modular React client architecture with memoized filter pipelines and Framer Motion transitions.",
-          outcome: "60fps interactions, reduced latency by 40%, zero layout shift.",
-          techTags: ["React", "Tailwind CSS", "Framer Motion", "Vite"],
-          liveLink: "https://crafts-delights.vercel.app",
-          codeLink: "https://github.com/MuhammadWaqar7615/",
-        },
-        {
-          _id: "demo-2",
-          title: "Retreat Bookings",
-          shortDescription: "Hospitality & Scheduling Platform",
-          problem: "Coordinating multi-property retreat reservations with race conditions during peak bookings.",
-          roleDecisions: "Developed atomic MongoDB update queries and clean date-range state validation.",
-          outcome: "Eliminated double-bookings, sustained sub-120ms query response times.",
-          techTags: ["React", "Node.js", "Express", "MongoDB"],
-          liveLink: "https://retreat-bookings.vercel.app",
-          codeLink: "https://github.com/MuhammadWaqar7615/",
-        },
-      ]);
+      {
+        _id: "demo-1",
+        title: "Crafts & Delights",
+        shortDescription: "Artisanal E-Commerce & Gift Platform",
+        problem: "Sluggish client catalog rendering and fragmented checkout workflows causing dropoffs.",
+        roleDecisions: "Engineered a modular React client architecture with memoized filter pipelines and Framer Motion transitions.",
+        outcome: "60fps interactions, reduced latency by 40%, zero layout shift.",
+        techTags: ["React", "Tailwind CSS", "Framer Motion", "Vite"],
+        liveLink: "https://crafts-delights.vercel.app",
+        codeLink: "https://github.com/MuhammadWaqar7615/",
+      },
+      {
+        _id: "demo-2",
+        title: "Retreat Bookings",
+        shortDescription: "Hospitality & Scheduling Platform",
+        problem: "Coordinating multi-property retreat reservations with race conditions during peak bookings.",
+        roleDecisions: "Developed atomic MongoDB update queries and clean date-range state validation.",
+        outcome: "Eliminated double-bookings, sustained sub-120ms query response times.",
+        techTags: ["React", "Node.js", "Express", "MongoDB"],
+        liveLink: "https://retreat-bookings.vercel.app",
+        codeLink: "https://github.com/MuhammadWaqar7615/",
+      },
+    ]);
 
   // Preset 2 Editorial Grid Layout (Matches ref img1)
   if (isPreset2) {
@@ -206,11 +206,10 @@ export default function FeaturedProjects({ projects = [], content, presetId }) {
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold transition-all duration-200 shadow-sm cursor-pointer active:scale-95 ${
-                          lIdx === 0
+                        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold transition-all duration-200 shadow-sm cursor-pointer active:scale-95 ${lIdx === 0
                             ? "bg-[#191A17] text-white hover:bg-[#69745A]"
                             : "bg-[#ECE7DC] text-[#191A17] border border-[#D3CEC2] hover:bg-[#E0DACB] hover:border-[#191A17]"
-                        }`}
+                          }`}
                       >
                         <span className={`w-1.5 h-1.5 rounded-full ${lIdx === 0 ? "bg-emerald-400" : "bg-[#B19B7D]"}`}></span>
                         <span>{link.label || (lIdx === 0 ? "Live Site Demo" : "Live Demo")}</span>
@@ -364,11 +363,10 @@ export default function FeaturedProjects({ projects = [], content, presetId }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         data-editable={lIdx === 0 ? "accent" : undefined}
-                        className={`w-full sm:w-auto lg:w-full text-center px-5 py-2.5 text-xs font-mono font-bold uppercase tracking-wider transition-opacity ${
-                          lIdx === 0
+                        className={`w-full sm:w-auto lg:w-full text-center px-5 py-2.5 text-xs font-mono font-bold uppercase tracking-wider transition-opacity ${lIdx === 0
                             ? "bg-accent text-background hover:opacity-90"
                             : "border border-white/20 text-[var(--color-text)] hover:border-white bg-white/5"
-                        }`}
+                          }`}
                         style={{ borderRadius: "var(--radius-btn, var(--radius-card))" }}
                       >
                         {link.label || (lIdx === 0 ? "Live Demo ↗" : "Demo ↗")}
