@@ -9,7 +9,6 @@ import Sidebar from "./Components/navbar/Sidebar";
 function Layout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-
   const toggleSidebar = () => {
     console.log("Toggle function called from Layout");
     setSidebarOpen(prev => !prev);
