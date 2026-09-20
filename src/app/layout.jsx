@@ -79,8 +79,8 @@ export async function generateMetadata() {
     (process.env.VERCEL_PROJECT_PRODUCTION_URL
       ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
       : process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : "https://muhammad-waqar.me");
+        ? `https://${process.env.VERCEL_URL}`
+        : "https://muhammad-waqar.me");
 
   const title =
     siteData?.title || "Muhammad Waqar — Full Stack Engineer";
@@ -198,8 +198,8 @@ export default async function RootLayout({ children }) {
     (process.env.VERCEL_PROJECT_PRODUCTION_URL
       ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
       : process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : "https://muhammad-waqar.me");
+        ? `https://${process.env.VERCEL_URL}`
+        : "https://muhammad-waqar.me");
 
   const jsonLdPerson = {
     "@context": "https://schema.org",
