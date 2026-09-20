@@ -90,6 +90,7 @@ export async function generateMetadata() {
   const ogImage =
     siteData?.ogImage || `${baseUrl}/opengraph-image`;
 
+
   return {
     metadataBase: new URL(baseUrl),
     title: {
