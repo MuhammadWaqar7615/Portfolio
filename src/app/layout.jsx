@@ -74,6 +74,7 @@ export async function generateMetadata() {
     console.warn("MongoDB SiteMetadata query skipped, using curated defaults:", err.message);
   }
 
+
   const baseUrl =
     process.env.NEXT_PUBLIC_SITE_URL ||
     (process.env.VERCEL_PROJECT_PRODUCTION_URL
