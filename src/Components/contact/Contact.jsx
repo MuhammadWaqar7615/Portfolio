@@ -16,7 +16,6 @@ const variants = {
     },
   },
 };
-
 const Contact = () => {
   const ref = useRef();
   const formRef = useRef();
@@ -74,7 +73,7 @@ const Contact = () => {
       {/* Main content - centered with padding */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
         <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8 lg:gap-12">
-          
+
           {/* Left Column: Contact Info */}
           <motion.div
             className="text-white w-full lg:w-1/2 space-y-4 sm:space-y-6"
@@ -83,7 +82,7 @@ const Contact = () => {
             <motion.h1 className="mt-20 md:mt-0 text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
               Let's work together
             </motion.h1>
-            
+
             <motion.div className="space-y-3 sm:space-y-4" variants={variants}>
               <div className="item">
                 <h2 className="text-sm sm:text-base font-medium text-purple-300">Mail</h2>
