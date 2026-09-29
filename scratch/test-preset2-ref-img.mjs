@@ -124,6 +124,7 @@ async function run() {
   const publishedTheme = await patchRes.json();
   console.log(`Saved theme presetId: ${publishedTheme.theme?.presetId}`);
 
+
   // 3. Inspect SSR HTML from GET /
   console.log("\n3. Inspecting GET / SSR HTML output...");
   const homeRes = await fetch(`${BASE_URL}/`);
