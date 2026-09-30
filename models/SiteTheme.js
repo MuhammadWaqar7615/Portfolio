@@ -35,36 +35,36 @@ const ThemeColorsSchema = new mongoose.Schema(
       type: String,
       required: true,
       match: [HEX_COLOR_REGEX, "Invalid primary hex color"],
-      default: "#090A0F",
+      default: "#151713",
     },
     accent: {
       type: String,
       required: true,
       match: [HEX_COLOR_REGEX, "Invalid accent hex color"],
-      default: "#38BDF8",
+      default: "#D8B894",
     },
     background: {
       type: String,
       required: true,
       match: [HEX_COLOR_REGEX, "Invalid background hex color"],
-      default: "#090A0F",
+      default: "#151713",
     },
     text: {
       type: String,
       required: true,
       match: [HEX_COLOR_REGEX, "Invalid text hex color"],
-      default: "#F8FAFC",
+      default: "#C5C4BC",
     },
     headingColor: {
       type: String,
       required: true,
       match: [HEX_COLOR_REGEX, "Invalid heading hex color"],
-      default: "#FFFFFF",
+      default: "#F4F0E8",
     },
     cardBg: {
       type: String,
       match: [HEX_COLOR_REGEX, "Invalid card background hex color"],
-      default: "#0C0E14",
+      default: "#181A15",
     },
   },
   { _id: false }
@@ -75,13 +75,13 @@ const ThemeTypographySchema = new mongoose.Schema(
     headingFont: {
       type: String,
       enum: ALLOWED_FONTS,
-      default: "Space Grotesk",
+      default: "DM Serif Display",
       required: true,
     },
     bodyFont: {
       type: String,
       enum: ALLOWED_FONTS,
-      default: "Inter",
+      default: "Manrope",
       required: true,
     },
   },
@@ -90,7 +90,7 @@ const ThemeTypographySchema = new mongoose.Schema(
 
 const ThemeHistoryItemSchema = new mongoose.Schema(
   {
-    presetId: { type: String, default: "preset-1" },
+    presetId: { type: String, default: "preset-2" },
     colors: ThemeColorsSchema,
     lightColors: ThemeColorsSchema,
     content: mongoose.Schema.Types.Mixed,
@@ -98,7 +98,7 @@ const ThemeHistoryItemSchema = new mongoose.Schema(
     radius: {
       type: String,
       enum: ["sharp", "soft", "editorial", "rounded"],
-      default: "soft",
+      default: "editorial",
     },
     spacing: {
       type: String,
@@ -115,7 +115,7 @@ const SiteThemeSchema = new mongoose.Schema(
   {
     presetId: {
       type: String,
-      default: "preset-1",
+      default: "preset-2",
     },
     status: {
       type: String,
@@ -144,7 +144,7 @@ const SiteThemeSchema = new mongoose.Schema(
     radius: {
       type: String,
       enum: ["sharp", "soft", "editorial", "rounded"],
-      default: "soft",
+      default: "editorial",
       required: true,
     },
     spacing: {
@@ -155,7 +155,7 @@ const SiteThemeSchema = new mongoose.Schema(
     },
     sections: {
       type: [SectionItemSchema],
-      default: () => [...DEFAULT_SECTIONS],
+      default: () => [...DEFAULT_THEME.sections],
       required: true,
     },
     history: {
