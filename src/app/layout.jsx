@@ -253,7 +253,7 @@ export default async function RootLayout({ children }) {
   const bodyFontVar = FONT_VARIABLE_MAP[theme?.typography?.bodyFont] || (theme?.presetId === "preset-2" ? FONT_VARIABLE_MAP["Manrope"] : FONT_VARIABLE_MAP["Inter"]);
 
   return (
-    <html lang="en" data-preset={theme?.presetId || "preset-1"} suppressHydrationWarning className={`dark ${ALL_FONT_VARIABLES}`}>
+    <html lang="en" data-preset={theme?.presetId || "preset-2"} suppressHydrationWarning className={`dark ${ALL_FONT_VARIABLES}`}>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -284,17 +284,17 @@ export default async function RootLayout({ children }) {
             :root {
               --font-heading: ${headingFontVar};
               --font-body: ${bodyFontVar};
-              --color-primary: ${theme?.colors?.primary || "#090A0F"};
-              --color-accent: ${theme?.colors?.accent || "#38BDF8"};
+              --color-primary: ${theme?.colors?.primary || "#151713"};
+              --color-accent: ${theme?.colors?.accent || "#D8B894"};
               --color-highlight: ${theme?.colors?.highlight || "#E8B58F"};
               --color-olive: ${theme?.colors?.olive || "#69745A"};
               --color-muted: ${theme?.colors?.muted || "#77766D"};
               --color-deepDark: ${theme?.colors?.deepDark || "#0D0F0D"};
               --color-warmIvory: ${theme?.colors?.warmIvory || "#F2EEE5"};
-              --color-background: ${theme?.colors?.background || "#090A0F"};
-              --color-text: ${theme?.colors?.text || "#F8FAFC"};
-              --color-heading: ${theme?.colors?.headingColor || "#FFFFFF"};
-              --color-cardBg: ${theme?.colors?.cardBg || theme?.colors?.background || "#0C0E14"};
+              --color-background: ${theme?.colors?.background || "#151713"};
+              --color-text: ${theme?.colors?.text || "#C5C4BC"};
+              --color-heading: ${theme?.colors?.headingColor || "#F4F0E8"};
+              --color-cardBg: ${theme?.colors?.cardBg || theme?.colors?.background || "#181A15"};
               --radius-card: ${radiusPx};
               --radius-btn: ${radiusBtn};
               --spacing-container: ${spacingSettings.container};
@@ -303,15 +303,15 @@ export default async function RootLayout({ children }) {
             }
 
             html.light, [data-theme="light"] {
-              --color-primary: ${theme?.lightColors?.primary || "#FFFFFF"};
-              --color-accent: ${theme?.lightColors?.accent || "#0284C7"};
+              --color-primary: ${theme?.lightColors?.primary || "#F2EEE5"};
+              --color-accent: ${theme?.lightColors?.accent || "#D8B894"};
               --color-highlight: ${theme?.lightColors?.highlight || "#E8B58F"};
               --color-olive: ${theme?.lightColors?.olive || "#69745A"};
               --color-muted: ${theme?.lightColors?.muted || "#77766D"};
-              --color-background: ${theme?.lightColors?.background || "#F8FAFC"};
-              --color-text: ${theme?.lightColors?.text || "#334155"};
-              --color-heading: ${theme?.lightColors?.headingColor || "#0F172A"};
-              --color-cardBg: ${theme?.lightColors?.cardBg || "#FFFFFF"};
+              --color-background: ${theme?.lightColors?.background || "#F2EEE5"};
+              --color-text: ${theme?.lightColors?.text || "#5F5E57"};
+              --color-heading: ${theme?.lightColors?.headingColor || "#191A17"};
+              --color-cardBg: ${theme?.lightColors?.cardBg || "#ECE7DC"};
             }
           `,
           }}
