@@ -22,7 +22,7 @@ export async function GET() {
     const merged = {
       ...DEFAULT_THEME,
       ...parsed,
-      presetId: parsed.presetId || "preset-1",
+      presetId: parsed.presetId || "preset-2",
       colors: { ...DEFAULT_THEME.colors, ...(parsed.colors || {}) },
       lightColors: { ...DEFAULT_THEME.lightColors, ...(parsed.lightColors || {}) },
       content: {
@@ -145,7 +145,7 @@ async function handlePublish(request) {
 
     if (currentTheme) {
       const historySnapshot = {
-        presetId: currentTheme.presetId || "preset-1",
+        presetId: currentTheme.presetId || "preset-2",
         colors: currentTheme.colors,
         lightColors: currentTheme.lightColors,
         content: currentTheme.content,
@@ -162,7 +162,7 @@ async function handlePublish(request) {
     }
 
     const updatePayload = {
-      presetId: body.presetId || currentTheme?.presetId || "preset-1",
+      presetId: body.presetId || currentTheme?.presetId || "preset-2",
       status: "published",
       colors: {
         primary: colors.primary,
