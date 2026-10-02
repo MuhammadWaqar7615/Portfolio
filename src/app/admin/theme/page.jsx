@@ -80,7 +80,7 @@ export default function ThemeCustomizer() {
         const loadedTheme = {
           ...DEFAULT_THEME,
           ...data.theme,
-          presetId: data.theme.presetId || "preset-1",
+          presetId: data.theme.presetId || "preset-2",
           colors: { ...DEFAULT_THEME.colors, ...(data.theme.colors || {}) },
           lightColors: { ...DEFAULT_THEME.lightColors, ...(data.theme.lightColors || {}) },
           content: {
@@ -397,7 +397,7 @@ export default function ThemeCustomizer() {
 
   // Reset entire theme to active preset defaults
   const handleResetToDefaults = () => {
-    const activePreset = THEME_PRESETS[theme.presetId || "preset-1"] || THEME_PRESETS["preset-1"];
+    const activePreset = THEME_PRESETS[theme.presetId || "preset-2"] || THEME_PRESETS["preset-2"];
     if (
       !confirm(
         `Reset all settings to "${activePreset.name}" preset defaults? You can preview before clicking 'Publish Live'.`
@@ -427,7 +427,7 @@ export default function ThemeCustomizer() {
 
   // Reset text/content to defaults
   const handleResetContent = () => {
-    const activePreset = THEME_PRESETS[theme.presetId || "preset-1"] || THEME_PRESETS["preset-1"];
+    const activePreset = THEME_PRESETS[theme.presetId || "preset-2"] || THEME_PRESETS["preset-2"];
     updateTheme((prev) => ({
       ...prev,
       content: JSON.parse(JSON.stringify(activePreset.content)),
@@ -437,7 +437,7 @@ export default function ThemeCustomizer() {
   };
 
   const handleResetDarkColors = () => {
-    const activePreset = THEME_PRESETS[theme.presetId || "preset-1"] || THEME_PRESETS["preset-1"];
+    const activePreset = THEME_PRESETS[theme.presetId || "preset-2"] || THEME_PRESETS["preset-2"];
     updateTheme((prev) => ({
       ...prev,
       colors: { ...activePreset.colors },
@@ -448,7 +448,7 @@ export default function ThemeCustomizer() {
   };
 
   const handleResetLightColors = () => {
-    const activePreset = THEME_PRESETS[theme.presetId || "preset-1"] || THEME_PRESETS["preset-1"];
+    const activePreset = THEME_PRESETS[theme.presetId || "preset-2"] || THEME_PRESETS["preset-2"];
     updateTheme((prev) => ({
       ...prev,
       lightColors: { ...activePreset.lightColors },
@@ -486,7 +486,7 @@ export default function ThemeCustomizer() {
 
   // Reset typography only to active preset default
   const handleResetTypography = () => {
-    const activePreset = THEME_PRESETS[theme.presetId || "preset-1"] || THEME_PRESETS["preset-1"];
+    const activePreset = THEME_PRESETS[theme.presetId || "preset-2"] || THEME_PRESETS["preset-2"];
     updateTheme((prev) => ({
       ...prev,
       typography: { ...activePreset.typography },
@@ -498,7 +498,7 @@ export default function ThemeCustomizer() {
 
   // Reset layout (radius & spacing) to active preset default
   const handleResetLayout = () => {
-    const activePreset = THEME_PRESETS[theme.presetId || "preset-1"] || THEME_PRESETS["preset-1"];
+    const activePreset = THEME_PRESETS[theme.presetId || "preset-2"] || THEME_PRESETS["preset-2"];
     updateTheme((prev) => ({
       ...prev,
       radius: activePreset.radius || DEFAULT_THEME.radius,
@@ -524,7 +524,7 @@ export default function ThemeCustomizer() {
     activePalette === "light"
       ? theme.lightColors || DEFAULT_LIGHT_COLORS
       : theme.colors || DEFAULT_THEME.colors;
-  const activePresetConfig = THEME_PRESETS[theme.presetId || "preset-1"] || THEME_PRESETS["preset-1"];
+  const activePresetConfig = THEME_PRESETS[theme.presetId || "preset-2"] || THEME_PRESETS["preset-2"];
   const currentDefaults =
     activePalette === "light"
       ? (activePresetConfig.lightColors || DEFAULT_LIGHT_COLORS)
@@ -843,7 +843,7 @@ export default function ThemeCustomizer() {
                 <span>🎨</span> Choose Theme Preset
               </span>
               <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-gray-300">
-                Active: {(theme.presetId || "preset-1") === "preset-2" ? "Preset 2 (Warm Studio)" : "Preset 1 (Technical)"}
+                Active: {(theme.presetId || "preset-2") === "preset-2" ? "Preset 2 (Warm Studio)" : "Preset 1 (Technical)"}
               </span>
             </div>
             
@@ -853,14 +853,14 @@ export default function ThemeCustomizer() {
                 type="button"
                 onClick={() => handleSelectPreset("preset-1")}
                 className={`p-2.5 rounded-lg border text-left transition-all cursor-pointer relative ${
-                  (theme.presetId || "preset-1") === "preset-1"
+                  (theme.presetId || "preset-2") === "preset-1"
                     ? "border-sky-400 bg-sky-950/40 ring-1 ring-sky-400"
                     : "border-white/10 bg-black/30 hover:border-white/25"
                 }`}
               >
                 <div className="flex items-center justify-between mb-1">
                   <span className="text-xs font-bold text-white font-mono">⚡ Preset 1</span>
-                  {(theme.presetId || "preset-1") === "preset-1" && (
+                  {(theme.presetId || "preset-2") === "preset-1" && (
                     <span className="h-2 w-2 rounded-full bg-sky-400 animate-pulse" />
                   )}
                 </div>
