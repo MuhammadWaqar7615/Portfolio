@@ -18,10 +18,9 @@ export async function POST(request) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    // If Cloudinary environment variables exist, upload to Cloudinary
+    // Cloudinary upload hook if configured
     if (process.env.CLOUDINARY_URL || process.env.CLOUDINARY_CLOUD_NAME) {
-      const cloudinaryUrl = process.env.CLOUDINARY_URL;
-      // Perform Cloudinary upload if configured
+      // Cloudinary configuration can be attached here
     }
 
     // Default high-performance Data URI return for immediate preview/storage
