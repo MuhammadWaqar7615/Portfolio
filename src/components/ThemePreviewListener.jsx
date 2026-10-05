@@ -34,7 +34,9 @@ export default function ThemePreviewListener({ onSectionsChange, onContentChange
         }
         try {
           localStorage.setItem("theme_mode", mode);
-        } catch { }
+        } catch (_e) {
+          // Ignore storage quota errors in iframe preview
+        }
         return;
       }
 
@@ -60,7 +62,7 @@ export default function ThemePreviewListener({ onSectionsChange, onContentChange
           document.head.appendChild(dynamicStyle);
         }
 
-        root.setAttribute("data-preset", theme.presetId || "preset-1");
+        root.setAttribute("data-preset", theme.presetId || "preset-2");
 
         const headingVar = theme.typography?.headingFont
           ? (FONT_VARIABLE_MAP[theme.typography.headingFont] || (theme.presetId === "preset-2" ? FONT_VARIABLE_MAP["DM Serif Display"] : "var(--font-space-grotesk), sans-serif"))
@@ -166,7 +168,7 @@ export default function ThemePreviewListener({ onSectionsChange, onContentChange
       window.removeEventListener("message", handleMessage);
       document.removeEventListener("click", handleClick, true);
     };
-  }, [onSectionsChange, onContentChange]);
+  }, [onSectionsChange, onContentChange, onPresetChange]);
 
   return null;
 }
