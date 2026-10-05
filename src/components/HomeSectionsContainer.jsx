@@ -19,7 +19,7 @@ import { DEFAULT_THEME } from "../../lib/themeConstants";
 export default function HomeSectionsContainer({
   initialSections,
   initialContent,
-  initialPresetId,
+  initialPresetId = "preset-2",
   projects,
   experiences,
   educationData,
@@ -27,7 +27,7 @@ export default function HomeSectionsContainer({
 }) {
   const [sections, setSections] = useState(initialSections || []);
   const [content, setContent] = useState(initialContent || DEFAULT_THEME.content);
-  const [presetId, setPresetId] = useState(initialPresetId || "preset-1");
+  const [presetId, setPresetId] = useState(initialPresetId || "preset-2");
 
   const sectionComponentMap = {
     hero: <Hero key="hero" content={content} presetId={presetId} />,
