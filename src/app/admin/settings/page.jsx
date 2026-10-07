@@ -98,9 +98,20 @@ export default function AdminSettingsPage() {
         )}
 
         {loading ? (
-          <div className="p-8 text-center text-[#8b94a7] text-sm">Loading settings...</div>
+          <div className="border border-[#232736] bg-[#161822] rounded-xl p-6 sm:p-8 max-w-2xl mx-auto shadow-xl animate-pulse space-y-6">
+            <div className="space-y-2 border-b border-[#232736] pb-4">
+              <div className="h-6 w-48 bg-[#1c202e] rounded-lg"></div>
+              <div className="h-4 w-72 bg-[#1c202e] rounded-lg"></div>
+            </div>
+            <div className="space-y-4">
+              <div className="h-10 bg-[#0b0c10] border border-[#232736] rounded-lg"></div>
+              <div className="h-24 bg-[#0b0c10] border border-[#232736] rounded-lg"></div>
+              <div className="h-10 bg-[#0b0c10] border border-[#232736] rounded-lg"></div>
+              <div className="h-10 bg-[#0b0c10] border border-[#232736] rounded-lg"></div>
+            </div>
+          </div>
         ) : (
-          <div className="border border-[#232736] bg-[#161822] rounded-xl p-6 sm:p-8 max-w-2xl mx-auto shadow-xl">
+          <div className="border border-[#232736] bg-[#161822] rounded-xl p-6 sm:p-8 max-w-2xl mx-auto shadow-xl transition-all">
             <div className="border-b border-[#232736] pb-4 mb-6">
               <h2 className="text-base font-medium text-white">
                 Global SEO Metadata Configuration
@@ -158,7 +169,7 @@ export default function AdminSettingsPage() {
                 <button
                   type="submit"
                   disabled={saving}
-                  className="w-full py-2.5 bg-white text-[#0f1117] font-medium text-xs rounded-lg hover:bg-[#e2e5eb] transition-colors cursor-pointer disabled:opacity-50"
+                  className="w-full py-2.5 bg-white text-[#0f1117] font-medium text-xs rounded-lg hover:bg-[#e2e5eb] transition-all duration-150 active:scale-[0.98] cursor-pointer disabled:opacity-50 shadow-sm"
                 >
                   {saving ? "Saving..." : "Save Settings"}
                 </button>

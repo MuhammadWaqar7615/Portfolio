@@ -68,7 +68,7 @@ export default function ThemeSwitch({ className = "" }) {
     applyTheme(nextMode);
   };
 
-  if (!mounted || isPreset2) {
+  if (!mounted) {
     return null;
   }
 

@@ -272,6 +272,13 @@ export default async function RootLayout({ children }) {
                     document.documentElement.classList.add('dark');
                     document.documentElement.setAttribute('data-theme', 'dark');
                   }
+
+                  var adminMode = localStorage.getItem('admin_theme_mode');
+                  if (adminMode === 'bright') {
+                    document.documentElement.setAttribute('data-admin-theme', 'bright');
+                  } else {
+                    document.documentElement.setAttribute('data-admin-theme', 'dark');
+                  }
                 } catch(e) {}
               })();
             `,

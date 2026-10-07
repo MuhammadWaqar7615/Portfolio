@@ -476,14 +476,20 @@ export default function AdminProjectsPage() {
           /* Project List */
           <div className="space-y-3">
             {loading ? (
-              <div className="p-8 text-center text-[#8b94a7] text-sm">Loading projects...</div>
+              <div className="space-y-3 animate-pulse">
+                {[...Array(3)].map((_, i) => (
+                  <div key={i} className="h-28 rounded-xl bg-[#161822] border border-[#232736]"></div>
+                ))}
+              </div>
             ) : projects.length === 0 ? (
-              <div className="p-8 text-center text-[#8b94a7] text-sm">No projects found in database.</div>
+              <div className="p-12 text-center text-[#8b94a7] text-sm border border-[#232736] bg-[#161822] rounded-xl">
+                No projects found in database.
+              </div>
             ) : (
               projects.map((p) => (
                 <div
                   key={p._id}
-                  className="border border-[#232736] bg-[#161822] rounded-xl p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-[#31374a] transition-colors"
+                  className="border border-[#232736] bg-[#161822] rounded-xl p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-[#353c52] hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/20 transition-all duration-200"
                 >
                   <div className="space-y-1.5">
                     <div className="flex items-center gap-2.5">
@@ -509,10 +515,12 @@ export default function AdminProjectsPage() {
                             href={l.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-xs px-2.5 py-1 rounded-md border border-[#2b3044] text-[#cbd5e1] bg-[#1c1f2e] hover:text-white hover:bg-[#25293d] flex items-center gap-1 transition-colors"
+                            className="text-xs px-2.5 py-1 rounded-md border border-[#2b3044] text-[#cbd5e1] bg-[#1c1f2e] hover:text-white hover:bg-[#25293d] flex items-center gap-1 transition-all duration-150 active:scale-[0.98]"
                           >
                             <span>{l.label || "Live Demo"}</span>
-                            <span className="opacity-60 text-[10px]">↗</span>
+                            <svg className="w-2.5 h-2.5 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
                           </a>
                         ))
                       ) : p.liveLink ? (
@@ -520,10 +528,12 @@ export default function AdminProjectsPage() {
                           href={p.liveLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-xs px-2.5 py-1 rounded-md border border-[#2b3044] text-[#cbd5e1] bg-[#1c1f2e] hover:text-white hover:bg-[#25293d] flex items-center gap-1 transition-colors"
+                          className="text-xs px-2.5 py-1 rounded-md border border-[#2b3044] text-[#cbd5e1] bg-[#1c1f2e] hover:text-white hover:bg-[#25293d] flex items-center gap-1 transition-all duration-150 active:scale-[0.98]"
                         >
                           <span>Live Demo</span>
-                          <span className="opacity-60 text-[10px]">↗</span>
+                          <svg className="w-2.5 h-2.5 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
                         </a>
                       ) : null}
                       {p.codeLink && (
@@ -531,10 +541,12 @@ export default function AdminProjectsPage() {
                           href={p.codeLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-xs px-2.5 py-1 rounded-md border border-[#2b3044] text-[#8b94a7] hover:text-white bg-[#181b26] flex items-center gap-1 transition-colors"
+                          className="text-xs px-2.5 py-1 rounded-md border border-[#2b3044] text-[#8b94a7] hover:text-white bg-[#181b26] hover:bg-[#222736] flex items-center gap-1 transition-all duration-150 active:scale-[0.98]"
                         >
                           <span>GitHub</span>
-                          <span className="opacity-60 text-[10px]">↗</span>
+                          <svg className="w-2.5 h-2.5 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
                         </a>
                       )}
                     </div>
@@ -543,13 +555,13 @@ export default function AdminProjectsPage() {
                   <div className="flex items-center gap-2 shrink-0">
                     <button
                       onClick={() => handleEdit(p)}
-                      className="px-3.5 py-1.5 rounded-lg border border-[#2b3044] bg-[#1c1f2e] text-[#cbd5e1] hover:text-white hover:bg-[#25293d] text-xs transition-colors cursor-pointer"
+                      className="px-3.5 py-1.5 rounded-lg border border-[#2b3044] bg-[#1c1f2e] text-[#cbd5e1] hover:text-white hover:bg-[#25293d] text-xs transition-all duration-150 active:scale-[0.98] cursor-pointer"
                     >
                       Edit
                     </button>
                     <button
                       onClick={() => handleDelete(p._id)}
-                      className="px-3.5 py-1.5 rounded-lg border border-[#2b3044] bg-[#1c1f2e] text-[#8b94a7] hover:text-rose-400 hover:border-rose-900/50 hover:bg-rose-950/20 text-xs transition-colors cursor-pointer"
+                      className="px-3.5 py-1.5 rounded-lg border border-[#2b3044] bg-[#1c1f2e] text-[#8b94a7] hover:text-rose-400 hover:border-rose-900/50 hover:bg-rose-950/20 text-xs transition-all duration-150 active:scale-[0.98] cursor-pointer"
                     >
                       Delete
                     </button>

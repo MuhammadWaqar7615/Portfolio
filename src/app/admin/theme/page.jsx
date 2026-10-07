@@ -12,6 +12,30 @@ export default function AdminThemesPage() {
   const [activating, setActivating] = useState(false);
   const [activePresetId, setActivePresetId] = useState("preset-2");
   const [statusMessage, setStatusMessage] = useState("");
+  const [adminMode, setAdminMode] = useState("dark");
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("admin_theme_mode") || "dark";
+      setAdminMode(saved);
+    } catch (_e) {}
+
+    const handleThemeChange = (e) => {
+      if (e.detail?.mode) setAdminMode(e.detail.mode);
+    };
+    window.addEventListener("admin_theme_change", handleThemeChange);
+    return () => window.removeEventListener("admin_theme_change", handleThemeChange);
+  }, []);
+
+  const handleSetAdminMode = (newMode) => {
+    setAdminMode(newMode);
+    try {
+      localStorage.setItem("admin_theme_mode", newMode);
+      localStorage.setItem("theme_mode", newMode === "bright" ? "light" : "dark");
+    } catch (_e) {}
+    document.documentElement.setAttribute("data-admin-theme", newMode);
+    window.dispatchEvent(new CustomEvent("admin_theme_change", { detail: { mode: newMode } }));
+  };
 
   useEffect(() => {
     const token = localStorage.getItem("admin_token");
@@ -44,8 +68,11 @@ export default function AdminThemesPage() {
   const handleActivatePreset = async (presetId) => {
     if (presetId === activePresetId) return;
 
+    const previousPreset = activePresetId;
+    // Optimistic instantaneous UI update
+    setActivePresetId(presetId);
+    setStatusMessage(`Switched to ${THEME_PRESETS[presetId]?.name || presetId}.`);
     setActivating(true);
-    setStatusMessage("");
 
     const token = localStorage.getItem("admin_token");
     try {
@@ -59,17 +86,14 @@ export default function AdminThemesPage() {
       });
 
       const data = await res.json();
-
-      if (res.ok) {
-        setActivePresetId(presetId);
-        setStatusMessage(
-          `Switched to ${THEME_PRESETS[presetId]?.name || presetId}.`
-        );
-      } else {
+      if (!res.ok) {
+        // Rollback on failure
+        setActivePresetId(previousPreset);
         setStatusMessage(data.message || "Failed to activate preset.");
       }
     } catch (err) {
       console.error("Error activating preset:", err);
+      setActivePresetId(previousPreset);
       setStatusMessage("Network error: Could not connect to theme API.");
     } finally {
       setActivating(false);
@@ -81,39 +105,41 @@ export default function AdminThemesPage() {
       ...THEME_PRESETS["preset-1"],
       key: "preset-1",
       tagline: "Theme 01",
+      accentColor: "bg-cyan-400",
       features: [
         { label: "Design Style", value: "High-Precision Dark" },
         { label: "Headings", value: "Space Grotesk" },
         { label: "Body Text", value: "Inter" },
-        { label: "Accent", value: "Cyan Highlight" },
+        { label: "Accent Tone", value: "Cyan Highlight" },
       ],
     },
     {
       ...THEME_PRESETS["preset-2"],
       key: "preset-2",
       tagline: "Theme 02",
+      accentColor: "bg-amber-500",
       features: [
         { label: "Design Style", value: "Editorial Studio" },
         { label: "Headings", value: "DM Serif Display" },
         { label: "Body Text", value: "Manrope" },
-        { label: "Accent", value: "Warm Sand / Peach" },
+        { label: "Accent Tone", value: "Warm Sand / Peach" },
       ],
     },
   ];
 
   return (
-    <div className="min-h-screen bg-[#0f1117] text-[#e2e5eb] flex flex-col font-sans antialiased selection:bg-[#252a3d]">
+    <div className="min-h-screen bg-[var(--admin-bg)] text-[var(--admin-text-main)] flex flex-col font-sans antialiased selection:bg-[#252a3d] transition-colors duration-200">
       <AdminHeader activePage="themes" />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 flex-1 w-full space-y-8">
         {/* Title Header */}
-        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 pb-6 border-b border-[#1e2230]">
+        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 pb-6 border-b border-[var(--admin-border-subtle)]">
           <div>
-            <h1 className="text-xl font-medium text-white tracking-tight">
+            <h1 className="text-xl font-medium text-[var(--admin-text-heading)] tracking-tight">
               Themes
             </h1>
-            <p className="text-sm text-[#8b94a7] mt-0.5">
-              Select your portfolio design style from the curated premade themes.
+            <p className="text-sm text-[var(--admin-text-muted)] mt-0.5">
+              Select your portfolio design style from the curated premade themes with built-in Dark & Bright modes.
             </p>
           </div>
 
@@ -121,30 +147,100 @@ export default function AdminThemesPage() {
             <Link
               href="/"
               target="_blank"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-[#cbd5e1] hover:text-white bg-[#181c28] hover:bg-[#202536] border border-[#262c3e] transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-[var(--admin-text-main)] hover:text-[var(--admin-text-heading)] bg-[var(--admin-surface-hover)] border border-[var(--admin-border)] transition-all duration-150 active:scale-[0.98]"
             >
               <span>View Site</span>
-              <span className="text-[11px] opacity-70">↗</span>
+              <svg
+                className="w-3 h-3 text-[var(--admin-text-muted)]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
             </Link>
           </div>
         </div>
 
         {/* Feedback message */}
         {statusMessage && (
-          <div className="p-3 rounded-xl border border-emerald-500/20 bg-emerald-500/10 text-emerald-400 text-xs flex items-center justify-between">
-            <span>✓ {statusMessage}</span>
+          <div className="p-3 rounded-xl border border-emerald-500/20 bg-emerald-500/10 text-emerald-500 text-xs flex items-center justify-between transition-all animate-fade-in">
+            <div className="flex items-center gap-2">
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+              </svg>
+              <span>{statusMessage}</span>
+            </div>
             <button
               onClick={() => setStatusMessage("")}
-              className="text-[#8b94a7] hover:text-white ml-4 text-xs"
+              className="text-[var(--admin-text-muted)] hover:text-[var(--admin-text-heading)] ml-4 text-xs cursor-pointer"
             >
               ✕
             </button>
           </div>
         )}
 
+        {/* Color Mode Switcher Card */}
+        <div className="rounded-xl border border-[var(--admin-border)] bg-[var(--admin-surface)] p-5 sm:p-6 transition-all">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-semibold uppercase tracking-wider text-[var(--admin-text-muted)]">
+                  Appearance Mode
+                </span>
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-[var(--admin-surface-active)] text-[var(--admin-text-main)] border border-[var(--admin-border)]">
+                  {adminMode === "bright" ? "Bright Active" : "Dark Active"}
+                </span>
+              </div>
+              <p className="text-xs text-[var(--admin-text-muted)] mt-1">
+                Toggle between deep slate Dark Mode and clean minimalist Bright Mode.
+              </p>
+            </div>
+
+            {/* Segmented Toggle */}
+            <div className="inline-flex items-center p-1 rounded-xl bg-[var(--admin-surface-active)] border border-[var(--admin-border)] shrink-0 self-start sm:self-auto">
+              <button
+                type="button"
+                onClick={() => handleSetAdminMode("dark")}
+                className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-150 cursor-pointer ${
+                  adminMode === "dark"
+                    ? "bg-[var(--admin-surface)] text-[var(--admin-text-heading)] shadow-sm border border-[var(--admin-border)]"
+                    : "text-[var(--admin-text-muted)] hover:text-[var(--admin-text-heading)]"
+                }`}
+              >
+                <svg className="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+                <span>Dark Mode</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => handleSetAdminMode("bright")}
+                className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-150 cursor-pointer ${
+                  adminMode === "bright"
+                    ? "bg-[var(--admin-surface)] text-[var(--admin-text-heading)] shadow-sm border border-[var(--admin-border)]"
+                    : "text-[var(--admin-text-muted)] hover:text-[var(--admin-text-heading)]"
+                }`}
+              >
+                <svg className="w-3.5 h-3.5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+                <span>Bright Mode</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
         {loading ? (
-          <div className="p-16 text-center text-[#8b94a7] text-sm">
-            Loading themes...
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 animate-pulse">
+            {[...Array(2)].map((_, i) => (
+              <div key={i} className="h-72 rounded-xl bg-[var(--admin-surface)] border border-[var(--admin-border)]"></div>
+            ))}
           </div>
         ) : (
           /* Premade Themes Grid */
@@ -155,66 +251,69 @@ export default function AdminThemesPage() {
               return (
                 <div
                   key={preset.key}
-                  className={`rounded-xl border p-6 sm:p-7 flex flex-col justify-between transition-colors ${
+                  className={`rounded-xl border p-6 sm:p-7 flex flex-col justify-between transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg ${
                     isActive
-                      ? "bg-[#181c28] border-white/30 ring-1 ring-white/10"
-                      : "bg-[#161822] border-[#232736] hover:border-[#31374a]"
+                      ? "bg-[var(--admin-surface-hover)] border-[var(--admin-text-heading)]/40 ring-1 ring-[var(--admin-text-heading)]/10"
+                      : "bg-[var(--admin-surface)] border-[var(--admin-border)] hover:border-[var(--admin-border-hover)]"
                   }`}
                 >
                   <div className="space-y-4">
                     <div className="flex items-center justify-between gap-3">
-                      <span className="text-xs font-medium text-[#8b94a7]">
-                        {preset.tagline}
-                      </span>
+                      <div className="flex items-center gap-2">
+                        <span className={`w-2 h-2 rounded-full ${preset.accentColor}`}></span>
+                        <span className="text-xs font-medium text-[var(--admin-text-muted)]">
+                          {preset.tagline}
+                        </span>
+                      </div>
                       {isActive && (
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                           Active Live
                         </span>
                       )}
                     </div>
 
                     <div>
-                      <h2 className="text-lg font-semibold text-white tracking-tight">
+                      <h2 className="text-lg font-semibold text-[var(--admin-text-heading)] tracking-tight">
                         {preset.name}
                       </h2>
-                      <p className="text-sm text-[#9ca3af] mt-1.5 leading-relaxed">
+                      <p className="text-sm text-[var(--admin-text-muted)] mt-1.5 leading-relaxed">
                         {preset.description}
                       </p>
                     </div>
 
                     {/* Features list - Simple & Clean */}
-                    <div className="space-y-2.5 pt-3 border-t border-[#232736] text-xs">
+                    <div className="space-y-2.5 pt-3 border-t border-[var(--admin-border)] text-xs">
                       {preset.features.map((f, i) => (
-                        <div key={i} className="flex justify-between items-center text-[#8b94a7]">
+                        <div key={i} className="flex justify-between items-center text-[var(--admin-text-muted)]">
                           <span>{f.label}</span>
-                          <span className="text-[#e2e5eb] font-medium">{f.value}</span>
+                          <span className="text-[var(--admin-text-heading)] font-medium">{f.value}</span>
                         </div>
                       ))}
+                      <div className="flex justify-between items-center text-[var(--admin-text-muted)]">
+                        <span>Color Schemes</span>
+                        <span className="text-[var(--admin-text-heading)] font-medium">Dark & Bright Modes</span>
+                      </div>
                     </div>
                   </div>
 
                   {/* Bottom Action */}
-                  <div className="pt-5 mt-6 border-t border-[#232736] flex items-center justify-between">
-                    <span className="text-xs text-[#8b94a7]">
+                  <div className="pt-5 mt-6 border-t border-[var(--admin-border)] flex items-center justify-between">
+                    <span className="text-xs text-[var(--admin-text-muted)]">
                       {isActive ? "Currently in use" : "Ready to switch"}
                     </span>
                     <button
                       type="button"
                       disabled={isActive || activating}
                       onClick={() => handleActivatePreset(preset.key)}
-                      className={`px-4 py-2 rounded-lg text-xs font-medium transition-colors cursor-pointer ${
+                      className={`px-4 py-2 rounded-lg text-xs font-medium transition-all duration-150 active:scale-[0.98] cursor-pointer ${
                         isActive
-                          ? "bg-[#1e2333] text-[#8b94a7] cursor-default border border-[#2b3147]"
-                          : activating
-                          ? "bg-[#252a3c] text-[#8b94a7] cursor-wait"
-                          : "bg-white text-[#0f1117] hover:bg-[#e2e5eb] active:scale-95 shadow-sm"
+                          ? "bg-[var(--admin-surface-active)] text-[var(--admin-text-muted)] cursor-default border border-[var(--admin-border)]"
+                          : "bg-[var(--admin-btn-primary-bg)] text-[var(--admin-btn-primary-text)] hover:bg-[var(--admin-btn-primary-hover)] shadow-sm"
                       }`}
                     >
                       {isActive
                         ? "Active"
-                        : activating
-                        ? "Switching..."
                         : "Activate Theme"}
                     </button>
                   </div>

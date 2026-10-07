@@ -208,14 +208,20 @@ export default function AdminExperiencePage() {
         ) : (
           <div className="space-y-3">
             {loading ? (
-              <div className="p-8 text-center text-[#8b94a7] text-sm">Loading experience...</div>
+              <div className="space-y-3 animate-pulse">
+                {[...Array(3)].map((_, i) => (
+                  <div key={i} className="h-24 rounded-xl bg-[#161822] border border-[#232736]"></div>
+                ))}
+              </div>
             ) : experiences.length === 0 ? (
-              <div className="p-8 text-center text-[#8b94a7] text-sm">No experience entries found.</div>
+              <div className="p-12 text-center text-[#8b94a7] text-sm border border-[#232736] bg-[#161822] rounded-xl">
+                No experience entries found.
+              </div>
             ) : (
               experiences.map((exp) => (
                 <div
                   key={exp._id}
-                  className="border border-[#232736] bg-[#161822] rounded-xl p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-[#31374a] transition-colors"
+                  className="border border-[#232736] bg-[#161822] rounded-xl p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-[#353c52] hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/20 transition-all duration-200"
                 >
                   <div className="space-y-1">
                     <div className="flex items-center gap-2.5">
@@ -231,13 +237,13 @@ export default function AdminExperiencePage() {
                   <div className="flex items-center gap-2 shrink-0">
                     <button
                       onClick={() => handleEdit(exp)}
-                      className="px-3.5 py-1.5 rounded-lg border border-[#2b3044] bg-[#1c1f2e] text-[#cbd5e1] hover:text-white hover:bg-[#25293d] text-xs transition-colors cursor-pointer"
+                      className="px-3.5 py-1.5 rounded-lg border border-[#2b3044] bg-[#1c1f2e] text-[#cbd5e1] hover:text-white hover:bg-[#25293d] text-xs transition-all duration-150 active:scale-[0.98] cursor-pointer"
                     >
                       Edit
                     </button>
                     <button
                       onClick={() => handleDelete(exp._id)}
-                      className="px-3.5 py-1.5 rounded-lg border border-[#2b3044] bg-[#1c1f2e] text-[#8b94a7] hover:text-rose-400 hover:border-rose-900/50 hover:bg-rose-950/20 text-xs transition-colors cursor-pointer"
+                      className="px-3.5 py-1.5 rounded-lg border border-[#2b3044] bg-[#1c1f2e] text-[#8b94a7] hover:text-rose-400 hover:border-rose-900/50 hover:bg-rose-950/20 text-xs transition-all duration-150 active:scale-[0.98] cursor-pointer"
                     >
                       Delete
                     </button>

@@ -43,14 +43,17 @@ export default function AdminLoginPage() {
       <div className="flex items-center justify-between">
         <Link
           href="/"
-          className="text-xs text-[#8b94a7] hover:text-white transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs text-[#8b94a7] hover:text-white transition-all duration-150 active:scale-[0.98]"
         >
-          ← Back to Portfolio
+          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          <span>Back to Portfolio</span>
         </Link>
       </div>
 
       <div className="w-full max-w-sm mx-auto my-auto">
-        <div className="rounded-2xl border border-[#232736] bg-[#161822] p-8 shadow-2xl space-y-6">
+        <div className="rounded-2xl border border-[#232736] bg-[#161822] p-8 shadow-2xl space-y-6 transition-all duration-200">
           <div className="space-y-1">
             <div className="w-8 h-8 rounded-lg bg-white text-[#0f1117] font-semibold text-xs flex items-center justify-center tracking-tight mb-4 shadow-sm">
               MW
@@ -64,7 +67,7 @@ export default function AdminLoginPage() {
           </div>
 
           {error && (
-            <div className="p-3 rounded-lg border border-rose-900/40 bg-rose-950/20 text-rose-300 text-xs">
+            <div className="p-3 rounded-lg border border-rose-900/40 bg-rose-950/20 text-rose-300 text-xs transition-all animate-fade-in">
               {error}
             </div>
           )}
@@ -101,7 +104,7 @@ export default function AdminLoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-2.5 rounded-lg bg-white hover:bg-[#e2e5eb] text-[#0f1117] font-medium text-xs tracking-tight transition-colors disabled:opacity-50 mt-2 cursor-pointer shadow-sm"
+              className="w-full py-2.5 rounded-lg bg-white hover:bg-[#e2e5eb] text-[#0f1117] font-medium text-xs tracking-tight transition-all duration-150 active:scale-[0.98] disabled:opacity-50 mt-2 cursor-pointer shadow-sm"
             >
               {loading ? "Authenticating..." : "Sign in"}
             </button>

@@ -24,7 +24,164 @@
   --border-active: rgba(255, 255, 255, 0.18);
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
+
+  /* ==========================================================
+     ADMIN CONSOLE THEME TOKENS (Dark & Bright Mode)
+     High visual contrast and depth between canvas & cards
+     ========================================================== */
+  --admin-bg: #090a0f;
+  --admin-header-bg: rgba(9, 10, 15, 0.94);
+  --admin-surface: #151825;
+  --admin-surface-hover: #1c2032;
+  --admin-surface-active: #22273c;
+  --admin-border: #262b3f;
+  --admin-border-subtle: #191c2c;
+  --admin-border-hover: #3b4463;
+  --admin-input-bg: #0c0e16;
+  --admin-input-border: #262b3f;
+  --admin-card-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.45);
+  --admin-text-main: #e2e5eb;
+  --admin-text-muted: #8b94a7;
+  --admin-text-heading: #ffffff;
+  --admin-btn-primary-bg: #ffffff;
+  --admin-btn-primary-text: #090a0f;
+  --admin-btn-primary-hover: #e2e5eb;
+  --admin-btn-secondary-bg: #1c2032;
+  --admin-btn-secondary-border: #2b324d;
+  --admin-btn-secondary-text: #cbd5e1;
+  --admin-btn-secondary-hover: #252b42;
+  --admin-tag-bg: #1e2338;
+  --admin-tag-text: #8b94a7;
 }
+
+[data-admin-theme="bright"],
+html.admin-bright {
+  --admin-bg: #eef2f6;
+  --admin-header-bg: rgba(255, 255, 255, 0.94);
+  --admin-surface: #ffffff;
+  --admin-surface-hover: #f8fafc;
+  --admin-surface-active: #f1f5f9;
+  --admin-border: #d8e2ed;
+  --admin-border-subtle: #e5ecf5;
+  --admin-border-hover: #cbd5e1;
+  --admin-input-bg: #ffffff;
+  --admin-input-border: #cbd5e1;
+  --admin-card-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.08), 0 2px 8px -2px rgba(15, 23, 42, 0.06);
+  --admin-text-main: #334155;
+  --admin-text-muted: #64748b;
+  --admin-text-heading: #0f172a;
+  --admin-btn-primary-bg: #0f172a;
+  --admin-btn-primary-text: #ffffff;
+  --admin-btn-primary-hover: #1e293b;
+  --admin-btn-secondary-bg: #f1f5f9;
+  --admin-btn-secondary-border: #d8e2ed;
+  --admin-btn-secondary-text: #334155;
+  --admin-btn-secondary-hover: #e2e8f0;
+  --admin-tag-bg: #f1f5f9;
+  --admin-tag-text: #475569;
+}
+
+/* ==========================================================
+   ADMIN PANEL UNIVERSAL & BRIGHT MODE CLASS OVERRIDES
+   Ensures cards clearly separate from background canvas
+   ========================================================== */
+.bg-\[\#0f1117\] {
+  background-color: var(--admin-bg) !important;
+}
+.bg-\[\#161822\] {
+  background-color: var(--admin-surface) !important;
+  border-color: var(--admin-border) !important;
+  box-shadow: var(--admin-card-shadow) !important;
+}
+.border-\[\#232736\],
+.border-\[\#1e2230\] {
+  border-color: var(--admin-border) !important;
+}
+.bg-\[\#0b0c10\],
+input.bg-\[\#0b0c10\],
+textarea.bg-\[\#0b0c10\],
+select.bg-\[\#0b0c10\] {
+  background-color: var(--admin-input-bg) !important;
+  border-color: var(--admin-input-border) !important;
+}
+
+/* Bright Mode specific fine-tuning */
+[data-admin-theme="bright"] .bg-\[\#161822\] {
+  background-color: #ffffff !important;
+  border-color: #d8e2ed !important;
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.08), 0 2px 8px -2px rgba(15, 23, 42, 0.06) !important;
+}
+[data-admin-theme="bright"] .bg-\[\#161822\]:hover,
+[data-admin-theme="bright"] .hover\:border-\[\#353c52\]:hover,
+[data-admin-theme="bright"] .hover\:border-\[\#31374a\]:hover {
+  border-color: #94a3b8 !important;
+  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.12) !important;
+}
+[data-admin-theme="bright"] .border-\[\#2b3044\] {
+  border-color: #d8e2ed !important;
+}
+[data-admin-theme="bright"] .bg-\[\#0b0c10\],
+[data-admin-theme="bright"] input.bg-\[\#0b0c10\],
+[data-admin-theme="bright"] textarea.bg-\[\#0b0c10\],
+[data-admin-theme="bright"] select.bg-\[\#0b0c10\] {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+[data-admin-theme="bright"] input::placeholder,
+[data-admin-theme="bright"] textarea::placeholder {
+  color: #94a3b8 !important;
+}
+[data-admin-theme="bright"] .bg-\[\#181c28\],
+[data-admin-theme="bright"] .bg-\[\#181b26\] {
+  background-color: #f8fafc !important;
+}
+[data-admin-theme="bright"] .bg-\[\#1e2333\] {
+  background-color: #f1f5f9 !important;
+  color: #64748b !important;
+}
+[data-admin-theme="bright"] .bg-\[\#1c1f2e\] {
+  background-color: #f1f5f9 !important;
+  border-color: #d8e2ed !important;
+  color: #334155 !important;
+}
+[data-admin-theme="bright"] .bg-\[\#1c1f2e\]:hover,
+[data-admin-theme="bright"] .hover\:bg-\[\#25293d\]:hover,
+[data-admin-theme="bright"] .hover\:bg-\[\#222736\]:hover {
+  background-color: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+[data-admin-theme="bright"] .text-white {
+  color: #0f172a !important;
+}
+[data-admin-theme="bright"] .text-\[\#8b94a7\],
+[data-admin-theme="bright"] .text-\[\#9ca3af\],
+[data-admin-theme="bright"] .text-\[\#5a6275\] {
+  color: #64748b !important;
+}
+[data-admin-theme="bright"] .text-\[\#cbd5e1\],
+[data-admin-theme="bright"] .text-\[\#e2e5eb\] {
+  color: #334155 !important;
+}
+
+/* Primary buttons & CTAs */
+[data-admin-theme="bright"] .bg-white.text-\[\#0f1117\],
+[data-admin-theme="bright"] button[type="submit"].bg-white,
+[data-admin-theme="bright"] a.bg-white.text-\[\#0f1117\] {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+}
+[data-admin-theme="bright"] .bg-white.text-\[\#0f1117\]:hover,
+[data-admin-theme="bright"] button[type="submit"].bg-white:hover,
+[data-admin-theme="bright"] a.bg-white.text-\[\#0f1117\]:hover {
+  background-color: #1e293b !important;
+  color: #ffffff !important;
+}
+[data-admin-theme="bright"] .bg-white.text-\[\#0f1117\] *,
+[data-admin-theme="bright"] button[type="submit"].bg-white * {
+  color: #ffffff !important;
+}
+
 
 html {
   scroll-behavior: smooth;
