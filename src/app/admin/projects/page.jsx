@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import AdminHeader from "../../../components/admin/AdminHeader";
 
 export default function AdminProjectsPage() {
   const router = useRouter();
@@ -215,122 +216,137 @@ export default function AdminProjectsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#090A0F] text-white flex flex-col font-sans">
-      <header className="border-b border-white/10 bg-[#0C0E14] px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <Link href="/admin/dashboard" className="text-xs font-mono text-gray-400 hover:text-white">
-            ← Dashboard
-          </Link>
-          <h1 className="text-sm font-bold font-mono uppercase tracking-wider text-white">
-            Project Content Management
-          </h1>
+    <div className="min-h-screen bg-[#0f1117] text-[#e2e5eb] flex flex-col font-sans antialiased selection:bg-[#252a3d]">
+      <AdminHeader activePage="projects" />
+
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 flex-1 w-full space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 pb-6 border-b border-[#1e2230]">
+          <div>
+            <h1 className="text-xl font-medium text-white tracking-tight">
+              Projects
+            </h1>
+            <p className="text-sm text-[#8b94a7] mt-0.5">
+              Manage showcase projects, live demos, and case study links.
+            </p>
+          </div>
+
+          <button
+            onClick={handleCreateNew}
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-white text-[#0f1117] text-xs font-medium hover:bg-[#e2e5eb] transition-colors cursor-pointer shadow-sm active:scale-95 shrink-0"
+          >
+            + Add Project
+          </button>
         </div>
-
-        <button
-          onClick={handleCreateNew}
-          className="px-4 py-2 bg-white text-black font-mono text-xs uppercase tracking-wider font-bold hover:bg-sky-400 cursor-pointer"
-        >
-          + Add New Project
-        </button>
-      </header>
-
-      <main className="editorial-container py-8 flex-1">
         {statusMessage && (
-          <div className="mb-6 p-4 border border-sky-500/30 bg-sky-500/10 text-sky-300 text-xs font-mono">
+          <div className="p-3 rounded-xl border border-[#232736] bg-[#161822] text-[#e2e5eb] text-xs">
             {statusMessage}
           </div>
         )}
 
         {/* Editor Form Modal or Drawer */}
         {editingProject ? (
-          <div className="border border-white/10 bg-[#0C0E14] p-8 max-w-3xl mx-auto">
-            <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
-              <h2 className="text-xl font-bold font-mono">
+          <div className="border border-[#232736] bg-[#161822] rounded-xl p-6 sm:p-8 max-w-3xl mx-auto shadow-xl">
+            <div className="flex items-center justify-between border-b border-[#232736] pb-4 mb-6">
+              <h2 className="text-base font-semibold text-white">
                 {editingProject.isNew ? "Create New Project" : `Edit Project: ${formData.title}`}
               </h2>
               <button
                 onClick={() => setEditingProject(null)}
-                className="text-xs font-mono text-gray-400 hover:text-white"
+                className="text-xs text-[#8b94a7] hover:text-white transition-colors"
               >
                 ✕ Cancel
               </button>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4 text-xs font-mono">
-              <div>
-                <label className="block text-gray-400 uppercase mb-1">Project Title *</label>
+            <form onSubmit={handleSubmit} className="space-y-4 text-xs">
+              <div className="space-y-1.5">
+                <label className="block text-[#cbd5e1] font-medium text-xs">
+                  Project Title *
+                </label>
                 <input
                   type="text"
                   required
                   value={formData.title}
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  className="w-full bg-[#090A0F] border border-white/10 p-3 text-white text-sm"
+                  placeholder="e.g. Modern Architecture Platform"
+                  className="w-full bg-[#0b0c10] border border-[#232736] focus:border-[#4f566b] rounded-lg px-3 py-2 text-white text-sm focus:outline-none transition-colors"
                 />
               </div>
 
-              <div>
-                <label className="block text-gray-400 uppercase mb-1">Status Enforcer (Mandatory Rule) *</label>
+              <div className="space-y-1.5">
+                <label className="block text-[#cbd5e1] font-medium text-xs">
+                  Status Enforcer *
+                </label>
                 <select
                   value={formData.status}
                   onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                  className="w-full bg-[#090A0F] border border-white/10 p-3 text-white text-sm focus:border-sky-400"
+                  className="w-full bg-[#0b0c10] border border-[#232736] focus:border-[#4f566b] rounded-lg px-3 py-2 text-white text-sm focus:outline-none transition-colors"
                 >
-                  <option value="live">live (Eligible for Featured if live link exists)</option>
-                  <option value="in-progress">in-progress (Automated routing to Practice Lab)</option>
-                  <option value="archived">archived (De-emphasized Practice Lab)</option>
+                  <option value="live">Live (Eligible for Featured Showcase)</option>
+                  <option value="in-progress">In-Progress (Practice Lab Routing)</option>
+                  <option value="archived">Archived (De-emphasized Lab)</option>
                 </select>
               </div>
 
-              <div>
-                <label className="block text-gray-400 uppercase mb-1">Short Description *</label>
+              <div className="space-y-1.5">
+                <label className="block text-[#cbd5e1] font-medium text-xs">
+                  Short Description *
+                </label>
                 <input
                   type="text"
                   required
                   value={formData.shortDescription}
                   onChange={(e) => setFormData({ ...formData, shortDescription: e.target.value })}
-                  className="w-full bg-[#090A0F] border border-white/10 p-3 text-white text-sm"
+                  placeholder="A concise one-line summary of what this project accomplishes"
+                  className="w-full bg-[#0b0c10] border border-[#232736] focus:border-[#4f566b] rounded-lg px-3 py-2 text-white text-sm focus:outline-none transition-colors"
                 />
               </div>
 
-              <div>
-                <label className="block text-gray-400 uppercase mb-1">Problem Statement *</label>
+              <div className="space-y-1.5">
+                <label className="block text-[#cbd5e1] font-medium text-xs">
+                  Problem Statement *
+                </label>
                 <textarea
                   required
                   rows={2}
                   value={formData.problem}
                   onChange={(e) => setFormData({ ...formData, problem: e.target.value })}
-                  className="w-full bg-[#090A0F] border border-white/10 p-3 text-white text-sm"
+                  placeholder="The user/technical problem solved..."
+                  className="w-full bg-[#0b0c10] border border-[#232736] focus:border-[#4f566b] rounded-lg px-3 py-2 text-white text-sm focus:outline-none transition-colors resize-y"
                 />
               </div>
 
-              <div>
-                <label className="block text-gray-400 uppercase mb-1">Role & Technical Decisions *</label>
+              <div className="space-y-1.5">
+                <label className="block text-[#cbd5e1] font-medium text-xs">
+                  Role & Technical Decisions *
+                </label>
                 <textarea
                   required
                   rows={2}
                   value={formData.roleDecisions}
                   onChange={(e) => setFormData({ ...formData, roleDecisions: e.target.value })}
-                  className="w-full bg-[#090A0F] border border-white/10 p-3 text-white text-sm"
+                  placeholder="Architectural choices, libraries picked, data modeling..."
+                  className="w-full bg-[#0b0c10] border border-[#232736] focus:border-[#4f566b] rounded-lg px-3 py-2 text-white text-sm focus:outline-none transition-colors resize-y"
                 />
               </div>
 
               {/* Multi Live Links Section */}
-              <div className="border border-white/10 bg-[#07080C] p-4 rounded-sm space-y-3">
+              <div className="border border-[#232736] bg-[#12141c] p-4 rounded-xl space-y-3">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                   <div>
-                    <label className="block text-gray-200 uppercase font-bold text-xs tracking-wider">
-                      Project Live Deployment Links
+                    <label className="block text-white font-medium text-xs">
+                      Live Deployment Links
                     </label>
-                    <span className="text-[11px] text-gray-400">
-                      Add multiple links for projects (e.g. Live Site, Admin Panel, POS Portal, Customer App)
+                    <span className="text-xs text-[#8b94a7]">
+                      Add multiple endpoints (e.g. Live Site, Admin Panel, POS Portal)
                     </span>
                   </div>
                   <button
                     type="button"
                     onClick={handleAddLiveLink}
-                    className="px-3 py-1.5 bg-white/10 hover:bg-white/20 text-white text-xs font-mono uppercase tracking-wider flex items-center gap-1.5 border border-white/20 transition-colors w-fit"
+                    className="px-3 py-1.5 rounded-lg bg-[#1c1f2e] hover:bg-[#25293d] text-[#cbd5e1] hover:text-white text-xs border border-[#2b3044] transition-colors w-fit cursor-pointer"
                   >
-                    <span>+ Add Demo Link</span>
+                    + Add Link
                   </button>
                 </div>
 
@@ -338,11 +354,11 @@ export default function AdminProjectsPage() {
                   {formData.liveLinks.map((link, idx) => (
                     <div
                       key={idx}
-                      className="p-3 bg-[#090A0F] border border-white/10 flex flex-col sm:flex-row gap-3 items-start sm:items-center"
+                      className="p-3 bg-[#161822] border border-[#232736] rounded-lg flex flex-col sm:flex-row gap-3 items-start sm:items-center"
                     >
                       {/* Label with quick presets */}
-                      <div className="w-full sm:w-2/5 space-y-1">
-                        <label className="text-[10px] uppercase text-gray-400 font-mono block">
+                      <div className="w-full sm:w-2/5 space-y-1.5">
+                        <label className="text-[11px] text-[#8b94a7] block">
                           Link #{idx + 1} Label
                         </label>
                         <input
@@ -350,18 +366,18 @@ export default function AdminProjectsPage() {
                           value={link.label}
                           onChange={(e) => handleUpdateLiveLink(idx, "label", e.target.value)}
                           placeholder="e.g. Live Site, Admin Panel"
-                          className="w-full bg-[#0C0E14] border border-white/10 p-2.5 text-white text-xs"
+                          className="w-full bg-[#0b0c10] border border-[#232736] rounded-md px-2.5 py-1.5 text-white text-xs focus:border-[#4f566b] focus:outline-none"
                         />
-                        <div className="flex flex-wrap gap-1 pt-1">
+                        <div className="flex flex-wrap gap-1 pt-0.5">
                           {["Live Site", "Admin Panel", "POS Portal", "Client App"].map((presetLabel) => (
                             <button
                               key={presetLabel}
                               type="button"
                               onClick={() => handleUpdateLiveLink(idx, "label", presetLabel)}
-                              className={`text-[9px] px-1.5 py-0.5 rounded transition-colors ${
+                              className={`text-[10px] px-2 py-0.5 rounded transition-colors ${
                                 link.label === presetLabel
-                                  ? "bg-sky-500/30 text-sky-300 border border-sky-500/50"
-                                  : "bg-white/5 text-gray-400 hover:text-white border border-transparent"
+                                  ? "bg-white text-[#0f1117] font-medium"
+                                  : "bg-[#1c1f2e] text-[#8b94a7] hover:text-white border border-[#2b3044]"
                               }`}
                             >
                               {presetLabel}
@@ -371,8 +387,8 @@ export default function AdminProjectsPage() {
                       </div>
 
                       {/* URL input */}
-                      <div className="w-full sm:flex-1 space-y-1">
-                        <label className="text-[10px] uppercase text-gray-400 font-mono block">
+                      <div className="w-full sm:flex-1 space-y-1.5">
+                        <label className="text-[11px] text-[#8b94a7] block">
                           URL (https://...)
                         </label>
                         <input
@@ -380,7 +396,7 @@ export default function AdminProjectsPage() {
                           value={link.url}
                           onChange={(e) => handleUpdateLiveLink(idx, "url", e.target.value)}
                           placeholder="https://..."
-                          className="w-full bg-[#0C0E14] border border-white/10 p-2.5 text-white text-xs font-mono"
+                          className="w-full bg-[#0b0c10] border border-[#232736] rounded-md px-2.5 py-1.5 text-white text-xs focus:border-[#4f566b] focus:outline-none"
                         />
                       </div>
 
@@ -389,7 +405,7 @@ export default function AdminProjectsPage() {
                         <button
                           type="button"
                           onClick={() => handleRemoveLiveLink(idx)}
-                          className="mt-2 sm:mt-0 px-2.5 py-2 text-rose-400 hover:text-white hover:bg-rose-500/20 border border-rose-500/20 text-xs transition-colors self-end sm:self-center cursor-pointer"
+                          className="mt-2 sm:mt-0 p-1.5 text-[#8b94a7] hover:text-rose-400 hover:bg-rose-950/20 rounded border border-transparent hover:border-rose-900/40 text-xs transition-colors self-end sm:self-center cursor-pointer"
                           title="Remove this link"
                         >
                           ✕
@@ -401,8 +417,8 @@ export default function AdminProjectsPage() {
               </div>
 
               {/* Source Code Repository Link */}
-              <div>
-                <label className="block text-gray-400 uppercase mb-1">
+              <div className="space-y-1.5">
+                <label className="block text-[#cbd5e1] font-medium text-xs">
                   Source Code Repository Link (GitHub)
                 </label>
                 <input
@@ -410,42 +426,46 @@ export default function AdminProjectsPage() {
                   value={formData.codeLink}
                   onChange={(e) => setFormData({ ...formData, codeLink: e.target.value })}
                   placeholder="https://github.com/..."
-                  className="w-full bg-[#090A0F] border border-white/10 p-3 text-white text-sm font-mono"
+                  className="w-full bg-[#0b0c10] border border-[#232736] focus:border-[#4f566b] rounded-lg px-3 py-2 text-white text-sm focus:outline-none transition-colors"
                 />
               </div>
 
-              <div>
-                <label className="block text-gray-400 uppercase mb-1">Technology Tags (comma-separated)</label>
+              <div className="space-y-1.5">
+                <label className="block text-[#cbd5e1] font-medium text-xs">
+                  Technology Tags (comma-separated)
+                </label>
                 <input
                   type="text"
                   value={formData.techTags}
                   onChange={(e) => setFormData({ ...formData, techTags: e.target.value })}
                   placeholder="React, Next.js, Tailwind CSS"
-                  className="w-full bg-[#090A0F] border border-white/10 p-3 text-white text-sm"
+                  className="w-full bg-[#0b0c10] border border-[#232736] focus:border-[#4f566b] rounded-lg px-3 py-2 text-white text-sm focus:outline-none transition-colors"
                 />
               </div>
 
-              <div>
-                <label className="block text-gray-400 uppercase mb-1">Cover Image URL / Upload</label>
+              <div className="space-y-1.5">
+                <label className="block text-[#cbd5e1] font-medium text-xs">
+                  Cover Image URL / Upload
+                </label>
                 <div className="flex gap-2">
                   <input
                     type="text"
                     value={formData.coverImage}
                     onChange={(e) => setFormData({ ...formData, coverImage: e.target.value })}
                     placeholder="https://..."
-                    className="flex-1 bg-[#090A0F] border border-white/10 p-3 text-white text-sm"
+                    className="flex-1 bg-[#0b0c10] border border-[#232736] focus:border-[#4f566b] rounded-lg px-3 py-2 text-white text-sm focus:outline-none transition-colors"
                   />
-                  <label className="px-4 py-3 bg-white/10 hover:bg-white/20 text-white cursor-pointer uppercase text-xs">
+                  <label className="px-4 py-2 bg-[#1c1f2e] hover:bg-[#25293d] text-[#cbd5e1] hover:text-white border border-[#2b3044] rounded-lg cursor-pointer text-xs font-medium transition-colors">
                     {uploading ? "Uploading..." : "Upload File"}
                     <input type="file" onChange={handleImageUpload} accept="image/*" className="hidden" />
                   </label>
                 </div>
               </div>
 
-              <div className="pt-4 flex gap-4">
+              <div className="pt-2">
                 <button
                   type="submit"
-                  className="flex-1 py-3 bg-white text-black font-bold uppercase tracking-wider hover:bg-sky-400 cursor-pointer"
+                  className="w-full py-2.5 bg-white text-[#0f1117] font-medium text-xs rounded-lg hover:bg-[#e2e5eb] transition-colors cursor-pointer shadow-sm"
                 >
                   Save Project & Trigger ISR →
                 </button>
@@ -454,34 +474,34 @@ export default function AdminProjectsPage() {
           </div>
         ) : (
           /* Project List */
-          <div className="space-y-4">
+          <div className="space-y-3">
             {loading ? (
-              <div className="p-8 text-center text-gray-400 font-mono text-sm">Loading projects...</div>
+              <div className="p-8 text-center text-[#8b94a7] text-sm">Loading projects...</div>
             ) : projects.length === 0 ? (
-              <div className="p-8 text-center text-gray-400 font-mono text-sm">No projects found in database.</div>
+              <div className="p-8 text-center text-[#8b94a7] text-sm">No projects found in database.</div>
             ) : (
               projects.map((p) => (
                 <div
                   key={p._id}
-                  className="border border-white/10 bg-[#0C0E14] p-6 flex flex-col md:flex-row md:items-center justify-between gap-4"
+                  className="border border-[#232736] bg-[#161822] rounded-xl p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-[#31374a] transition-colors"
                 >
-                  <div>
-                    <div className="flex items-center gap-3">
+                  <div className="space-y-1.5">
+                    <div className="flex items-center gap-2.5">
                       <span
-                        className={`text-[10px] font-mono uppercase px-2 py-0.5 border ${
+                        className={`text-[11px] px-2.5 py-0.5 rounded-full font-medium border ${
                           p.status === "live"
-                            ? "text-emerald-400 border-emerald-400/30 bg-emerald-400/10"
-                            : "text-amber-400 border-amber-400/30 bg-amber-400/10"
+                            ? "text-emerald-400 border-emerald-500/20 bg-emerald-500/10"
+                            : "text-[#8b94a7] border-[#2b3044] bg-[#1c1f2e]"
                         }`}
                       >
                         {p.status}
                       </span>
-                      <h3 className="text-lg font-bold text-white">{p.title}</h3>
+                      <h3 className="text-sm font-semibold text-white tracking-tight">{p.title}</h3>
                     </div>
-                    <p className="text-xs text-gray-400 mt-1 font-light">{p.shortDescription}</p>
+                    <p className="text-xs text-[#9ca3af] leading-relaxed">{p.shortDescription}</p>
 
                     {/* Quick view of links */}
-                    <div className="flex flex-wrap items-center gap-2 mt-3">
+                    <div className="flex flex-wrap items-center gap-1.5 pt-1">
                       {p.liveLinks && p.liveLinks.length > 0 ? (
                         p.liveLinks.map((l, i) => (
                           <a
@@ -489,10 +509,10 @@ export default function AdminProjectsPage() {
                             href={l.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-[10px] font-mono px-2 py-0.5 border border-sky-500/30 text-sky-300 bg-sky-500/10 hover:bg-sky-500/20 flex items-center gap-1 transition-colors"
+                            className="text-xs px-2.5 py-1 rounded-md border border-[#2b3044] text-[#cbd5e1] bg-[#1c1f2e] hover:text-white hover:bg-[#25293d] flex items-center gap-1 transition-colors"
                           >
                             <span>{l.label || "Live Demo"}</span>
-                            <span>↗</span>
+                            <span className="opacity-60 text-[10px]">↗</span>
                           </a>
                         ))
                       ) : p.liveLink ? (
@@ -500,10 +520,10 @@ export default function AdminProjectsPage() {
                           href={p.liveLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-[10px] font-mono px-2 py-0.5 border border-sky-500/30 text-sky-300 bg-sky-500/10 hover:bg-sky-500/20 flex items-center gap-1 transition-colors"
+                          className="text-xs px-2.5 py-1 rounded-md border border-[#2b3044] text-[#cbd5e1] bg-[#1c1f2e] hover:text-white hover:bg-[#25293d] flex items-center gap-1 transition-colors"
                         >
                           <span>Live Demo</span>
-                          <span>↗</span>
+                          <span className="opacity-60 text-[10px]">↗</span>
                         </a>
                       ) : null}
                       {p.codeLink && (
@@ -511,25 +531,25 @@ export default function AdminProjectsPage() {
                           href={p.codeLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-[10px] font-mono px-2 py-0.5 border border-white/20 text-gray-300 hover:text-white bg-white/5 flex items-center gap-1 transition-colors"
+                          className="text-xs px-2.5 py-1 rounded-md border border-[#2b3044] text-[#8b94a7] hover:text-white bg-[#181b26] flex items-center gap-1 transition-colors"
                         >
                           <span>GitHub</span>
-                          <span>↗</span>
+                          <span className="opacity-60 text-[10px]">↗</span>
                         </a>
                       )}
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3 font-mono text-xs">
+                  <div className="flex items-center gap-2 shrink-0">
                     <button
                       onClick={() => handleEdit(p)}
-                      className="px-3 py-1.5 border border-white/20 text-white hover:bg-white hover:text-black transition-colors cursor-pointer"
+                      className="px-3.5 py-1.5 rounded-lg border border-[#2b3044] bg-[#1c1f2e] text-[#cbd5e1] hover:text-white hover:bg-[#25293d] text-xs transition-colors cursor-pointer"
                     >
                       Edit
                     </button>
                     <button
                       onClick={() => handleDelete(p._id)}
-                      className="px-3 py-1.5 border border-rose-500/30 text-rose-300 hover:bg-rose-500/10 transition-colors cursor-pointer"
+                      className="px-3.5 py-1.5 rounded-lg border border-[#2b3044] bg-[#1c1f2e] text-[#8b94a7] hover:text-rose-400 hover:border-rose-900/50 hover:bg-rose-950/20 text-xs transition-colors cursor-pointer"
                     >
                       Delete
                     </button>

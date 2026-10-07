@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -30,7 +31,7 @@ export default function AdminLoginPage() {
       } else {
         setError(data.message || "Invalid credentials");
       }
-    } catch (err) {
+    } catch (_err) {
       setError("Network error. Please try again.");
     } finally {
       setLoading(false);
@@ -38,61 +39,78 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#090A0F] text-white flex items-center justify-center p-4">
-      <div className="w-full max-w-md border border-white/10 bg-[#0C0E14] p-8 shadow-2xl">
-        <div className="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
-          <div className="flex h-8 w-8 items-center justify-center bg-white text-black font-mono text-xs font-bold">
-            MW
+    <div className="min-h-screen bg-[#0f1117] text-[#e2e5eb] flex flex-col justify-between p-4 sm:p-6 font-sans antialiased selection:bg-[#252a3d]">
+      <div className="flex items-center justify-between">
+        <Link
+          href="/"
+          className="text-xs text-[#8b94a7] hover:text-white transition-colors"
+        >
+          ← Back to Portfolio
+        </Link>
+      </div>
+
+      <div className="w-full max-w-sm mx-auto my-auto">
+        <div className="rounded-2xl border border-[#232736] bg-[#161822] p-8 shadow-2xl space-y-6">
+          <div className="space-y-1">
+            <div className="w-8 h-8 rounded-lg bg-white text-[#0f1117] font-semibold text-xs flex items-center justify-center tracking-tight mb-4 shadow-sm">
+              MW
+            </div>
+            <h1 className="text-lg font-medium tracking-tight text-white">
+              Admin Access
+            </h1>
+            <p className="text-sm text-[#8b94a7] font-normal">
+              Enter credentials to authenticate into the portfolio console.
+            </p>
           </div>
-          <div>
-            <h1 className="text-lg font-bold font-mono tracking-wider">CMS ADMIN AUTH</h1>
-            <p className="text-xs font-mono text-gray-400">Portfolio Management Dashboard</p>
-          </div>
+
+          {error && (
+            <div className="p-3 rounded-lg border border-rose-900/40 bg-rose-950/20 text-rose-300 text-xs">
+              {error}
+            </div>
+          )}
+
+          <form onSubmit={handleLogin} className="space-y-4 text-xs">
+            <div className="space-y-1.5">
+              <label className="block text-[#8b94a7] font-medium text-xs">
+                Email Address
+              </label>
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="mwaqar7615@gmail.com"
+                className="w-full bg-[#0b0c10] border border-[#232736] focus:border-[#4f566b] rounded-lg px-3.5 py-2.5 text-white text-sm focus:outline-none transition-colors"
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="block text-[#8b94a7] font-medium text-xs">
+                Password
+              </label>
+              <input
+                type="password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="••••••••••••"
+                className="w-full bg-[#0b0c10] border border-[#232736] focus:border-[#4f566b] rounded-lg px-3.5 py-2.5 text-white text-sm focus:outline-none transition-colors"
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full py-2.5 rounded-lg bg-white hover:bg-[#e2e5eb] text-[#0f1117] font-medium text-xs tracking-tight transition-colors disabled:opacity-50 mt-2 cursor-pointer shadow-sm"
+            >
+              {loading ? "Authenticating..." : "Sign in"}
+            </button>
+          </form>
         </div>
+      </div>
 
-        {error && (
-          <div className="mb-4 p-3 border border-rose-500/30 bg-rose-500/10 text-rose-300 text-xs font-mono">
-            ✕ {error}
-          </div>
-        )}
-
-        <form onSubmit={handleLogin} className="space-y-4 font-mono text-xs">
-          <div>
-            <label className="block text-gray-400 uppercase tracking-widest mb-1">
-              Admin Email Address
-            </label>
-            <input
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="mwaqar7615@gmail.com"
-              className="w-full bg-[#090A0F] border border-white/10 p-3 text-white text-sm focus:border-sky-400 focus:outline-none"
-            />
-          </div>
-
-          <div>
-            <label className="block text-gray-400 uppercase tracking-widest mb-1">
-              Secret Password
-            </label>
-            <input
-              type="password"
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••••••"
-              className="w-full bg-[#090A0F] border border-white/10 p-3 text-white text-sm focus:border-sky-400 focus:outline-none"
-            />
-          </div>
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full py-3 bg-white text-black font-bold uppercase tracking-widest hover:bg-sky-400 transition-colors disabled:opacity-50 mt-2 cursor-pointer"
-          >
-            {loading ? "Authenticating..." : "Authorize Dashboard →"}
-          </button>
-        </form>
+      <div className="text-center text-xs text-[#5a6275] py-2">
+        Portfolio Console · Muhammad Waqar
       </div>
     </div>
   );
