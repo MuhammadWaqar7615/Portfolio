@@ -194,7 +194,7 @@ html.dark {
 html.light,
 [data-theme="light"] {
   color-scheme: light;
-  --color-background: #F8FAFC;
+  --color-background: #EEF2F6;
   --color-text: #334155;
   --color-heading: #0F172A;
   --color-cardBg: #FFFFFF;
@@ -205,6 +205,11 @@ html.light,
 }
 
 /* Light mode adjustments for hairline borders, cards, and textures */
+html.light [class*="bg-cardBg"] {
+  background-color: #FFFFFF !important;
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.08), 0 2px 8px -2px rgba(15, 23, 42, 0.06) !important;
+  border-color: #D8E2ED !important;
+}
 html.light [class*="border-white/"] {
   border-color: rgba(0, 0, 0, 0.09) !important;
 }
