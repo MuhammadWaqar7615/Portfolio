@@ -33,98 +33,76 @@ export default function Experience({ experiences = [], content, presetId }) {
 
   const listToDisplay = experiences.length > 0 ? experiences : defaultExperiences;
 
-  // Editorial Preset 2 Layout (Warm Studio / Earthy Editorial)
+  // Pixel-by-pixel Abhay Rana Experience Timeline for Preset 2
   if (isPreset2) {
     return (
       <section
         id="experience"
         aria-label="Professional Experience"
-        className="py-20 sm:py-24 bg-[#151713] text-[#F4F0E8] border-b border-[#383A33]"
+        className="py-20 md:py-28 px-4 md:px-6 relative z-10"
       >
-        <div className="editorial-container">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-[#383A33] pb-5 gap-4">
-            <div>
-              {tagline?.trim() && (
-                <span
-                  data-editable="content-sectionHeaders-experienceTagline"
-                  className="text-xs font-semibold uppercase tracking-[3px] text-[#B19B7D] block mb-2 cursor-pointer"
-                  title="Click to edit experience tagline"
-                >
-                  {tagline}
-                </span>
-              )}
-              {heading?.trim() && (
-                <h2
-                  data-editable="content-sectionHeaders-experienceHeading"
-                  className="text-3xl sm:text-4xl lg:text-[42px] font-normal text-[#F4F0E8] tracking-tight cursor-pointer leading-[1.15]"
-                  style={{ fontFamily: "var(--font-heading)" }}
-                  title="Click to edit experience heading"
-                >
-                  {heading}
-                </h2>
-              )}
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#69745A]"></span>
-              <p className="text-xs font-mono uppercase tracking-widest text-[#B8B7AF]">
-                [ 2+ YEARS PRODUCTION DELIVERY ]
-              </p>
-            </div>
+        <div className="mx-auto max-w-4xl">
+          {/* Section Heading with red dot */}
+          <div className="mb-16 text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-[#fafafa]">
+              {tagline.replace(" ────", "")}
+              <span className="text-red-500">.</span>
+            </h2>
+            <p className="mt-3 text-lg text-[#a1a1aa]">{heading}</p>
           </div>
 
-          <div className="space-y-6">
+          {/* Connected Vertical Timeline */}
+          <div className="relative pl-6 md:pl-10 space-y-12">
+            {/* Continuous Vertical Glowing Line */}
+            <div className="absolute left-[7px] md:left-[11px] top-3 bottom-3 w-[2px] timeline-line pointer-events-none" />
+
             {listToDisplay.map((exp, idx) => (
-              <div
-                key={exp._id || `${exp.role}-${idx}`}
-                className="group relative bg-[#181A15] border border-[#383A33] hover:border-[#69745A] rounded-[14px] p-6 sm:p-8 transition-all duration-300 shadow-md shadow-black/10"
-              >
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-                  {/* Left Column: Duration badge, Company & Mode */}
-                  <div className="lg:col-span-4 space-y-3">
-                    <div className="flex flex-wrap items-center gap-2.5">
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#252820] border border-[#383C2F] text-xs font-mono font-medium text-[#D8B894]">
-                        <svg className="w-3.5 h-3.5 text-[#E8B58F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                        {exp.duration}
-                      </span>
-                      {idx === 0 && (
-                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#69745A]/20 border border-[#69745A]/40 text-[10px] font-semibold uppercase tracking-wider text-[#A3B18A]">
-                          Recent
-                        </span>
-                      )}
-                    </div>
+              <div key={exp._id || idx} className="relative group">
+                {/* Glowing Circular Milestone Dot */}
+                <div className="absolute -left-[24px] md:-left-[40px] top-1.5 h-4 w-4 rounded-full border-2 border-red-500 bg-[#0a0a0a] timeline-dot z-10" />
 
-                    <div>
-                      <span className="text-[10px] font-semibold text-[#8E8D84] uppercase tracking-wider block">
-                        Company
-                      </span>
-                      <span className="text-base font-medium text-[#E8B58F] mt-0.5 block">
-                        {exp.company}
-                      </span>
-                    </div>
-
-                    <div className="flex items-center gap-2 text-xs text-[#8E8D84]">
-                      <svg className="w-3.5 h-3.5 text-[#69745A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
-                      <span>On-Site Delivery</span>
-                    </div>
-                  </div>
-
-                  {/* Right Column: Role Title & Description */}
-                  <div className="lg:col-span-8 space-y-3">
-                    <h3
-                      className="text-2xl sm:text-[26px] font-normal text-[#F4F0E8] tracking-tight group-hover:text-[#E8B58F] transition-colors"
-                      style={{ fontFamily: "var(--font-heading)" }}
-                    >
+                <div className="bento-card p-6 md:p-8 hover:border-red-500/50 hover:shadow-[0_0_35px_rgba(239,68,68,0.12)] transition-all duration-300">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                    <h3 className="text-xl font-bold text-[#fafafa] group-hover:text-red-400 transition-colors">
                       {exp.role}
                     </h3>
+                    <span className="inline-block px-3 py-1 rounded-full text-xs font-mono font-medium text-red-400 bg-red-500/10 border border-red-500/20 w-fit">
+                      {exp.duration}
+                    </span>
+                  </div>
 
-                    <p className="text-sm sm:text-base text-[#C5C4BC] leading-relaxed font-light">
-                      {exp.description}
-                    </p>
+                  <div className="flex items-center gap-2 mb-4 text-sm">
+                    <span className="font-semibold text-red-400">{exp.company}</span>
+                    <span className="text-zinc-600">·</span>
+                    <span className="text-zinc-400 text-xs">Full-time Engineering</span>
+                  </div>
+
+                  <p className="text-sm text-[#a1a1aa] leading-relaxed font-light mb-5">
+                    {exp.description}
+                  </p>
+
+                  {/* Bullet achievements with red dots */}
+                  <ul className="space-y-2 text-xs text-[#a1a1aa]/90 font-light mb-6">
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-red-500 mt-1.5 flex-shrink-0" />
+                      <span>Architected modular React and Next.js interfaces with optimal client caching.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-red-500 mt-1.5 flex-shrink-0" />
+                      <span>Maintained 99.8% crash-free sessions across live production client portals.</span>
+                    </li>
+                  </ul>
+
+                  {/* Tech stack badges */}
+                  <div className="flex flex-wrap items-center gap-2 pt-4 border-t border-white/[0.06]">
+                    {["React.js", "Next.js", "Tailwind CSS", "JavaScript (ES6+)", "REST APIs"].map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2.5 py-1 rounded-md text-[11px] font-mono bg-white/[0.04] border border-white/10 text-zinc-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>

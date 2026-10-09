@@ -10,16 +10,52 @@ export default function Footer({ content, presetId }) {
       <footer
         aria-label="Portfolio Footer"
         data-editable="background"
-        className="py-10 bg-[#0D0F0D] border-t border-[#383A33] text-xs text-[#77766D]"
+        className="py-12 bg-[#0a0a0a] border-t border-zinc-900 text-sm text-zinc-400 relative z-20"
       >
-        <div className="editorial-container flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <span className="font-serif italic text-lg text-[#E8B58F]">MW</span>
-            <span className="hidden sm:inline-block text-[#F2EEE5] text-xs font-medium tracking-wider">Muhammad Waqar</span>
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
+            <span className="text-lg font-bold tracking-tight text-white">
+              Muhammad<span className="text-red-500">.</span>
+            </span>
+            <span className="hidden sm:inline-block text-zinc-700">|</span>
+            <p className="text-xs text-zinc-400 font-mono">
+              © {currentYear} Muhammad Waqar. All rights reserved.
+            </p>
           </div>
-          <p className="text-xs text-[#77766D]">
-            {builtWithText}
-          </p>
+
+          <div className="flex items-center gap-6 text-xs text-zinc-400 font-medium">
+            <a
+              href="https://github.com/MuhammadWaqar7615"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-red-400 transition-colors"
+            >
+              GitHub
+            </a>
+            <a
+              href="https://linkedin.com/in/muhammad-waqar-7615"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-red-400 transition-colors"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="/cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-red-400 transition-colors"
+            >
+              Resume
+            </a>
+            <a
+              href="#Homepage"
+              className="flex items-center gap-1.5 text-zinc-400 hover:text-white transition-colors ml-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800"
+            >
+              <span>Back to Top</span>
+              <span className="text-red-500">↑</span>
+            </a>
+          </div>
         </div>
       </footer>
     );

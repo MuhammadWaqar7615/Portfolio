@@ -65,10 +65,10 @@ export default function ThemePreviewListener({ onSectionsChange, onContentChange
         root.setAttribute("data-preset", theme.presetId || "preset-2");
 
         const headingVar = theme.typography?.headingFont
-          ? (FONT_VARIABLE_MAP[theme.typography.headingFont] || (theme.presetId === "preset-2" ? FONT_VARIABLE_MAP["DM Serif Display"] : "var(--font-space-grotesk), sans-serif"))
+          ? (FONT_VARIABLE_MAP[theme.typography.headingFont] || (theme.presetId === "preset-2" ? FONT_VARIABLE_MAP["Inter"] : "var(--font-space-grotesk), sans-serif"))
           : "";
         const bodyVar = theme.typography?.bodyFont
-          ? (FONT_VARIABLE_MAP[theme.typography.bodyFont] || (theme.presetId === "preset-2" ? FONT_VARIABLE_MAP["Manrope"] : "var(--font-inter), sans-serif"))
+          ? (FONT_VARIABLE_MAP[theme.typography.bodyFont] || (theme.presetId === "preset-2" ? FONT_VARIABLE_MAP["Inter"] : "var(--font-inter), sans-serif"))
           : "";
         const radiusPx = theme.radius && RADIUS_MAP[theme.radius] ? RADIUS_MAP[theme.radius] : (theme.presetId === "preset-2" ? "10px" : "");
         const radiusBtn = theme.radius === "editorial" || theme.radius === "rounded" || theme.presetId === "preset-2" ? "999px" : radiusPx;

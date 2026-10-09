@@ -18,7 +18,9 @@ export default function AdminThemesPage() {
     try {
       const saved = localStorage.getItem("admin_theme_mode") || "dark";
       setAdminMode(saved);
-    } catch (_e) {}
+    } catch (_e) {
+      // Local storage may be restricted
+    }
 
     const handleThemeChange = (e) => {
       if (e.detail?.mode) setAdminMode(e.detail.mode);
@@ -32,7 +34,9 @@ export default function AdminThemesPage() {
     try {
       localStorage.setItem("admin_theme_mode", newMode);
       localStorage.setItem("theme_mode", newMode === "bright" ? "light" : "dark");
-    } catch (_e) {}
+    } catch (_e) {
+      // Local storage may be restricted
+    }
     document.documentElement.setAttribute("data-admin-theme", newMode);
     window.dispatchEvent(new CustomEvent("admin_theme_change", { detail: { mode: newMode } }));
   };

@@ -18,114 +18,103 @@ import {
   SiPostman,
 } from "react-icons/si";
 
-export default function Skills({ skills = [], content, presetId }) {
+export default function Skills({ skills: _skills = [], content, presetId }) {
   const sectionHeaders = content?.sectionHeaders || {};
   const isPreset2 = presetId === "preset-2";
-  const tagline = sectionHeaders.skillsTagline !== undefined ? sectionHeaders.skillsTagline : (isPreset2 ? "MY SKILLS ────" : "Capabilities");
-  const heading = sectionHeaders.skillsHeading !== undefined ? sectionHeaders.skillsHeading : (isPreset2 ? "Technologies I Work With" : "Technical Matrix");
+  const tagline = sectionHeaders.skillsTagline !== undefined ? sectionHeaders.skillsTagline : (isPreset2 ? "Skills" : "Capabilities");
+  const heading = sectionHeaders.skillsHeading !== undefined ? sectionHeaders.skillsHeading : (isPreset2 ? "Technologies and tools I use to build products" : "Technical Matrix");
 
   // Preset 2 Editorial Layout (Matches ref img1)
+  // Pixel-by-pixel Abhay Rana Skills Layout for Preset 2
   if (isPreset2) {
+    const skillClusters = [
+      {
+        category: "Languages",
+        items: [
+          { name: "JavaScript", icon: SiJavascript, color: "#f7df1e" },
+          { name: "TypeScript", icon: SiTypescript, color: "#3178c6" },
+          { name: "HTML5", icon: SiHtml5, color: "#e34f26" },
+          { name: "CSS3 / SCSS", icon: SiCss3, color: "#1572b6" },
+        ],
+      },
+      {
+        category: "Frameworks & Libraries",
+        items: [
+          { name: "React.js", icon: SiReact, color: "#61dafb" },
+          { name: "Next.js", icon: SiNextdotjs, color: "#ffffff" },
+          { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+          { name: "Express.js", icon: SiExpress, color: "#ffffff" },
+          { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06b6d4" },
+        ],
+      },
+      {
+        category: "Databases & Storage",
+        items: [
+          { name: "MongoDB", icon: SiMongodb, color: "#47a248" },
+          { name: "PostgreSQL", icon: SiPostgresql, color: "#4169e1" },
+          { name: "Supabase", icon: SiSupabase, color: "#3ecf8e" },
+        ],
+      },
+      {
+        category: "Tools & DevOps",
+        items: [
+          { name: "Git", icon: SiGit, color: "#f05032" },
+          { name: "GitHub", icon: SiGithub, color: "#ffffff" },
+          { name: "Vercel", icon: SiVercel, color: "#ffffff" },
+          { name: "Postman", icon: SiPostman, color: "#ff6c37" },
+        ],
+      },
+    ];
+
     return (
       <section
         id="skills"
         aria-label="Technologies and skills"
-        className="py-20 sm:py-24 bg-[#151713] text-[#F4F0E8] border-b border-[#383A33]"
+        className="py-20 md:py-28 px-4 md:px-6 relative z-10"
       >
-        <div className="editorial-container">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-            <div>
-              {tagline?.trim() && (
-                <span
-                  data-editable="content-sectionHeaders-skillsTagline"
-                  className="text-xs font-semibold uppercase tracking-[3px] text-[#B19B7D] block mb-2 cursor-pointer"
-                  title="Click to edit skills tagline"
-                >
-                  {tagline}
-                </span>
-              )}
-              {heading?.trim() && (
-                <h2
-                  data-editable="content-sectionHeaders-skillsHeading"
-                  className="text-3xl sm:text-4xl font-normal text-[#F4F0E8] tracking-tight cursor-pointer"
-                  style={{ fontFamily: "var(--font-heading)" }}
-                  title="Click to edit skills heading"
-                >
-                  {heading}
-                </h2>
-              )}
-            </div>
-            <p className="text-xs text-[#C5C4BC] max-w-sm">
-              I work with modern technologies to build web applications from frontend to backend.
-            </p>
+        <div className="mx-auto max-w-6xl">
+          {/* Section Heading with red dot */}
+          <div className="mb-16 text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-[#fafafa]">
+              {tagline.replace(" ────", "")}
+              <span className="text-red-500">.</span>
+            </h2>
+            <p className="mt-3 text-lg text-[#a1a1aa]">{heading}</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Card 1: Frontend */}
-            <div className="bg-[#181A15] border border-[#383A33] rounded-[10px] p-6 hover:border-[#69745A] transition-colors">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-8 h-8 rounded-full bg-[#69745A]/25 flex items-center justify-center text-[#E8B58F]">
-                  <span className="text-sm">⚛</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {skillClusters.map((cluster) => (
+              <div
+                key={cluster.category}
+                className="bento-card p-6 md:p-8 hover:border-red-500/50 hover:shadow-[0_0_35px_rgba(239,68,68,0.12)] transition-all duration-300"
+              >
+                <div className="flex items-center gap-2.5 mb-5 pb-3 border-b border-white/[0.06]">
+                  <span className="w-2 h-2 rounded-full bg-red-500" />
+                  <h3 className="text-lg font-bold text-[#fafafa] tracking-tight">
+                    {cluster.category}
+                  </h3>
                 </div>
-                <h3 className="text-base font-medium text-[#F4F0E8]">Frontend</h3>
-              </div>
-              <ul className="space-y-2.5 text-xs text-[#C5C4BC]">
-                <li className="flex items-center gap-2.5"><span className="w-1.5 h-1.5 rounded-full bg-[#69745A]"></span>React.js</li>
-                <li className="flex items-center gap-2.5"><span className="w-1.5 h-1.5 rounded-full bg-[#69745A]"></span>JavaScript (ES6+)</li>
-                <li className="flex items-center gap-2.5"><span className="w-1.5 h-1.5 rounded-full bg-[#69745A]"></span>HTML5 & CSS3</li>
-                <li className="flex items-center gap-2.5"><span className="w-1.5 h-1.5 rounded-full bg-[#69745A]"></span>Tailwind CSS</li>
-                <li className="flex items-center gap-2.5"><span className="w-1.5 h-1.5 rounded-full bg-[#69745A]"></span>SCSS</li>
-              </ul>
-            </div>
 
-            {/* Card 2: Backend */}
-            <div className="bg-[#181A15] border border-[#383A33] rounded-[10px] p-6 hover:border-[#69745A] transition-colors">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-8 h-8 rounded-full bg-[#69745A]/25 flex items-center justify-center text-[#E8B58F]">
-                  <span className="text-xs font-mono font-bold">JS</span>
+                <div className="grid grid-cols-2 gap-3">
+                  {cluster.items.map((item) => {
+                    const IconComponent = item.icon;
+                    return (
+                      <div
+                        key={item.name}
+                        className="glass rounded-xl p-3 border border-white/10 hover:border-white/20 hover:bg-white/[0.06] transition-all flex items-center gap-3 group/item cursor-default"
+                      >
+                        <span className="text-lg text-zinc-300 group-hover/item:scale-110 transition-transform">
+                          <IconComponent />
+                        </span>
+                        <span className="text-xs sm:text-sm font-medium text-[#fafafa] group-hover/item:text-red-400 transition-colors">
+                          {item.name}
+                        </span>
+                      </div>
+                    );
+                  })}
                 </div>
-                <h3 className="text-base font-medium text-[#F4F0E8]">Backend</h3>
               </div>
-              <ul className="space-y-2.5 text-xs text-[#C5C4BC]">
-                <li className="flex items-center gap-2.5"><span className="w-1.5 h-1.5 rounded-full bg-[#69745A]"></span>Node.js</li>
-                <li className="flex items-center gap-2.5"><span className="w-1.5 h-1.5 rounded-full bg-[#69745A]"></span>Express.js</li>
-                <li className="flex items-center gap-2.5"><span className="w-1.5 h-1.5 rounded-full bg-[#69745A]"></span>REST APIs</li>
-                <li className="flex items-center gap-2.5"><span className="w-1.5 h-1.5 rounded-full bg-[#69745A]"></span>JWT Authentication</li>
-                <li className="flex items-center gap-2.5"><span className="w-1.5 h-1.5 rounded-full bg-[#69745A]"></span>Mongoose</li>
-              </ul>
-            </div>
-
-            {/* Card 3: Database */}
-            <div className="bg-[#181A15] border border-[#383A33] rounded-[10px] p-6 hover:border-[#69745A] transition-colors">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-8 h-8 rounded-full bg-[#69745A]/25 flex items-center justify-center text-[#E8B58F]">
-                  <span className="text-sm">🍃</span>
-                </div>
-                <h3 className="text-base font-medium text-[#F4F0E8]">Database</h3>
-              </div>
-              <ul className="space-y-2.5 text-xs text-[#C5C4BC]">
-                <li className="flex items-center gap-2.5"><span className="w-1.5 h-1.5 rounded-full bg-[#69745A]"></span>MongoDB</li>
-                <li className="flex items-center gap-2.5"><span className="w-1.5 h-1.5 rounded-full bg-[#69745A]"></span>MySQL (Basic)</li>
-                <li className="flex items-center gap-2.5"><span className="w-1.5 h-1.5 rounded-full bg-[#69745A]"></span>Firebase (Basic)</li>
-              </ul>
-            </div>
-
-            {/* Card 4: Tools & Others */}
-            <div className="bg-[#181A15] border border-[#383A33] rounded-[10px] p-6 hover:border-[#69745A] transition-colors">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-8 h-8 rounded-full bg-[#69745A]/25 flex items-center justify-center text-[#E8B58F]">
-                  <span className="text-sm">🛠</span>
-                </div>
-                <h3 className="text-base font-medium text-[#F4F0E8]">Tools & Others</h3>
-              </div>
-              <ul className="space-y-2.5 text-xs text-[#C5C4BC]">
-                <li className="flex items-center gap-2.5"><span className="w-1.5 h-1.5 rounded-full bg-[#69745A]"></span>Git & GitHub</li>
-                <li className="flex items-center gap-2.5"><span className="w-1.5 h-1.5 rounded-full bg-[#69745A]"></span>VS Code</li>
-                <li className="flex items-center gap-2.5"><span className="w-1.5 h-1.5 rounded-full bg-[#69745A]"></span>Vercel (Deployment)</li>
-                <li className="flex items-center gap-2.5"><span className="w-1.5 h-1.5 rounded-full bg-[#69745A]"></span>Postman</li>
-                <li className="flex items-center gap-2.5"><span className="w-1.5 h-1.5 rounded-full bg-[#69745A]"></span>Stripe (Payments)</li>
-              </ul>
-            </div>
+            ))}
           </div>
         </div>
       </section>

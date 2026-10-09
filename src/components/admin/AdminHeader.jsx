@@ -14,7 +14,9 @@ export default function AdminHeader({ activePage }) {
       const saved = localStorage.getItem("admin_theme_mode") || "dark";
       setAdminMode(saved);
       document.documentElement.setAttribute("data-admin-theme", saved);
-    } catch (_e) {}
+    } catch (_e) {
+      // Local storage may be restricted
+    }
   }, []);
 
   const toggleAdminMode = () => {
@@ -22,7 +24,9 @@ export default function AdminHeader({ activePage }) {
     setAdminMode(next);
     try {
       localStorage.setItem("admin_theme_mode", next);
-    } catch (_e) {}
+    } catch (_e) {
+      // Local storage may be restricted
+    }
     document.documentElement.setAttribute("data-admin-theme", next);
     window.dispatchEvent(new CustomEvent("admin_theme_change", { detail: { mode: next } }));
   };

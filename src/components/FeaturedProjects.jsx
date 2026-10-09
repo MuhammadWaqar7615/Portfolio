@@ -1,15 +1,14 @@
 "use client";
 
-import { useState } from "react";
 import CyberTitle from "./CyberTitle";
 
 export default function FeaturedProjects({ projects = [], content, presetId }) {
   const sectionHeaders = content?.sectionHeaders || {};
   const isPreset2 = presetId === "preset-2";
-  const [showAll, setShowAll] = useState(false);
+  const showAll = false;
 
-  const tagline = sectionHeaders.projectsTagline !== undefined ? sectionHeaders.projectsTagline : (isPreset2 ? "MY PROJECTS ────" : "Curated Production Work");
-  const heading = sectionHeaders.projectsHeading !== undefined ? sectionHeaders.projectsHeading : (isPreset2 ? "Some Things I've Built" : "Featured Projects");
+  const tagline = sectionHeaders.projectsTagline !== undefined ? sectionHeaders.projectsTagline : (isPreset2 ? "Projects" : "Curated Production Work");
+  const heading = sectionHeaders.projectsHeading !== undefined ? sectionHeaders.projectsHeading : (isPreset2 ? "Some of the things I've built" : "Featured Projects");
 
   // Helper to resolve all live links for a project
   const getProjectLiveLinks = (project) => {
@@ -122,121 +121,232 @@ export default function FeaturedProjects({ projects = [], content, presetId }) {
     ]);
 
   // Preset 2 Editorial Grid Layout (Matches ref img1)
+  // Pixel-by-pixel Abhay Rana Bento Projects Grid for Preset 2
   if (isPreset2) {
     return (
       <section
-        id="featured-work"
+        id="projects"
         aria-label="Selected Projects"
-        className="py-20 sm:py-24 bg-[#F2EEE5] text-[#191A17] border-b border-[#D3CEC2]"
+        className="py-20 md:py-28 px-4 md:px-6 relative z-10"
       >
-        <div className="editorial-container">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 border-b border-[#D3CEC2] pb-5 gap-4">
-            <div>
-              {tagline?.trim() && (
-                <span
-                  data-editable="content-sectionHeaders-projectsTagline"
-                  className="text-xs font-semibold uppercase tracking-[3px] text-[#B19B7D] block mb-2 cursor-pointer"
-                  title="Click to edit projects tagline"
-                >
-                  {tagline}
-                </span>
-              )}
-              {heading?.trim() && (
-                <h2
-                  data-editable="content-sectionHeaders-projectsHeading"
-                  className="text-3xl sm:text-4xl font-normal tracking-tight text-[#191A17] cursor-pointer"
-                  style={{ fontFamily: "var(--font-heading)" }}
-                  title="Click to edit projects heading"
-                >
-                  {heading}
-                </h2>
-              )}
-            </div>
-            <button
-              type="button"
-              onClick={() => setShowAll(!showAll)}
-              className="text-xs font-semibold text-[#191A17] hover:text-[#69745A] bg-[#ECE7DC] hover:bg-[#E0DACB] border border-[#D3CEC2] px-3.5 py-1.5 rounded-full transition-all cursor-pointer shadow-sm active:scale-95"
-            >
-              <span>{showAll ? "Show Top 3 Only ↑" : `View All Projects (${allAvailableProjects.length}) →`}</span>
-            </button>
+        <div className="mx-auto max-w-6xl">
+          {/* Section Heading with red dot */}
+          <div className="mb-16 text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-[#fafafa]">
+              {tagline.replace(" ────", "")}
+              <span className="text-red-500">.</span>
+            </h2>
+            <p className="mt-3 text-lg text-[#a1a1aa]">{heading}</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {displayProjects.map((project, idx) => (
-              <div
-                key={project._id || idx}
-                className="bg-[#FFFFFF] border border-[#D3CEC2] rounded-[10px] overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-shadow group"
-              >
-                {/* 16:9 Thumbnail Image */}
-                <div className="relative aspect-[16/9] bg-[#ECE7DC] overflow-hidden border-b border-[#D3CEC2]">
-                  <img
-                    src={getProjectImage(project, idx)}
-                    alt={formatTitle(project.title)}
-                    className="w-full h-full object-cover filter saturate-[0.98] contrast-[1.02] group-hover:scale-105 transition-transform duration-500"
-                  />
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {/* 1. Featured Hero Bento Card (Spans 2 columns) */}
+            <div className="bento-card md:col-span-2 p-6 md:p-8 flex flex-col justify-between group hover:border-red-500/60 transition-all duration-300">
+              <div>
+                <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+                  <div className="flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse" />
+                    <span className="text-xs font-mono font-semibold tracking-wider text-red-400 uppercase">
+                      Featured Project
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <a
+                      href="https://super-store-portal.vercel.app/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-500 hover:bg-red-600 text-white text-xs font-medium transition-all shadow-md shadow-red-500/20 cursor-pointer"
+                    >
+                      <span>Live Demo</span>
+                      <span className="text-[11px]">↗</span>
+                    </a>
+                    <a
+                      href="https://github.com/MuhammadWaqar7615/super_store"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg glass border border-white/10 hover:border-white/20 text-[#a1a1aa] hover:text-[#fafafa] text-xs font-medium transition-all cursor-pointer"
+                    >
+                      <span>GitHub</span>
+                      <span className="text-[11px]">↗</span>
+                    </a>
+                  </div>
                 </div>
 
-                {/* Card Body */}
-                <div className="p-5 flex-1 flex flex-col justify-between">
-                  <div>
-                    <h3
-                      className="text-base font-bold text-[#191A17] mb-2"
-                      style={{ fontFamily: "var(--font-heading)" }}
-                    >
-                      {formatTitle(project.title)}
-                    </h3>
-                    <p className="text-xs text-[#68675F] leading-relaxed line-clamp-3">
-                      {project.shortDescription || project.problem || "Full-stack web application engineered for high-intent workflows."}
-                    </p>
+                <h3 className="text-2xl font-bold text-[#fafafa] mb-2 group-hover:text-red-400 transition-colors">
+                  Super Store ERP / POS
+                </h3>
+                <p className="text-[#a1a1aa] text-sm leading-relaxed mb-6 font-light">
+                  A complete supermarket management system with point-of-sale checkout, inventory tracking, sales reporting, purchase management, and secure cashier session controls.
+                </p>
 
-                    {/* Dot-separated tech labels */}
-                    <div className="mt-3 text-[10px] font-medium text-[#77766D] tracking-wider uppercase truncate">
-                      {(project.techTags && project.techTags.length > 0
-                        ? project.techTags.slice(0, 4).join(" · ")
-                        : "React · Node.js · MongoDB · Stripe"
-                      )}
+                {/* 4-Cell Micro-Feature Highlights Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                  <div className="glass rounded-xl p-3 border border-white/[0.06] flex items-start gap-2.5">
+                    <span className="text-red-400 text-base">⚡</span>
+                    <div>
+                      <p className="text-xs font-semibold text-[#fafafa]">Sub-100ms POS</p>
+                      <p className="text-[11px] text-[#a1a1aa]/70 leading-tight mt-0.5">Instant barcode lookup & zero-latency checkout</p>
                     </div>
                   </div>
-
-                  {/* Action Buttons: Live Site Demo(s) & Dedicated GitHub Button */}
-                  <div className="pt-4 border-t border-[#D3CEC2]/60 mt-4 flex flex-wrap items-center gap-2">
-                    {/* Live Demo Buttons */}
-                    {getProjectLiveLinks(project).map((link, lIdx) => (
-                      <a
-                        key={lIdx}
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold transition-all duration-200 shadow-sm cursor-pointer active:scale-95 ${lIdx === 0
-                            ? "bg-[#191A17] text-white hover:bg-[#69745A]"
-                            : "bg-[#ECE7DC] text-[#191A17] border border-[#D3CEC2] hover:bg-[#E0DACB] hover:border-[#191A17]"
-                          }`}
-                      >
-                        <span className={`w-1.5 h-1.5 rounded-full ${lIdx === 0 ? "bg-emerald-400" : "bg-[#B19B7D]"}`}></span>
-                        <span>{link.label || (lIdx === 0 ? "Live Site Demo" : "Live Demo")}</span>
-                        <span className="text-[10px] opacity-80">↗</span>
-                      </a>
-                    ))}
-
-                    {/* Dedicated GitHub Button */}
-                    {project.codeLink && (
-                      <a
-                        href={project.codeLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold bg-[#FFFFFF] border border-[#D3CEC2] text-[#191A17] hover:border-[#191A17] hover:bg-[#F2EEE5] transition-all duration-200 shadow-sm cursor-pointer active:scale-95"
-                      >
-                        <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                          <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-                        </svg>
-                        <span>GitHub</span>
-                        <span className="text-[10px] opacity-70">↗</span>
-                      </a>
-                    )}
+                  <div className="glass rounded-xl p-3 border border-white/[0.06] flex items-start gap-2.5">
+                    <span className="text-red-400 text-base">📦</span>
+                    <div>
+                      <p className="text-xs font-semibold text-[#fafafa]">Live Stock Engine</p>
+                      <p className="text-[11px] text-[#a1a1aa]/70 leading-tight mt-0.5">Real-time ledger & low-inventory threshold alerts</p>
+                    </div>
+                  </div>
+                  <div className="glass rounded-xl p-3 border border-white/[0.06] flex items-start gap-2.5">
+                    <span className="text-red-400 text-base">📄</span>
+                    <div>
+                      <p className="text-xs font-semibold text-[#fafafa]">Instant PDF Export</p>
+                      <p className="text-[11px] text-[#a1a1aa]/70 leading-tight mt-0.5">Thermal print receipt generation & tax invoices</p>
+                    </div>
+                  </div>
+                  <div className="glass rounded-xl p-3 border border-white/[0.06] flex items-start gap-2.5">
+                    <span className="text-red-400 text-base">🛡️</span>
+                    <div>
+                      <p className="text-xs font-semibold text-[#fafafa]">RBAC Security</p>
+                      <p className="text-[11px] text-[#a1a1aa]/70 leading-tight mt-0.5">JWT permission hierarchy & cashier audit trails</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            ))}
+
+              {/* Tech stack tags */}
+              <div className="flex flex-wrap items-center gap-2 pt-4 border-t border-white/[0.06]">
+                {["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "REST API"].map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-2.5 py-1 rounded-md text-[11px] font-mono bg-white/[0.04] border border-white/10 text-zinc-300"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* 2. Crafts & Delights E-Commerce */}
+            <div className="bento-card p-6 flex flex-col justify-between group hover:border-red-500/60 hover:-translate-y-1 transition-all duration-300">
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="text-xs font-mono font-medium text-zinc-400">E-Commerce</span>
+                  <div className="flex items-center gap-2">
+                    <a
+                      href="https://crafts-delights.vercel.app"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-red-400 hover:text-red-300 font-semibold"
+                    >
+                      Demo ↗
+                    </a>
+                  </div>
+                </div>
+
+                <h3 className="text-lg font-bold text-[#fafafa] mb-2 group-hover:text-red-400 transition-colors">
+                  Crafts & Delights Store
+                </h3>
+                <p className="text-[#a1a1aa] text-xs leading-relaxed mb-4 font-light">
+                  Artisanal e-commerce shopping experience with modular React architecture, client-side state caching, and responsive product catalog.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-1.5 pt-4 border-t border-white/[0.06]">
+                {["Next.js", "React", "Tailwind CSS", "Vercel"].map((t) => (
+                  <span key={t} className="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] border border-white/10 text-zinc-300">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* 3. Retreat Bookings */}
+            <div className="bento-card p-6 flex flex-col justify-between group hover:border-red-500/60 hover:-translate-y-1 transition-all duration-300">
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="text-xs font-mono font-medium text-zinc-400">Full-Stack SaaS</span>
+                  <a
+                    href="https://retreat-bookings.vercel.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-red-400 hover:text-red-300 font-semibold"
+                  >
+                    Demo ↗
+                  </a>
+                </div>
+
+                <h3 className="text-lg font-bold text-[#fafafa] mb-2 group-hover:text-red-400 transition-colors">
+                  Retreat Bookings
+                </h3>
+                <p className="text-[#a1a1aa] text-xs leading-relaxed mb-4 font-light">
+                  Hospitality reservation system with date collision locks, atomic MongoDB queries, and sub-120ms response times.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-1.5 pt-4 border-t border-white/[0.06]">
+                {["Node.js", "Express", "MongoDB", "React"].map((t) => (
+                  <span key={t} className="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] border border-white/10 text-zinc-300">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* 4. CodiceSconto Clone */}
+            <div className="bento-card p-6 flex flex-col justify-between group hover:border-red-500/60 hover:-translate-y-1 transition-all duration-300">
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="text-xs font-mono font-medium text-zinc-400">Coupon Aggregator</span>
+                  <a
+                    href="https://condice-sconto-clone.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-red-400 hover:text-red-300 font-semibold"
+                  >
+                    Demo ↗
+                  </a>
+                </div>
+
+                <h3 className="text-lg font-bold text-[#fafafa] mb-2 group-hover:text-red-400 transition-colors">
+                  CodiceSconto Platform
+                </h3>
+                <p className="text-[#a1a1aa] text-xs leading-relaxed mb-4 font-light">
+                  High-traffic coupon and deals aggregator with instant category filtering, modal discount activations, and SEO metadata.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-1.5 pt-4 border-t border-white/[0.06]">
+                {["Next.js", "React", "Tailwind CSS"].map((t) => (
+                  <span key={t} className="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] border border-white/10 text-zinc-300">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* 5. Coming Soon Bento Card (Muted abhayrana style) */}
+            <div className="bento-card p-6 flex flex-col justify-between opacity-45 cursor-not-allowed border-dashed border-white/20 select-none">
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="text-xs font-mono font-medium text-zinc-500">In Development</span>
+                  <span className="text-xs text-zinc-500 font-mono">Coming Soon</span>
+                </div>
+
+                <h3 className="text-lg font-bold text-[#fafafa] mb-2">
+                  Next Gen SaaS Tool
+                </h3>
+                <p className="text-[#a1a1aa] text-xs leading-relaxed mb-4 font-light">
+                  An upcoming AI-powered productivity cloud platform currently in private engineering preview.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-1.5 pt-4 border-t border-white/[0.06]">
+                {["Next.js", "AI / LLM", "TypeScript", "???"].map((t) => (
+                  <span key={t} className="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] border border-white/10 text-zinc-400">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>

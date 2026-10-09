@@ -349,109 +349,143 @@ body.is-preview-mode [data-editable].is-selected-field {
 }
 
 /* =========================================================
-   PRESET 2: WARM STUDIO / EARTHY EDITORIAL (ref img1)
+   PRESET 2: OBSIDIAN & CRIMSON (ABHAY RANA STYLE)
    ========================================================= */
 
 html[data-preset="preset-2"] {
-  font-family: var(--font-manrope), sans-serif;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #0a0a0a;
+  color: #a1a1aa;
 }
 
 html[data-preset="preset-2"] h1,
 html[data-preset="preset-2"] h2,
 html[data-preset="preset-2"] h3 {
-  font-family: var(--font-dm-serif-display), serif !important;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  color: #fafafa;
 }
 
-/* Subtle Film Grain Noise Texture */
-html[data-preset="preset-2"] body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+/* Drifting Cosmic Starfield */
+.star-field {
+  z-index: 0;
   pointer-events: none;
-  z-index: 9999;
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
 }
 
-/* Contact Section scoped for Preset 2 (without modifying Contact.jsx) */
-html[data-preset="preset-2"] #contact {
-  background-color: #F2EEE5 !important;
-  background-image: linear-gradient(to bottom, rgba(242, 238, 229, 0.88), rgba(242, 238, 229, 0.7)), url('/contact_mountains.jpg');
-  background-position: bottom center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-bottom: 1px solid #D3CEC2 !important;
-  color: #5F5E57 !important;
+.star-field:before,
+.star-field:after {
+  content: "";
+  background: transparent;
+  border-radius: 50%;
+  width: 2px;
+  height: 2px;
+  animation: 60s linear infinite drift-up;
+  position: absolute;
 }
 
-html[data-preset="preset-2"] #contact [class*="text-sky-400"],
-html[data-preset="preset-2"] #contact [class*="text-accent"] {
-  color: #B19B7D !important;
-  font-family: var(--font-manrope), sans-serif;
-  letter-spacing: 3px;
-  font-size: 11px;
+.star-field:before {
+  box-shadow: 42vw 15vh 0 1px #ffffff80, 87vw 32vh #ffffff59, 13vw 67vh 0 1px #ffffff99, 56vw 89vh #ffffff66, 91vw 44vh 0 2px #ffffff8c, 28vw 78vh #ffffff59, 74vw 12vh 0 1px #ffffff80, 35vw 56vh #ffffffa6, 62vw 91vh #ffffff59, 8vw 38vh 0 1px #ffffff8c, 95vw 71vh #ffffff66, 48vw 23vh 0 2px #ffffff99, 19vw 95vh #ffffff80, 73vw 58vh #ffffff59, 5vw 82vh 0 1px #ffffff8c, 81vw 5vh #ffffff66, 37vw 41vh 0 2px #ffffff99, 66vw 73vh #ffffff59, 22vw 18vh 0 1px #ffffff80, 54vw 47vh #ffffff8c;
 }
 
-html[data-preset="preset-2"] #contact h2 {
-  color: #191A17 !important;
-  font-family: var(--font-dm-serif-display), serif !important;
-  font-weight: 400;
+.star-field:after {
+  animation-delay: -30s;
+  box-shadow: 15vw 27vh #ffffff66, 68vw 84vh 0 1px #ffffff80, 33vw 9vh 0 2px #ffffff99, 79vw 62vh #ffffff59, 4vw 51vh 0 1px #ffffff8c, 46vw 76vh #ffffff66, 88vw 19vh 0 1px #ffffff80, 27vw 88vh 0 2px #ffffff99, 61vw 35vh #ffffff59, 9vw 63vh 0 1px #ffffff8c, 52vw 8vh #ffffff66, 83vw 49vh 0 1px #ffffff80, 17vw 72vh 0 2px #ffffff99, 70vw 93vh #ffffff59, 39vw 30vh 0 1px #ffffff8c, 93vw 56vh #ffffff66, 25vw 44vh 0 1px #ffffff80, 58vw 16vh 0 2px #ffffff99, 11vw 85vh #ffffff59, 76vw 38vh 0 1px #ffffff8c;
 }
 
-html[data-preset="preset-2"] #contact p {
-  color: #5F5E57 !important;
+@keyframes drift-up {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100vh); }
 }
 
-html[data-preset="preset-2"] #contact a {
-  color: #191A17 !important;
+/* Analogue Film Grain Noise Overlay */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.032;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-html[data-preset="preset-2"] #contact [class*="bg-cardBg"],
-html[data-preset="preset-2"] #contact .border {
-  background-color: rgba(236, 231, 220, 0.95) !important;
-  border-color: #D3CEC2 !important;
-  border-radius: 10px !important;
+/* Warm Sunset Horizon Glow */
+.hero-warm-glow {
+  background: radial-gradient(100% 60% at 50% 100%, rgba(239, 68, 68, 0.35), transparent 70%),
+              radial-gradient(80% 40% at 50% 100%, rgba(249, 115, 22, 0.20), transparent 60%);
 }
 
-html[data-preset="preset-2"] #contact label {
-  color: #191A17 !important;
-  font-family: var(--font-manrope), sans-serif;
-  font-size: 11px;
-  letter-spacing: 1px;
+/* Keyframe Animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 6px rgba(239, 68, 68, 0.4), 0 0 12px transparent;
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(239, 68, 68, 0.8), 0 0 24px rgba(239, 68, 68, 0.3);
+  }
 }
 
-html[data-preset="preset-2"] #contact input,
-html[data-preset="preset-2"] #contact textarea {
-  background-color: #FAF8F5 !important;
-  border: 1px solid #D3CEC2 !important;
-  color: #191A17 !important;
-  border-radius: 6px !important;
+@keyframes btn-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3), 0 0 40px rgba(249, 115, 22, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(239, 68, 68, 0.5), 0 0 60px rgba(249, 115, 22, 0.3);
+  }
 }
 
-html[data-preset="preset-2"] #contact input::placeholder,
-html[data-preset="preset-2"] #contact textarea::placeholder {
-  color: #77766D !important;
+@keyframes scroll-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
 }
 
-html[data-preset="preset-2"] #contact input:focus,
-html[data-preset="preset-2"] #contact textarea:focus {
-  border-color: #69745A !important;
-  outline: none !important;
+.scroll-indicator {
+  animation: 2s ease-in-out infinite scroll-bounce;
 }
 
-html[data-preset="preset-2"] #contact button[type="submit"] {
-  background-color: #151713 !important;
-  color: #FFFFFF !important;
-  border-radius: 999px !important;
-  font-family: var(--font-manrope), sans-serif;
-  font-weight: 600;
-  font-size: 12px;
-  letter-spacing: 1px;
+.timeline-line {
+  background: linear-gradient(to bottom, transparent, #ef4444, #ef4444, transparent);
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.35);
 }
 
-/* Hide theme toggles and mode selectors completely for Preset 2 */
+.timeline-dot {
+  animation: 2s ease-in-out infinite pulse-glow;
+}
+
+/* Bento & Glass Components */
+.bento-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bento-card:hover {
+  border-color: rgba(239, 68, 68, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(239, 68, 68, 0.12);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.glass-hover:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 25px rgba(239, 68, 68, 0.15);
+}
+
+/* Hide theme toggles completely for Preset 2 (Strict Pure Dark Obsidian) */
 html[data-preset="preset-2"] [aria-label*="theme mode"],
 html[data-preset="preset-2"] [aria-label*="Switch to light mode"],
 html[data-preset="preset-2"] [aria-label*="Switch to dark mode"],

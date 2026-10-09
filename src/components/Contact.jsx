@@ -4,10 +4,19 @@ import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import CyberTitle from "./CyberTitle";
 
-export default function Contact() {
+export default function Contact({ presetId }) {
   const formRef = useRef(null);
   const [status, setStatus] = useState("idle"); // "idle" | "submitting" | "success" | "error"
   const [errorMessage, setErrorMessage] = useState("");
+  const [copiedEmail, setCopiedEmail] = useState(false);
+
+  const isPreset2 = presetId === "preset-2";
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText("mwaqar7615@gmail.com");
+    setCopiedEmail(true);
+    setTimeout(() => setCopiedEmail(false), 2000);
+  };
 
   const sendEmail = async (e) => {
     e.preventDefault();
@@ -46,6 +55,176 @@ export default function Contact() {
       );
     }
   };
+
+  if (isPreset2) {
+    return (
+      <section
+        id="contact"
+        aria-label="Contact and professional inquiries"
+        className="py-20 md:py-28 px-4 md:px-6 relative z-10"
+      >
+        <div className="mx-auto max-w-6xl">
+          {/* Section Heading with red dot */}
+          <div className="mb-16 text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-[#fafafa]">
+              Contact
+              <span className="text-red-500">.</span>
+            </h2>
+            <p className="mt-3 text-lg text-[#a1a1aa]">Want to know more? Let's build something great together</p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            {/* Left Column: Direct Info & Social Channels */}
+            <div className="lg:col-span-5 space-y-4">
+              <div className="bento-card p-6">
+                <span className="text-xs font-mono uppercase tracking-wider text-red-400 font-semibold block mb-2">
+                  Direct Electronic Mail
+                </span>
+                <div className="flex items-center justify-between gap-3">
+                  <a
+                    href="mailto:mwaqar7615@gmail.com"
+                    className="text-[#fafafa] hover:text-red-400 text-sm font-semibold truncate transition-colors"
+                  >
+                    mwaqar7615@gmail.com
+                  </a>
+                  <button
+                    type="button"
+                    onClick={handleCopyEmail}
+                    className="p-1.5 rounded-lg text-zinc-400 hover:text-white glass border border-white/10 transition-all text-xs"
+                    title="Copy Email"
+                  >
+                    {copiedEmail ? "Copied!" : "Copy"}
+                  </button>
+                </div>
+              </div>
+
+              <div className="bento-card p-6">
+                <span className="text-xs font-mono uppercase tracking-wider text-red-400 font-semibold block mb-1">
+                  Location & Availability
+                </span>
+                <p className="text-[#fafafa] text-sm font-semibold">
+                  Pakistan (Available for Remote & Relocation)
+                </p>
+                <p className="text-xs text-zinc-400 mt-1">Open to full-time and contractual roles worldwide.</p>
+              </div>
+
+              <div className="bento-card p-6">
+                <span className="text-xs font-mono uppercase tracking-wider text-red-400 font-semibold block mb-3">
+                  Professional Networks
+                </span>
+                <div className="flex flex-wrap items-center gap-3">
+                  <a
+                    href="https://github.com/MuhammadWaqar7615"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 rounded-xl glass border border-white/10 hover:border-red-500/50 hover:text-red-400 text-xs font-medium text-[#fafafa] transition-all"
+                  >
+                    GitHub ↗
+                  </a>
+                  <a
+                    href="https://linkedin.com/in/muhammad-waqar-7615"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 rounded-xl glass border border-white/10 hover:border-red-500/50 hover:text-red-400 text-xs font-medium text-[#fafafa] transition-all"
+                  >
+                    LinkedIn ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Sleek Obsidian Form */}
+            <div className="lg:col-span-7">
+              <div className="bento-card p-6 sm:p-8">
+                <form
+                  ref={formRef}
+                  onSubmit={sendEmail}
+                  className="space-y-5"
+                  aria-label="Direct inquiry form"
+                >
+                  <div>
+                    <label
+                      htmlFor="contact-name"
+                      className="block text-xs font-semibold uppercase tracking-wider text-zinc-300 mb-2"
+                    >
+                      Your Name <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      id="contact-name"
+                      type="text"
+                      name="name"
+                      required
+                      placeholder="e.g. Alex Morgan"
+                      className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-3 text-sm text-[#fafafa] placeholder-zinc-500 focus:border-red-500 focus:outline-none transition-all"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="contact-email"
+                      className="block text-xs font-semibold uppercase tracking-wider text-zinc-300 mb-2"
+                    >
+                      Your Email Address <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      id="contact-email"
+                      type="email"
+                      name="email"
+                      required
+                      placeholder="e.g. alex@company.com"
+                      className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-3 text-sm text-[#fafafa] placeholder-zinc-500 focus:border-red-500 focus:outline-none transition-all"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="contact-message"
+                      className="block text-xs font-semibold uppercase tracking-wider text-zinc-300 mb-2"
+                    >
+                      Message / Project Details <span className="text-red-500">*</span>
+                    </label>
+                    <textarea
+                      id="contact-message"
+                      name="message"
+                      required
+                      rows={4}
+                      placeholder="Briefly describe your requirements or ideas..."
+                      className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-3 text-sm text-[#fafafa] placeholder-zinc-500 focus:border-red-500 focus:outline-none transition-all resize-y"
+                    />
+                  </div>
+
+                  <div>
+                    <button
+                      type="submit"
+                      disabled={status === "submitting"}
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-red-500 text-white text-sm font-medium shadow-lg shadow-red-500/25 transition-all duration-300 hover:bg-red-600 pulse-glow-btn cursor-pointer disabled:opacity-50"
+                    >
+                      <span>{status === "submitting" ? "Transmitting..." : "Send Message"}</span>
+                      <span>→</span>
+                    </button>
+                  </div>
+
+                  {/* Feedback States */}
+                  <div aria-live="polite">
+                    {status === "success" && (
+                      <div className="p-4 rounded-xl border border-emerald-500/40 bg-emerald-500/10 text-emerald-300 text-xs shadow-md">
+                        ✓ Inquiry transmitted successfully. I will review and get back to you promptly.
+                      </div>
+                    )}
+                    {status === "error" && (
+                      <div className="p-4 rounded-xl border border-rose-500/40 bg-rose-500/10 text-rose-300 text-xs shadow-md">
+                        ✕ {errorMessage}
+                      </div>
+                    )}
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section

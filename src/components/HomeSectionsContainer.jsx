@@ -15,7 +15,10 @@ import Contact from "./Contact";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import HexCanvas from "./HexCanvas";
+import StarField from "./StarField";
 import CursorFollower from "./CursorFollower";
+import ScrollFadeSection from "./ScrollFadeSection";
+import ViewportFadeMask from "./ViewportFadeMask";
 import { DEFAULT_THEME } from "../../lib/themeConstants";
 
 export default function HomeSectionsContainer({
@@ -40,7 +43,7 @@ export default function HomeSectionsContainer({
     skills: <Skills key="skills" skills={skillsData} content={content} presetId={presetId} />,
     practice: <PracticeProjects key="practice" projects={projects} content={content} presetId={presetId} />,
     goals: <Goals key="goals" content={content} presetId={presetId} />,
-    contact: <Contact key="contact" />,
+    contact: <Contact key="contact" presetId={presetId} />,
   };
 
   // Sort by order ascending, filter visible: false (never filter hero or contact)
@@ -55,15 +58,29 @@ export default function HomeSectionsContainer({
         onContentChange={setContent}
         onPresetChange={setPresetId}
       />
-      {presetId !== "preset-2" && (
+      {presetId === "preset-2" ? (
+        <>
+          <StarField />
+          <CursorFollower presetId="preset-2" />
+        </>
+      ) : (
         <>
           <HexCanvas />
-          <CursorFollower />
+          <CursorFollower presetId="preset-1" />
         </>
       )}
+      <ViewportFadeMask presetId={presetId} />
       <Navbar content={content} presetId={presetId} sections={sections} />
       <main id="main-content" className="flex-1 w-full">
-        {sortedSections.map((sec) => sectionComponentMap[sec.sectionId] || null)}
+        {sortedSections.map((sec) => (
+          <ScrollFadeSection
+            key={sec.sectionId}
+            sectionId={sec.sectionId}
+            presetId={presetId}
+          >
+            {sectionComponentMap[sec.sectionId] || null}
+          </ScrollFadeSection>
+        ))}
       </main>
       <Footer content={content} presetId={presetId} />
     </>

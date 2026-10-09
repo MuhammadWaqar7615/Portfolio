@@ -249,8 +249,8 @@ export default async function RootLayout({ children }) {
   const radiusPx = RADIUS_MAP[theme?.radius] || (theme?.presetId === "preset-2" ? "10px" : "4px");
   const radiusBtn = theme?.radius === "editorial" || theme?.radius === "rounded" || theme?.presetId === "preset-2" ? "999px" : radiusPx;
   const spacingSettings = SPACING_MAP[theme?.spacing] || SPACING_MAP.cozy;
-  const headingFontVar = FONT_VARIABLE_MAP[theme?.typography?.headingFont] || (theme?.presetId === "preset-2" ? FONT_VARIABLE_MAP["DM Serif Display"] : (FONT_VARIABLE_MAP["Fugaz One"] || FONT_VARIABLE_MAP["Space Grotesk"]));
-  const bodyFontVar = FONT_VARIABLE_MAP[theme?.typography?.bodyFont] || (theme?.presetId === "preset-2" ? FONT_VARIABLE_MAP["Manrope"] : (FONT_VARIABLE_MAP["Open Sans"] || FONT_VARIABLE_MAP["Inter"]));
+  const headingFontVar = FONT_VARIABLE_MAP[theme?.typography?.headingFont] || (theme?.presetId === "preset-2" ? FONT_VARIABLE_MAP["Inter"] : (FONT_VARIABLE_MAP["Fugaz One"] || FONT_VARIABLE_MAP["Space Grotesk"]));
+  const bodyFontVar = FONT_VARIABLE_MAP[theme?.typography?.bodyFont] || (theme?.presetId === "preset-2" ? FONT_VARIABLE_MAP["Inter"] : (FONT_VARIABLE_MAP["Open Sans"] || FONT_VARIABLE_MAP["Inter"]));
 
   return (
     <html lang="en" data-preset={theme?.presetId || "preset-2"} suppressHydrationWarning className={`dark ${ALL_FONT_VARIABLES}`}>
