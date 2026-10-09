@@ -16,7 +16,6 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import HexCanvas from "./HexCanvas";
 import CursorFollower from "./CursorFollower";
-import GithubRibbon from "./GithubRibbon";
 import { DEFAULT_THEME } from "../../lib/themeConstants";
 
 export default function HomeSectionsContainer({
@@ -60,7 +59,6 @@ export default function HomeSectionsContainer({
         <>
           <HexCanvas />
           <CursorFollower />
-          <GithubRibbon url="https://github.com/MuhammadWaqar7615" />
         </>
       )}
       <Navbar content={content} presetId={presetId} sections={sections} />

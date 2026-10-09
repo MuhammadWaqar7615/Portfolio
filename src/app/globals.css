@@ -9,11 +9,11 @@
   --color-text: var(--color-text);
   --color-heading: var(--color-heading);
   --color-cardBg: var(--color-cardBg);
-  
+
   --spacing-container: var(--spacing-container);
   --spacing-section: var(--spacing-section);
   --spacing-card: var(--spacing-card);
-  
+
   --radius-card: var(--radius-card);
 
   --font-serif-display: var(--font-heading);
@@ -89,15 +89,18 @@ html.admin-bright {
 .bg-\[\#0f1117\] {
   background-color: var(--admin-bg) !important;
 }
+
 .bg-\[\#161822\] {
   background-color: var(--admin-surface) !important;
   border-color: var(--admin-border) !important;
   box-shadow: var(--admin-card-shadow) !important;
 }
+
 .border-\[\#232736\],
 .border-\[\#1e2230\] {
   border-color: var(--admin-border) !important;
 }
+
 .bg-\[\#0b0c10\],
 input.bg-\[\#0b0c10\],
 textarea.bg-\[\#0b0c10\],
@@ -112,15 +115,18 @@ select.bg-\[\#0b0c10\] {
   border-color: #d8e2ed !important;
   box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.08), 0 2px 8px -2px rgba(15, 23, 42, 0.06) !important;
 }
+
 [data-admin-theme="bright"] .bg-\[\#161822\]:hover,
 [data-admin-theme="bright"] .hover\:border-\[\#353c52\]:hover,
 [data-admin-theme="bright"] .hover\:border-\[\#31374a\]:hover {
   border-color: #94a3b8 !important;
   box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.12) !important;
 }
+
 [data-admin-theme="bright"] .border-\[\#2b3044\] {
   border-color: #d8e2ed !important;
 }
+
 [data-admin-theme="bright"] .bg-\[\#0b0c10\],
 [data-admin-theme="bright"] input.bg-\[\#0b0c10\],
 [data-admin-theme="bright"] textarea.bg-\[\#0b0c10\],
@@ -129,37 +135,45 @@ select.bg-\[\#0b0c10\] {
   border-color: #cbd5e1 !important;
   color: #0f172a !important;
 }
+
 [data-admin-theme="bright"] input::placeholder,
 [data-admin-theme="bright"] textarea::placeholder {
   color: #94a3b8 !important;
 }
+
 [data-admin-theme="bright"] .bg-\[\#181c28\],
 [data-admin-theme="bright"] .bg-\[\#181b26\] {
   background-color: #f8fafc !important;
 }
+
 [data-admin-theme="bright"] .bg-\[\#1e2333\] {
   background-color: #f1f5f9 !important;
   color: #64748b !important;
 }
+
 [data-admin-theme="bright"] .bg-\[\#1c1f2e\] {
   background-color: #f1f5f9 !important;
   border-color: #d8e2ed !important;
   color: #334155 !important;
 }
+
 [data-admin-theme="bright"] .bg-\[\#1c1f2e\]:hover,
 [data-admin-theme="bright"] .hover\:bg-\[\#25293d\]:hover,
 [data-admin-theme="bright"] .hover\:bg-\[\#222736\]:hover {
   background-color: #e2e8f0 !important;
   color: #0f172a !important;
 }
+
 [data-admin-theme="bright"] .text-white {
   color: #0f172a !important;
 }
+
 [data-admin-theme="bright"] .text-\[\#8b94a7\],
 [data-admin-theme="bright"] .text-\[\#9ca3af\],
 [data-admin-theme="bright"] .text-\[\#5a6275\] {
   color: #64748b !important;
 }
+
 [data-admin-theme="bright"] .text-\[\#cbd5e1\],
 [data-admin-theme="bright"] .text-\[\#e2e5eb\] {
   color: #334155 !important;
@@ -172,12 +186,14 @@ select.bg-\[\#0b0c10\] {
   background-color: #0f172a !important;
   color: #ffffff !important;
 }
+
 [data-admin-theme="bright"] .bg-white.text-\[\#0f1117\]:hover,
 [data-admin-theme="bright"] button[type="submit"].bg-white:hover,
 [data-admin-theme="bright"] a.bg-white.text-\[\#0f1117\]:hover {
   background-color: #1e293b !important;
   color: #ffffff !important;
 }
+
 [data-admin-theme="bright"] .bg-white.text-\[\#0f1117\] *,
 [data-admin-theme="bright"] button[type="submit"].bg-white * {
   color: #ffffff !important;
@@ -211,21 +227,27 @@ html.light [class*="bg-cardBg"] {
   box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.08), 0 2px 8px -2px rgba(15, 23, 42, 0.06) !important;
   border-color: #D8E2ED !important;
 }
+
 html.light [class*="border-white/"] {
   border-color: rgba(0, 0, 0, 0.09) !important;
 }
+
 html.light [class*="bg-white/"] {
   background-color: rgba(0, 0, 0, 0.035) !important;
 }
+
 html.light [class*="hover:border-white/"]:hover {
   border-color: rgba(0, 0, 0, 0.22) !important;
 }
+
 html.light [class*="hover:border-white"]:hover {
   border-color: rgba(0, 0, 0, 0.35) !important;
 }
+
 html.light [class*="hover:bg-white/"]:hover {
   background-color: rgba(0, 0, 0, 0.07) !important;
 }
+
 html.light .editorial-noise {
   background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 0);
 }
@@ -237,12 +259,14 @@ html.light section#contact .text-white,
 html.light footer .text-white {
   color: var(--color-heading) !important;
 }
+
 html.light #contact input,
 html.light #contact textarea {
   color: var(--color-heading) !important;
   background-color: #FFFFFF !important;
   border-color: rgba(0, 0, 0, 0.15) !important;
 }
+
 html.light #contact input::placeholder,
 html.light #contact textarea::placeholder {
   color: #94a3b8 !important;
@@ -585,34 +609,6 @@ html[data-preset="preset-2"] .theme-switch {
   box-shadow: inset 0 0 30px rgba(31, 195, 255, 0.15), 0 0 30px rgba(31, 195, 255, 0.25);
 }
 
-/* Angled GitHub Corner Ribbon */
-.cyber-github-ribbon {
-  display: block;
-  position: fixed;
-  top: 3.2rem;
-  right: -4.2rem;
-  background-color: #1fc3ff;
-  color: #000000;
-  padding: 6px 65px;
-  transform: rotate(45deg);
-  box-shadow: inset 0 0 10px #000000, 0 0 18px rgba(31, 195, 255, 0.75);
-  font-family: 'Fugaz One', cursive, sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  z-index: 9999;
-  text-shadow: 0 0 2px #ffffff;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  pointer-events: auto;
-}
-
-.cyber-github-ribbon:hover {
-  background-color: #00e1ff;
-  box-shadow: inset 0 0 15px #000000, 0 0 28px #1fc3ff;
-  transform: rotate(45deg) scale(1.04);
-}
 
 /* Ambient Radial Blur Glow */
 .cyber-blur-glow {
@@ -636,4 +632,275 @@ html[data-preset="preset-2"] .theme-switch {
   box-shadow: 0 0 16px #1fc3ff !important;
 }
 
+/* ==========================================================
+   THEME 01 (CYBER CYAN ARCADE) LIGHT MODE HIGH-CONTRAST SYSTEM
+   Seamless white/cyan mode when light theme toggle is active
+   ========================================================== */
 
+/* Navbar in Light Mode */
+html.light:not([data-preset="preset-2"]) #navbar,
+[data-theme="light"]:not([data-preset="preset-2"]) #navbar {
+  background-color: rgba(248, 250, 252, 0.92) !important;
+  border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+}
+
+html.light:not([data-preset="preset-2"]) #navbar a,
+[data-theme="light"]:not([data-preset="preset-2"]) #navbar a {
+  color: #334155;
+}
+
+html.light:not([data-preset="preset-2"]) #navbar a:hover,
+[data-theme="light"]:not([data-preset="preset-2"]) #navbar a:hover {
+  color: #0284C7 !important;
+}
+
+html.light:not([data-preset="preset-2"]) #navbar [data-editable="content-navbar-brandInitials"],
+[data-theme="light"]:not([data-preset="preset-2"]) #navbar [data-editable="content-navbar-brandInitials"] {
+  background-color: rgba(2, 132, 199, 0.1) !important;
+  border-color: rgba(2, 132, 199, 0.45) !important;
+  color: #0284C7 !important;
+  box-shadow: 0 0 12px rgba(2, 132, 199, 0.2) !important;
+}
+
+html.light:not([data-preset="preset-2"]) #navbar [data-editable="content-navbar-brandTitle"],
+[data-theme="light"]:not([data-preset="preset-2"]) #navbar [data-editable="content-navbar-brandTitle"] {
+  color: #0F172A !important;
+}
+
+/* Cyber Dual-Layer Titles in Light Mode */
+html.light .cyber-primary-title,
+[data-theme="light"] .cyber-primary-title {
+  color: #0F172A !important;
+  text-shadow: none !important;
+}
+
+html.light .cyber-secondary-title,
+[data-theme="light"] .cyber-secondary-title {
+  -webkit-text-stroke: 2.5px #0284C7 !important;
+  filter: drop-shadow(0 0 8px rgba(2, 132, 199, 0.25)) !important;
+}
+
+/* Hero Section in Light Mode */
+html.light:not([data-preset="preset-2"]) #Homepage h1.text-\[\#1fc3ff\],
+[data-theme="light"]:not([data-preset="preset-2"]) #Homepage h1.text-\[\#1fc3ff\] {
+  color: #0284C7 !important;
+  text-shadow: 0 0 24px rgba(2, 132, 199, 0.25) !important;
+  filter: none !important;
+}
+
+html.light:not([data-preset="preset-2"]) #Homepage .cyber-blur-glow,
+[data-theme="light"]:not([data-preset="preset-2"]) #Homepage .cyber-blur-glow {
+  background: #0284C7 !important;
+  opacity: 0.08 !important;
+}
+
+html.light:not([data-preset="preset-2"]) #Homepage [data-editable="content-hero-roleTag"],
+[data-theme="light"]:not([data-preset="preset-2"]) #Homepage [data-editable="content-hero-roleTag"] {
+  color: #334155 !important;
+}
+
+html.light:not([data-preset="preset-2"]) #Homepage p.font-fugaz,
+[data-theme="light"]:not([data-preset="preset-2"]) #Homepage p.font-fugaz {
+  color: #1E293B !important;
+}
+
+html.light:not([data-preset="preset-2"]) #Homepage [data-editable="content-hero-bio"],
+[data-theme="light"]:not([data-preset="preset-2"]) #Homepage [data-editable="content-hero-bio"] {
+  color: #475569 !important;
+}
+
+html.light:not([data-preset="preset-2"]) #Homepage [data-editable="content-hero-status"],
+[data-theme="light"]:not([data-preset="preset-2"]) #Homepage [data-editable="content-hero-status"] {
+  color: #0284C7 !important;
+}
+
+html.light:not([data-preset="preset-2"]) #Homepage .rounded-full.border-\[\#1fc3ff\]\/40,
+[data-theme="light"]:not([data-preset="preset-2"]) #Homepage .rounded-full.border-\[\#1fc3ff\]\/40 {
+  background-color: rgba(2, 132, 199, 0.08) !important;
+  border-color: rgba(2, 132, 199, 0.3) !important;
+  box-shadow: 0 0 12px rgba(2, 132, 199, 0.15) !important;
+}
+
+html.light:not([data-preset="preset-2"]) #Homepage .bg-\[\#1fc3ff\],
+[data-theme="light"]:not([data-preset="preset-2"]) #Homepage .bg-\[\#1fc3ff\] {
+  background-color: #0284C7 !important;
+}
+
+/* Cyber Glow Cards in Light Mode */
+html.light .cyber-glow-card,
+[data-theme="light"] .cyber-glow-card {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(2, 132, 199, 0.22) !important;
+  box-shadow: 0 4px 20px -2px rgba(2, 132, 199, 0.08), 0 2px 8px -2px rgba(15, 23, 42, 0.06) !important;
+}
+
+html.light .cyber-glow-card:hover,
+[data-theme="light"] .cyber-glow-card:hover {
+  border-color: rgba(2, 132, 199, 0.5) !important;
+  box-shadow: 0 10px 25px -4px rgba(2, 132, 199, 0.16), 0 0 20px rgba(2, 132, 199, 0.12) !important;
+}
+
+/* Cyber Tech Stack Glow Boxes in Light Mode */
+html.light .cyber-glow-box,
+[data-theme="light"] .cyber-glow-box {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(2, 132, 199, 0.25) !important;
+  box-shadow: 0 2px 10px rgba(2, 132, 199, 0.1) !important;
+}
+
+html.light .cyber-glow-box:hover,
+[data-theme="light"] .cyber-glow-box:hover {
+  border-color: #0284C7 !important;
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.22) !important;
+}
+
+html.light .cyber-glow-box svg,
+[data-theme="light"] .cyber-glow-box svg {
+  color: #0F172A !important;
+}
+
+html.light .cyber-glow-box:hover svg,
+[data-theme="light"] .cyber-glow-box:hover svg {
+  color: #0284C7 !important;
+}
+
+html.light .cyber-glow-box-title,
+[data-theme="light"] .cyber-glow-box-title {
+  background: #FFFFFF !important;
+  color: #0F172A !important;
+  border: 1px solid #0284C7 !important;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.2) !important;
+}
+
+/* Floating Action Buttons in Light Mode */
+html.light .cyber-floating-btn,
+[data-theme="light"] .cyber-floating-btn {
+  background: #FFFFFF !important;
+  color: #0284C7 !important;
+  border: 1px solid #0284C7 !important;
+  box-shadow: 0 2px 10px rgba(2, 132, 199, 0.12) !important;
+}
+
+html.light .cyber-floating-btn:hover,
+[data-theme="light"] .cyber-floating-btn:hover {
+  background: #0284C7 !important;
+  color: #FFFFFF !important;
+  border-color: #0284C7 !important;
+  box-shadow: 0 4px 20px rgba(2, 132, 199, 0.35) !important;
+}
+
+html.light .cyber-floating-btn-solid,
+[data-theme="light"] .cyber-floating-btn-solid {
+  background: #0284C7 !important;
+  color: #FFFFFF !important;
+  border: 1px solid #0284C7 !important;
+  box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3) !important;
+}
+
+html.light .cyber-floating-btn-solid:hover,
+[data-theme="light"] .cyber-floating-btn-solid:hover {
+  background: #0369A1 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 6px 24px rgba(2, 132, 199, 0.45) !important;
+}
+
+/* Light Mode Text Overrides in Theme 01 */
+html.light:not([data-preset="preset-2"]) .text-white,
+[data-theme="light"]:not([data-preset="preset-2"]) .text-white {
+  color: #0F172A !important;
+}
+
+html.light:not([data-preset="preset-2"]) .text-white\/90,
+[data-theme="light"]:not([data-preset="preset-2"]) .text-white\/90,
+html.light:not([data-preset="preset-2"]) .text-white\/80,
+[data-theme="light"]:not([data-preset="preset-2"]) .text-white\/80 {
+  color: #1E293B !important;
+}
+
+html.light:not([data-preset="preset-2"]) .text-slate-300,
+[data-theme="light"]:not([data-preset="preset-2"]) .text-slate-300,
+html.light:not([data-preset="preset-2"]) .text-slate-200,
+[data-theme="light"]:not([data-preset="preset-2"]) .text-slate-200 {
+  color: #475569 !important;
+}
+
+html.light:not([data-preset="preset-2"]) .text-slate-400,
+[data-theme="light"]:not([data-preset="preset-2"]) .text-slate-400 {
+  color: #64748B !important;
+}
+
+/* Project, Skills, About Containers & Badges in Light Mode */
+html.light:not([data-preset="preset-2"]) .bg-black\/40,
+[data-theme="light"]:not([data-preset="preset-2"]) .bg-black\/40,
+html.light:not([data-preset="preset-2"]) .bg-black\/60,
+[data-theme="light"]:not([data-preset="preset-2"]) .bg-black\/60,
+html.light:not([data-preset="preset-2"]) .bg-black\/70,
+[data-theme="light"]:not([data-preset="preset-2"]) .bg-black\/70 {
+  background-color: #F1F5F9 !important;
+  border-color: rgba(2, 132, 199, 0.18) !important;
+}
+
+html.light:not([data-preset="preset-2"]) [class*="border-white/"],
+[data-theme="light"]:not([data-preset="preset-2"]) [class*="border-white/"] {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+html.light:not([data-preset="preset-2"]) span.bg-\[\#1fc3ff\]\/\[0\.08\],
+[data-theme="light"]:not([data-preset="preset-2"]) span.bg-\[\#1fc3ff\]\/\[0\.08\],
+html.light:not([data-preset="preset-2"]) span.bg-\[\#1fc3ff\]\/\[0\.06\],
+[data-theme="light"]:not([data-preset="preset-2"]) span.bg-\[\#1fc3ff\]\/\[0\.06\],
+html.light:not([data-preset="preset-2"]) span.bg-\[\#1fc3ff\]\/10,
+[data-theme="light"]:not([data-preset="preset-2"]) span.bg-\[\#1fc3ff\]\/10 {
+  background-color: rgba(2, 132, 199, 0.08) !important;
+  border-color: rgba(2, 132, 199, 0.3) !important;
+  color: #0284C7 !important;
+}
+
+/* Timeline & Dots in Light Mode */
+html.light:not([data-preset="preset-2"]) .bg-gradient-to-b.from-\[\#1fc3ff\],
+[data-theme="light"]:not([data-preset="preset-2"]) .bg-gradient-to-b.from-\[\#1fc3ff\] {
+  --tw-gradient-from: #0284C7 !important;
+}
+
+html.light:not([data-preset="preset-2"]) .border-\[\#1fc3ff\].bg-\[\#06090e\],
+[data-theme="light"]:not([data-preset="preset-2"]) .border-\[\#1fc3ff\].bg-\[\#06090e\] {
+  background-color: #FFFFFF !important;
+  border-color: #0284C7 !important;
+  box-shadow: 0 0 10px rgba(2, 132, 199, 0.4) !important;
+}
+
+html.light:not([data-preset="preset-2"]) .bg-\[\#1fc3ff\].w-1\.5.h-1\.5,
+[data-theme="light"]:not([data-preset="preset-2"]) .bg-\[\#1fc3ff\].w-1\.5.h-1\.5 {
+  background-color: #0284C7 !important;
+}
+
+/* Footer in Light Mode */
+html.light:not([data-preset="preset-2"]) footer,
+[data-theme="light"]:not([data-preset="preset-2"]) footer {
+  background-color: #FFFFFF !important;
+  border-top-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+html.light:not([data-preset="preset-2"]) footer .text-slate-500,
+[data-theme="light"]:not([data-preset="preset-2"]) footer .text-slate-500 {
+  color: #64748B !important;
+}
+
+html.light:not([data-preset="preset-2"]) footer a:hover,
+[data-theme="light"]:not([data-preset="preset-2"]) footer a:hover {
+  color: #0284C7 !important;
+}
+
+/* Cursor in Light Mode */
+html.light .cursor-hover-active,
+[data-theme="light"] .cursor-hover-active {
+  border-color: #0284C7 !important;
+  box-shadow: 0 0 16px rgba(2, 132, 199, 0.6) !important;
+}
+
+html.light [class*="z-\[9998\]"] div,
+[data-theme="light"] [class*="z-\[9998\]"] div {
+  background-color: #0284C7 !important;
+  box-shadow: 0 0 6px rgba(2, 132, 199, 0.5) !important;
+}
