@@ -107,10 +107,10 @@ export default function AdminThemesPage() {
       tagline: "Theme 01",
       accentColor: "bg-cyan-400",
       features: [
-        { label: "Design Style", value: "High-Precision Dark" },
+        { label: "Design Style", value: "Ultra-Minimalist" },
         { label: "Headings", value: "Space Grotesk" },
         { label: "Body Text", value: "Inter" },
-        { label: "Accent Tone", value: "Cyan Highlight" },
+        { label: "Accent Tone", value: "Sky Blue Highlight" },
       ],
     },
     {
