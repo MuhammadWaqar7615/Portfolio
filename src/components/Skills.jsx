@@ -162,12 +162,12 @@ export default function Skills({ skills = [], content, presetId }) {
       id="skills"
       aria-label="Technical skills and competencies"
       data-editable="background"
-      className="py-24 sm:py-32 border-b border-white/[0.08] relative overflow-hidden"
+      className="py-24 sm:py-32 border-b border-white/[0.08] relative"
     >
       <div className="editorial-container relative z-10">
         <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-12">
           {/* Left: Sticky Dual-Layer Title */}
-          <div className="lg:w-5/12 lg:sticky lg:top-28">
+          <div className="lg:w-5/12 lg:sticky lg:top-28 lg:self-start">
             <CyberTitle
               title="TECH STACK"
               subtext="Modern technologies and architectures I leverage to engineer high-velocity, scalable web systems."

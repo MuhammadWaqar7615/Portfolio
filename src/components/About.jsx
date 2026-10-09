@@ -219,12 +219,12 @@ export default function About({ content, presetId }) {
       id="about"
       aria-label="About and background"
       data-editable="background"
-      className="py-24 sm:py-32 border-b border-white/[0.08] relative overflow-hidden"
+      className="py-24 sm:py-32 border-b border-white/[0.08] relative"
     >
       <div className="editorial-container relative z-10">
         <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-12">
           {/* Left Column: Sticky Title */}
-          <div className="lg:w-5/12 lg:sticky lg:top-28">
+          <div className="lg:w-5/12 lg:sticky lg:top-28 lg:self-start">
             <CyberTitle
               title="ABOUT ME"
               subtext="Engineering with clarity, speed, and uncompromising attention to detail."
