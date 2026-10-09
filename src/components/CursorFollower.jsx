@@ -28,10 +28,42 @@ export default function CursorFollower({ presetId = "preset-1" }) {
     let animationFrameId;
 
     if (isPreset2) {
-      // Single smooth screen-blended crimson halo (Abhay Rana follower)
+      // Abhay Rana follower: Inner solid red dot + outer trailing ring
+      let isHovered = false;
+
       const handleMouseMove = (e) => {
         mouse.x = e.clientX;
         mouse.y = e.clientY;
+
+        // Position inner red dot directly under cursor without lag
+        if (head) {
+          head.style.transform = `translate3d(${mouse.x}px, ${mouse.y}px, 0)`;
+        }
+
+        const target = e.target;
+        const shouldHover = Boolean(
+          target &&
+            (target.closest("a") ||
+              target.closest("button") ||
+              target.closest("input") ||
+              target.closest("textarea") ||
+              target.closest("[role='button']") ||
+              target.closest("[data-editable]") ||
+              target.closest(".bento-card") ||
+              target.closest(".cursor-pointer"))
+        );
+
+        if (shouldHover !== isHovered) {
+          isHovered = shouldHover;
+          const ring = container.querySelector(".cursor-ring");
+          if (ring) {
+            if (isHovered) {
+              ring.classList.add("cursor-ring-active");
+            } else {
+              ring.classList.remove("cursor-ring-active");
+            }
+          }
+        }
       };
 
       const handleMouseLeave = () => setVisible(false);
@@ -41,13 +73,15 @@ export default function CursorFollower({ presetId = "preset-1" }) {
       document.addEventListener("mouseleave", handleMouseLeave);
       document.addEventListener("mouseenter", handleMouseEnter);
 
-      const animate = () => {
-        // Fluid spring interpolation: pos smoothly approaches mouse
-        pos.x += (mouse.x - pos.x) * 0.35;
-        pos.y += (mouse.y - pos.y) * 0.35;
+      const ring = container.querySelector(".cursor-ring");
 
-        if (head) {
-          head.style.transform = `translate3d(${pos.x}px, ${pos.y}px, 0)`;
+      const animate = () => {
+        // Fluid spring interpolation for outer ring
+        pos.x += (mouse.x - pos.x) * 0.22;
+        pos.y += (mouse.y - pos.y) * 0.22;
+
+        if (ring) {
+          ring.style.transform = `translate3d(${pos.x}px, ${pos.y}px, 0)`;
         }
 
         animationFrameId = requestAnimationFrame(animate);
@@ -136,14 +170,17 @@ export default function CursorFollower({ presetId = "preset-1" }) {
         className="fixed inset-0 pointer-events-none z-[9999] overflow-hidden hidden md:block"
         aria-hidden="true"
       >
+        {/* Outer Trailing Ring / Halo */}
+        <div
+          className="cursor-ring pointer-events-none fixed top-0 left-0 -translate-x-1/2 -translate-y-1/2 h-8 w-8 rounded-full border border-red-500/60 bg-red-500/[0.08] shadow-[0_0_12px_rgba(239,68,68,0.25)] transition-[width,height,background-color,border-color] duration-200 ease-out"
+          style={{ willChange: "transform" }}
+        />
+
+        {/* Inner Solid Red Dot under Cursor (matches abhayrana.com) */}
         <div
           ref={headRef}
-          className="pointer-events-none fixed top-0 left-0 -translate-x-1/2 -translate-y-1/2 h-5 w-5 rounded-full"
-          style={{
-            background: "radial-gradient(circle, rgba(239, 68, 68, 0.6) 0%, rgba(239, 68, 68, 0) 70%)",
-            mixBlendMode: "screen",
-            willChange: "transform",
-          }}
+          className="cursor-dot pointer-events-none fixed top-0 left-0 -translate-x-1/2 -translate-y-1/2 h-2.5 w-2.5 rounded-full bg-red-500 shadow-[0_0_8px_#ef4444]"
+          style={{ willChange: "transform" }}
         />
       </div>
     );

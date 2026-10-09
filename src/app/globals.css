@@ -938,3 +938,12 @@ html.light [class*="z-\[9998\]"] div,
   background-color: #0284C7 !important;
   box-shadow: 0 0 6px rgba(2, 132, 199, 0.5) !important;
 }
+
+/* Preset 2 Cursor Ring Expansion on Hover */
+.cursor-ring-active {
+  width: 44px !important;
+  height: 44px !important;
+  background-color: rgba(239, 68, 68, 0.16) !important;
+  border-color: rgba(248, 113, 113, 0.85) !important;
+  box-shadow: 0 0 22px rgba(239, 68, 68, 0.35) !important;
+}
