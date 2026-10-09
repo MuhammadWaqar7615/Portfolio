@@ -214,8 +214,8 @@ export default function Skills({ skills = [], content, presetId }) {
                 </h2>
               ) : null}
             </div>
-            <p className="text-xs font-mono uppercase tracking-widest opacity-60">
-              [ FRONTEND · BACKEND · ARCHITECTURE ]
+            <p className="text-xs text-[var(--text-muted,#8b94a7)] font-medium tracking-wide">
+              Frontend · Backend · Database · Toolchains
             </p>
           </div>
         )}
