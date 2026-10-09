@@ -14,12 +14,15 @@ import Contact from "./Contact";
 
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import HexCanvas from "./HexCanvas";
+import CursorFollower from "./CursorFollower";
+import GithubRibbon from "./GithubRibbon";
 import { DEFAULT_THEME } from "../../lib/themeConstants";
 
 export default function HomeSectionsContainer({
   initialSections,
   initialContent,
-  initialPresetId = "preset-2",
+  initialPresetId = "preset-1",
   projects,
   experiences,
   educationData,
@@ -27,7 +30,7 @@ export default function HomeSectionsContainer({
 }) {
   const [sections, setSections] = useState(initialSections || []);
   const [content, setContent] = useState(initialContent || DEFAULT_THEME.content);
-  const [presetId, setPresetId] = useState(initialPresetId || "preset-2");
+  const [presetId, setPresetId] = useState(initialPresetId || "preset-1");
 
   const sectionComponentMap = {
     hero: <Hero key="hero" content={content} presetId={presetId} />,
@@ -53,6 +56,13 @@ export default function HomeSectionsContainer({
         onContentChange={setContent}
         onPresetChange={setPresetId}
       />
+      {presetId !== "preset-2" && (
+        <>
+          <HexCanvas />
+          <CursorFollower />
+          <GithubRibbon url="https://github.com/MuhammadWaqar7615" />
+        </>
+      )}
       <Navbar content={content} presetId={presetId} sections={sections} />
       <main id="main-content" className="flex-1 w-full">
         {sortedSections.map((sec) => sectionComponentMap[sec.sectionId] || null)}

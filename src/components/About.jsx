@@ -1,3 +1,5 @@
+import CyberTitle from "./CyberTitle";
+
 export default function About({ content, presetId }) {
   const about = content?.about || {};
   const isPreset2 = presetId === "preset-2";
@@ -215,106 +217,137 @@ export default function About({ content, presetId }) {
   return (
     <section
       id="about"
-      aria-label="About and engineering principles"
+      aria-label="About and background"
       data-editable="background"
-      className="py-20 sm:py-28 border-b border-white/[0.08]"
+      className="py-24 sm:py-32 border-b border-white/[0.08] relative overflow-hidden"
     >
-      <div className="editorial-container">
-        <div className={`grid grid-cols-1 ${hasPrinciples ? "lg:grid-cols-12" : ""} gap-12 items-start`}>
-          {/* Section Heading & Bio */}
-          <div className={`${hasPrinciples ? "lg:col-span-5" : "w-full"} space-y-6`}>
-            {tagline?.trim() ? (
-              <span
-                data-editable="content-about-tagline"
-                className="text-xs font-mono uppercase tracking-[0.2em] text-accent cursor-pointer"
-                title="Click to edit about tagline"
-              >
-                {tagline}
-              </span>
-            ) : null}
-
-            {heading?.trim() ? (
-              <h2
-                data-editable="content-about-heading"
-                className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[var(--color-heading)] cursor-pointer"
-                style={{ fontFamily: "var(--font-heading)" }}
-                title="Click to edit about heading"
-              >
-                {heading}
-              </h2>
-            ) : null}
-
-            {(p1?.trim() || p2?.trim()) && (
-              <div
-                className="space-y-4 text-[var(--color-text)] text-sm sm:text-base leading-relaxed font-light opacity-90"
-              >
-                {p1?.trim() ? (
-                  <p
-                    data-editable="content-about-paragraph1"
-                    className="cursor-pointer"
-                    title="Click to edit paragraph 1"
-                  >
-                    {p1}
-                  </p>
-                ) : null}
-                {p2?.trim() ? (
-                  <p
-                    data-editable="content-about-paragraph2"
-                    className="cursor-pointer"
-                    title="Click to edit paragraph 2"
-                  >
-                    {p2}
-                  </p>
-                ) : null}
+      <div className="editorial-container relative z-10">
+        <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-12">
+          {/* Left Column: Sticky Title */}
+          <div className="lg:w-5/12 lg:sticky lg:top-28">
+            <CyberTitle
+              title="ABOUT ME"
+              subtext="Engineering with clarity, speed, and uncompromising attention to detail."
+            />
+            {/* Quick Stats Pill */}
+            <div className="hidden lg:flex flex-col gap-3 pr-6">
+              <div className="p-4 rounded-xl border border-[#1fc3ff]/20 bg-[#1fc3ff]/[0.04] backdrop-blur-md">
+                <span className="text-[11px] font-bold uppercase tracking-widest text-[#1fc3ff] font-opensans block mb-1">
+                  CURRENT FOCUS
+                </span>
+                <p className="text-xs text-slate-300 font-opensans leading-relaxed">
+                  Next.js App Router, Scalable Full-Stack Systems, and Database Architectures
+                </p>
               </div>
-            )}
+              <div className="p-4 rounded-xl border border-white/[0.06] bg-black/40 backdrop-blur-md">
+                <span className="text-[11px] font-bold uppercase tracking-widest text-slate-400 font-opensans block mb-1">
+                  STATUS
+                </span>
+                <p className="text-xs text-slate-300 font-opensans leading-relaxed">
+                  Available for Full-time Roles & High-Impact Engineering Projects
+                </p>
+              </div>
+            </div>
           </div>
 
-          {/* Core Principles Grid */}
-          {hasPrinciples && (
-            <div className="lg:col-span-7 space-y-6">
-              {rawPrinciples.map((p, idx) => {
-                if (!p.label?.trim() && !p.title?.trim() && !p.description?.trim()) return null;
-                return (
-                  <div
-                    key={p.label || idx}
-                    data-editable="radius"
-                    className="border border-white/[0.08] bg-cardBg p-6 sm:p-8"
-                    style={{ borderRadius: "var(--radius-card)" }}
+          {/* Right Column: Cyber Translucent Glass Card */}
+          <div className="lg:w-7/12">
+            <div className="cyber-glow-card p-6 sm:p-10 space-y-6">
+              {/* Heading */}
+              <h3 className="text-xl sm:text-2xl font-bold text-white font-fugaz tracking-tight leading-snug">
+                {heading || "Building quality web experiences with code and creativity."}
+              </h3>
+
+              {/* Bio Paragraphs */}
+              <div className="space-y-4 text-sm sm:text-base text-slate-300 font-opensans leading-relaxed font-normal">
+                <p data-editable="content-about-paragraph1">
+                  {p1 ||
+                    "I'm a passionate Full Stack Web Developer who loves turning ideas into real, functional and user-friendly web applications. I enjoy working with modern technologies and constantly learning new skills to stay ahead."}
+                </p>
+                <p data-editable="content-about-paragraph2">
+                  {p2 ||
+                    "Rather than treating styling and backend as separate concerns, I engineer applications from database schema to pixel-perfect component rendering, ensuring every layer is maintainable, solo-operable, and crawlable by search engines."}
+                </p>
+              </div>
+
+              {/* Engineering Highlights / Badges */}
+              <div className="pt-2 flex flex-wrap gap-2.5">
+                {[
+                  { label: "Clean Code Architecture", icon: "</>" },
+                  { label: "60fps Micro-Interactions", icon: "⚡" },
+                  { label: "Full-Stack Scalability", icon: "🌐" },
+                  { label: "Zero Layout Shift", icon: "📐" },
+                ].map((badge, idx) => (
+                  <span
+                    key={idx}
+                    className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#1fc3ff]/[0.08] border border-[#1fc3ff]/30 text-white font-opensans shadow-[0_0_10px_rgba(31,195,255,0.08)]"
                   >
-                    {p.label?.trim() ? (
-                      <span
-                        data-editable={`content-about-principle-${idx}-label`}
-                        className="text-[11px] font-mono tracking-widest text-accent cursor-pointer"
-                        title="Click to edit principle label"
-                      >
-                        {p.label}
-                      </span>
-                    ) : null}
-                    {p.title?.trim() ? (
-                      <h3
-                        data-editable={`content-about-principle-${idx}-title`}
-                        className="text-xl font-bold text-[var(--color-heading)] mt-1 mb-2 cursor-pointer"
-                        style={{ fontFamily: "var(--font-heading)" }}
-                        title="Click to edit principle title"
-                      >
-                        {p.title}
-                      </h3>
-                    ) : null}
-                    {p.description?.trim() ? (
-                      <p
-                        data-editable={`content-about-principle-${idx}-description`}
-                        className="text-sm text-[var(--color-text)] opacity-75 leading-relaxed font-light cursor-pointer"
-                        title="Click to edit principle description"
-                      >
-                        {p.description}
-                      </p>
-                    ) : null}
-                  </div>
-                );
-              })}
+                    <span className="text-[#1fc3ff] font-bold">{badge.icon}</span>
+                    <span>{badge.label}</span>
+                  </span>
+                ))}
+              </div>
+
+              {/* Profile Details Grid */}
+              <div className="pt-6 border-t border-white/[0.08] grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="p-3.5 rounded-xl border border-white/[0.06] bg-black/40">
+                  <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider block font-opensans">
+                    Name
+                  </span>
+                  <span className="text-sm font-semibold text-white font-opensans">
+                    {profileName}
+                  </span>
+                </div>
+                <div className="p-3.5 rounded-xl border border-white/[0.06] bg-black/40">
+                  <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider block font-opensans">
+                    Location
+                  </span>
+                  <span className="text-sm font-semibold text-white font-opensans">
+                    {profileLocation} (Open Globally)
+                  </span>
+                </div>
+                <div className="p-3.5 rounded-xl border border-white/[0.06] bg-black/40">
+                  <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider block font-opensans">
+                    Email
+                  </span>
+                  <a
+                    href={`mailto:${profileEmail}`}
+                    className="text-sm font-semibold text-[#1fc3ff] hover:underline font-opensans truncate block"
+                  >
+                    {profileEmail}
+                  </a>
+                </div>
+                <div className="p-3.5 rounded-xl border border-white/[0.06] bg-black/40">
+                  <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider block font-opensans">
+                    Experience
+                  </span>
+                  <span className="text-sm font-semibold text-white font-opensans">
+                    {profileExperience}
+                  </span>
+                </div>
+              </div>
+
+              {/* Bottom Action CTA */}
+              <div className="pt-4 flex flex-wrap items-center gap-4">
+                <a
+                  href="#contact"
+                  className="cyber-floating-btn cyber-floating-btn-solid text-xs"
+                >
+                  <span>Get In Touch</span>
+                  <span>→</span>
+                </a>
+                <a
+                  href="/cv.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cyber-floating-btn text-xs"
+                >
+                  <span>Download CV</span>
+                  <span>↗</span>
+                </a>
+              </div>
             </div>
-          )}
+          </div>
         </div>
       </div>
     </section>

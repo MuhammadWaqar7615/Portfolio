@@ -1,3 +1,23 @@
+import CyberTitle from "./CyberTitle";
+import {
+  SiReact,
+  SiNextdotjs,
+  SiJavascript,
+  SiTypescript,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
+  SiPostgresql,
+  SiSupabase,
+  SiTailwindcss,
+  SiGit,
+  SiGithub,
+  SiHtml5,
+  SiCss3,
+  SiVercel,
+  SiPostman,
+} from "react-icons/si";
+
 export default function Skills({ skills = [], content, presetId }) {
   const sectionHeaders = content?.sectionHeaders || {};
   const isPreset2 = presetId === "preset-2";
@@ -112,148 +132,83 @@ export default function Skills({ skills = [], content, presetId }) {
     );
   }
 
-  // If no dynamic skills provided, use the fallback
-  const fallbackCategories = [
-    {
-      category: "Frontend Engineering",
-      description: "Component architecture, reactive state, and accessible UI",
-      skills: [
-        "React.js",
-        "Next.js (App Router)",
-        "JavaScript (ES6+)",
-        "TypeScript",
-        "Redux Toolkit",
-        "HTML5 Semantic",
-        "CSS3 / PostCSS",
-      ],
-    },
-    {
-      category: "Styling & Motion Systems",
-      description: "Design systems, layout precision, and micro-interactions",
-      skills: [
-        "Tailwind CSS",
-        "Framer Motion",
-        "shadcn/ui",
-        "Responsive Grid Layouts",
-        "CSS Modules / SASS",
-        "SVG Animation",
-      ],
-    },
-    {
-      category: "Backend & Data Layer",
-      description: "API design, database modeling, and serverless computing",
-      skills: [
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-        "Mongoose ODM",
-        "Next.js Route Handlers",
-        "RESTful API Design",
-        "JWT Authentication",
-      ],
-    },
-    {
-      category: "Toolchains & Deployment",
-      description: "Version control, build performance, and cloud hosting",
-      skills: [
-        "Git / GitHub Workflows",
-        "Vercel Edge Deployment",
-        "REST Architecture",
-        "Postman",
-        "npm / package ecosystems",
-      ],
-    },
+  const TECH_ITEMS = [
+    { name: "React.js", category: "Frontend", icon: SiReact },
+    { name: "Next.js", category: "Framework", icon: SiNextdotjs },
+    { name: "JavaScript", category: "Language", icon: SiJavascript },
+    { name: "TypeScript", category: "Language", icon: SiTypescript },
+    { name: "Tailwind CSS", category: "Styling", icon: SiTailwindcss },
+    { name: "Node.js", category: "Backend", icon: SiNodedotjs },
+    { name: "Express.js", category: "Backend", icon: SiExpress },
+    { name: "MongoDB", category: "Database", icon: SiMongodb },
+    { name: "PostgreSQL", category: "Database", icon: SiPostgresql },
+    { name: "Supabase", category: "Cloud DB", icon: SiSupabase },
+    { name: "Git", category: "Version Control", icon: SiGit },
+    { name: "GitHub", category: "Collaboration", icon: SiGithub },
+    { name: "HTML5", category: "Markup", icon: SiHtml5 },
+    { name: "CSS3", category: "Styles", icon: SiCss3 },
+    { name: "Vercel", category: "Cloud Edge", icon: SiVercel },
+    { name: "Postman", category: "API Testing", icon: SiPostman },
   ];
 
-  let displayCategories = fallbackCategories;
-
-  if (skills.length > 0) {
-    // Group dynamic skills by category
-    const grouped = skills.reduce((acc, skill) => {
-      if (!acc[skill.category]) {
-        acc[skill.category] = {
-          category: skill.category,
-          description: "Core competencies and tools",
-          skills: [],
-        };
-      }
-      acc[skill.category].skills.push(skill.name);
-      return acc;
-    }, {});
-    displayCategories = Object.values(grouped);
-  }
+  const categories = [
+    { title: "Frontend Architecture", items: ["React.js", "Next.js", "JavaScript", "TypeScript", "Tailwind CSS", "HTML5", "CSS3"] },
+    { title: "Backend & Databases", items: ["Node.js", "Express.js", "MongoDB", "PostgreSQL", "Supabase"] },
+    { title: "DevOps & Tooling", items: ["Git", "GitHub", "Vercel", "Postman"] },
+  ];
 
   return (
     <section
       id="skills"
       aria-label="Technical skills and competencies"
       data-editable="background"
-      className="py-20 sm:py-28 border-b border-white/[0.08]"
+      className="py-24 sm:py-32 border-b border-white/[0.08] relative overflow-hidden"
     >
-      <div className="editorial-container">
-        {(tagline?.trim() || heading?.trim()) && (
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-white/[0.08] pb-6 gap-4">
-            <div>
-              {tagline?.trim() ? (
-                <span
-                  data-editable="content-sectionHeaders-skillsTagline"
-                  className="text-xs font-mono uppercase tracking-[0.2em] text-accent cursor-pointer"
-                  title="Click to edit skills tagline"
+      <div className="editorial-container relative z-10">
+        <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-12">
+          {/* Left: Sticky Dual-Layer Title */}
+          <div className="lg:w-5/12 lg:sticky lg:top-28">
+            <CyberTitle
+              title="TECH STACK"
+              subtext="Modern technologies and architectures I leverage to engineer high-velocity, scalable web systems."
+            />
+            <div className="space-y-4 hidden lg:block pr-6">
+              {categories.map((cat, idx) => (
+                <div
+                  key={idx}
+                  className="p-4 rounded-xl border border-white/[0.06] bg-black/40 backdrop-blur-md"
                 >
-                  {tagline}
-                </span>
-              ) : null}
-              {heading?.trim() ? (
-                <h2
-                  data-editable="content-sectionHeaders-skillsHeading"
-                  className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[var(--color-heading)] mt-2 cursor-pointer"
-                  style={{ fontFamily: "var(--font-heading)" }}
-                  title="Click to edit skills heading"
-                >
-                  {heading}
-                </h2>
-              ) : null}
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#1fc3ff] font-opensans mb-2">
+                    {cat.title}
+                  </h4>
+                  <p className="text-xs text-slate-300 font-opensans leading-relaxed">
+                    {cat.items.join(" · ")}
+                  </p>
+                </div>
+              ))}
             </div>
-            <p className="text-xs text-[var(--text-muted,#8b94a7)] font-medium tracking-wide">
-              Frontend · Backend · Database · Toolchains
-            </p>
           </div>
-        )}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {displayCategories.map((group) => (
-            <div
-              key={group.category}
-              data-editable="radius"
-              className="border border-white/[0.08] bg-cardBg p-6 sm:p-8 hover:border-white/20 transition-all duration-300"
-              style={{ borderRadius: "var(--radius-card)" }}
-            >
-              <span
-                data-editable="accent"
-                className="text-xs font-mono uppercase tracking-widest text-accent"
-              >
-                {group.category}
-              </span>
-              <p
-                data-editable="text"
-                className="text-xs text-[var(--color-text)] opacity-70 font-light mt-1 mb-6"
-              >
-                {group.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2">
-                {group.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="text-xs font-mono text-[var(--color-text)] opacity-85 bg-white/[0.04] border border-white/10 px-3 py-1.5 hover:border-accent hover:text-accent transition-colors"
-                    style={{ borderRadius: "calc(var(--radius-card) / 2)" }}
+          {/* Right: Glow Box Grid */}
+          <div className="lg:w-7/12">
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 gap-4 sm:gap-6 justify-items-center">
+              {TECH_ITEMS.map((item) => {
+                const IconComponent = item.icon;
+                return (
+                  <div
+                    key={item.name}
+                    className="cyber-glow-box group"
+                    title={item.name}
                   >
-                    {skill}
-                  </span>
-                ))}
-              </div>
+                    <IconComponent className="w-7 h-7 sm:w-8 sm:h-8 text-white group-hover:text-[#1fc3ff] transition-colors duration-200" />
+                    <span className="cyber-glow-box-title">
+                      {item.name}
+                    </span>
+                  </div>
+                );
+              })}
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>

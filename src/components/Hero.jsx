@@ -143,19 +143,22 @@ export default function Hero({ content, presetId }) {
       id="Homepage"
       aria-label="Hero introduction"
       data-editable="background"
-      className="relative min-h-[82vh] sm:min-h-[86vh] flex flex-col justify-center border-b border-white/[0.08] overflow-hidden py-16 sm:py-24"
+      className="relative min-h-[90vh] flex flex-col justify-center items-center text-center border-b border-white/[0.08] overflow-hidden py-24 sm:py-32"
     >
-      <div className="editorial-container relative z-10 w-full max-w-5xl mx-auto">
+      {/* Ambient Radial Cyan Glow */}
+      <div className="cyber-blur-glow top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+
+      <div className="relative z-10 w-full max-w-4xl mx-auto px-6 flex flex-col items-center">
         {/* Availability Badge */}
         {status?.trim() && (
-          <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 text-emerald-400 text-xs font-medium mb-6 w-fit">
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-[#1fc3ff]/40 bg-[#1fc3ff]/10 text-[#1fc3ff] text-xs font-semibold mb-8 shadow-[0_0_15px_rgba(31,195,255,0.2)]">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1fc3ff] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#1fc3ff]"></span>
             </span>
             <span
               data-editable="content-hero-status"
-              className="cursor-pointer tracking-wide"
+              className="cursor-pointer tracking-widest uppercase font-opensans"
               title="Click to edit status"
             >
               {status}
@@ -163,81 +166,77 @@ export default function Hero({ content, presetId }) {
           </div>
         )}
 
-        {/* Main Hero Header */}
-        <div className="space-y-4 max-w-4xl">
-          <h1
-            data-editable="content-hero-name"
-            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold tracking-[-0.035em] text-[var(--color-heading)] leading-[1.05] cursor-pointer"
-            style={{ fontFamily: "var(--font-heading)" }}
-            title="Click to edit name"
+        {/* Role Tagline */}
+        <span
+          data-editable="content-hero-roleTag"
+          className="text-xs sm:text-sm font-bold tracking-[4px] uppercase text-white/90 mb-3 font-opensans"
+          title="Click to edit role tag"
+        >
+          {roleTag || "FULL STACK WEB DEVELOPER"}
+        </span>
+
+        {/* Giant Name in Fugaz One */}
+        <h1
+          data-editable="content-hero-name"
+          className="font-fugaz text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-[#1fc3ff] leading-[1.02] tracking-tight my-2 drop-shadow-[0_0_28px_rgba(31,195,255,0.45)] cursor-pointer select-none"
+          title="Click to edit name"
+        >
+          {name || "Muhammad Waqar"}
+        </h1>
+
+        {/* Specialization / Subtitle */}
+        <p className="mt-3 text-lg sm:text-xl md:text-2xl font-bold uppercase tracking-wider text-white/80 font-fugaz">
+          {specialization || "TURNING IDEAS INTO DIGITAL SOLUTIONS"}
+        </p>
+
+        {/* Bio */}
+        {bio?.trim() && (
+          <p
+            data-editable="content-hero-bio"
+            className="mt-6 text-sm sm:text-base md:text-lg text-slate-300 leading-relaxed max-w-2xl font-normal font-opensans cursor-pointer"
+            title="Click to edit intro bio"
           >
-            {name}
-          </h1>
+            {bio}
+          </p>
+        )}
 
-          {roleTag?.trim() && (
-            <p
-              data-editable="content-hero-roleTag"
-              className="text-xl sm:text-2xl md:text-3xl text-[var(--text-secondary,var(--color-text))] font-normal tracking-tight cursor-pointer"
-              title="Click to edit role tag"
+        {/* Floating Action Buttons */}
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-5">
+          {buttonPrimary?.trim() && (
+            <a
+              href="#featured-work"
+              data-editable="content-hero-buttonPrimary"
+              className="cyber-floating-btn cyber-floating-btn-solid"
+              title="Click to edit primary button"
             >
-              {roleTag}
-            </p>
+              <span>{buttonPrimary.replace(/[↓→]/g, "").trim()}</span>
+              <span>↓</span>
+            </a>
           )}
-
-          {bio?.trim() && (
-            <p
-              data-editable="content-hero-bio"
-              className="pt-2 text-base sm:text-lg md:text-xl text-[var(--color-text)] leading-relaxed max-w-2xl font-light opacity-85 cursor-pointer"
-              title="Click to edit intro bio"
+          {buttonSecondary?.trim() && (
+            <a
+              href="#contact"
+              data-editable="content-hero-buttonSecondary"
+              className="cyber-floating-btn"
+              title="Click to edit secondary button"
             >
-              {bio}
-            </p>
+              <span>{buttonSecondary.replace(/[↓→]/g, "").trim()}</span>
+              <span>→</span>
+            </a>
           )}
         </div>
 
-        {/* Streamlined Action Buttons */}
-        {(buttonPrimary?.trim() || buttonSecondary?.trim()) && (
-          <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-3.5">
-            {buttonPrimary?.trim() && (
-              <a
-                href="#featured-work"
-                data-editable="content-hero-buttonPrimary"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--color-heading)] text-[var(--color-background)] font-medium text-xs tracking-wider uppercase hover:opacity-90 transition-all duration-150 active:scale-[0.98] shadow-sm cursor-pointer"
-                title="Click to edit primary button"
-              >
-                <span>{buttonPrimary.replace(/[↓→]/g, "").trim()}</span>
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                </svg>
-              </a>
-            )}
-            {buttonSecondary?.trim() && (
-              <a
-                href="#contact"
-                data-editable="content-hero-buttonSecondary"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-white/20 bg-white/[0.03] hover:bg-white/[0.08] hover:border-white/40 text-[var(--color-text)] font-medium text-xs tracking-wider uppercase transition-all duration-150 active:scale-[0.98] cursor-pointer"
-                title="Click to edit secondary button"
-              >
-                <span>{buttonSecondary.replace(/[↓→]/g, "").trim()}</span>
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </a>
-            )}
-          </div>
-        )}
-
         {/* Core Stack Strip */}
         {coreStack?.trim() && (
-          <div className="mt-12 pt-8 border-t border-white/[0.08] flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 text-xs">
-            <span className="text-[var(--text-muted,#8b94a7)] font-medium tracking-wider text-[11px] uppercase shrink-0">
+          <div className="mt-14 pt-8 border-t border-white/[0.08] w-full flex flex-col items-center gap-3 text-xs">
+            <span className="text-slate-400 font-semibold tracking-[3px] text-[11px] uppercase font-opensans">
               Core Technologies
             </span>
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex flex-wrap items-center justify-center gap-2.5">
               {coreStack.split(",").map((tech) => (
                 <span
                   key={tech.trim()}
-                  className="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/[0.04] border border-white/[0.08] text-[var(--color-text)] opacity-90 hover:opacity-100 transition-opacity"
+                  className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#1fc3ff]/[0.06] border border-[#1fc3ff]/30 text-white hover:border-[#1fc3ff] hover:bg-[#1fc3ff]/[0.12] transition-all shadow-[0_0_10px_rgba(31,195,255,0.1)] font-opensans"
                 >
                   {tech.trim()}
                 </span>

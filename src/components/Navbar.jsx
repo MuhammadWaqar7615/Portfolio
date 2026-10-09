@@ -186,7 +186,7 @@ export default function Navbar({ content, presetId, sections = [] }) {
               data-editable="content-navbar-brandInitials"
               className={isPreset2
                 ? "font-serif italic text-xl text-[#E8B58F] font-normal transition-transform duration-300 group-hover:scale-105 cursor-pointer pr-1"
-                : "flex h-8 w-8 items-center justify-center rounded-sm bg-accent text-background font-mono text-xs font-bold transition-transform duration-300 group-hover:scale-105 cursor-pointer"
+                : "flex h-8 w-8 items-center justify-center rounded-lg bg-[#1fc3ff]/15 border border-[#1fc3ff]/50 text-[#1fc3ff] font-fugaz text-xs font-bold transition-transform duration-300 group-hover:scale-105 cursor-pointer shadow-[0_0_10px_rgba(31,195,255,0.25)]"
               }
               title="Click to edit navbar brand initials"
             >
@@ -198,7 +198,7 @@ export default function Navbar({ content, presetId, sections = [] }) {
               data-editable="content-navbar-brandTitle"
               className={isPreset2
                 ? "hidden sm:inline-block font-sans text-xs uppercase tracking-[3px] text-[#F2EEE5] font-medium opacity-90 group-hover:opacity-100 transition-opacity cursor-pointer"
-                : "hidden sm:inline-block font-mono text-xs uppercase tracking-[0.2em] opacity-80 group-hover:opacity-100 transition-opacity cursor-pointer hover:text-accent"
+                : "hidden sm:inline-block font-fugaz text-xs uppercase tracking-[0.15em] text-white opacity-90 group-hover:opacity-100 transition-opacity cursor-pointer hover:text-[#1fc3ff]"
               }
               title="Click to edit navbar brand title"
             >
@@ -213,7 +213,7 @@ export default function Navbar({ content, presetId, sections = [] }) {
           onMouseLeave={() => setHoveredSection(null)}
           className={`relative hidden md:flex items-center gap-6 ${isPreset2
               ? "text-xs font-sans tracking-wide text-[#B8B7AF]"
-              : "text-xs font-mono uppercase tracking-wider opacity-85"
+              : "text-xs font-opensans uppercase tracking-wider text-slate-300"
             }`}
         >
           {/* Sliding animated underline indicator for Preset 2 */}
@@ -249,8 +249,8 @@ export default function Navbar({ content, presetId, sections = [] }) {
                       : "text-[#B8B7AF] hover:text-[#F2EEE5]"
                     }`
                     : `py-1 cursor-pointer transition-all ${isActive
-                      ? "text-accent font-semibold"
-                      : "hover:text-accent hover:opacity-100 opacity-80"
+                      ? "text-[#1fc3ff] font-bold drop-shadow-[0_0_8px_#1fc3ff]"
+                      : "hover:text-[#1fc3ff] hover:opacity-100 opacity-80"
                     }`
                 }
                 title={`Click to edit ${link.label} link`}
@@ -268,7 +268,7 @@ export default function Navbar({ content, presetId, sections = [] }) {
               data-editable="content-navbar-resumeText"
               className={isPreset2
                 ? "inline-flex items-center gap-1.5 rounded-full border border-white/20 px-3.5 py-1.5 text-xs text-[#F2EEE5] hover:border-[#E8B58F] hover:text-[#E8B58F] transition-all cursor-pointer"
-                : "rounded border border-white/20 px-3 py-1.5 text-[var(--color-text)] hover:border-accent hover:text-accent transition-all duration-200 cursor-pointer"
+                : "cyber-floating-btn !py-1.5 !px-4 !text-xs"
               }
               style={{ borderRadius: "var(--radius-btn, var(--radius-card))" }}
               title="Open Resume in new tab"

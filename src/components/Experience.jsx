@@ -1,3 +1,5 @@
+import CyberTitle from "./CyberTitle";
+
 export default function Experience({ experiences = [], content, presetId }) {
   const sectionHeaders = content?.sectionHeaders || {};
   const isPreset2 = presetId === "preset-2";
@@ -133,89 +135,79 @@ export default function Experience({ experiences = [], content, presetId }) {
     );
   }
 
-  // Default Preset 1 Layout
+  // Cyber Cyan Glowing Timeline Layout
   return (
     <section
       id="experience"
       aria-label="Professional Experience"
       data-editable="background"
-      className="py-20 sm:py-28 border-b border-white/[0.08]"
+      className="py-24 sm:py-32 border-b border-white/[0.08] relative overflow-hidden"
     >
-      <div className="editorial-container">
-        {(tagline?.trim() || heading?.trim()) && (
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-white/[0.08] pb-6 gap-4">
-            <div>
-              {tagline?.trim() ? (
-                <span
-                  data-editable="content-sectionHeaders-experienceTagline"
-                  className="text-xs font-mono uppercase tracking-[0.2em] text-accent cursor-pointer"
-                  title="Click to edit experience tagline"
-                >
-                  {tagline}
-                </span>
-              ) : null}
-              {heading?.trim() ? (
-                <h2
-                  data-editable="content-sectionHeaders-experienceHeading"
-                  className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[var(--color-heading)] mt-2 cursor-pointer"
-                  style={{ fontFamily: "var(--font-heading)" }}
-                  title="Click to edit experience heading"
-                >
-                  {heading}
-                </h2>
-              ) : null}
-            </div>
-            <p className="text-xs font-mono uppercase tracking-widest opacity-60">
-              [ 2+ YEARS PRODUCTION DELIVERY ]
-            </p>
-          </div>
-        )}
-
-        <div className="space-y-12">
-          {listToDisplay.map((exp) => (
-            <div
-              key={exp._id || exp.role}
-              data-editable="radius"
-              className="border border-white/[0.08] bg-cardBg p-6 sm:p-10 transition-all duration-300 hover:border-white/20"
-              style={{ borderRadius: "var(--radius-card)" }}
-            >
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-                <div className="lg:col-span-3">
-                  <span
-                    data-editable="accent"
-                    className="text-xs font-mono uppercase tracking-widest text-accent"
-                  >
-                    {exp.duration}
-                  </span>
-                  <p className="text-xs font-mono opacity-60 mt-1">
-                    On-Site Delivery
-                  </p>
-                </div>
-
-                <div className="lg:col-span-9 space-y-4">
-                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                    <h3
-                      data-editable="headingColor"
-                      className="text-2xl font-bold text-[var(--color-heading)]"
-                      style={{ fontFamily: "var(--font-heading)" }}
-                    >
-                      {exp.role}
-                    </h3>
-                    <span className="text-sm font-mono opacity-70">
-                      @ {exp.company}
-                    </span>
-                  </div>
-
-                  <p
-                    data-editable="text"
-                    className="text-sm text-[var(--color-text)] opacity-90 leading-relaxed font-light"
-                  >
-                    {exp.description}
-                  </p>
-                </div>
+      <div className="editorial-container relative z-10">
+        <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-12">
+          {/* Left: Sticky Title */}
+          <div className="lg:w-5/12 lg:sticky lg:top-28">
+            <CyberTitle
+              title="TIMELINE"
+              subtext="Career history and production engineering journey."
+            />
+            <div className="hidden lg:block p-5 rounded-2xl border border-white/[0.06] bg-black/40 backdrop-blur-md space-y-3 mr-6">
+              <span className="text-[11px] font-bold uppercase tracking-widest text-[#1fc3ff] font-opensans block">
+                CAREER PHILOSOPHY
+              </span>
+              <p className="text-xs text-slate-300 font-opensans leading-relaxed">
+                Focused on delivering end-to-end impact, maintaining code clarity, reducing bundle size, and ensuring stellar runtime performance.
+              </p>
+              <div className="pt-2 flex items-center gap-2 text-xs text-slate-400 font-opensans">
+                <span className="w-2 h-2 rounded-full bg-[#1fc3ff] animate-pulse"></span>
+                <span>2+ Years Production Delivery</span>
               </div>
             </div>
-          ))}
+          </div>
+
+          {/* Right: Glowing Cyan Timeline */}
+          <div className="lg:w-7/12 relative pl-6 sm:pl-8">
+            {/* Continuous Vertical Glowing Line */}
+            <div
+              className="absolute top-4 bottom-4 left-2 sm:left-3 w-[2px] bg-gradient-to-b from-[#1fc3ff] via-[#1fc3ff]/60 to-[#1fc3ff]/20 shadow-[0_0_10px_#1fc3ff]"
+              aria-hidden="true"
+            />
+
+            <div className="space-y-12">
+              {listToDisplay.map((exp, idx) => (
+                <div key={exp._id || idx} className="relative group">
+                  {/* Glowing Node Checkpoint */}
+                  <div
+                    className="absolute -left-[27px] sm:-left-[31px] top-1.5 w-5 h-5 rounded-full border-2 border-[#1fc3ff] bg-[#06090e] shadow-[0_0_12px_#1fc3ff] transition-transform duration-300 group-hover:scale-125"
+                    aria-hidden="true"
+                  >
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#1fc3ff] m-auto mt-1" />
+                  </div>
+
+                  {/* Timeline Card */}
+                  <div className="cyber-glow-card p-6 sm:p-8 space-y-4">
+                    <div className="flex flex-wrap items-center justify-between gap-3">
+                      <div>
+                        <span className="text-xs font-bold uppercase tracking-[2px] text-[#1fc3ff] font-opensans block">
+                          {exp.company}
+                        </span>
+                        <h3 className="text-xl sm:text-2xl font-bold text-white font-fugaz tracking-wide mt-1">
+                          {exp.role}
+                        </h3>
+                      </div>
+                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-[#1fc3ff]/10 border border-[#1fc3ff]/40 text-[#1fc3ff] font-opensans shadow-[0_0_10px_rgba(31,195,255,0.15)]">
+                        {exp.duration}
+                      </span>
+                    </div>
+
+                    <p className="text-xs sm:text-sm text-slate-300 font-opensans leading-relaxed font-normal">
+                      {exp.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

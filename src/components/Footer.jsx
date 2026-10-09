@@ -29,15 +29,17 @@ export default function Footer({ content, presetId }) {
     <footer
       aria-label="Portfolio Footer"
       data-editable="background"
-      className="py-12 bg-cardBg border-t border-white/[0.08]"
+      className="py-12 bg-[#06090e]/90 border-t border-white/[0.08] relative z-10"
     >
-      <div className="editorial-container flex flex-col sm:flex-row items-center justify-between gap-6 text-xs font-mono text-[var(--color-text)] opacity-70">
+      <div className="editorial-container flex flex-col sm:flex-row items-center justify-between gap-6 text-xs font-opensans text-slate-300">
         <div>
-          <p>© {currentYear} {heroName.toUpperCase()}. ALL RIGHTS RESERVED.</p>
+          <p className="font-fugaz text-white tracking-wider text-sm">
+            © {currentYear} {heroName.toUpperCase()}. ALL RIGHTS RESERVED.
+          </p>
           {builtWithText?.trim() ? (
             <p
               data-editable="content-footer-builtWithText"
-              className="text-[11px] opacity-60 mt-1 cursor-pointer hover:text-accent transition-colors"
+              className="text-[11px] text-[#1fc3ff] mt-1 cursor-pointer font-opensans font-semibold"
               title="Click to edit footer subtext"
             >
               {builtWithText}
@@ -45,12 +47,12 @@ export default function Footer({ content, presetId }) {
           ) : null}
         </div>
 
-        <div className="flex items-center gap-6 text-xs">
+        <div className="flex flex-wrap items-center gap-6 text-xs font-semibold">
           <a
             href="https://github.com/MuhammadWaqar7615"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:opacity-100 transition-opacity"
+            className="hover:text-[#1fc3ff] transition-colors"
           >
             GitHub
           </a>
@@ -58,7 +60,7 @@ export default function Footer({ content, presetId }) {
             href="https://linkedin.com/in/muhammad-waqar-7615"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:opacity-100 transition-opacity"
+            className="hover:text-[#1fc3ff] transition-colors"
           >
             LinkedIn
           </a>
@@ -66,16 +68,15 @@ export default function Footer({ content, presetId }) {
             href="/cv.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:opacity-100 transition-opacity"
+            className="hover:text-[#1fc3ff] transition-colors"
           >
             Resume (PDF)
           </a>
           <a
             href="#Homepage"
-            data-editable="accent"
-            className="text-accent hover:opacity-80 transition-opacity ml-4"
+            className="text-[#1fc3ff] hover:brightness-125 transition-all font-fugaz uppercase ml-2 flex items-center gap-1"
           >
-            ↑ Back to Top
+            <span>↑ Back to Top</span>
           </a>
         </div>
       </div>

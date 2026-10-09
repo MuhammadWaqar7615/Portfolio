@@ -72,7 +72,7 @@ export default async function HomePage() {
       <HomeSectionsContainer
         initialSections={initialSections}
         initialContent={theme?.content || DEFAULT_THEME.content}
-        initialPresetId={theme?.presetId || "preset-2"}
+        initialPresetId={theme?.presetId || "preset-1"}
         projects={projects}
         experiences={experiences}
         educationData={educationData}

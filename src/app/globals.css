@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Fugaz+One&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -433,4 +434,206 @@ html[data-preset="preset-2"] [aria-label*="Switch to dark mode"],
 html[data-preset="preset-2"] .theme-switch {
   display: none !important;
 }
+
+/* ==========================================================
+   CYBER CYAN ARCADE THEME (PRESET 1 - ABDULLAH STYLE)
+   ========================================================== */
+.font-fugaz {
+  font-family: 'Fugaz One', cursive, sans-serif !important;
+}
+
+.font-opensans {
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+/* Dual-Layer Section Title */
+.cyber-title-wrap {
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+}
+
+.cyber-primary-title {
+  font-family: 'Fugaz One', cursive, sans-serif;
+  color: #ffffff;
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0;
+  text-shadow: 0 0 20px rgba(31, 195, 255, 0.25);
+}
+
+.cyber-secondary-title {
+  font-family: 'Fugaz One', cursive, sans-serif;
+  color: transparent;
+  -webkit-text-stroke: 2.5px #1fc3ff;
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0;
+  opacity: 0.95;
+  filter: drop-shadow(0 0 12px rgba(31, 195, 255, 0.45));
+}
+
+/* Floating Action Button */
+.cyber-floating-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.8rem 2.2rem;
+  font-family: 'Fugaz One', cursive, sans-serif;
+  font-size: 0.9rem;
+  color: #1fc3ff;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  background: rgba(10, 15, 25, 0.8);
+  border: 1px solid rgba(31, 195, 255, 0.5);
+  border-radius: 9999px;
+  box-shadow: inset 0 0 15px rgba(31, 195, 255, 0.22), 0 0 15px rgba(31, 195, 255, 0.18);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.cyber-floating-btn:hover {
+  background: #1fc3ff;
+  color: #000000;
+  border-color: #1fc3ff;
+  box-shadow: 0 0 28px rgba(31, 195, 255, 0.85), inset 0 0 10px #ffffff;
+  transform: translateY(-2px);
+}
+
+.cyber-floating-btn-solid {
+  background: #1fc3ff;
+  color: #000000;
+  border: 1px solid #1fc3ff;
+  box-shadow: 0 0 22px rgba(31, 195, 255, 0.65), inset 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+.cyber-floating-btn-solid:hover {
+  background: #00e1ff;
+  box-shadow: 0 0 32px rgba(31, 195, 255, 0.95), inset 0 0 12px #ffffff;
+  transform: translateY(-2px);
+}
+
+/* 3D Glowing Tech Stack Boxes */
+.cyber-glow-box {
+  position: relative;
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: rgba(10, 16, 26, 0.85);
+  border: 1px solid rgba(31, 195, 255, 0.3);
+  box-shadow: inset 0 0 15px rgba(31, 195, 255, 0.18), 0 0 15px rgba(31, 195, 255, 0.15);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+}
+
+.cyber-glow-box:hover {
+  transform: translateY(-6px) scale(1.08);
+  border-color: #1fc3ff;
+  box-shadow: inset 0 0 22px rgba(31, 195, 255, 0.5), 0 0 30px rgba(31, 195, 255, 0.7);
+}
+
+.cyber-glow-box-title {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  white-space: nowrap;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: rgba(6, 10, 18, 0.95);
+  border: 1px solid #1fc3ff;
+  box-shadow: 0 0 12px rgba(31, 195, 255, 0.4);
+  padding: 4px 10px;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 20;
+}
+
+.cyber-glow-box:hover .cyber-glow-box-title {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Cyber Card Glassmorphic Container */
+.cyber-glow-card {
+  background: rgba(10, 16, 26, 0.75);
+  border: 1px solid rgba(31, 195, 255, 0.25);
+  border-radius: 16px;
+  box-shadow: inset 0 0 25px rgba(31, 195, 255, 0.08), 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+}
+
+.cyber-glow-card:hover {
+  border-color: rgba(31, 195, 255, 0.6);
+  box-shadow: inset 0 0 30px rgba(31, 195, 255, 0.15), 0 0 30px rgba(31, 195, 255, 0.25);
+}
+
+/* Angled GitHub Corner Ribbon */
+.cyber-github-ribbon {
+  display: block;
+  position: fixed;
+  top: 3.2rem;
+  right: -4.2rem;
+  background-color: #1fc3ff;
+  color: #000000;
+  padding: 6px 65px;
+  transform: rotate(45deg);
+  box-shadow: inset 0 0 10px #000000, 0 0 18px rgba(31, 195, 255, 0.75);
+  font-family: 'Fugaz One', cursive, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  z-index: 9999;
+  text-shadow: 0 0 2px #ffffff;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  pointer-events: auto;
+}
+
+.cyber-github-ribbon:hover {
+  background-color: #00e1ff;
+  box-shadow: inset 0 0 15px #000000, 0 0 28px #1fc3ff;
+  transform: rotate(45deg) scale(1.04);
+}
+
+/* Ambient Radial Blur Glow */
+.cyber-blur-glow {
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  background: #1fc3ff;
+  opacity: 0.15;
+  filter: blur(140px);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Custom Trailing Cursor Hover Halo */
+.cursor-hover-active {
+  width: 42px !important;
+  height: 42px !important;
+  background-color: transparent !important;
+  border: 2px solid #1fc3ff !important;
+  box-shadow: 0 0 16px #1fc3ff !important;
+}
+
 
