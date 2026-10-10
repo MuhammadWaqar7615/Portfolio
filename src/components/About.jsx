@@ -1,4 +1,5 @@
 import CyberTitle from "./CyberTitle";
+import ContentScrollFade from "./ContentScrollFade";
 
 export default function About({ content, presetId }) {
   const about = content?.about || {};
@@ -114,10 +115,15 @@ export default function About({ content, presetId }) {
       <div className="editorial-container relative z-10">
         <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-12">
           {/* Left Column: Sticky Title */}
-          <div className="lg:w-5/12 lg:sticky lg:top-28 lg:self-start">
+          <div className="w-full lg:w-5/12 sticky top-16 lg:top-28 self-start z-30 bg-background/95 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none py-3 lg:py-0 border-b border-black/[0.06] dark:border-white/[0.08] lg:border-none transition-all">
             <CyberTitle
               title="ABOUT ME"
               subtext="Engineering with clarity, speed, and uncompromising attention to detail."
+            />
+            {/* Soft gradient dissolve for content scrolling under the sticky heading on mobile */}
+            <div
+              className="pointer-events-none absolute left-0 right-0 -bottom-10 h-10 bg-gradient-to-b from-background via-background/70 to-transparent lg:hidden"
+              aria-hidden="true"
             />
             {/* Quick Stats Pill */}
             <div className="hidden lg:flex flex-col gap-3 pr-6">
@@ -141,7 +147,7 @@ export default function About({ content, presetId }) {
           </div>
 
           {/* Right Column: Cyber Translucent Glass Card */}
-          <div className="lg:w-7/12">
+          <ContentScrollFade className="lg:w-7/12">
             <div className="cyber-glow-card p-6 sm:p-10 space-y-6">
               {/* Heading */}
               <h3 className="text-xl sm:text-2xl font-bold text-white font-fugaz tracking-tight leading-snug">
@@ -237,7 +243,7 @@ export default function About({ content, presetId }) {
                 </a>
               </div>
             </div>
-          </div>
+          </ContentScrollFade>
         </div>
       </div>
     </section>

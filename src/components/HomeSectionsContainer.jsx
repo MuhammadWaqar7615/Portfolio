@@ -72,15 +72,22 @@ export default function HomeSectionsContainer({
       <ViewportFadeMask presetId={presetId} />
       <Navbar content={content} presetId={presetId} sections={sections} />
       <main id="main-content" className="flex-1 w-full">
-        {sortedSections.map((sec) => (
-          <ScrollFadeSection
-            key={sec.sectionId}
-            sectionId={sec.sectionId}
-            presetId={presetId}
-          >
-            {sectionComponentMap[sec.sectionId] || null}
-          </ScrollFadeSection>
-        ))}
+        {sortedSections.map((sec) => {
+          const sectionNode = sectionComponentMap[sec.sectionId] || null;
+          return presetId === "preset-2" ? (
+            <ScrollFadeSection
+              key={sec.sectionId}
+              sectionId={sec.sectionId}
+              presetId={presetId}
+            >
+              {sectionNode}
+            </ScrollFadeSection>
+          ) : (
+            <div key={sec.sectionId} className="w-full relative">
+              {sectionNode}
+            </div>
+          );
+        })}
       </main>
       <Footer content={content} presetId={presetId} />
     </>

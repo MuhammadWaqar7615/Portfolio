@@ -1,4 +1,5 @@
 import CyberTitle from "./CyberTitle";
+import ContentScrollFade from "./ContentScrollFade";
 
 export default function Experience({ experiences = [], content, presetId }) {
   const sectionHeaders = content?.sectionHeaders || {};
@@ -124,10 +125,15 @@ export default function Experience({ experiences = [], content, presetId }) {
       <div className="editorial-container relative z-10">
         <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-12">
           {/* Left: Sticky Title */}
-          <div className="lg:w-5/12 lg:sticky lg:top-28 lg:self-start">
+          <div className="w-full lg:w-5/12 sticky top-16 lg:top-28 self-start z-30 bg-background/95 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none py-3 lg:py-0 border-b border-black/[0.06] dark:border-white/[0.08] lg:border-none transition-all">
             <CyberTitle
               title="TIMELINE"
               subtext="Career history and production engineering journey."
+            />
+            {/* Soft gradient dissolve for content scrolling under the sticky heading on mobile */}
+            <div
+              className="pointer-events-none absolute left-0 right-0 -bottom-10 h-10 bg-gradient-to-b from-background via-background/70 to-transparent lg:hidden"
+              aria-hidden="true"
             />
             <div className="hidden lg:block p-5 rounded-2xl border border-white/[0.06] bg-black/40 backdrop-blur-md space-y-3 mr-6">
               <span className="text-[11px] font-bold uppercase tracking-widest text-[#1fc3ff] font-opensans block">
@@ -153,36 +159,38 @@ export default function Experience({ experiences = [], content, presetId }) {
 
             <div className="space-y-12">
               {listToDisplay.map((exp, idx) => (
-                <div key={exp._id || idx} className="relative group">
-                  {/* Glowing Node Checkpoint */}
-                  <div
-                    className="absolute -left-[27px] sm:-left-[31px] top-1.5 w-5 h-5 rounded-full border-2 border-[#1fc3ff] bg-[#06090e] shadow-[0_0_12px_#1fc3ff] transition-transform duration-300 group-hover:scale-125"
-                    aria-hidden="true"
-                  >
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#1fc3ff] m-auto mt-1" />
-                  </div>
-
-                  {/* Timeline Card */}
-                  <div className="cyber-glow-card p-6 sm:p-8 space-y-4">
-                    <div className="flex flex-wrap items-center justify-between gap-3">
-                      <div>
-                        <span className="text-xs font-bold uppercase tracking-[2px] text-[#1fc3ff] font-opensans block">
-                          {exp.company}
-                        </span>
-                        <h3 className="text-xl sm:text-2xl font-bold text-white font-fugaz tracking-wide mt-1">
-                          {exp.role}
-                        </h3>
-                      </div>
-                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-[#1fc3ff]/10 border border-[#1fc3ff]/40 text-[#1fc3ff] font-opensans shadow-[0_0_10px_rgba(31,195,255,0.15)]">
-                        {exp.duration}
-                      </span>
+                <ContentScrollFade key={exp._id || idx}>
+                  <div className="relative group">
+                    {/* Glowing Node Checkpoint */}
+                    <div
+                      className="absolute -left-[27px] sm:-left-[31px] top-1.5 w-5 h-5 rounded-full border-2 border-[#1fc3ff] bg-[#06090e] shadow-[0_0_12px_#1fc3ff] transition-transform duration-300 group-hover:scale-125"
+                      aria-hidden="true"
+                    >
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#1fc3ff] m-auto mt-1" />
                     </div>
 
-                    <p className="text-xs sm:text-sm text-slate-300 font-opensans leading-relaxed font-normal">
-                      {exp.description}
-                    </p>
+                    {/* Timeline Card */}
+                    <div className="cyber-glow-card p-6 sm:p-8 space-y-4">
+                      <div className="flex flex-wrap items-center justify-between gap-3">
+                        <div>
+                          <span className="text-xs font-bold uppercase tracking-[2px] text-[#1fc3ff] font-opensans block">
+                            {exp.company}
+                          </span>
+                          <h3 className="text-xl sm:text-2xl font-bold text-white font-fugaz tracking-wide mt-1">
+                            {exp.role}
+                          </h3>
+                        </div>
+                        <span className="px-3 py-1 rounded-full text-xs font-semibold bg-[#1fc3ff]/10 border border-[#1fc3ff]/40 text-[#1fc3ff] font-opensans shadow-[0_0_10px_rgba(31,195,255,0.15)]">
+                          {exp.duration}
+                        </span>
+                      </div>
+
+                      <p className="text-xs sm:text-sm text-slate-300 font-opensans leading-relaxed font-normal">
+                        {exp.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </ContentScrollFade>
               ))}
             </div>
           </div>

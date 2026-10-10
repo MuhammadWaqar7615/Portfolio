@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 
 export default function ViewportFadeMask({ presetId }) {
+  const isPreset2 = presetId === "preset-2";
   const [scrollY, setScrollY] = useState(0);
   const [isNearBottom, setIsNearBottom] = useState(false);
 
@@ -21,7 +22,6 @@ export default function ViewportFadeMask({ presetId }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isPreset2 = presetId === "preset-2";
   const bgHex = isPreset2 ? "#0a0a0a" : "#06090e";
 
   // Top mask: hidden when resting at the very top (y < 20), smoothly appears when scrolled down
@@ -29,7 +29,7 @@ export default function ViewportFadeMask({ presetId }) {
 
   return (
     <div
-      className="pointer-events-none fixed inset-0 z-30 overflow-hidden"
+      className="pointer-events-none fixed inset-0 z-25 overflow-hidden"
       aria-hidden="true"
     >
       {/* Top Viewport Soft Fade (Dissolves content sliding under navbar) */}
@@ -44,7 +44,7 @@ export default function ViewportFadeMask({ presetId }) {
 
       {/* Bottom Viewport Soft Fade (Smoothly reveals content entering from bottom) */}
       <div
-        className={`fixed bottom-0 inset-x-0 h-20 md:h-24 transition-opacity duration-300 pointer-events-none ${
+        className={`fixed bottom-0 inset-x-0 h-20 md:h-28 transition-opacity duration-300 pointer-events-none ${
           isNearBottom ? "opacity-0" : "opacity-100"
         }`}
         style={{

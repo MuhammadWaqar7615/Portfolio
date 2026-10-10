@@ -515,24 +515,30 @@ html[data-preset="preset-2"] .theme-switch {
   font-family: 'Fugaz One', cursive, sans-serif;
   color: #ffffff;
   font-size: clamp(2.4rem, 5vw, 4.2rem);
-  line-height: 1.05;
+  line-height: 1;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   margin: 0;
   text-shadow: 0 0 20px rgba(31, 195, 255, 0.25);
+  position: relative;
+  z-index: 2;
 }
 
 .cyber-secondary-title {
   font-family: 'Fugaz One', cursive, sans-serif;
   color: transparent;
-  -webkit-text-stroke: 2.5px #1fc3ff;
+  -webkit-text-stroke: clamp(1.6px, 0.22vw, 2.2px) #1fc3ff;
   font-size: clamp(2.4rem, 5vw, 4.2rem);
-  line-height: 1.05;
+  line-height: 0.5;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   margin: 0;
+  margin-top: -0.5em;
   opacity: 0.95;
-  filter: drop-shadow(0 0 12px rgba(31, 195, 255, 0.45));
+  filter: drop-shadow(0 0 10px rgba(31, 195, 255, 0.45));
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
 }
 
 /* Floating Action Button */
@@ -667,6 +673,44 @@ html[data-preset="preset-2"] .theme-switch {
 }
 
 /* ==========================================================
+   CYBER TRAILING CURSOR (ABDULLAH STYLE)
+   Exact reproduction from abdullah-portfolio-dev.vercel.app
+   ========================================================== */
+.circle {
+  height: 24px;
+  width: 24px;
+  border-radius: 100%;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99999999;
+  transform-origin: center center;
+  transition: width 0.2s;
+}
+
+.circle-hidden {
+  display: none !important;
+}
+
+.circle-thin {
+  height: 20px !important;
+  width: 2px !important;
+}
+
+@media screen and (max-width: 750px) {
+  .circle {
+    display: none !important;
+  }
+}
+
+html.light .circle,
+[data-theme="light"] .circle {
+  background-color: #0284C7 !important;
+}
+
+/* ==========================================================
    THEME 01 (CYBER CYAN ARCADE) LIGHT MODE HIGH-CONTRAST SYSTEM
    Seamless white/cyan mode when light theme toggle is active
    ========================================================== */
@@ -711,7 +755,7 @@ html.light .cyber-primary-title,
 
 html.light .cyber-secondary-title,
 [data-theme="light"] .cyber-secondary-title {
-  -webkit-text-stroke: 2.5px #0284C7 !important;
+  -webkit-text-stroke: clamp(1.6px, 0.22vw, 2.2px) #0284C7 !important;
   filter: drop-shadow(0 0 8px rgba(2, 132, 199, 0.25)) !important;
 }
 

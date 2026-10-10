@@ -16,7 +16,8 @@ export default function CyberTitle({ title, subtext, className = "", showProgres
 
     const handleScroll = () => {
       const rect = section.getBoundingClientRect();
-      const topOffset = 112; // 7rem (top-28)
+      const isLg = window.innerWidth >= 1024;
+      const topOffset = isLg ? 112 : 64; // 112px (top-28) on desktop, 64px (top-16) on mobile
       const sectionHeight = rect.height;
       const scrollableDist = sectionHeight - window.innerHeight + topOffset;
 
@@ -36,9 +37,13 @@ export default function CyberTitle({ title, subtext, className = "", showProgres
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
     handleScroll();
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   if (!title) return null;
@@ -46,11 +51,11 @@ export default function CyberTitle({ title, subtext, className = "", showProgres
   return (
     <div
       ref={containerRef}
-      className={`cyber-title-wrap mb-8 transition-all duration-300 ${isSticky ? "translate-x-1" : ""} ${className}`}
+      className={`cyber-title-wrap mb-3 sm:mb-4 lg:mb-8 transition-all duration-300 ${isSticky ? "translate-x-1" : ""} ${className}`}
     >
       {/* Sticky Active Section Indicator */}
       {showProgress && (
-        <div className="flex items-center gap-2 mb-2.5">
+        <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
           <span
             className={`inline-block w-2 h-2 rounded-full transition-all duration-300 ${
               isSticky
@@ -69,14 +74,14 @@ export default function CyberTitle({ title, subtext, className = "", showProgres
       )}
 
       <span className="cyber-primary-title font-fugaz">{title}</span>
-      <span className="cyber-secondary-title font-fugaz -mt-2 sm:-mt-4">
+      <span className="cyber-secondary-title font-fugaz">
         {title}
       </span>
 
       {/* Dynamic Cyber Cyan Sticky Progress Indicator Bar */}
       {showProgress && (
         <div
-          className="w-36 h-[3px] bg-white/[0.08] rounded-full mt-3.5 overflow-hidden relative"
+          className="w-32 sm:w-36 h-[3px] bg-white/[0.08] rounded-full mt-4 sm:mt-5 overflow-hidden relative"
           title="Section Scroll Progress"
         >
           <div
@@ -87,7 +92,7 @@ export default function CyberTitle({ title, subtext, className = "", showProgres
       )}
 
       {subtext && (
-        <p className="mt-4 text-xs sm:text-sm font-opensans text-slate-300 max-w-lg tracking-wide uppercase font-medium leading-relaxed">
+        <p className="mt-2.5 sm:mt-4 text-xs sm:text-sm font-opensans text-slate-300 max-w-lg tracking-wide uppercase font-medium leading-relaxed">
           {subtext}
         </p>
       )}

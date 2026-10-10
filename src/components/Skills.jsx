@@ -1,4 +1,5 @@
 import CyberTitle from "./CyberTitle";
+import ContentScrollFade from "./ContentScrollFade";
 import {
   SiReact,
   SiNextdotjs,
@@ -156,10 +157,15 @@ export default function Skills({ skills: _skills = [], content, presetId }) {
       <div className="editorial-container relative z-10">
         <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-12">
           {/* Left: Sticky Dual-Layer Title */}
-          <div className="lg:w-5/12 lg:sticky lg:top-28 lg:self-start">
+          <div className="w-full lg:w-5/12 sticky top-16 lg:top-28 self-start z-30 bg-background/95 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none py-3 lg:py-0 border-b border-black/[0.06] dark:border-white/[0.08] lg:border-none transition-all">
             <CyberTitle
               title="TECH STACK"
               subtext="Modern technologies and architectures I leverage to engineer high-velocity, scalable web systems."
+            />
+            {/* Soft gradient dissolve for content scrolling under the sticky heading on mobile */}
+            <div
+              className="pointer-events-none absolute left-0 right-0 -bottom-10 h-10 bg-gradient-to-b from-background via-background/70 to-transparent lg:hidden"
+              aria-hidden="true"
             />
             <div className="space-y-4 hidden lg:block pr-6">
               {categories.map((cat, idx) => (
@@ -180,23 +186,25 @@ export default function Skills({ skills: _skills = [], content, presetId }) {
 
           {/* Right: Glow Box Grid */}
           <div className="lg:w-7/12">
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 gap-4 sm:gap-6 justify-items-center">
-              {TECH_ITEMS.map((item) => {
-                const IconComponent = item.icon;
-                return (
-                  <div
-                    key={item.name}
-                    className="cyber-glow-box group"
-                    title={item.name}
-                  >
-                    <IconComponent className="w-7 h-7 sm:w-8 sm:h-8 text-white group-hover:text-[#1fc3ff] transition-colors duration-200" />
-                    <span className="cyber-glow-box-title">
-                      {item.name}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
+            <ContentScrollFade>
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 gap-4 sm:gap-6 justify-items-center">
+                {TECH_ITEMS.map((item) => {
+                  const IconComponent = item.icon;
+                  return (
+                    <div
+                      key={item.name}
+                      className="cyber-glow-box group"
+                      title={item.name}
+                    >
+                      <IconComponent className="w-7 h-7 sm:w-8 sm:h-8 text-white group-hover:text-[#1fc3ff] transition-colors duration-200" />
+                      <span className="cyber-glow-box-title">
+                        {item.name}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </ContentScrollFade>
           </div>
         </div>
       </div>

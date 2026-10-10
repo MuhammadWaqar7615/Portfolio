@@ -34,15 +34,11 @@ export default function ScrollFadeSection({ children, sectionId, presetId }) {
   const opacity = isHero ? heroOpacity : isContact ? contactOpacity : standardOpacity;
   const y = isHero ? heroY : isContact ? contactY : standardY;
 
-  // For Preset 1, render normally without transform to preserve cyber sticky headers
-  if (!isPreset2) {
-    return <div className="w-full relative">{children}</div>;
-  }
-
+  // When not Preset 2, render motion.div with ref attached to prevent Motion hydration errors, but with no transform/opacity styles to preserve Preset 1 sticky headers
   return (
     <motion.div
       ref={ref}
-      style={{ opacity, y }}
+      style={isPreset2 ? { opacity, y } : undefined}
       className="w-full relative transition-opacity duration-150"
     >
       {children}

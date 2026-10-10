@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import CyberTitle from "./CyberTitle";
+import ContentScrollFade from "./ContentScrollFade";
 
 export default function Contact({ presetId }) {
   const formRef = useRef(null);
@@ -230,18 +231,23 @@ export default function Contact({ presetId }) {
     <section
       id="contact"
       aria-label="Contact and professional inquiries"
-      className="py-24 sm:py-32 border-b border-white/[0.08] relative overflow-hidden"
+      className="py-24 sm:py-32 border-b border-white/[0.08] relative"
     >
       <div className="editorial-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left Column: Direct Inquiries */}
-          <div className="lg:col-span-5 space-y-8 lg:sticky lg:top-28">
+          <div className="w-full lg:col-span-5 sticky top-16 lg:top-28 self-start z-30 bg-background/95 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none py-3 lg:py-0 border-b border-black/[0.06] dark:border-white/[0.08] lg:border-none transition-all">
             <CyberTitle
               title="CONTACT"
               subtext="Initiate a conversation. Available for high-impact roles, contracts, and engineering collaborations."
             />
+            {/* Soft gradient dissolve for content scrolling under the sticky heading on mobile */}
+            <div
+              className="pointer-events-none absolute left-0 right-0 -bottom-10 h-10 bg-gradient-to-b from-background via-background/70 to-transparent lg:hidden"
+              aria-hidden="true"
+            />
 
-            <div className="space-y-4 pt-4 border-t border-white/[0.08] text-xs font-opensans">
+            <div className="hidden lg:block space-y-4 pt-4 border-t border-white/[0.08] text-xs font-opensans">
               <div className="p-4 rounded-xl border border-white/[0.06] bg-black/40 backdrop-blur-md">
                 <span className="text-[#1fc3ff] font-bold uppercase tracking-wider block mb-1">
                   Electronic Mail
@@ -278,7 +284,43 @@ export default function Contact({ presetId }) {
           </div>
 
           {/* Right Column: Cyber Contact Form */}
-          <div className="lg:col-span-7">
+          <ContentScrollFade isBottom={true} className="lg:col-span-7 space-y-6">
+            {/* Mobile Contact Quick Channels */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 lg:hidden text-xs font-opensans">
+              <div className="p-3.5 rounded-xl border border-white/[0.06] bg-black/40 backdrop-blur-md">
+                <span className="text-[#1fc3ff] font-bold uppercase tracking-wider text-[10px] block mb-0.5">
+                  Electronic Mail
+                </span>
+                <a
+                  href="mailto:mwaqar7615@gmail.com"
+                  className="text-white hover:text-[#1fc3ff] transition-colors text-xs font-semibold truncate block"
+                >
+                  mwaqar7615@gmail.com
+                </a>
+              </div>
+
+              <div className="p-3.5 rounded-xl border border-white/[0.06] bg-black/40 backdrop-blur-md">
+                <span className="text-[#1fc3ff] font-bold uppercase tracking-wider text-[10px] block mb-0.5">
+                  Direct Line
+                </span>
+                <a
+                  href="tel:+923115119984"
+                  className="text-white hover:text-[#1fc3ff] transition-colors text-xs font-semibold block"
+                >
+                  +92 311 5119984
+                </a>
+              </div>
+
+              <div className="p-3.5 rounded-xl border border-white/[0.06] bg-black/40 backdrop-blur-md">
+                <span className="text-[#1fc3ff] font-bold uppercase tracking-wider text-[10px] block mb-0.5">
+                  Location & Availability
+                </span>
+                <span className="text-slate-300 text-xs block">
+                  Pakistan (Remote & Relocation)
+                </span>
+              </div>
+            </div>
+
             <div className="cyber-glow-card p-6 sm:p-10">
               <form
                 ref={formRef}
@@ -363,7 +405,7 @@ export default function Contact({ presetId }) {
                 </div>
               </form>
             </div>
-          </div>
+          </ContentScrollFade>
         </div>
       </div>
     </section>

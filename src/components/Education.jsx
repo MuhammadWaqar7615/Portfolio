@@ -1,4 +1,5 @@
 import CyberTitle from "./CyberTitle";
+import ContentScrollFade from "./ContentScrollFade";
 
 export default function Education({ education = [], content, presetId }) {
   const sectionHeaders = content?.sectionHeaders || {};
@@ -129,45 +130,49 @@ export default function Education({ education = [], content, presetId }) {
       <div className="editorial-container relative z-10">
         <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-12">
           {/* Left: Sticky Title */}
-          <div className="lg:w-5/12 lg:sticky lg:top-28 lg:self-start">
+          <div className="w-full lg:w-5/12 sticky top-16 lg:top-28 self-start z-30 bg-background/95 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none py-3 lg:py-0 border-b border-black/[0.06] dark:border-white/[0.08] lg:border-none transition-all">
             <CyberTitle
               title="EDUCATION"
               subtext="Formal computer science foundation and academic credentials."
+            />
+            {/* Soft gradient dissolve for content scrolling under the sticky heading on mobile */}
+            <div
+              className="pointer-events-none absolute left-0 right-0 -bottom-10 h-10 bg-gradient-to-b from-background via-background/70 to-transparent lg:hidden"
+              aria-hidden="true"
             />
           </div>
 
           {/* Right: Cyber Credentials Grid */}
           <div className="lg:w-7/12 space-y-6">
             {credentials.map((item) => (
-              <div
-                key={item._id || item.degree}
-                className="cyber-glow-card p-6 sm:p-8 space-y-3"
-              >
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#1fc3ff] font-opensans">
-                    {item.institution}
-                  </span>
-                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-[#1fc3ff]/10 border border-[#1fc3ff]/40 text-[#1fc3ff] font-opensans">
-                    {item.year || item.period}
-                  </span>
+              <ContentScrollFade key={item._id || item.degree}>
+                <div className="cyber-glow-card p-6 sm:p-8 space-y-3">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#1fc3ff] font-opensans">
+                      {item.institution}
+                    </span>
+                    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-[#1fc3ff]/10 border border-[#1fc3ff]/40 text-[#1fc3ff] font-opensans">
+                      {item.year || item.period}
+                    </span>
+                  </div>
+
+                  <h3 className="text-xl font-bold text-white font-fugaz tracking-wide">
+                    {item.degree}
+                  </h3>
+
+                  {item.campus && (
+                    <p className="text-xs font-opensans text-slate-400 font-medium">
+                      Campus: {item.campus}
+                    </p>
+                  )}
+
+                  {item.details && (
+                    <p className="text-xs sm:text-sm text-slate-300 font-opensans leading-relaxed pt-1">
+                      {item.details}
+                    </p>
+                  )}
                 </div>
-
-                <h3 className="text-xl font-bold text-white font-fugaz tracking-wide">
-                  {item.degree}
-                </h3>
-
-                {item.campus && (
-                  <p className="text-xs font-opensans text-slate-400 font-medium">
-                    Campus: {item.campus}
-                  </p>
-                )}
-
-                {item.details && (
-                  <p className="text-xs sm:text-sm text-slate-300 font-opensans leading-relaxed pt-1">
-                    {item.details}
-                  </p>
-                )}
-              </div>
+              </ContentScrollFade>
             ))}
           </div>
         </div>

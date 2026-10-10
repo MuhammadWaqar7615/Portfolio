@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
+import ContentScrollFade from "./ContentScrollFade";
 
 function AmbientGlow() {
   const ref = useRef(null);
@@ -208,7 +209,7 @@ export default function Hero({ content, presetId }) {
       {/* Ambient Radial Cyan Glow */}
       <div className="cyber-blur-glow top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2" />
 
-      <div className="relative z-10 w-full max-w-4xl mx-auto px-6 flex flex-col items-center">
+      <ContentScrollFade isTop={true} className="relative z-10 w-full max-w-4xl mx-auto px-6 flex flex-col items-center">
         {/* Availability Badge */}
         {status?.trim() && (
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-[#1fc3ff]/40 bg-[#1fc3ff]/10 text-[#1fc3ff] text-xs font-semibold mb-8 shadow-[0_0_15px_rgba(31,195,255,0.2)]">
@@ -304,7 +305,7 @@ export default function Hero({ content, presetId }) {
             </div>
           </div>
         )}
-      </div>
+      </ContentScrollFade>
     </section>
   );
 }
