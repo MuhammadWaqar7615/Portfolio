@@ -243,7 +243,7 @@ export default function Hero({ content, presetId }) {
           className="font-fugaz text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-[#1fc3ff] leading-[1.08] tracking-tight my-2 drop-shadow-[0_0_28px_rgba(31,195,255,0.45)] cursor-pointer select-none hover-text"
           title="Click to edit name"
         >
-          {(name || "Muhammad Waqar").split(" ").map((word, wordIndex, wordsArr) => {
+          {(name || "Muhammad Waqar").toUpperCase().split(" ").map((word, wordIndex, wordsArr) => {
             const prevLettersCount = wordsArr.slice(0, wordIndex).reduce((acc, w) => acc + w.length + 1, 0);
             return (
               <span key={wordIndex} className="inline-block">
