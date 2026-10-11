@@ -211,7 +211,7 @@ export default function Hero({ content, presetId }) {
 
       <ContentScrollFade isTop={true} className="relative z-10 w-full max-w-4xl mx-auto px-6 flex flex-col items-center">
         {/* Availability Badge */}
-        {status?.trim() && (
+        {/* {status?.trim() && (
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-[#1fc3ff]/40 bg-[#1fc3ff]/10 text-[#1fc3ff] text-xs font-semibold mb-8 shadow-[0_0_15px_rgba(31,195,255,0.2)]">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1fc3ff] opacity-75"></span>
@@ -225,16 +225,16 @@ export default function Hero({ content, presetId }) {
               {status}
             </span>
           </div>
-        )}
+        )} */}
 
         {/* Role Tagline */}
-        <span
+        {/* <span
           data-editable="content-hero-roleTag"
           className="text-xs sm:text-sm font-bold tracking-[4px] uppercase text-white/90 mb-3 font-opensans"
           title="Click to edit role tag"
         >
           {roleTag || "FULL STACK WEB DEVELOPER"}
-        </span>
+        </span> */}
 
         {/* Giant Name in Fugaz One with Rolling Letter Flap Animation */}
         {/* Giant Name in Fugaz One with Cell-Isolated Rolling Letter Flap Animation */}
