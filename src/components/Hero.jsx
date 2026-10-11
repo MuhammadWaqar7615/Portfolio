@@ -246,24 +246,26 @@ export default function Hero({ content, presetId }) {
           {(name || "Muhammad Waqar").split(" ").map((word, wordIndex, wordsArr) => {
             const prevLettersCount = wordsArr.slice(0, wordIndex).reduce((acc, w) => acc + w.length + 1, 0);
             return (
-              <span key={wordIndex} className="inline-block whitespace-nowrap">
-                {word.split("").map((char, charIndex) => (
-                  <span key={charIndex} className="hover-char">
-                    <span
-                      className="hover-primary"
-                      style={{ "--delay": `${0.035 * (prevLettersCount + charIndex)}s` }}
-                    >
-                      {char}
+              <span key={wordIndex} className="inline-block">
+                <span className="hover-word">
+                  {word.split("").map((char, charIndex) => (
+                    <span key={charIndex} className="hover-char">
+                      <span
+                        className="hover-primary"
+                        style={{ "--delay": `${0.035 * (prevLettersCount + charIndex)}s` }}
+                      >
+                        {char}
+                      </span>
+                      <span
+                        className="hover-clone"
+                        aria-hidden="true"
+                        style={{ "--delay": `${0.035 * (prevLettersCount + charIndex)}s` }}
+                      >
+                        {char}
+                      </span>
                     </span>
-                    <span
-                      className="hover-clone"
-                      aria-hidden="true"
-                      style={{ "--delay": `${0.035 * (prevLettersCount + charIndex)}s` }}
-                    >
-                      {char}
-                    </span>
-                  </span>
-                ))}
+                  ))}
+                </span>
                 {wordIndex < wordsArr.length - 1 && (
                   <span className="inline-block">&nbsp;</span>
                 )}
