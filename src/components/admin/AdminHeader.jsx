@@ -63,7 +63,6 @@ export default function AdminHeader({ activePage }) {
               <span className="text-sm font-medium text-[var(--admin-text-heading)] tracking-tight">
                 Console
               </span>
-
             </div>
           </Link>
 
