@@ -63,9 +63,7 @@ export default function AdminHeader({ activePage }) {
               <span className="text-sm font-medium text-[var(--admin-text-heading)] tracking-tight">
                 Console
               </span>
-              <span className="text-[11px] text-[var(--admin-text-muted)] bg-[var(--admin-surface)] border border-[var(--admin-border)] px-2 py-0.5 rounded-full font-normal">
-                Admin
-              </span>
+
             </div>
           </Link>
 
@@ -81,11 +79,10 @@ export default function AdminHeader({ activePage }) {
                 <Link
                   key={item.id}
                   href={item.href}
-                  className={`px-3 py-1.5 rounded-lg text-xs transition-all duration-150 ${
-                    isActive
+                  className={`px-3 py-1.5 rounded-lg text-xs transition-all duration-150 ${isActive
                       ? "bg-[var(--admin-surface-active)] text-[var(--admin-text-heading)] font-medium shadow-sm"
                       : "text-[var(--admin-text-muted)] hover:text-[var(--admin-text-heading)] hover:bg-[var(--admin-surface-hover)]"
-                  }`}
+                    }`}
                 >
                   {item.label}
                 </Link>
@@ -172,11 +169,10 @@ export default function AdminHeader({ activePage }) {
             <Link
               key={item.id}
               href={item.href}
-              className={`px-2.5 py-1 rounded-md text-xs whitespace-nowrap transition-all duration-150 ${
-                isActive
+              className={`px-2.5 py-1 rounded-md text-xs whitespace-nowrap transition-all duration-150 ${isActive
                   ? "bg-[var(--admin-surface-active)] text-[var(--admin-text-heading)] font-medium shadow-sm"
                   : "text-[var(--admin-text-muted)] hover:text-[var(--admin-text-heading)] hover:bg-[var(--admin-surface-hover)]"
-              }`}
+                }`}
             >
               {item.label}
             </Link>
