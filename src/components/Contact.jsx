@@ -238,7 +238,8 @@ export default function Contact({ presetId }) {
           {/* Left Column: Direct Inquiries */}
           <div className="w-full lg:col-span-5 sticky top-16 lg:top-28 self-start z-30 bg-background/95 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none py-3 lg:py-0 border-b border-black/[0.06] dark:border-white/[0.08] lg:border-none transition-all">
             <CyberTitle
-              title="CONTACT"
+              title="GET IN"
+              subtitle="TOUCH"
               subtext="Initiate a conversation. Available for high-impact roles, contracts, and engineering collaborations."
             />
             {/* Soft gradient dissolve for content scrolling under the sticky heading on mobile */}
