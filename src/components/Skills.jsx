@@ -32,37 +32,37 @@ export default function Skills({ skills: _skills = [], content, presetId }) {
       {
         category: "Languages",
         items: [
-          { name: "JavaScript", icon: SiJavascript, color: "#f7df1e" },
-          { name: "TypeScript", icon: SiTypescript, color: "#3178c6" },
-          { name: "HTML5", icon: SiHtml5, color: "#e34f26" },
-          { name: "CSS3 / SCSS", icon: SiCss3, color: "#1572b6" },
+          { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+          { name: "TypeScript", icon: SiTypescript, color: "#007ACC" },
+          { name: "HTML5", icon: SiHtml5, color: "#E34F26" },
+          { name: "CSS3 / SCSS", icon: SiCss3, color: "#1572B6" },
         ],
       },
       {
         category: "Frameworks & Libraries",
         items: [
-          { name: "React.js", icon: SiReact, color: "#61dafb" },
-          { name: "Next.js", icon: SiNextdotjs, color: "#ffffff" },
-          { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
-          { name: "Express.js", icon: SiExpress, color: "#ffffff" },
-          { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06b6d4" },
+          { name: "React.js", icon: SiReact, color: "#61DAFB" },
+          { name: "Next.js", icon: SiNextdotjs, color: "#FFFFFF", isMono: true },
+          { name: "Node.js", icon: SiNodedotjs, color: "#68A063" },
+          { name: "Express.js", icon: SiExpress, color: "#FFFFFF", isMono: true },
+          { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
         ],
       },
       {
         category: "Databases & Storage",
         items: [
-          { name: "MongoDB", icon: SiMongodb, color: "#47a248" },
-          { name: "PostgreSQL", icon: SiPostgresql, color: "#4169e1" },
-          { name: "Supabase", icon: SiSupabase, color: "#3ecf8e" },
+          { name: "MongoDB", icon: SiMongodb, color: "#00ED64" },
+          { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+          { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
         ],
       },
       {
         category: "Tools & DevOps",
         items: [
-          { name: "Git", icon: SiGit, color: "#f05032" },
-          { name: "GitHub", icon: SiGithub, color: "#ffffff" },
-          { name: "Vercel", icon: SiVercel, color: "#ffffff" },
-          { name: "Postman", icon: SiPostman, color: "#ff6c37" },
+          { name: "Git", icon: SiGit, color: "#F05032" },
+          { name: "GitHub", icon: SiGithub, color: "#FFFFFF", isMono: true },
+          { name: "Vercel", icon: SiVercel, color: "#FFFFFF", isMono: true },
+          { name: "Postman", icon: SiPostman, color: "#FF6C37" },
         ],
       },
     ];
@@ -104,8 +104,15 @@ export default function Skills({ skills: _skills = [], content, presetId }) {
                         key={item.name}
                         className="glass rounded-xl p-3 border border-white/10 hover:border-white/20 hover:bg-white/[0.06] transition-all flex items-center gap-3 group/item cursor-default"
                       >
-                        <span className="text-lg text-zinc-300 group-hover/item:scale-110 transition-transform">
-                          <IconComponent />
+                        <span
+                          className="text-lg group-hover/item:scale-110 transition-transform shrink-0 flex items-center justify-center"
+                          style={item.isMono ? undefined : { color: item.color }}
+                          data-brand-mono={item.isMono ? "true" : undefined}
+                        >
+                          <IconComponent
+                            style={item.isMono ? undefined : { color: item.color }}
+                            className={item.isMono ? "text-white [html.light_&]:text-slate-900" : ""}
+                          />
                         </span>
                         <span className="text-xs sm:text-sm font-medium text-[#fafafa] group-hover/item:text-red-400 transition-colors">
                           {item.name}
@@ -123,22 +130,22 @@ export default function Skills({ skills: _skills = [], content, presetId }) {
   }
 
   const TECH_ITEMS = [
-    { name: "React.js", category: "Frontend", icon: SiReact },
-    { name: "Next.js", category: "Framework", icon: SiNextdotjs },
-    { name: "JavaScript", category: "Language", icon: SiJavascript },
-    { name: "TypeScript", category: "Language", icon: SiTypescript },
-    { name: "Tailwind CSS", category: "Styling", icon: SiTailwindcss },
-    { name: "Node.js", category: "Backend", icon: SiNodedotjs },
-    { name: "Express.js", category: "Backend", icon: SiExpress },
-    { name: "MongoDB", category: "Database", icon: SiMongodb },
-    { name: "PostgreSQL", category: "Database", icon: SiPostgresql },
-    { name: "Supabase", category: "Cloud DB", icon: SiSupabase },
-    { name: "Git", category: "Version Control", icon: SiGit },
-    { name: "GitHub", category: "Collaboration", icon: SiGithub },
-    { name: "HTML5", category: "Markup", icon: SiHtml5 },
-    { name: "CSS3", category: "Styles", icon: SiCss3 },
-    { name: "Vercel", category: "Cloud Edge", icon: SiVercel },
-    { name: "Postman", category: "API Testing", icon: SiPostman },
+    { name: "React.js", category: "Frontend", icon: SiReact, color: "#61DAFB", glowColor: "rgba(97, 219, 251, 0.65)" },
+    { name: "Next.js", category: "Framework", icon: SiNextdotjs, color: "#FFFFFF", glowColor: "rgba(255, 255, 255, 0.45)", isMono: true },
+    { name: "JavaScript", category: "Language", icon: SiJavascript, color: "#F7DF1E", glowColor: "rgba(247, 223, 30, 0.65)" },
+    { name: "TypeScript", category: "Language", icon: SiTypescript, color: "#007ACC", glowColor: "rgba(0, 122, 204, 0.65)" },
+    { name: "Tailwind CSS", category: "Styling", icon: SiTailwindcss, color: "#06B6D4", glowColor: "rgba(6, 182, 212, 0.7)" },
+    { name: "Node.js", category: "Backend", icon: SiNodedotjs, color: "#68A063", glowColor: "rgba(104, 160, 99, 0.7)" },
+    { name: "Express.js", category: "Backend", icon: SiExpress, color: "#FFFFFF", glowColor: "rgba(255, 255, 255, 0.4)", isMono: true },
+    { name: "MongoDB", category: "Database", icon: SiMongodb, color: "#00ED64", glowColor: "rgba(0, 237, 100, 0.7)" },
+    { name: "PostgreSQL", category: "Database", icon: SiPostgresql, color: "#4169E1", glowColor: "rgba(65, 105, 225, 0.65)" },
+    { name: "Supabase", category: "Cloud DB", icon: SiSupabase, color: "#3ECF8E", glowColor: "rgba(62, 207, 142, 0.65)" },
+    { name: "Git", category: "Version Control", icon: SiGit, color: "#F05032", glowColor: "rgba(240, 80, 50, 0.65)" },
+    { name: "GitHub", category: "Collaboration", icon: SiGithub, color: "#FFFFFF", glowColor: "rgba(255, 255, 255, 0.45)", isMono: true },
+    { name: "HTML5", category: "Markup", icon: SiHtml5, color: "#E34F26", glowColor: "rgba(227, 79, 38, 0.65)" },
+    { name: "CSS3", category: "Styles", icon: SiCss3, color: "#1572B6", glowColor: "rgba(21, 114, 182, 0.65)" },
+    { name: "Vercel", category: "Cloud Edge", icon: SiVercel, color: "#FFFFFF", glowColor: "rgba(255, 255, 255, 0.45)", isMono: true },
+    { name: "Postman", category: "API Testing", icon: SiPostman, color: "#FF6C37", glowColor: "rgba(255, 108, 55, 0.65)" },
   ];
 
   const categories = [
@@ -187,19 +194,31 @@ export default function Skills({ skills: _skills = [], content, presetId }) {
           {/* Right: Glow Box Grid */}
           <div className="lg:w-7/12">
             <ContentScrollFade>
-              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 gap-4 sm:gap-6 justify-items-center">
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 gap-y-10 gap-x-4 sm:gap-x-6 justify-items-center pt-8 pb-4">
                 {TECH_ITEMS.map((item) => {
                   const IconComponent = item.icon;
                   return (
                     <div
                       key={item.name}
-                      className="cyber-glow-box group"
-                      title={item.name}
+                      className="glow-box-parent cyber-glow-box-parent group"
+                      aria-label={item.name}
+                      style={{
+                        "--clr": item.glowColor || item.color,
+                        "--brand-color": item.color,
+                      }}
                     >
-                      <IconComponent className="w-7 h-7 sm:w-8 sm:h-8 text-white group-hover:text-[#1fc3ff] transition-colors duration-200" />
-                      <span className="cyber-glow-box-title">
+                      <span className="glow-box-title cyber-glow-box-title">
                         {item.name}
                       </span>
+                      <div className="cyber-glow-box">
+                        <IconComponent
+                          className={`w-7 h-7 sm:w-8 sm:h-8 transition-transform duration-200 group-hover:scale-110 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] [html.light_&]:drop-shadow-none ${
+                            item.isMono ? "text-slate-100 [html.light_&]:text-slate-900" : ""
+                          }`}
+                          style={item.isMono ? undefined : { color: item.color }}
+                          data-brand-mono={item.isMono ? "true" : undefined}
+                        />
+                      </div>
                     </div>
                   );
                 })}
