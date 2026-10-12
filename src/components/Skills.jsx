@@ -166,7 +166,8 @@ export default function Skills({ skills: _skills = [], content, presetId }) {
           {/* Left: Sticky Dual-Layer Title */}
           <div className="w-full lg:w-5/12 sticky top-16 lg:top-28 self-start z-30 bg-background/95 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none py-3 lg:py-0 border-b border-black/[0.06] dark:border-white/[0.08] lg:border-none transition-all">
             <CyberTitle
-              title="TECH STACK"
+              title="TECH"
+              subtitle="SET"
               subtext="Modern technologies and architectures I leverage to engineer high-velocity, scalable web systems."
             />
             {/* Soft gradient dissolve for content scrolling under the sticky heading on mobile */}
