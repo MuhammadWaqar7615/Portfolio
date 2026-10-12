@@ -561,34 +561,57 @@ html[data-preset="preset-2"] .theme-switch {
   user-select: none;
 }
 
+/* Dual-Layer Section Titles (Matches abdullah-portfolio-dev.vercel.app .title) */
+.cyber-title-wrap {
+  width: 100%;
+}
+
+.cyber-title-wrap .title-container {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  user-select: none;
+}
+
+.cyber-title-wrap .primary-text,
 .cyber-primary-title {
   font-family: 'Fugaz One', cursive, sans-serif;
   color: #ffffff;
-  font-size: clamp(2.4rem, 5vw, 4.2rem);
-  line-height: 1;
+  font-size: clamp(3.2rem, 6.2vw, 5.6rem);
+  line-height: 0.95;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08rem;
   margin: 0;
-  text-shadow: 0 0 20px rgba(31, 195, 255, 0.25);
+  text-shadow: 0 0 25px rgba(31, 195, 255, 0.25);
   position: relative;
   z-index: 2;
+  display: block;
 }
 
+.cyber-title-wrap .secondary-text,
 .cyber-secondary-title {
   font-family: 'Fugaz One', cursive, sans-serif;
   color: transparent;
-  -webkit-text-stroke: clamp(1.6px, 0.22vw, 2.2px) #1fc3ff;
-  font-size: clamp(2.4rem, 5vw, 4.2rem);
-  line-height: 0.5;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: clamp(2.2px, 0.28vw, 3.2px) #1fc3ff;
+  font-size: clamp(3.2rem, 6vw, 5.2rem);
+  line-height: 0.85;
+  text-align: end;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08rem;
   margin: 0;
-  margin-top: -0.5em;
+  margin-top: -0.18em;
   opacity: 0.95;
-  filter: drop-shadow(0 0 10px rgba(31, 195, 255, 0.45));
+  filter: drop-shadow(0 0 16px rgba(31, 195, 255, 0.45));
   position: relative;
   z-index: 1;
   pointer-events: none;
+  display: block;
+}
+
+.cyber-title-wrap .secondary-text.secondary-text-large {
+  font-size: clamp(4.2rem, 8.2vw, 7.5rem);
+  margin-top: -0.24em;
 }
 
 /* Floating Action Button */
@@ -865,16 +888,20 @@ html.light:not([data-preset="preset-2"]) #navbar [data-editable="content-navbar-
 }
 
 /* Cyber Dual-Layer Titles in Light Mode */
+html.light .cyber-title-wrap .primary-text,
 html.light .cyber-primary-title,
+[data-theme="light"] .cyber-title-wrap .primary-text,
 [data-theme="light"] .cyber-primary-title {
   color: #0F172A !important;
   text-shadow: none !important;
 }
 
+html.light .cyber-title-wrap .secondary-text,
 html.light .cyber-secondary-title,
+[data-theme="light"] .cyber-title-wrap .secondary-text,
 [data-theme="light"] .cyber-secondary-title {
-  -webkit-text-stroke: clamp(1.6px, 0.22vw, 2.2px) #0284C7 !important;
-  filter: drop-shadow(0 0 8px rgba(2, 132, 199, 0.25)) !important;
+  -webkit-text-stroke-color: #0284C7 !important;
+  filter: drop-shadow(0 0 10px rgba(2, 132, 199, 0.25)) !important;
 }
 
 /* Hero Section in Light Mode */
