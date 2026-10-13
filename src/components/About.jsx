@@ -6,13 +6,13 @@ export default function About({ content, presetId }) {
   const isPreset2 = presetId === "preset-2";
   const tagline = about.tagline !== undefined ? about.tagline : (isPreset2 ? "About Me" : "Background & Philosophy");
   const heading = about.heading !== undefined ? about.heading : (isPreset2 ? "Get to know me better" : "Engineering with clarity and intention.");
-  const p1 = about.paragraph1 !== undefined ? about.paragraph1 : (isPreset2 ? "I'm a passionate Full Stack Web Developer who loves turning ideas into real, functional and user-friendly web applications. I enjoy working with modern technologies and constantly learning new skills to stay ahead." : "I am a Full Stack Engineer dedicated to producing fast, accessible, and scalable web software. My focus centers on modern JavaScript, React, Next.js, and cloud-native database architectures.");
-  const p2 = about.paragraph2 !== undefined ? about.paragraph2 : "Rather than treating styling and backend as separate concerns, I engineer applications from database schema to pixel-perfect component rendering, ensuring every layer is maintainable, solo-operable, and crawlable by search engines.";
+  const p1 = about.paragraph1 !== undefined ? about.paragraph1 : (isPreset2 ? "I'm a frontend-focused Software Engineer at Bloggers Bracket with hands-on production experience building responsive React.js web applications, component architectures, and intuitive digital interfaces." : "I am a Full Stack Engineer dedicated to producing fast, accessible, and scalable web software. My focus centers on modern JavaScript, React, Next.js, and cloud-native database architectures.");
+  const p2 = about.paragraph2 !== undefined ? about.paragraph2 : (isPreset2 ? "Comfortable owning UI features end-to-end across e-commerce, dashboard, and web platforms, with a focus on clean component patterns, state management, REST API integration, and pixel-accurate design." : "Rather than treating styling and backend as separate concerns, I engineer applications from database schema to pixel-perfect component rendering, ensuring every layer is maintainable, solo-operable, and crawlable by search engines.");
 
   const profileName = about.profileName || "Muhammad Waqar";
   const profileLocation = about.profileLocation || "Pakistan";
   const profileEmail = about.profileEmail || "muhammadwaqar7615@gmail.com";
-  const profileExperience = about.profileExperience || "1+ Year (Freelance / Personal Projects)";
+  const profileExperience = about.profileExperience || (isPreset2 ? "2 Years Experience" : "2+ Years (Frontend Software Engineer)");
 
   // Editorial Preset 2 Layout (Matches ref img1)
   // Pixel-by-pixel Abhay Rana About section for Preset 2
@@ -65,18 +65,18 @@ export default function About({ content, presetId }) {
               {/* 2x2 Bento Stat Grid */}
               <div className="mt-8 grid grid-cols-2 gap-4">
                 <div className="glass rounded-xl p-4 text-center transition-all duration-300 hover:shadow-[0_0_20px_rgba(239,68,68,0.15)] border border-white/10">
-                  <p className="text-2xl font-bold font-mono text-[#fafafa]">2+</p>
-                  <p className="text-xs sm:text-sm text-[#a1a1aa]/70 mt-1">Years Experience</p>
+                  <p className="text-2xl font-bold font-mono text-[#fafafa]">{about.stat1Value || "2+"}</p>
+                  <p className="text-xs sm:text-sm text-[#a1a1aa]/70 mt-1">{about.stat1Label || "Years Experience"}</p>
                 </div>
 
                 <div className="glass rounded-xl p-4 text-center transition-all duration-300 hover:shadow-[0_0_20px_rgba(239,68,68,0.15)] border border-white/10">
-                  <p className="text-2xl font-bold font-mono text-[#fafafa]">15+</p>
-                  <p className="text-xs sm:text-sm text-[#a1a1aa]/70 mt-1">Projects Delivered</p>
+                  <p className="text-2xl font-bold font-mono text-[#fafafa]">{about.stat2Value || "6+"}</p>
+                  <p className="text-xs sm:text-sm text-[#a1a1aa]/70 mt-1">{about.stat2Label || "Key Web Projects"}</p>
                 </div>
 
                 <div className="glass rounded-xl p-4 text-center transition-all duration-300 hover:shadow-[0_0_20px_rgba(239,68,68,0.15)] border border-white/10">
-                  <p className="text-2xl font-bold font-mono text-[#fafafa]">100%</p>
-                  <p className="text-xs sm:text-sm text-[#a1a1aa]/70 mt-1">Happy Clients</p>
+                  <p className="text-2xl font-bold font-mono text-[#fafafa]">{about.stat3Value || "100%"}</p>
+                  <p className="text-xs sm:text-sm text-[#a1a1aa]/70 mt-1">{about.stat3Label || "Pixel-Perfect UI"}</p>
                 </div>
 
                 <a
@@ -84,7 +84,7 @@ export default function About({ content, presetId }) {
                   className="glass rounded-xl p-4 text-center transition-all duration-300 hover:shadow-[0_0_20px_rgba(239,68,68,0.15)] border border-white/10 group/card flex flex-col items-center justify-center cursor-pointer"
                 >
                   <svg
-                    className="w-6 h-6 text-red-400 group-hover/card:rotate-12 transition-transform duration-300"
+                    className="w-6 h-6 text-red-400 group-hover/card:scale-110 transition-transform duration-300"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -93,10 +93,10 @@ export default function About({ content, presetId }) {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth="2"
-                      d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"
+                      d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
                     />
                   </svg>
-                  <p className="text-xs sm:text-sm text-[#a1a1aa]/70 mt-1 font-medium">Building Useful Tools</p>
+                  <p className="text-xs sm:text-sm text-[#a1a1aa]/70 mt-1 font-medium">{about.stat4Label || "Clean Code Architecture"}</p>
                 </a>
               </div>
             </div>
