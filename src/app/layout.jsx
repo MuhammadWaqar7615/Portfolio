@@ -220,7 +220,7 @@ export default async function RootLayout({ children }) {
     jobTitle: "Full Stack Web Engineer",
     worksFor: {
       "@type": "Organization",
-      name: "Bloggers Brackets",
+      name: "Bloggers Bracket",
     },
     alumniOf: {
       "@type": "CollegeOrUniversity",
