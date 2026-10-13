@@ -16,17 +16,17 @@ export default function Experience({ experiences = [], content, presetId }) {
   const defaultExperiences = [
     {
       _id: "exp-1",
-      duration: "2025 — 2026",
+      duration: "2024 — Present",
       role: "Frontend Developer",
-      company: "Bloggers Brackets",
+      company: "Bloggers Bracket",
       description:
-        "Spearheading frontend development initiatives across multiple client portals. Architecting modular UI component systems using React, Tailwind CSS, and Framer Motion with rigorous cross-browser compatibility. Delivered 6+ production web applications with 99.8% crash-free sessions.",
+        "Spearheading frontend development initiatives across multiple company and web portals. Architecting modular UI component systems using React, Tailwind CSS, and Framer Motion with rigorous cross-browser compatibility. Delivered 6+ production web applications with pixel-perfect UI precision and responsive performance.",
     },
     {
       _id: "exp-2",
-      duration: "2025",
+      duration: "2024",
       role: "Web Developer Intern",
-      company: "Bloggers Brackets",
+      company: "Bloggers Bracket",
       description:
         "Engineered responsive interface modules, translated Figma wireframes into production React components, and handled client-side state management workflows. Assisted in reducing initial script asset footprints through code splitting.",
     },
@@ -90,7 +90,7 @@ export default function Experience({ experiences = [], content, presetId }) {
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-red-500 mt-1.5 flex-shrink-0" />
-                      <span>Maintained 99.8% crash-free sessions across live production client portals.</span>
+                      <span>Delivered pixel-perfect UI components and fluid user experiences with 100% design fidelity.</span>
                     </li>
                   </ul>
 
