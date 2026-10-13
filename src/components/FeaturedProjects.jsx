@@ -77,7 +77,7 @@ export default function FeaturedProjects({ projects = [], content, presetId }) {
       image: "/project_craft_lights.jpg",
       liveLink: "https://crafts-delights.vercel.app",
       liveLinks: [{ label: "Live Site", url: "https://crafts-delights.vercel.app" }],
-      codeLink: "https://github.com/MuhammadWaqar7615/",
+      codeLink: "https://github.com/MuhammadWaqar7615/Ecommerce_Project",
     },
     {
       _id: "p2-3",
@@ -236,9 +236,17 @@ export default function FeaturedProjects({ projects = [], content, presetId }) {
                       href="https://crafts-delights.vercel.app"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs text-red-400 hover:text-red-300 font-semibold"
+                      className="text-xs text-red-400 hover:text-red-300 font-semibold cursor-pointer"
                     >
                       Demo ↗
+                    </a>
+                    <a
+                      href="https://github.com/MuhammadWaqar7615/Ecommerce_Project"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-zinc-400 hover:text-[#fafafa] font-medium cursor-pointer"
+                    >
+                      GitHub ↗
                     </a>
                   </div>
                 </div>
@@ -265,14 +273,24 @@ export default function FeaturedProjects({ projects = [], content, presetId }) {
               <div>
                 <div className="flex items-center justify-between gap-2 mb-3">
                   <span className="text-xs font-mono font-medium text-zinc-400">Full-Stack SaaS</span>
-                  <a
-                    href="https://retreat-bookings.vercel.app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs text-red-400 hover:text-red-300 font-semibold"
-                  >
-                    Demo ↗
-                  </a>
+                  <div className="flex items-center gap-2">
+                    <a
+                      href="https://retreat-bookings.vercel.app"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-red-400 hover:text-red-300 font-semibold cursor-pointer"
+                    >
+                      Demo ↗
+                    </a>
+                    <a
+                      href="https://github.com/MuhammadWaqar7615"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-zinc-400 hover:text-[#fafafa] font-medium cursor-pointer"
+                    >
+                      GitHub ↗
+                    </a>
+                  </div>
                 </div>
 
                 <h3 className="text-lg font-bold text-[#fafafa] mb-2 group-hover:text-red-400 transition-colors">
@@ -297,14 +315,24 @@ export default function FeaturedProjects({ projects = [], content, presetId }) {
               <div>
                 <div className="flex items-center justify-between gap-2 mb-3">
                   <span className="text-xs font-mono font-medium text-zinc-400">Coupon Aggregator</span>
-                  <a
-                    href="https://condice-sconto-clone.vercel.app/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs text-red-400 hover:text-red-300 font-semibold"
-                  >
-                    Demo ↗
-                  </a>
+                  <div className="flex items-center gap-2">
+                    <a
+                      href="https://condice-sconto-clone.vercel.app/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-red-400 hover:text-red-300 font-semibold cursor-pointer"
+                    >
+                      Demo ↗
+                    </a>
+                    <a
+                      href="https://github.com/MuhammadWaqar7615/condiceSconto-site-clone"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-zinc-400 hover:text-[#fafafa] font-medium cursor-pointer"
+                    >
+                      GitHub ↗
+                    </a>
+                  </div>
                 </div>
 
                 <h3 className="text-lg font-bold text-[#fafafa] mb-2 group-hover:text-red-400 transition-colors">
@@ -324,30 +352,50 @@ export default function FeaturedProjects({ projects = [], content, presetId }) {
               </div>
             </div>
 
-            {/* 5. Coming Soon Bento Card (Muted abhayrana style) */}
-            <div className="bento-card p-6 flex flex-col justify-between opacity-45 cursor-not-allowed border-dashed border-white/20 select-none">
+            {/* 5. Bakery E-Commerce Store */}
+            <div className="bento-card p-6 flex flex-col justify-between group hover:border-red-500/60 hover:-translate-y-1 transition-all duration-300">
               <div>
                 <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="text-xs font-mono font-medium text-zinc-500">In Development</span>
-                  <span className="text-xs text-zinc-500 font-mono">Coming Soon</span>
+                  <span className="text-xs font-mono font-medium text-zinc-400">E-Commerce & Redux</span>
+                  <a
+                    href="https://github.com/MuhammadWaqar7615/Bakery-Website"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-red-400 hover:text-red-300 font-semibold cursor-pointer"
+                  >
+                    GitHub ↗
+                  </a>
                 </div>
 
-                <h3 className="text-lg font-bold text-[#fafafa] mb-2">
-                  Next Gen SaaS Tool
+                <h3 className="text-lg font-bold text-[#fafafa] mb-2 group-hover:text-red-400 transition-colors">
+                  Bakery E-Commerce Store
                 </h3>
                 <p className="text-[#a1a1aa] text-xs leading-relaxed mb-4 font-light">
-                  An upcoming AI-powered productivity cloud platform currently in private engineering preview.
+                  Responsive storefront featuring custom theme personalisation, persisted user cart state, authentication, and full admin dashboard.
                 </p>
               </div>
 
               <div className="flex flex-wrap items-center gap-1.5 pt-4 border-t border-white/[0.06]">
-                {["Next.js", "AI / LLM", "TypeScript", "???"].map((t) => (
-                  <span key={t} className="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] border border-white/10 text-zinc-400">
+                {["React", "Redux", "React Router", "Tailwind CSS"].map((t) => (
+                  <span key={t} className="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] border border-white/10 text-zinc-300">
                     {t}
                   </span>
                 ))}
               </div>
             </div>
+          </div>
+
+          {/* GitHub Repositories Link */}
+          <div className="mt-12 text-center">
+            <a
+              href="https://github.com/MuhammadWaqar7615?tab=repositories"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium text-[#fafafa] bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-red-500/40 transition-all duration-300 group shadow-lg cursor-pointer"
+            >
+              <span>Explore All Repositories on GitHub</span>
+              <span className="text-red-400 group-hover:translate-x-1 transition-transform">→</span>
+            </a>
           </div>
         </div>
       </section>
