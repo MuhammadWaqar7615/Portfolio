@@ -11,16 +11,16 @@ async function main() {
   const experiences = [
     {
       role: "Frontend Developer",
-      company: "Bloggers Brackets",
+      company: "Bloggers Bracket",
       duration: "2024 — Present",
       description:
-        "Spearheading frontend development initiatives across multiple client portals. Architecting modular UI component systems using React, Tailwind CSS, and Framer Motion with rigorous cross-browser compatibility. Delivered 6+ production web applications with 99.8% crash-free sessions.",
+        "Spearheading frontend development initiatives across multiple client portals. Architecting modular UI component systems using React, Tailwind CSS, and Framer Motion with rigorous cross-browser compatibility. Delivered 6+ production web applications with pixel-perfect UI precision and responsive performance.",
       order: 1,
     },
     {
       role: "Web Developer Intern",
-      company: "Bloggers Brackets",
-      duration: "2023",
+      company: "Bloggers Bracket",
+      duration: "2024",
       description:
         "Engineered responsive interface modules, translated Figma wireframes into production React components, and handled client-side state management workflows. Assisted in reducing initial script asset footprints through code splitting.",
       order: 2,
