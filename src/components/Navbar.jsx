@@ -160,7 +160,7 @@ export default function Navbar({ content, presetId, sections = [] }) {
         >
           {isPreset2 ? (
             <span className="font-extrabold text-base tracking-tight text-white flex items-center">
-              Muhammad<span className="text-red-500 font-extrabold">.</span>
+              Muhammad Waqar<span className="text-red-500 font-extrabold">.</span>
             </span>
           ) : (
             <>
@@ -191,8 +191,8 @@ export default function Navbar({ content, presetId, sections = [] }) {
           ref={navContainerRef}
           onMouseLeave={() => setHoveredSection(null)}
           className={`relative hidden md:flex items-center ${isPreset2
-              ? "gap-1 sm:gap-1.5 md:gap-2 text-sm text-zinc-400 font-medium"
-              : "gap-5 text-xs font-opensans uppercase tracking-wider text-slate-300"
+            ? "gap-1 sm:gap-1.5 md:gap-2 text-sm text-zinc-400 font-medium"
+            : "gap-5 text-xs font-opensans uppercase tracking-wider text-slate-300"
             }`}
         >
           {visibleNavLinks.map((link) => {
@@ -211,15 +211,15 @@ export default function Navbar({ content, presetId, sections = [] }) {
                 className={
                   isPreset2
                     ? `px-3.5 py-1.5 rounded-xl cursor-pointer transition-all duration-200 text-xs sm:text-sm font-medium ${isActive
-                        ? "text-white bg-[#2b1013] border border-red-600/40 shadow-[0_0_14px_rgba(239,68,68,0.2)]"
-                        : isHovered
+                      ? "text-white bg-[#2b1013] border border-red-600/40 shadow-[0_0_14px_rgba(239,68,68,0.2)]"
+                      : isHovered
                         ? "text-white bg-white/[0.04]"
                         : "text-zinc-400 hover:text-white"
-                      }`
+                    }`
                     : `py-1 cursor-pointer transition-all ${isActive
-                        ? "text-[#1fc3ff] font-bold drop-shadow-[0_0_8px_#1fc3ff]"
-                        : "hover:text-[#1fc3ff] hover:opacity-100 opacity-80"
-                      }`
+                      ? "text-[#1fc3ff] font-bold drop-shadow-[0_0_8px_#1fc3ff]"
+                      : "hover:text-[#1fc3ff] hover:opacity-100 opacity-80"
+                    }`
                 }
                 title={`Click to edit ${link.label} link`}
               >
@@ -322,8 +322,8 @@ export default function Navbar({ content, presetId, sections = [] }) {
       {mobileMenuOpen && (
         <div
           className={`md:hidden ${isPreset2
-              ? "mt-2 rounded-2xl border border-zinc-800 bg-zinc-900/95 backdrop-blur-xl text-[#fafafa] px-5 py-4 shadow-2xl"
-              : "border-b border-white/10 bg-cardBg px-6 py-5"
+            ? "mt-2 rounded-2xl border border-zinc-800 bg-zinc-900/95 backdrop-blur-xl text-[#fafafa] px-5 py-4 shadow-2xl"
+            : "border-b border-white/10 bg-cardBg px-6 py-5"
             }`}
         >
           <div
@@ -367,8 +367,8 @@ export default function Navbar({ content, presetId, sections = [] }) {
                   rel="noopener noreferrer"
                   onClick={() => setMobileMenuOpen(false)}
                   className={`flex items-center justify-between py-2 text-xs font-semibold ${isPreset2
-                      ? "text-red-400 hover:text-white"
-                      : "text-accent hover:opacity-80"
+                    ? "text-red-400 hover:text-white"
+                    : "text-accent hover:opacity-80"
                     }`}
                 >
                   <span>{resumeText}</span>
