@@ -56,7 +56,7 @@ export default function AdminLoginPage() {
         <div className="rounded-2xl border border-[#232736] bg-[#161822] p-8 shadow-2xl space-y-6 transition-all duration-200">
           <div className="space-y-1">
             <div className="w-8 h-8 rounded-lg bg-white text-[#0f1117] font-semibold text-xs flex items-center justify-center tracking-tight mb-4 shadow-sm">
-              MW
+              MW.
             </div>
             <h1 className="text-lg font-medium tracking-tight text-white">
               Admin Access
