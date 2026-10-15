@@ -160,7 +160,7 @@ export default function Navbar({ content, presetId, sections = [] }) {
         >
           {isPreset2 ? (
             <span className="font-extrabold text-base tracking-tight text-white flex items-center">
-              Muhammad Waqar<span className="text-red-500 font-extrabold">.</span>
+              M. Waqar<span className="text-red-500 font-extrabold">.</span>
             </span>
           ) : (
             <>
