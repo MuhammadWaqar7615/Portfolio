@@ -75,14 +75,14 @@ export async function generateMetadata() {
     console.warn("MongoDB SiteMetadata query skipped, using curated defaults:", err.message);
   }
 
-
-  const baseUrl =
+  const rawBaseUrl =
     process.env.NEXT_PUBLIC_SITE_URL ||
     (process.env.VERCEL_PROJECT_PRODUCTION_URL
       ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
       : process.env.VERCEL_URL
         ? `https://${process.env.VERCEL_URL}`
         : "https://muhammad-waqar.me");
+  const baseUrl = rawBaseUrl.replace(/\/+$/, "");
 
   const title =
     siteData?.title || "Muhammad Waqar — Full Stack Engineer";
@@ -91,7 +91,6 @@ export async function generateMetadata() {
     "Portfolio of Muhammad Waqar, a Full Stack Web Engineer specializing in React, Next.js, JavaScript, and high-performance user interfaces.";
   const ogImage =
     siteData?.ogImage || `${baseUrl}/opengraph-image`;
-
 
   return {
     metadataBase: new URL(baseUrl),
@@ -102,26 +101,32 @@ export async function generateMetadata() {
     description,
     keywords: [
       "Muhammad Waqar",
+      "Muhammad Waqar Portfolio",
+      "Full Stack Engineer",
       "Frontend Developer",
+      "Full Stack Developer Pakistan",
       "React Developer",
       "Next.js Developer",
-      "Full-Stack Developer",
-      "Frontend Engineer",
-      "JavaScript",
-      "TypeScript",
+      "Software Engineer",
+      "JavaScript Engineer",
+      "TypeScript Developer",
       "Tailwind CSS",
       "Node.js",
       "Express.js",
       "MongoDB",
+      "MERN Stack Developer",
+      "Frontend Architecture",
       "UI Developer",
-      "Responsive Design",
-      "Web Development",
+      "Core Web Vitals",
+      "Web Performance",
+      "Responsive Web Applications",
       "Web Architecture",
-      "React Portfolio",
-      "Portfolio",
     ],
     authors: [{ name: "Muhammad Waqar", url: baseUrl }],
     creator: "Muhammad Waqar",
+    publisher: "Muhammad Waqar",
+    category: "technology",
+    classification: "Software Engineering Portfolio",
     icons: {
       icon: [
         { url: "/favicon.svg", type: "image/svg+xml" },
@@ -136,10 +141,17 @@ export async function generateMetadata() {
       ],
     },
     alternates: {
-      canonical: baseUrl,
+      canonical: "/",
+      languages: {
+        "en-US": "/",
+      },
     },
     openGraph: {
-      type: "website",
+      type: "profile",
+      firstName: "Muhammad",
+      lastName: "Waqar",
+      username: "MuhammadWaqar7615",
+      gender: "male",
       locale: "en_US",
       url: baseUrl,
       title,
@@ -151,12 +163,14 @@ export async function generateMetadata() {
           width: 1200,
           height: 630,
           alt: "Muhammad Waqar — Full Stack Engineer",
+          type: "image/png",
         },
         {
           url: `${baseUrl}/preview_image.png`,
           width: 1200,
           height: 630,
           alt: "Muhammad Waqar Full Stack Engineer Portfolio",
+          type: "image/png",
         },
       ],
     },
@@ -164,7 +178,18 @@ export async function generateMetadata() {
       card: "summary_large_image",
       title,
       description,
-      images: [ogImage, `${baseUrl}/preview_image.png`],
+      creator: "@MuhammadWaqar",
+      site: "@MuhammadWaqar",
+      images: [
+        {
+          url: ogImage,
+          alt: "Muhammad Waqar — Full Stack Engineer",
+        },
+        {
+          url: `${baseUrl}/preview_image.png`,
+          alt: "Muhammad Waqar Full Stack Engineer Portfolio",
+        },
+      ],
     },
     robots: {
       index: true,
@@ -201,18 +226,48 @@ export const viewport = {
 };
 
 export default async function RootLayout({ children }) {
-  const baseUrl =
+  const rawBaseUrl =
     process.env.NEXT_PUBLIC_SITE_URL ||
     (process.env.VERCEL_PROJECT_PRODUCTION_URL
       ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
       : process.env.VERCEL_URL
         ? `https://${process.env.VERCEL_URL}`
         : "https://muhammad-waqar.me");
+  const baseUrl = rawBaseUrl.replace(/\/+$/, "");
+
+  const jsonLdWebSite = {
+    "@type": "WebSite",
+    "@id": `${baseUrl}/#website`,
+    url: baseUrl,
+    name: "Muhammad Waqar Portfolio",
+    description: "Official portfolio of Muhammad Waqar, Full Stack Web Engineer.",
+    inLanguage: "en-US",
+    publisher: {
+      "@id": `${baseUrl}/#person`,
+    },
+  };
+
+  const jsonLdProfilePage = {
+    "@type": "ProfilePage",
+    "@id": `${baseUrl}/#profilepage`,
+    url: baseUrl,
+    name: "Muhammad Waqar — Full Stack Engineer Portfolio",
+    description:
+      "Portfolio of Muhammad Waqar, a Full Stack Web Engineer specializing in React, Next.js, JavaScript, and high-performance user interfaces.",
+    inLanguage: "en-US",
+    isPartOf: {
+      "@id": `${baseUrl}/#website`,
+    },
+    mainEntity: {
+      "@id": `${baseUrl}/#person`,
+    },
+  };
 
   const jsonLdPerson = {
-    "@context": "https://schema.org",
     "@type": "Person",
+    "@id": `${baseUrl}/#person`,
     name: "Muhammad Waqar",
+    alternateName: ["M. Waqar", "Waqar"],
     url: baseUrl,
     image: `${baseUrl}/preview_image.png`,
     logo: `${baseUrl}/name_logo.png`,
@@ -222,6 +277,7 @@ export default async function RootLayout({ children }) {
     worksFor: {
       "@type": "Organization",
       name: "Bloggers Bracket",
+      url: "https://bloggersbracket.com",
     },
     alumniOf: {
       "@type": "CollegeOrUniversity",
@@ -238,6 +294,8 @@ export default async function RootLayout({ children }) {
       "Tailwind CSS",
       "Frontend Architecture",
       "Web Performance & Core Web Vitals",
+      "RESTful API Integration",
+      "Full Stack Development",
     ],
     sameAs: [
       "https://github.com/MuhammadWaqar7615",
@@ -248,7 +306,13 @@ export default async function RootLayout({ children }) {
       email: "mwaqar7615@gmail.com",
       telephone: "+923115119984",
       contactType: "professional",
+      availableLanguage: ["English", "Urdu"],
     },
+  };
+
+  const rootStructuredData = {
+    "@context": "https://schema.org",
+    "@graph": [jsonLdWebSite, jsonLdProfilePage, jsonLdPerson],
   };
 
   const theme = (await getSiteTheme()) || DEFAULT_THEME;
@@ -334,7 +398,7 @@ export default async function RootLayout({ children }) {
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdPerson) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(rootStructuredData) }}
         />
       </head>
       <body
